@@ -1,0 +1,189 @@
+\documentclass[11pt,letter]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{epstopdf}
+\usepackage{amsthm}
+
+\usepackage{enumerate}
+%\usepackage{sidenotes}
+
+\usepackage{fourier}
+%\usepackage{a4wide}
+
+
+\newtheorem{definition}{Definition} 
+\newtheorem{proposition}[definition]{Proposition} 
+\newtheorem{theorem}[definition]{Theorem} 
+\newtheorem{lemma}[definition]{Lemma} 
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{conjecture}[definition]{Conjecture}
+\newtheorem{question}[definition]{Question}
+\newtheorem{claim}[definition]{Claim}
+\newtheorem{fact}[definition]{Fact}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{wedgelemma}[definition]{Wedge Lemma} 
+\newtheorem{construction}[definition]{Construction}\newtheorem{example}[definition]{Example}
+
+\newcommand{\lo}{\preceq}
+\newcommand{\rar}{\rightarrow}
+\newcommand{\rAr}{\Rightarrow}
+\newcommand{\lrAr}{\Leftrightarrow}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\HHH}{\mathcal{H}}
+\newcommand{\AAA}{\mathcal{A}}
+\newcommand{\K}{\mathbf{K}}
+\renewcommand{\L}{\mathbf{L}}
+\newcommand{\U}{\mathbf{U}}
+\newcommand{\V}{\mathbf{V}}
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\Rat}{\operatorname{Rat}}
+\newcommand{\ehr}{\operatorname{ehr}}
+\newcommand{\dist}{\mathsf{dist}}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\sprod}[2]{\langle #1, #2 \rangle}
+\newcommand{\mspan}{\operatorname{span}}
+\renewcommand{\dim}{\mathsf{dim}\ }
+\newcommand{\inter}{\mathsf{int}\ }
+\newcommand{\median}{\mathrm{median}\ }
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand{\defn}[1]{\emph{#1}}
+\newcommand{\norm}[1]{|| #1 ||}
+
+\newcommand{\Glat}{G^{\operatorname{lat}}}
+\newcommand{\Gdep}{G^{\operatorname{dep}}}
+\newcommand{\Gfine}{G^{\operatorname{fine}}}
+\newcommand{\Gfinem}{G^{\operatorname{fine*}}}
+
+\newcommand{\FD}{\mathcal{F}}
+\newcommand{\path}{\operatorname{path}}
+\newcommand{\reldep}[2]{{#1} \longrightarrow {#2}}
+\newcommand{\reldepi}[3]{{#1} \overset{#2}{\longrightarrow} {#3}}
+\newcommand{\shift}[2]{\rightarrow(#1,{#2})}
+\newcommand{\shiftw}[3]{\overset{#1 \cdot #2}{\longrightarrow} {#3}}
+
+\newcommand{\conv}{\operatorname{conv}}
+\newcommand{\cone}{\operatorname{cone}}
+\newcommand{\lev}{\operatorname{lev}}
+\newcommand{\Lev}{\operatorname{Lev}}
+\renewcommand{\deg}{\operatorname{deg}}
+\renewcommand{\dim}{\operatorname{dim}}
+\renewcommand{\min}{\operatorname{min}}
+\renewcommand{\max}{\operatorname{max}}
+\newcommand{\fract}{\operatorname{frac}}
+\newcommand{\integ}{\operatorname{int}}
+\newcommand{\relint}{\operatorname{relint}}
+
+\newcommand{\twin}{\mathsf{twin}}
+\newcommand{\hull}{\mathsf{hull}}
+\newcommand{\diam}{\mathsf{diam}}
+\newcommand{\choice}[1]{\left\{ \begin{array}{ll} #1 \end{array} \right.}
+\newcommand{\floor}[1]{\lfloor {#1} \rfloor}
+\newcommand{\ceil}[1]{\lceil {#1} \rceil}
+\newcommand{\mset}[2]{ \left\{ #1 \; \middle| \; #2 \right\}}
+\newcommand{\lk}{\mathsf{lk}}
+\newcommand{\sd}{\mathsf{sd}}
+\newcommand{\Pa}{\mathrm{P}}
+\newcommand{\dotcup}{\ensuremath{\mathaccent\cdot\cup}}
+\newcommand{\Hom}{\mathrm{ Hom}}
+
+
+\title{Notes}
+\author{Felix Breuer, Caroline J. Klivans}
+\begin{document}
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Outline}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+\item Flows and Hyperplane Arrangement Duality
+\item Hopf Structure on Zonotopes/Hyperplane Arrangements in General
+\item Scheduling Problems, Quasisymmetric Functions and Polynomials
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Hyperplane Arrangement Duality}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Let $V\subset \ZZ^d\setminus\{0\}$ be a finite set of primitive integer vectors.\footnote{Primitive means that the $\gcd$ of the entries of each vector is 1.} Let $\HHH$ denote the central hyperplane arrangement
+\[
+\HHH = \mset{H_v}{v\in V}
+\]
+where
+\[
+H_v = \mset{x\in \RR^d}{\sprod{x}{v}=0}.
+\]
+The cones in $\HHH$ are rational, whence their generators can be chosen to be primitive and integral. Let $G(V)$ denote the set of primitive integral generators of $\HHH$. In other words, $G(V)$ can be described as follows:
+\[
+ G(V) = \mset{w\in\ZZ^d\setminus\{0\}\text{ primitive}}{\exists T\subset V: \dim T^\perp = 1 \wedge w\in T^\perp}
+\]
+where $T^\perp = \mset{x\in\RR^d}{\sprod{x}{y}=0 \text{ for all} y\in T}$.
+
+Note: Defined this way, $G(V)$ always produces a centrally symmetric set of vectors. We may or may not want this convention.
+
+\begin{lemma}
+$G$ maps a finite set of primitive lattice points to a finite set of primitive lattice points.
+\end{lemma}
+
+\begin{proof}
+There are only finitely many subsets $T$ to choose from. If $\dim T^\perp = 1$ and $T$ is rational there are exactly two primitive non-zero lattice points in  $T^\perp$.
+\end{proof}
+
+\begin{lemma}
+Let $V,W\subset \ZZ^d\setminus\{0\}$ be a finite sets of primitive integer vectors that span $\RR^d$. Then 
+\begin{enumerate}
+\item $V\subset W$ $\rAr$ $G(V)\subset G(W)$,
+\item $V \subset G(G(V))$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) If $W\supset V$ then in the definition $G(W)$ there are more subsets $T$ to choose from than in the definition of $G(V)$.
+
+(2) Let $v\in V$. Define $v_1:=v$ and let $v_2,\ldots,v_d\in V$ such that $v_1,v_2,\ldots,v_d$ is a basis for $\RR^d$. Let $V_i=\{v_1,\ldots,v_d\}\setminus\{v_i\}$. Then $\dim V_i^\perp = 1$ for every $i$. Moreover, if $w\in V_i^\perp$ for $i=2,\ldots,d$, then $w\perp v$. Let $w_i$ denote a primitive lattice vector in $V_i^\perp$. By construction $w_i\in G(V)$. Moreover, $w_2,\ldots,w_d$ are linearly independent\footnote{What's a good proof for linear independence of the $w_i$?}, so $\dim \{w_2,\ldots,w_d\}^\perp=1$ and $v\in \{w_2,\ldots,w_d\}^\perp$, whence $v\in G(G(V))$ as desired.  
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Scheduling Problems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+A \defn{scheduling problem} $S$ on $d$ items is given by a boolean formula $\phi$ over atomic formulas $x_i\leq x_j$ for $i,j\in[d]$. A \defn{$k$-schedule} solving $S$ is a function $x:[d]\rightarrow[k]$ such that $\phi(x)$ is true. The schedule function $\xi_S(k)$ counts the number of $k$-schedules of $S$.
+
+From the standard braid arrangement setup, we get the following results:
+\begin{enumerate}
+\item $\xi_S(k)$ is a polynomial in $k$.
+\item There is a natural quasisymmetric function in non-commuting variables that specializes to $\xi_S$.
+\item $\xi_S$ includes the chromatic polynomial of a graph and the "unknown" matroid polynomial as special cases.
+\item $\xi_S$ includes Ehrhart polynomials of order polytopes as a special case.
+\item The values of $\xi_S(-k)$ at negative integers can be written as a difference of two counting functions. (This gives "one half" of a reciprocity theorem.) This should also be true on the quasisymmetric function level.
+\item We get some elementary bounds on the coefficients of $\xi_S$. For example, the $f^*$-vector is non-negative. 
+\end{enumerate}
+
+This is of course just the start. We call schedules $S$ \defn{nice} that give rise to a unit cube with a co-dimension 1 subcomplex removed, such that the regions are open full-dim polytopes. Then:
+\begin{enumerate}
+\item If $S$ is nice, we get an honest reciprocity theorem, both on the quasisymmetric function level as well as on the polynomial level.
+\item This case still includes chromatic polynomials and the matroid polynomials.
+\item We get strong bounds on the coefficients of the polynomial in the Ehrhart setting (coming from convex ear decompositions).
+\end{enumerate}
+
+Of course there are still a bunch of things that are not clear at all, yet:
+\begin{enumerate} 
+\item Do the convex ear decompositions also tell us something about coefficients on the quasisymmetric function level?
+\item Which schedules come from matroids? 
+\end{enumerate}
+
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}
