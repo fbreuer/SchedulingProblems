@@ -143,25 +143,25 @@ There are a couple of other things we could add here:
 \item The values of $\xi_S(-k)$ at negative integers can be written as a difference of two counting functions. (This gives "one half" of a reciprocity theorem.) This should also be true on the quasisymmetric function level.
 \end{enumerate}
 
-This is of course just the start. We call schedules $S$ \defn{nice} that give rise to a unit cube with a co-dimension 1 subcomplex removed, such that the regions are open full-dim polytopes. Then:
-\begin{enumerate}
-\item If $S$ is nice, we get an honest reciprocity theorem, both on the quasisymmetric function level as well as on the polynomial level.
-\item This case still includes chromatic polynomials and the matroid polynomials.
-\item We get strong bounds on the coefficients of the polynomial in the Ehrhart setting (coming from convex ear decompositions).
-\end{enumerate}
+The braid arrangement defines a polyhedral subdivision of the space $\RR^n$, a polyhedral subdivision of the positive orthand $\RR_{\geq 0}^n$ and a polytopal subdivision of the cube $[0,1]^n$. With respect to each of these, we define the \emph{forbidden subcomplex} $\Delta(S)$ to be the set of those faces $\sigma$ of the subdivision such that $\phi(\omega)$ does not hold for any $\omega$ in the relative interior of $\sigma$. Depending on the topological and geometric properties of $\Delta(S)$, we can make various assertions about $\SSS$ and $\xi$. We say $\Delta(S)$ has a convex ear decomposition, if $\Delta(S)$ (viewed as subcomplex of the cube) together with the boundary of the cube, has a convex ear decomposition.
 
-Of course there are still a bunch of things that are not clear at all, yet:
+** fb: I think this is almost the same thing as saying that $S$ comes from a generalized permutahedron. It is a tiny bit more general, as this allows regions of the arrangement (i.e. the complement of $\Delta(S)$) to be non-convex. But because the Braid arrangement is so simple, there should be an easier way to define this notion, without referring to convex ear decompositions. **
+
+\begin{theorem}
+Let $S$ be a scheduling problem such that $\Delta(S)$ has a convex ear decomposition. Then the following hold:
+\begin{enumerate}
+\item If $\SSS_S = \sum h_F' L_F$, then the $h_F'$ are non-negative integers.
+\item The coefficients of $\xi_S$ satisfy the "convex ear decomposition constraints".
+\item Both $\SSS_S$ and $\xi_S$ satisfy a reciprocity theorem.
+\end{enumerate}
+\end{theorem}
+
+Obviously, this still needs to be fleshed out. A couple of additional points:
 \begin{enumerate} 
+\item This case still includes chromatic polynomials and the matroid polynomials.
 \item Do the convex ear decompositions also tell us something about coefficients on the quasisymmetric function level?
 \item Which schedules come from matroids? 
 \end{enumerate}
-
-\begin{enumerate}
-\item Do the convex ear decompositions also tell us something about coefficients on the quasisymmetric function level?
-\item Which schedules come from matroids? 
-\end{enumerate}
-
-
 
 \subsection{Motivating examples}
 
