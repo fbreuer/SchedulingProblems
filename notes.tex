@@ -5,11 +5,11 @@
 \usepackage{amsmath}
 \usepackage{epstopdf}
 \usepackage{amsthm}
-
+\usepackage{xypic}
 \usepackage{enumerate}
 %\usepackage{sidenotes}
 
-\usepackage{fourier}
+%\usepackage{fourier}
 %\usepackage{a4wide}
 
 
@@ -24,7 +24,8 @@
 \newtheorem{fact}[definition]{Fact}
 \newtheorem{remark}[definition]{Remark}
 \newtheorem{wedgelemma}[definition]{Wedge Lemma} 
-\newtheorem{construction}[definition]{Construction}\newtheorem{example}[definition]{Example}
+\newtheorem{construction}[definition]{Construction}
+\newtheorem{example}[definition]{Example}
 
 \newcommand{\lo}{\preceq}
 \newcommand{\rar}{\rightarrow}
@@ -110,6 +111,16 @@
 \end{enumerate}
 
 
+\noindent A motivating diagram:
+\begin{equation*} \label{big_picture}
+\xymatrix{
+\textrm{colorings}  \dto &\textrm{Flows}\\
+ \textrm{$\mathbb{Z}$ points in interiors of $G$-Braid} \dto & \textrm{$\mathbb{Z}$-points in interior} \uto\\
+ \textrm{$G$-Braid} + \textrm{Coord.} \rto^{Duality}  & \textrm{$G$-subset arrangement} \uto}
+\end{equation*}
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Hyperplane Arrangement Duality}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -153,6 +164,182 @@ Let $V,W\subset \ZZ^d\setminus\{0\}$ be a finite sets of primitive integer vecto
 \end{proof}
 
 
+\subsection{Hyperplane arrangements}
+
+I simply want to talk through the above in a different way.  
+
+Suppose $\mathcal{H}$ is a finite central hyperplane arrangement and $V$ is
+the collection of all normals to the hyperplanes $H \in \mathcal{H}$.
+Suppose further that $V$ is a collection of primitive integer vectors.
+
+\begin{quote}
+C: I actually don't know what this means for $\mathcal{H}$.  Namely,
+which arrangements have primitive integer normals?  If I describe an
+arrangement in terms of linear forms with integer coefficients, then
+do I just need a gcd condition on those coefficients?
+
+F: Yes! We just need that $\gcd(v_1,v_2,\ldots,v_d)=1$ for every normal $v$. So all we really need is a rational hyperplane arrangement.
+\end{quote}
+
+Next we consider the collection of generators of all cones of
+$\mathcal{H}$.  As $\mathcal{H}$ is determined by $V$, we may write
+this as a function of $V$, $G(V)$.  
+
+\begin{quote}
+C: I think you need to be careful in your definition of $G(V)$ above.
+If the arrangement is not essential, then we will not see all the
+generators of cones as one dimensional intersections.  Consider the
+Braid arrangement as it sits in $\mathbb{R}^3$.  This arrangement is
+not essential and the cones only have one one-dimensional face - the
+common intersection of all hyperplanes.  Do we want to work with an
+essentialization?
+
+F: Good point! I can't think of a way to get arround the assumption that the arrangement is essential. Do we know that if $V$ is essential, then $G(V)$ is essential as well?
+\end{quote}
+
+Now $G(V)$ is a collection of primitive integer vectors (Lemma 1).  We
+can interpret $G(V)$ as a collection of normals of a new hyperplane
+arrangement $\mathcal{H}^*$.
+
+Lemma 2 shows that:
+\begin{enumerate}
+\item If $\mathcal{H} \subseteq \mathcal{K}$ then $\mathcal{H}^* \subseteq \mathcal{K}^*$.
+\item $\mathcal{H} \subseteq (\mathcal{H}^*)^*$.
+\end{enumerate}
+
+\begin{question}
+When is the dual of the dual the original arrangement?  $\mathcal{H} =
+(\mathcal{H}^*)^*$ ?  The second part of the Lemma says that we get
+back at least $\mathcal{H}$ but we might pick up more.  Can we give a
+nice describe of the extra hperplanes we pick up?  Can we describe the
+dual of the dual directly from the intersection lattice?
+\end{question}
+
+\begin{example}
+
+We should write out the example with $\mathcal{H} = $ Braid arrangement
+plus coordinate hyperplanes in $\mathbb{R}^3$.  The dual is then the
+all subsets arrangement.  The dual of the dual is not the original.
+
+\end{example}
+
+\begin{figure}
+\includegraphics[width=12cm]{duality}
+\caption{Dual of braid arrangement. Could use a less messy picture.}
+\end{figure}
+
+We can give an explicit formula for the vectors appearing in the dual arrangement. Given $d$ linearly independent vectors $v_1,\ldots,v_{d}$ in $\RR^d$, the $1$-dimensional linear space given by
+\[
+  \sprod{v_1}{x} = \sprod{v_2}{x} = \ldots = \sprod{v_{d-1}}{x} = 0
+\]
+is spanned by the unique solution to the linear system $Ax=e_d$ where $A$ is the matrix with \emph{rows} $v_1,\ldots,v_d$. That is, if we have $d$ linearly independent normal vectors $v_1,\ldots,v_d$ from our arrangement, then $d$ vectors in the dual are given by
+\[
+  \operatorname{prim}(A^{-1} e_i) \text{ for } i=1,\ldots,d
+\]
+where $\operatorname{prim}(x)$ is the unique primitive integer vector that is a  positive multiple of $x$.\footnote{In other words, $\operatorname{prim}(x)$ is the integral multiple $\lambda x$ for which $\lambda> 0$ is minimal.} Using Cramer's rule, we can obtain a formula for the vectors $A^{-1}e_i$, namely
+\[
+  A^{-1}e_i = \frac{1}{\det A}\sum_{j=1}^d \det(w_1,\ldots,w_{i-1},e_i,w_{i+1},\ldots, w_d)\cdot e_j,
+\]
+where the $w_i$ are the \emph{columns} of $A$.
+
+This is certainly reminiscent of the formula given in the Bayer--Brandt article for the discriminantal arrangement. But it is not the same, simply for the fact that the discriminantal arrangement takes $n$ vectors in $\RR^k$ and produces an arrangement in $\RR^n$ with $n>k$.
+
+Nonetheless, this allows us to give an explicit formula for computing the dual.
+
+\begin{lemma}
+Let $V$ be a finite set of primitive integral vectors in $\RR^d$ such that if $v\in V$ then $-v\in V$ and $V$ contains a subset of at least $d$ linearly independent vectors.\footnote{This last part guarantees that the arrangement is essential.} Then $G(V)$ is given by
+\[
+  G(V) = \mset{\operatorname{prim}(\pm A_S e_d)}{ S\subset V, |S|=d-1, \text{$S$ linearly independent} },
+\]
+where $A_S$ denote the square matrix that has the vectors in $S$ as rows and one more row that is linearly independent of the others but otherwise chosen arbitrarily.
+\end{lemma}
+
+\begin{quote}
+F: I will implement this in Sage and see what happens.
+\end{quote}
+
+
+
+\section{Hopf Monoids}
+
+Define Hopf monoid?  
+
+In previous work [ABK], given a Hopf monoid and a character map, one
+associates a pair of related objects, an element of NCQsym
+(quasisymmetric function in non-commuting variables) and a simplicial
+complex.  
+
+Especially nice things can be said when one works with generalized
+permutahedron.  Aguair and Ardila defined a Hopf monoid of generalized
+permutahedron and investigated the behavior of the following choice of
+character map:
+
+\begin{displaymath}
+\zeta(P) = \left\{ \begin{array}{ll}
+1 & \textrm{ if $P$ is a point}, \\
+0 & \textrm{ otherwise}
+\end{array} \right.
+\end{displaymath}
+
+
+Generalized permutahedron include graphical zonotopes and matroid
+polytopes.  In the case of graphical zonotopes, the quasisymmetric
+function in non-commuting variables mentioned above is the ``chromatic
+NCQsym'' of the graph.  It specializes to Stanley's chromatic
+(quasi)-symmetric function and hence to the chromatic polynomial of a
+graph.
+
+(Explain how all this works and that all you are really doing is
+taking the lattice points in the interior of the normal fan of the
+graphical zonotope.)
+
+\subsection{Zonotopes}
+
+In it's most general form, the construction above works for any Hopf
+monoid and character map.  On the other hand, quasisymmetric functions
+and even more obviously NCQsym elements naturally live in the same
+picture as generalized permutahedron.  (Because these are exactly the
+polytopes whose normal fans are refined by the Braid arrangement).
+
+We have reason to work with polytopes / arrangements that are not GPs
+/ Braid.  Can we construct a Hopf monoid structure for
+zonotopes?  
+
+\subsection{Hopf Monoid of Hyperplane Arrangements?}
+
+I have been brainstorming with Jeremy on how one might define a Hopf monoid of hyperplane arrangements. Here are some ideas that try to generalize what is happening in the Hopf monoid of graphs when viewed through the lens of the graphic arrangement. 
+
+For any set $S\subset[n]$ of indices, we let $A(S)$ denote the corresponding coordinate subspace in $\RR^n$, i.e.,
+\[
+  A(S) = \{ x\in\RR^n | x_i=0 \;\;\forall i\in S\}.
+\]
+Given a hyperplane arrangement $\HHH$ and a coordinate subspace $A$, we define the hyperplane arrangement $\HHH_A$ projected onto the orthogonal complement of $A$ by
+\[
+  \HHH_A = \{ H/A \; | \;  H\in\HHH \text{ and } A\subset H\}.
+\]
+That is we keep only those hyperplanes that contain $A$ and then quotient out $A$. For example, let $\HHH$ be the Braid arrangement in $\RR^3$ and let $A=\{x| x_1=x_2=0\}$. Then $\HHH_A$ is the arrangement in $\RR^2$, i.e. "$x_1$-$x_2$-space", consisting of the single hyperplane $\{x|x_1=x_2\}$. The projection of the hyperplane $\{x|x_1=x_3\}$ is not contained in $\HHH_A$ because it does not contain $A$.
+
+\begin{figure}
+\includegraphics[width=6cm]{monoid}
+\caption{Example projection $\HHH_A$.}
+\end{figure}
+
+
+We can use this to define a coproduct $\Delta$ by
+\[
+\Delta\HHH = \sum_{S\subset[n]} \HHH_{A(S)} \otimes \HHH_{A(S^c)}
+\]
+where $\HHH$ is a hyperplane arrangement in $\RR^n$ and $S^c$ denotes the complement of $S$ in $[n]$.
+
+The corresponding product would be
+\[
+  \HHH_1 \cdot \HHH_2 = \{H \oplus \RR^m | H\in \HHH_1 \} \cup \{R^n \oplus H | H\in \HHH_2 \}
+\]
+where $\HHH_1$ is an arrangement in $\RR^n$ and $\HHH_2$ is an arrangement in $\RR^m$.
+
+This seems to give a Hopf monoid/Hopf algebra. However, the algebraic structure depends only on the supports of the normal vectors. So rather than producing an inherently geometric Hopf algebra this seems to give rather a Hopf algebra of hypergraphs.
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Scheduling Problems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -181,6 +368,42 @@ Of course there are still a bunch of things that are not clear at all, yet:
 \item Do the convex ear decompositions also tell us something about coefficients on the quasisymmetric function level?
 \item Which schedules come from matroids? 
 \end{enumerate}
+
+
+
+\subsection{Motivating examples}
+
+Given a graph, most naturally we consider the graphical arrangement,
+the subarrangement of the Braid arrangement given by hyperplanes
+indexed by edges in the graph.
+
+Given a matroid, we consider the matroid polytope formed by the convex
+hull of the support vectors of bases.  The normal fan of the matroid
+polytope is refined by the Braid arrangement, but this fan and the
+graphical arrangement are not the same.  
+
+We considered the very special case of graphical matroids.  Matroids
+whose bases correspond to spanning trees of a graph.  Take the
+\emph{matroid polytope} approach to a graphical matroid.  What integer
+points / weight classes / relative orderings are induced?  We saw more
+complicated 'rules', for example:\\
+
+$x_1 \neq x_2$ if $x_3 \geq x_1$.  But $x_1 = x_2$ is ok if $x_3 < x_1$.\\
+
+We interpreted this as {\bf{scheduling}} of tasks.  Tasks $x_1$ and
+$x_2$ can be performed  at the same time only if $x_3$ happens first.
+
+\begin{figure}
+\includegraphics[width=13cm]{graph-matroid}
+\caption{Difference between graph construction and graphical matroid construction.}
+\end{figure}
+
+
+\begin{figure}
+\includegraphics[width=13cm]{schedule}
+\caption{Two "scheduling arrangements".}
+\end{figure}
+
 
 
 \bibliographystyle{amsplain}
