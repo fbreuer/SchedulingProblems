@@ -38,6 +38,8 @@
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\HHH}{\mathcal{H}}
 \newcommand{\AAA}{\mathcal{A}}
+\newcommand{\SSS}{\mathcal{S}}
+\newcommand{\FFF}{\mathcal{F}}
 \newcommand{\K}{\mathbf{K}}
 \renewcommand{\L}{\mathbf{L}}
 \newcommand{\U}{\mathbf{U}}
@@ -109,20 +111,36 @@
 
 *** From the notes ***
 
-A \defn{scheduling problem} $S$ on $d$ items is given by a boolean
-formula $\phi$ over atomic formulas $x_i\leq x_j$ for $i,j\in[d]$. A
-\defn{$k$-schedule} solving $S$ is a function $x:[d]\rightarrow[k]$
-such that $\phi(x)$ is true. The schedule function $\xi_S(k)$ counts
-the number of $k$-schedules solving $S$.
+A \defn{scheduling problem} $S$ on $d$ items is given by a boolean formula $\phi$ over atomic formulas $\omega_i\leq \omega_j$ for $i,j\in[d]$. A \defn{$k$-schedule} solving $S$ is a function $\omega:[n]\rightarrow[k]$ such that $\phi(\omega)$ is true. Note that equivalently $\omega$ can also be viewed as a vector $\omega\in [k]^{[n]}$ or as an ordered set partition $\FFF(\omega)$ of $[n]$ into $k$ possibly empty parts. Therefore we will write $\phi(F)$ to mean $\phi(\omega)$ for any $\omega$ such that $\FFF(\omega)=F$ and not that the value of $\phi(F)$ will only depend on $F$ not on the choice of $\omega$. The schedule function $\SSS_S$ in non-commuting variables $x_i$ for $i\in \NN$ is defined as
+\[
+  \SSS_S = \sum_{\omega\in \NN^n: \phi(\omega) } x_\omega
+\] 
+The schedule counting function $\xi_S(k)$ is defined as
+\[
+  \xi_S(k) = \# \text{$k$-schedules $\omega$ such that $\phi(\omega)$ }.
+\]
 
-From the standard braid arrangement setup, we get the following results:
+\begin{theorem}
+For any scheduling problem $S$ the function $\SSS_S$ in non-commuting variables is a quasisymmetric function of the form
+\[
+  \SSS_S = \sum_{F: \phi(F)} M_F.
+\]
+
+$\SSS_S$ specializes to $\xi_S(k)$ when we substitute $1$ for $k$-different variables in $\SSS_S$ and $0$ for all others. In particular, the result of this specialization is independent of which variables are set to 1. Moreover
+\[
+  \xi_S(k) = \sum_{i=0}^n f_i^* \binom{k-1}{i}
+\]
+where $f_i^*$ equals the number of ordered set partitions $F$ of $[n]$ into $i$ non-empty parts such that $\phi(F)$ holds. In particular, the $f_i^*$ are non-negative integers bounded above by $i!\cdot S(n,i)$ where $S(n,i)$ denotes the Stirling numbers of the second kind.
+
+Conversely, for any vector $f=(f_0^*,\ldots,f_n^*)$ of integers between $0$ and $i!\cdot S(n,i)$ there exists a scheduling problems $S$ such that $\xi_S$ has the coefficient vector $f$ with respect to the binomial basis $\binom{k-1}{i}$.
+\end{theorem}
+
+There are a couple of other things we could add here:
 \begin{enumerate}
-\item $\xi_S(k)$ is a polynomial in $k$.
-\item There is a natural quasisymmetric function in non-commuting variables that specializes to $\xi_S$.
+\item Add the quasisymmetric function in commuting variables as an intermediate step.
 \item $\xi_S$ includes the chromatic polynomial of a graph and the "unknown" matroid polynomial as special cases.
 \item $\xi_S$ includes Ehrhart polynomials of order polytopes as a special case.
 \item The values of $\xi_S(-k)$ at negative integers can be written as a difference of two counting functions. (This gives "one half" of a reciprocity theorem.) This should also be true on the quasisymmetric function level.
-\item We get some elementary bounds on the coefficients of $\xi_S$. For example, the $f^*$-vector is non-negative. 
 \end{enumerate}
 
 This is of course just the start. We call schedules $S$ \defn{nice} that give rise to a unit cube with a co-dimension 1 subcomplex removed, such that the regions are open full-dim polytopes. Then:
@@ -230,6 +248,8 @@ blocks of the ordered set partition and we will often use the notation
 $F^1 | F^2 | \ldots | F^k$.  Note that within each block, elements are
 not ordered, so the ordered set partition $13|4|2 \vDash [4]$ is the
 same as $31|4|2$.
+
+**fb: Are the $F^i$ allowed to be empty?**
 
 
 The Braid arrangement $\mathcal{B}_n$ is the hyperplane arrangement in
