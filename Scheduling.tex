@@ -237,8 +237,14 @@ hyperplanes have a common intersection equal to the line $x_1 = x_2 = \cdots
 this line and intersecting with the unit sphere yields a spherical
 simplicial complex known as the \emph{Coxeter complex of type $A$}.
 It can be realized combinatorially as the baricentric subdivision of the
-boundary of the simplex.
+boundary of the simplex. 
 
+** fb: In the polyhedral geometry setting, this complex
+can be obtained as follows: 1) Start with the cube $[0,1]^d$. 2) Triangulate 
+this with the braid arrangement. 3) Remove the two vertices consisting of 
+only zeros and only ones, and all incident faces. **
+
+** fb: Also, should we mention here that the Coxeter complex is the dual of the face lattice of the permutahedron? **
 
 The faces of the Coxeter complex can naturally be labeled by ordered
 set partitions.  Each face of the Coxeter complex is simply a
@@ -415,10 +421,10 @@ The braid arrangement defines a polyhedral subdivision of the space $\RR^n$, a p
 
 ***cjk: I'm not sure precisely what you mean by $S$ comes from a generalized permutahedron? ***
 
-
+**** fb: I guess I was trying to say the following. Consider two constructions: 1) Start with a generalized permutahedron and take its face fan. 2) Start with the full permutahedron, take its face fan (which is a polyhedral subdivision of space) and take any subcomplex. 2) is a bit more general than 1) because it allows non-convex regions. ****
 
 \begin{theorem}
-Let $S$ be a scheduling problem such that $\Delta(S)$ has a convex ear decomposition. Then the following hold:
+Let $S$ be a scheduling problem such that $\Delta(S)$ is of codimension 1 and has a convex ear decomposition. Then the following hold:
 \begin{enumerate}
 \item If $\SSS_S = \sum h_F' L_F$, then the $h_F'$ are non-negative integers.
 \item The coefficients of $\xi_S$ satisfy the "convex ear decomposition constraints".
