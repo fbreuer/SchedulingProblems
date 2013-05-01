@@ -424,21 +424,22 @@ The braid arrangement defines a polyhedral subdivision of the space $\RR^n$, a p
 **** fb: I guess I was trying to say the following. Consider two constructions: 1) Start with a generalized permutahedron and take its face fan. 2) Start with the full permutahedron, take its face fan (which is a polyhedral subdivision of space) and take any subcomplex. 2) is a bit more general than 1) because it allows non-convex regions. ****
 
 \begin{theorem}
-Let $S$ be a scheduling problem such that $\Delta(S)$ is of codimension 1 and has a convex ear decomposition. Then the following hold:
+Suppose $\Delta(S)$ is simply a valid subcomplex of the Coxeter complex.  Equivalently, the collection of $\omega$ 
+corresponding to faces in $\Delta(S)$ are closed under coarsening. (** fb: actually, this should work even for partial polytopal complexes, i.e., $\Delta(S)$ does not need to be closed under coarsening. **) Then:
 \begin{enumerate}
 \item If $\SSS_S = \sum h_F' L_F$, then the $h_F'$ are non-negative integers.
-\item The coefficients of $\xi_S$ satisfy the "convex ear decomposition constraints".
-\item Both $\SSS_S$ and $\xi_S$ satisfy a reciprocity theorem.
+\item $ \sum_{n \geq 0} ((n+1)^d - \xi_S(n+1)) t^n = \frac{h_{\Delta(S)}(t)}{(1-t)^d} $ \\
+(** I worked this out with Marcelo, that paper is not written, may never be, but the credit should go to a preprint**) 
 \end{enumerate}
 \end{theorem}
 
+\begin{theorem}
+Let $S$ be a scheduling problem such that $\Delta(S)$ is of codimension 1 and the regions are "non-convex polyhedra". Then both $\SSS_S$ and $\xi_S$ satisfy a reciprocity theorem.
+\end{theorem}
 
-Suppose $\Delta(S)$ is simply a valid subcomplex of the Coxeter complex.  Equivalently, the collection of $\omega$ 
-corresponding to faces in $\Delta(S)$ are closed under coarsening.  Then:
-
-$$ \sum_{n \geq 0} ((n+1)^d - \xi_S(n+1)) t^n = \frac{h_{\Delta(S)}(t)}{(1-t)^d} $$
-
-(** I worked this out with Marcelo, that paper is not written, may never be, but the credit should go to a preprint**) 
+\begin{theorem}
+Let $S$ be a scheduling problem such that $\Delta(S)$ is of codimension 1 and has a convex ear decomposition. Then the coefficients of $\xi_S$ satisfy the "convex ear decomposition constraints".
+\end{theorem}
 
 Obviously, this still needs to be fleshed out. A couple of additional points:
 \begin{enumerate} 
