@@ -434,18 +434,38 @@ corresponding to faces in $\Delta(S)$ are closed under coarsening. (** fb: actua
 \end{theorem}
 
 \begin{theorem}
-Let $S$ be a scheduling problem such that $\Delta(S)$ is of codimension 1 and the regions are "non-convex polyhedra". Then both $\SSS_S$ and $\xi_S$ satisfy a reciprocity theorem.
+Let $S$ be a scheduling problem such that the regions of $[0,1]^n\setminus\Delta(S)$ are the interiors of convex polytopes of dimension $n$. Equivalently, we assume $S$ can be written as a disjunction of conjunctions of strict inequalities, i.e.,
+\[
+  S = \bigvee_i C_i \text{ where } C_i = \bigwedge_j I_{i,j}
+\] 
+such that the $I_{i,j}$ are strict inequalities of the form $x_a < x_b$ for some $a$ and $b$, and the conjunctions $C_i$ are satisfiable for all $i$. Then both $\SSS_S$ and $\xi_S$ satisfy a reciprocity theorem:
+\begin{enumerate}
+\item $\xi_S(-k) = (-1)^n\cdot \#\mset{(i,x)}{S(x) \text{ and } C_i(x)}$
+\item TODO: reciprocity for $\SSS_S$.
+\end{enumerate}
 \end{theorem}
+
+** fb: I'd like to extend the above to include non-convex regions. **
 
 \begin{theorem}
-Let $S$ be a scheduling problem such that $\Delta(S)$ is of codimension 1 and has a convex ear decomposition. Then the coefficients of $\xi_S$ satisfy the "convex ear decomposition constraints".
+Let $S$ be a scheduling problem such that $\Delta(S)$ is of codimension 1 and has a convex ear decomposition. Then 
+\[
+  \sum_{n \geq 0} ((n+1)^d - \xi_S(n+1)) t^n = \frac{h_{\Delta(S)}(t)}{(1-t)^d},
+\]
+as above, and moreover the coefficients $h_i$ satisfy
+\begin{enumerate}
+\item $h_0 \leq h_1 \leq \ldots \leq h_{\floor{d/2}}$,
+\item $h_i\leq h_{d-i}$ for $i\leq d/2$,
+\item $(h_0,h_1-h_0,h_2-h_1,\ldots,h_{\ceil{d/2}}-h_{\ceil{d/2}-1})$ is an $M$-vector.
+\end{enumerate}
 \end{theorem}
 
-Obviously, this still needs to be fleshed out. A couple of additional points:
+A couple of additional points:
 \begin{enumerate} 
 \item This case still includes chromatic polynomials and the matroid polynomials.
 \item Do the convex ear decompositions also tell us something about coefficients on the quasisymmetric function level?
 \item Which schedules come from matroids? 
+\item Give a simpler sufficient criterion for when there is a convex ear decomposition. For example: There is a convex ear decomposition, if there is a shelling of the Coxeter complex (equiv. the Braid triangulation of the cube) such that the regions of $[0,1]^n\setminus\Delta(S)$ appear consecutively in the shelling.
 \end{enumerate}
 
 
