@@ -177,7 +177,65 @@ Quasisymmetric functions in non-commuting variables are going to be introduced i
 *** cjk: We will need a Preliminaries: Ehrhart Theory section.  I don't know if it should go before or after the next one.
 I have given a minimal introduction to the coxeter complex (of type A), quasisymmetric functions and NCQSym.  Telling a very narrow narrative so as to think about these objects specifically the way we want to use them. ***
 
+Consider a (bounded) set $X\subset \RR^d$. The \emph{Ehrhart function} $\ehr_X:\ZZ_{> 0}\rar\ZZ_{\geq 0}$ of $X$ counts the number of integer points in integer dilates of $X$, i.e., \[
+  \ehr_X(k) = \#\ZZ^d \cap k\cdot X
+\]
+for any positive integer $k$. Ehrhart's theorem states that if $X$ is a polytope whose vertices have integer coordinates, then the Ehrhart function $\ehr_X$ of $X$ coincides with a polynomial, called the Ehrhart polynomial of the polytope.
 
+The most important example for our purposes are the Ehrhart polynomials of simplices. The $d$-dimensional \emph{standard simplex} $\Delta^d$ is defined as
+\[
+  \Delta^d = \mset{x\in\RR^{d+1}}{\sum x_i =1, x_1 \geq 0, \ldots, x_{d+1} \geq 0} = \conv(e_1,\ldots,e_{d+1}).
+\]
+Its Ehrhart polynomial is given by a binomial coefficient
+\[
+  \ehr_{\Delta^d}(k) = \binom{k+d}{d} = \frac{1}{d!} (k+d)\cdot (k+d-1) \cdot \ldots \cdot (k+1)
+\]
+which is a polynomial of degree $d$ in the variable $k$.
+
+There are many other integral simplices which have the same Ehrhart polynomial as the specific ones defined above. An \emph{affine unimodular transformation} is an affine automorphism of the form $x \mapsto Ax + b$ such that $A$ and $b$ are integral and $A$ has determinant $\pm1$. Equivalently, the affine automorphism induces a bijection from $\ZZ^d$ onto $\ZZ^d$. We say that two polytopes $P$ and $Q$ are \emph{lattice equivalent} if there exists an affine unimodular transformation $f$ such that $P=f(Q)$. We define lattice equivalence for polytopes $P\subset \RR^d$ and $Q\subset \RR^{d+l}$ by identifying $\RR^d$ with $\RR^d\times\{0\}^l\subset \RR^{d+l}$. For example, $\Delta^d$ is lattice equivalent\footnote{} to the simplex
+\[
+  \mset{x\in\RR^{d}}{\sum x_i \leq 1, x_1 \geq 0, \ldots, x_{d} \geq 0} = \conv(0,e_1,\ldots,e_d).
+\]  It is straightforward to check that lattice equivalent polytopes have the same Ehrhart polynomial. We will call simplices that are lattice equivalent to a standard simplex \emph{unimodular simplices}. Note that all faces of a unimodular simplex are themselves unimodular.
+
+Ehrhart polynomial of unimodular simplices arise naturally from the study of scheduling problems. Consider the following scheduling problem: "Schedule two jobs, 1 and 2, such that job 2 starts after or at the same time as job 1." Suppose jobs can be run in discrete time slots, numbered $0$ through $k$. A feasible schedule is a pair of integer numbers $0\leq x_1,x_2 \leq k$ such that $x_1 \leq x_2$. The feasible schedules are precisely the integer points $x=(x_1,x_2)$ contained in the $k$-th dilate of the unimodular simplex $\conv(0,e_2,e_1+e_2)$. Therefore, if we let the deadline $k$ vary, the number of feasible schedules is given by the Ehrhart polynomial of a 2-dimensional unimodular simplex, $\ehr_{\Delta^d}(k)=\binom{k+2}{2}$.
+
+What if, instead, we require job 2 to run strictly after job 1? In this case, feasible schedules are integer points $x\in\ZZ^2$ such that $0\leq x_1,x_2 \leq k$ and $x_1 < x_2$. The strict inequality gives rise to a \emph{half-open simplex}: The $d$-dimensional standard simplex $\Delta^d_i$ with $i$ open faces is defined just as standard simplex above, except that $i$ of the inequalities are strict. More precisely
+\[
+    \Delta^d_i = \mset{x\in\RR^{d+1}}{\sum x_i =1, x_1 \geq 0, \ldots, x_i > 0, x_{i+1} \geq 0, x_{d+1} \geq 0}.
+\]
+For every face of the standard simplex that we open, we have to shift the Ehrhart polynomial by one:
+\[
+  \ehr_{\Delta^d_i}(k) = \binom{k+d-i}{d}.
+\]
+In particular, the open simplex $\Delta^d_{d+1} = \relint{\Delta^d}$ has Ehrhart polynomial $\ehr_{\Delta^d_{d+1}}(k) = \binom{k-1}{d}$. The feasible schedules in the example mentioned above therefore correspond to the integer points in the $k$-th dilate of a $2$-dimensional unimodular simplex with $1$ open face, and their number is $\ehr_{\Delta^2_1} = \binom{k+1}{2}$.
+
+But half-open simplices do not suffice to capture all scheduling problems. Consider the following variation of our running example: "Schedule two jobs, 1 and 2, such that job 2 starts strictly after job 1. However, if job 1 starts immediately, then both can run at the same time." The exception that both jobs may run simultaneously if they are started immediately adds one point to our half-open simplex: the origin $(0,0)$. The resulting set is no longer a half-open simplex. In fact, it is not even the set-theoretic difference of two closed polytopes. In order to capture this type of geometric object, we work with partial polytopal complexes.
+
+A \emph{polytopal complex} $K$ is a finite set of polytopes in some $\RR^d$ such that $K$ is closed under taking faces and the intersection of any two polytopes in $K$ is a face of both. A polytopal complex is \emph{integral} if all vertices have integer coordinates. We define the \emph{relative interior} of a polytope to be the interior of the polytope taken with respect to its affine hull, so that, for example, the interior of a 2-dimensional triangle in 3-space is the triangle minus its edges and vertices. This definition is important because of the following property: The union of all faces of a polytopal complex is equal to the \emph{disjoint} union of the relative interiors of all faces. For example, a triangle is equal to the open 2-dimension region, plus the open line segments corresponding to the edges, plus the vertices (which are open in their 0-dimensional affine hull). This observation implies that the Ehrhart function of a polytopal complex is just the sum of all Ehrhart functions of the relative interiors of all faces.
+
+Now, how about our half-open triangle with that one extra point? It can be written as the disjoint union of the open 2-dimensional region, the open line segments corresponding to the two closed edges, and the two vertices that we want to include: the origin and $e_2$. However, we exclude the open line segment from 0 to $e_1+e_2$ and the vertex $e_1+e_2$ from the union. This idea of taking the relative interiors of just some of the faces of a polytopal complex gives rise to the notion of a \emph{partial polytopal complex}, which can be defined simply as the disjoint union of a finite collection relatively open polytopes. A partial polytopal complex is integral if all vertices\footnote{In this context, the term "vertices" refers to the vertices of the polytopal complex obtained by taking the closure of all faces in the partial polytopal complex.} have integer coordinates. The Ehrhart function of a partial polytopal complex is simply the sum of the Ehrhart functions of the open faces contained in it, and if the complex is integral it is straightforward to show that the Ehrhart function is again a polynomial. In the example of half-open simplex with the extra point, we can thus observe that its Ehrhart function is $\binom{k+1}{2} + 1$.
+
+This motivates the following observation: If $K$ is a partial simplicial complex in which all vertices are integral and all simplices are unimodular. Then, the Ehrhart function $\ehr_K$ satisfies
+\[
+  \ehr_K(k) = \sum_{i=0}^d f_i^* \binom{k-1}{i}
+\]
+where $d$ is the dimension of $K$ and $f_i^*$ denotes the number of $i$-dimensional faces in $K$. As it turns out the polynomials $\binom{k+d-i}{d}$ form a basis of the space of polynomials of degree at most $d$. This implies that every Ehrhart polynomial can be written in the above form and the $f_i^*$ are coefficients of the polynomial with respect to this binomial basis.\footnote{A somewhat surprising fact is that the coefficients $f_i^*$ are non-negative integers for every integral partial polytopal complex, even if it \emph{cannot} be triangulated into unimodular simplicies. (Moreover, there is still a counting interpretation for the $f_i^*$ in that case.) However, this case will not concern us here, as all scheduling problems give rise to partial polytopal complexes that do have a unimodular triangulation.} Note that, equivalently, the coefficients $f_i^*$ can be defined through the generating function identity
+\[
+\sum_{k \geq 0}\ehr_K(k) z^k = \frac{f^*_0 z^1}{(1-z)^1} + \ldots + \frac{f^*_d z^{d+1}}{(1-z)^{d+1}}.
+\]
+
+Similarly, if a partial simplicial complex $K$ be partitioned into half-open unimodular simplices $\Delta^d_i$, then the Ehrhart function $\ehr_K$ satisfies
+\[
+  \ehr_K(k) = \sum_{i=0}^{d+1} h_i^* \binom{k+d-i}{d}
+\]
+where $h_i^*$ the number of simplices with $i$ open faces in the decomposition. Such partitions are induced, for example, by shellings of simplicial complexes. In the case of a shelling, the above representation is normalized to $h_0^* = 1$. In that case, the coefficient vector is equal to the $h$-vector of the simplicial complex $K$. On the level of generating functions, this identity can be expressed as
+\[
+  \sum_{k \geq 0} \ehr_K(k) z^k = \frac{\sum_{i=0}^d h_i^* z^i}{(1-z)^{d+1}}.
+\]
+Thus the $f^*$- and $h^*$-coefficients of a polynomial are related by
+\[
+  h^*_0z^0 + \ldots + h^*_d z^d = \sum_{j=0}^d f^*_j z^{j+1} (1-z)^{d-j}.
+\]
 
 \section{Preliminaries: Coxeter Complexes, QSym and NCQsym}
 \label{sec:prelim-qsym}
