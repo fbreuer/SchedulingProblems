@@ -478,16 +478,42 @@ $$ \mathcal{S}({\bf 1}^k) = 2 {k \choose 2} + {k \choose 3}$$.
 A \defn{scheduling problem} $S$ on $d$ items is given by a boolean
 formula $\phi$ over atomic formulas $x_i\leq x_j$ for
 $i,j\in[d]$.  A \defn{$k$-schedule} solving $S$ is a function
-$x:[d]\rightarrow[k]$ such that $\phi(x)$ is true.
+$\omega:[d]\rightarrow[k]$ such that $\phi(\omega)$ is true.
+
+
+The schedule function $\SSS_S$ in non-commuting variables
+$x_i$ for $i\in \NN$ is defined as
+\[
+  \SSS_S = \sum_{\omega\in \NN^n: \phi(\omega) } x_\omega
+\] 
 
 The schedule counting function $\xi_S(k)$ is defined as
 \[
-  \xi_S(k) = \# \text{$k$-schedules $x$ such that $\phi(x)$ is true}.
+  \xi_S(k) = \# \text{$k$-schedules $\omega$ such that $\phi(\omega)$ is true}.
 \]
 
 
 
- Note that
+\begin{theorem}
+
+(i) For any scheduling problem $S$ the function $\SSS_S$ is a quasisymmetric function in non-commuting variables of the form
+\[
+  \SSS_S = \sum_{F: \phi(F)} M_F.
+\]
+
+(ii) $\xi_S(x)$ is a polynomial in $k$, it can be written in the form 
+\[
+  \xi_S(k) = \sum_{i=0}^n f_i^* \binom{k-1}{i}
+\]
+where the $f_i^*$ are non-negative integers. 
+
+\end{theorem}
+
+\begin{proof}
+
+ This is just a formal statement of the ideas collected in the preliminary sections above.
+
+(i) (**this is just some notes gathered together, needs to be re-written**) Note that
 equivalently $\omega$ can also be viewed as a vector $\omega\in
 [k]^{[n]}$ or as an ordered set partition $\FFF(\omega)$ of $[n]$ into
 $k$ possibly empty parts. Therefore we will write $\phi(F)$ to mean
@@ -495,76 +521,78 @@ $\phi(\omega)$ for any $\omega$ such that $\FFF(\omega)=F$ and note
 that the value of $\phi(F)$ will only depend on $F$ not on the choice
 of $\omega$. 
 
-The schedule function $\SSS_S$ in non-commuting variables
-$x_i$ for $i\in \NN$ is defined as
-\[
-  \SSS_S = \sum_{\omega\in \NN^n: \phi(\omega) } x_\omega
-\] 
-The schedule counting function $\xi_S(k)$ is defined as
-\[
-  \xi_S(k) = \# \text{$k$-schedules $\omega$ such that $\phi(\omega)$ }.
-\]
+So, geometrically, a satisfiable Scheduling problem can be thought of
+as a collection of (relative interiors) of faces of the Coxeter
+complex (more correctly, the cell decomposition of space induced by
+the Braid arrangement). 
 
 
-% Move to proof. So, geometrically, a satisfiable Scheduling problem can be thought of
-%as a collection of (relative interiors) of faces of the Coxeter
-%complex (more correctly, the cell decomposition of space induced by
-%the Braid arrangement). 
+(ii) $\SSS_S$ specializes to $\xi_S(k)$ when we substitute $1$ for $k$-different variables in $\SSS_S$ and $0$ for all others. In particular, the result of this specialization is independent of which variables are set to 1. Moreover, $\xi_S(k)$ is the Erhart function corresponding to the partial polytopal complex...(**this should be added**)
 
-% This does feel awfully restrictive, it does
-%not include flow and tension for example as they need (among other
-%things) the coordinate hyperplanes.  On the other hand, this is a
-%natural class and perhaps managable for us to make somebroader
-%statements.
 
+The $f_i^*$ equal the number of ordered set partitions $F$ of $[n]$ into $i$ non-empty parts such that $\phi(F)$ holds. In particular, the $f_i^*$ are non-negative integers bounded above by $i!\cdot S(n,i)$ where $S(n,i)$ denotes the Stirling numbers of the second kind.  Conversely, for any vector $f=(f_0^*,\ldots,f_n^*)$ of integers between $0$ and $i!\cdot S(n,i)$ there exists a scheduling problems $S$ such that $\xi_S$ has the coefficient vector $f$ with respect to the binomial basis $\binom{k-1}{i}$.
+\end{proof}
+
+In order to make stronger statements about the functions $\SSS_S$ and $\xi_S(k)$, we will need some niceness conditions on the scheduling problem $S$.  
+%% There are a couple of other things we could add here:
+%% \begin{enumerate}
+%% \item Add the quasisymmetric function in commuting variables as an intermediate step.
+%% \item $\xi_S$ includes the chromatic polynomial of a graph and the "unknown" matroid polynomial as special cases.
+%% \item $\xi_S$ includes Ehrhart polynomials of order polytopes as a special case.
+%% \item The values of $\xi_S(-k)$ at negative integers can be written as a difference of two counting functions. (This gives "one half" of a reciprocity theorem.) This should also be true on the quasisymmetric function level.
+%% \end{enumerate}
+The braid arrangement defines a polyhedral subdivision of the space
+$\RR^n$, a polyhedral subdivision of the positive orthant $\RR_{\geq
+  0}^n$ and a polytopal subdivision of the cube $[0,1]^n$. With
+respect to each of these, given a scheduling problem $S$, define the \emph{forbidden configuration}
+$\Sigma(S)$ to be the set of those faces $\sigma$ of the subdivision
+such that $\phi(\omega)$ does not hold for any $\omega$ in the
+relative interior of $\sigma$. Depending on the topological and
+geometric properties of $\Sigma(S)$, we can make various assertions
+about $\SSS$ and $\xi$. 
 
 
 \begin{theorem}
-For any scheduling problem $S$ the function $\SSS_S$ in non-commuting variables is a quasisymmetric function of the form
-\[
-  \SSS_S = \sum_{F: \phi(F)} M_F.
-\]
-
-$\SSS_S$ specializes to $\xi_S(k)$ when we substitute $1$ for $k$-different variables in $\SSS_S$ and $0$ for all others. In particular, the result of this specialization is independent of which variables are set to 1. Moreover
-\[
-  \xi_S(k) = \sum_{i=0}^n f_i^* \binom{k-1}{i}
-\]
-where $f_i^*$ equals the number of ordered set partitions $F$ of $[n]$ into $i$ non-empty parts such that $\phi(F)$ holds. In particular, the $f_i^*$ are non-negative integers bounded above by $i!\cdot S(n,i)$ where $S(n,i)$ denotes the Stirling numbers of the second kind.
-
-Conversely, for any vector $f=(f_0^*,\ldots,f_n^*)$ of integers between $0$ and $i!\cdot S(n,i)$ there exists a scheduling problems $S$ such that $\xi_S$ has the coefficient vector $f$ with respect to the binomial basis $\binom{k-1}{i}$.
-\end{theorem}
-
-There are a couple of other things we could add here:
-\begin{enumerate}
-\item Add the quasisymmetric function in commuting variables as an intermediate step.
-\item $\xi_S$ includes the chromatic polynomial of a graph and the "unknown" matroid polynomial as special cases.
-\item $\xi_S$ includes Ehrhart polynomials of order polytopes as a special case.
-\item The values of $\xi_S(-k)$ at negative integers can be written as a difference of two counting functions. (This gives "one half" of a reciprocity theorem.) This should also be true on the quasisymmetric function level.
-\end{enumerate}
-
-The braid arrangement defines a polyhedral subdivision of the space $\RR^n$, a polyhedral subdivision of the positive orthand $\RR_{\geq 0}^n$ and a polytopal subdivision of the cube $[0,1]^n$. With respect to each of these, we define the \emph{forbidden subcomplex} $\Delta(S)$ to be the set of those faces $\sigma$ of the subdivision such that $\phi(\omega)$ does not hold for any $\omega$ in the relative interior of $\sigma$. Depending on the topological and geometric properties of $\Delta(S)$, we can make various assertions about $\SSS$ and $\xi$. We say $\Delta(S)$ has a convex ear decomposition, if $\Delta(S)$ (viewed as subcomplex of the cube) together with the boundary of the cube, has a convex ear decomposition.
-
-** fb: I think this is almost the same thing as saying that $S$ comes from a generalized permutahedron. It is a tiny bit more general, as this allows regions of the arrangement (i.e. the complement of $\Delta(S)$) to be non-convex. But because the Braid arrangement is so simple, there should be an easier way to define this notion, without referring to convex ear decompositions. **
-
-***cjk: I'm not sure precisely what you mean by $S$ comes from a generalized permutahedron? ***
-
-**** fb: I guess I was trying to say the following. Consider two constructions: 1) Start with a generalized permutahedron and take its face fan. 2) Start with the full permutahedron, take its face fan (which is a polyhedral subdivision of space) and take any subcomplex. 2) is a bit more general than 1) because it allows non-convex regions. ****
-
-\begin{theorem}
-Suppose $\Delta(S)$ is simply a valid subcomplex of the Coxeter complex.  Equivalently, the collection of $\omega$ 
-corresponding to faces in $\Delta(S)$ are closed under coarsening. (** fb: actually, this should work even for partial polytopal complexes, i.e., $\Delta(S)$ does not need to be closed under coarsening. **) Then:
-\begin{enumerate}
+Let $S$ be a scheduling problem and $\Sigma(S)$ the forbidden configuration, then
+%Suppose $\Delta(S)$ is simply a valid subcomplex of the Coxeter complex.  Equivalently, the collection of $\omega$ 
+%corresponding to faces in $\Delta(S)$ are closed under coarsening. (** fb: actually, this should work even for partial polytopal complexes, i.e., $\Delta(S)$ does not need to be closed under coarsening. **) Then:
+%\begin{enumerate}
 %\item If $\SSS_S = \sum h_F' L_F$, then the $h_F'$ are non-negative integers.
-\item $ \sum_{n \geq 0} ((n+1)^d - \xi_S(n+1)) t^n = \frac{h_{\Delta(S)}(t)}{(1-t)^d} $ \\
-(** I worked this out with Marcelo, that paper is not written, may never be, but the credit should go to a preprint**) 
+$$ \sum_{n \geq 0} ((n+1)^d - \xi_S(n+1)) t^n = \frac{h_{\Sigma(S)}(t)}{(1-t)^d} $$
+%(** I worked this out with Marcelo, that paper is not written, may never be, but the credit should go to a preprint**) 
+%\end{enumerate}
+where $h_{\Sigma(S)}$ is... (**this needs to be defined for general configurations**).
+\end{theorem}
+\begin{proof}
+Felix, can you write this proof?
+\end{proof}
+
+
+We say $\Delta(S)$ has a convex ear
+decomposition, if $\Delta(S)$ (viewed as subcomplex of the cube)
+together with the boundary of the cube, has a convex ear
+decomposition. (**We are hoping for a simpler way to say/imply this**)
+
+
+\begin{theorem}
+Let $S$ be a scheduling problem such that $\Delta(S)$ is of codimension 1 and has a convex ear decomposition. Then 
+\[
+  \sum_{n \geq 0} ((n+1)^d - \xi_S(n+1)) t^n = \frac{h_{\Delta(S)}(t)}{(1-t)^d},
+\]
+as above, and moreover the coefficients $h_i$ satisfy
+\begin{enumerate}
+\item $h_0 \leq h_1 \leq \ldots \leq h_{\floor{d/2}}$,
+\item $h_i\leq h_{d-i}$ for $i\leq d/2$,
+\item $(h_0,h_1-h_0,h_2-h_1,\ldots,h_{\ceil{d/2}}-h_{\ceil{d/2}-1})$ is an $M$-vector.
 \end{enumerate}
 \end{theorem}
 
-(I'm going to put this theorem in for now.  Hopefully we will be able to say more.)
-\begin{theorem}
-If $\Delta(S)$ is the entire codimension-one skeleton of the normal fan of a generalized permutahedron
-then $\SSS_S = \sum h_F' L_F$, then the $h_F'$ are non-negative integers.
-\end{theorem}
+
+%% ** fb: I think this is almost the same thing as saying that $S$ comes from a generalized permutahedron. It is a tiny bit more general, as this allows regions of the arrangement (i.e. the complement of $\Delta(S)$) to be non-convex. But because the Braid arrangement is so simple, there should be an easier way to define this notion, without referring to convex ear decompositions. **
+
+%% ***cjk: I'm not sure precisely what you mean by $S$ comes from a generalized permutahedron? ***
+
+%% **** fb: I guess I was trying to say the following. Consider two constructions: 1) Start with a generalized permutahedron and take its face fan. 2) Start with the full permutahedron, take its face fan (which is a polyhedral subdivision of space) and take any subcomplex. 2) is a bit more general than 1) because it allows non-convex regions. ****
 
 \begin{theorem}
 Let $S$ be a scheduling problem such that the regions of $[0,1]^n\setminus\Delta(S)$ are the interiors of convex polytopes of dimension $n$. Equivalently, we assume $S$ can be written as a disjunction of conjunctions of strict inequalities, i.e.,
@@ -580,43 +608,60 @@ such that the $I_{i,j}$ are strict inequalities of the form $x_a < x_b$ for some
 
 ** fb: I'd like to extend the above to include non-convex regions. **
 
-\begin{theorem}
-Let $S$ be a scheduling problem such that $\Delta(S)$ is of codimension 1 and has a convex ear decomposition. Then 
-\[
-  \sum_{n \geq 0} ((n+1)^d - \xi_S(n+1)) t^n = \frac{h_{\Delta(S)}(t)}{(1-t)^d},
-\]
-as above, and moreover the coefficients $h_i$ satisfy
-\begin{enumerate}
-\item $h_0 \leq h_1 \leq \ldots \leq h_{\floor{d/2}}$,
-\item $h_i\leq h_{d-i}$ for $i\leq d/2$,
-\item $(h_0,h_1-h_0,h_2-h_1,\ldots,h_{\ceil{d/2}}-h_{\ceil{d/2}-1})$ is an $M$-vector.
-\end{enumerate}
-\end{theorem}
-
 A couple of additional points:
 \begin{enumerate} 
 \item This case still includes chromatic polynomials and the matroid polynomials.
 \item Do the convex ear decompositions also tell us something about coefficients on the quasisymmetric function level?
 \item Which schedules come from matroids? 
 \item Give a simpler sufficient criterion for when there is a convex ear decomposition. For example: There is a convex ear decomposition, if there is a shelling of the Coxeter complex (equiv. the Braid triangulation of the cube) such that the regions of $[0,1]^n\setminus\Delta(S)$ appear consecutively in the shelling.
-\end{enumerate}
-
-
-\begin{enumerate}
 \item Section 6 from Tricia and Ed's paper.  They have the wrong polynomial.  Otherwise, all of their results would apply.
-\item Other families of polynomials besides Arboricity?  Even known ones that we can simply put into our framework?
+%\item Other families of polynomials besides Arboricity?  Even known ones that we can simply put into our framework?
 \end{enumerate}
 
 
-A \defn{scheduling problem} $S$ on $d$ items is given by a boolean
-formula $\phi$ over atomic formulas $x_i\leq x_j$ for $i,j\in[d]$. A
-\defn{$k$-schedule} solving $S$ is a function $x:[d]\rightarrow[k]$
-such that $\phi(x)$ is true. The schedule function $\xi_S(k)$ counts
-the number of $k$-schedules of $S$.
+%% A \defn{scheduling problem} $S$ on $d$ items is given by a boolean
+%% formula $\phi$ over atomic formulas $x_i\leq x_j$ for $i,j\in[d]$. A
+%% \defn{$k$-schedule} solving $S$ is a function $x:[d]\rightarrow[k]$
+%% such that $\phi(x)$ is true. The schedule function $\xi_S(k)$ counts
+%% the number of $k$-schedules of $S$.
 
 
 
 \subsection{Quasisymmetric functions}
+
+The scheduling function $\SSS_S$ is a quasisymmetric function in
+non-commuting variables and $\xi_S(k)$ is a polynomial.  Here we
+consider the intermediate quasisymmetric function $QS_S$ (need
+notation!)  If $\SSS_S$ is given in the monomial bases indexed by
+ordered set partitions, $QS_S$ is defined as the quasisymmetric
+function formed by applying the type map to each monomial term.  We
+will be interested in the expansion of $QS_S$ in bases other than the
+monomial, in particular the fundamental basis.  To this end we review
+analogous bases in NCQSym which allow us to also specialize via the
+type map.
+
+\begin{itemize}
+\item Give an example that at the level of ordered set partitions,
+you can not simple sum over refinements and then take the type map.
+
+\item Define partial ordering, basis and co-basis as in Zabrocki.
+
+\item Draw diagram with type maps.
+
+\item Note that positivity in NCL is sufficient although not necessary for positivity in L.
+\end{itemize}
+
+\begin{theorem} Unique coarsest for each total ordering gives NCL positivity.
+\end{theorem}
+
+Discussion: This includes Generalized Permutahedron case, which includes the chromatic quasisymmetric function and Billera-Jia-Reiner quasisymmetric function for matroids:
+\begin{corollary}
+If $\Delta(S)$ is the entire codimension-one skeleton of the normal fan of a generalized permutahedron
+then $\SSS_S = \sum h_F' L_F$, then the $h_F'$ are non-negative integers.
+\end{corollary}
+
+
+
 
 Some ``bigger picture'' thoughts about quasisymmetric functions and a few classes thought about together. 
 
