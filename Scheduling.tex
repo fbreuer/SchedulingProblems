@@ -2,13 +2,21 @@
 %\documentclass{amsart}
 \renewcommand{\labelenumi}{(\alph{enumi})}
 
+
+
+\setlength{\textwidth}{6in}
+\setlength{\textheight}{8.5in}
+\hoffset=-0.5in
+
+\usepackage{diagrams}
+
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{epstopdf}
 \usepackage{amsthm}
-\usepackage{xypic}
+%\usepackage{xypic}
 \usepackage{enumerate}
 %\usepackage{sidenotes}
 
@@ -29,6 +37,8 @@
 \newtheorem{remark}[definition]{Remark}
 \newtheorem{wedgelemma}[definition]{Wedge Lemma} 
 \newtheorem{construction}[definition]{Construction}
+
+\theoremstyle{definition}
 \newtheorem{example}[definition]{Example}
 
 
@@ -104,6 +114,7 @@
 \newcommand{\om}{\omega}
 
 \newcommand{\ncM}{\mathcal{M}}
+\newcommand{\ncL}{\mathcal{L}}
 
 
 \begin{document}
@@ -452,7 +463,7 @@ defined by setting the first $k$ variables equal to $1$.  For a scheduling probl
 
 \begin{example}
 Writing ${\bf 1}^k$ for the vector of $1$s of length $k$, and continuing the example above, we have 
-$$ \mathcal{S}({\bf 1}^k) = 2 {k \choose 2} + {k \choose 3}$$.  
+$$ \mathcal{S}({\bf 1}^k) = 2 {k \choose 2} + {k \choose 3}.$$  
 \end{example}
 
 
@@ -484,7 +495,7 @@ $\omega:[d]\rightarrow[k]$ such that $\phi(\omega)$ is true.
 The schedule function $\SSS_S$ in non-commuting variables
 $x_i$ for $i\in \NN$ is defined as
 \[
-  \SSS_S = \sum_{\omega\in \NN^n: \phi(\omega) } x_\omega
+  \SSS_S = \sum_{\omega\in \NN^n: \phi(\omega) } x_\omega.
 \] 
 
 The schedule counting function $\xi_S(k)$ is defined as
@@ -533,6 +544,15 @@ the Braid arrangement).
 The $f_i^*$ equal the number of ordered set partitions $F$ of $[n]$ into $i$ non-empty parts such that $\phi(F)$ holds. In particular, the $f_i^*$ are non-negative integers bounded above by $i!\cdot S(n,i)$ where $S(n,i)$ denotes the Stirling numbers of the second kind.  Conversely, for any vector $f=(f_0^*,\ldots,f_n^*)$ of integers between $0$ and $i!\cdot S(n,i)$ there exists a scheduling problems $S$ such that $\xi_S$ has the coefficient vector $f$ with respect to the binomial basis $\binom{k-1}{i}$.
 \end{proof}
 
+
+
+Scheduling polynomials include for example, the chromatic polynomial
+of graphs and the Ehrhart polynomials of order polytopes.  In Sections
+6 and 7 below, we will see that they also include the zeta-polynomials
+of posets and the newly defined arboricity polynomial of a matroid,
+which counts the number of covers of a matroid by independent sets.
+
+
 In order to make stronger statements about the functions $\SSS_S$ and $\xi_S(k)$, we will need some niceness conditions on the scheduling problem $S$.  
 %% There are a couple of other things we could add here:
 %% \begin{enumerate}
@@ -541,9 +561,9 @@ In order to make stronger statements about the functions $\SSS_S$ and $\xi_S(k)$
 %% \item $\xi_S$ includes Ehrhart polynomials of order polytopes as a special case.
 %% \item The values of $\xi_S(-k)$ at negative integers can be written as a difference of two counting functions. (This gives "one half" of a reciprocity theorem.) This should also be true on the quasisymmetric function level.
 %% \end{enumerate}
-The braid arrangement defines a polyhedral subdivision of the space
+As we have seen, the braid arrangement defines a polyhedral subdivision of the space
 $\RR^n$, a polyhedral subdivision of the positive orthant $\RR_{\geq
-  0}^n$ and a polytopal subdivision of the cube $[0,1]^n$. With
+  0}^n$, a polytopal subdivision of the cube $[0,1]^n$ and a simplicial subdivision of the sphere. With
 respect to each of these, given a scheduling problem $S$, define the \emph{forbidden configuration}
 $\Sigma(S)$ to be the set of those faces $\sigma$ of the subdivision
 such that $\phi(\omega)$ does not hold for any $\omega$ in the
@@ -552,7 +572,18 @@ geometric properties of $\Sigma(S)$, we can make various assertions
 about $\SSS$ and $\xi$. 
 
 
+\begin{example} As remarked above, a particularly familiar scheduling polynomial is the chromatic polynomial of a graph.  In this case, the scheduling problem simply specifies which variables can not be equal to each other, $x_i \neq x_j$ for $\{i,j\}$ an edge of the graph. $\xi_S$ is the chromatic polynomial.  The quasisymmetric function obtained by taking the type map on $\SSS_S$ is Stanley's chromatic symmetric function (the quasisymmetric function happens to be fully symmetric in this case).  Gebhard and Sagan studied (essentially) $\SSS_S$ as a symmetric function in non-commuting variables.  Steingrimmson's coloring complex is 
+%the collection of ordered set partitions which require at least one edge in at least one block, namely 
+the forbidden configuration of the scheduling problem.  
+Much work has been done to understand the coloring complex in order to better understand the chromatic polynomial.  This avenue is possible because the Hilbert series connection as shown in [cite:Ein].
+\end{example}
+
+Before making restrictions on $S$, or equivalently $\Sigma(S)$, we
+prove the following theorem relating the polynomial $\xi_S$ and the
+$h$-vector of $\Sigma(S)$ for \emph{all} scheduling problems, generalizing the previous example.
+
 \begin{theorem}
+\label{Hilbert}
 Let $S$ be a scheduling problem and $\Sigma(S)$ the forbidden configuration, then
 %Suppose $\Delta(S)$ is simply a valid subcomplex of the Coxeter complex.  Equivalently, the collection of $\omega$ 
 %corresponding to faces in $\Delta(S)$ are closed under coarsening. (** fb: actually, this should work even for partial polytopal complexes, i.e., $\Delta(S)$ does not need to be closed under coarsening. **) Then:
@@ -568,16 +599,17 @@ Felix, can you write this proof?
 \end{proof}
 
 
-We say $\Delta(S)$ has a convex ear
-decomposition, if $\Delta(S)$ (viewed as subcomplex of the cube)
+
+We say $\Sigma(S)$ has a convex ear
+decomposition, if $\Sigma(S)$ (viewed as subcomplex of the cube)
 together with the boundary of the cube, has a convex ear
-decomposition. (**We are hoping for a simpler way to say/imply this**)
+decomposition. (**We are hoping for a simpler/better way to say/imply this**)
 
 
-\begin{theorem}
-Let $S$ be a scheduling problem such that $\Delta(S)$ is of codimension 1 and has a convex ear decomposition. Then 
+\begin{proposition}
+Let $S$ be a scheduling problem such that $\Sigma(S)$ is of codimension 1 and has a convex ear decomposition. Then 
 \[
-  \sum_{n \geq 0} ((n+1)^d - \xi_S(n+1)) t^n = \frac{h_{\Delta(S)}(t)}{(1-t)^d},
+  \sum_{n \geq 0} ((n+1)^d - \xi_S(n+1)) t^n = \frac{h_{\Sigma(S)}(t)}{(1-t)^d},
 \]
 as above, and moreover the coefficients $h_i$ satisfy
 \begin{enumerate}
@@ -585,7 +617,8 @@ as above, and moreover the coefficients $h_i$ satisfy
 \item $h_i\leq h_{d-i}$ for $i\leq d/2$,
 \item $(h_0,h_1-h_0,h_2-h_1,\ldots,h_{\ceil{d/2}}-h_{\ceil{d/2}-1})$ is an $M$-vector.
 \end{enumerate}
-\end{theorem}
+\end{proposition}
+
 
 
 %% ** fb: I think this is almost the same thing as saying that $S$ comes from a generalized permutahedron. It is a tiny bit more general, as this allows regions of the arrangement (i.e. the complement of $\Delta(S)$) to be non-convex. But because the Braid arrangement is so simple, there should be an easier way to define this notion, without referring to convex ear decompositions. **
@@ -594,8 +627,8 @@ as above, and moreover the coefficients $h_i$ satisfy
 
 %% **** fb: I guess I was trying to say the following. Consider two constructions: 1) Start with a generalized permutahedron and take its face fan. 2) Start with the full permutahedron, take its face fan (which is a polyhedral subdivision of space) and take any subcomplex. 2) is a bit more general than 1) because it allows non-convex regions. ****
 
-\begin{theorem}
-Let $S$ be a scheduling problem such that the regions of $[0,1]^n\setminus\Delta(S)$ are the interiors of convex polytopes of dimension $n$. Equivalently, we assume $S$ can be written as a disjunction of conjunctions of strict inequalities, i.e.,
+\begin{theorem}\label{posets}
+Let $S$ be a scheduling problem such that the regions of $[0,1]^n\setminus\Sigma(S)$ are the interiors of convex polytopes of dimension $n$. Equivalently, we assume $S$ can be written as a disjunction of conjunctions of strict inequalities, i.e.,
 \[
   S = \bigvee_i C_i \text{ where } C_i = \bigwedge_j I_{i,j}
 \] 
@@ -606,17 +639,17 @@ such that the $I_{i,j}$ are strict inequalities of the form $x_a < x_b$ for some
 \end{enumerate}
 \end{theorem}
 
-** fb: I'd like to extend the above to include non-convex regions. **
+%** fb: I'd like to extend the above to include non-convex regions. **
 
-A couple of additional points:
-\begin{enumerate} 
-\item This case still includes chromatic polynomials and the matroid polynomials.
-\item Do the convex ear decompositions also tell us something about coefficients on the quasisymmetric function level?
-\item Which schedules come from matroids? 
-\item Give a simpler sufficient criterion for when there is a convex ear decomposition. For example: There is a convex ear decomposition, if there is a shelling of the Coxeter complex (equiv. the Braid triangulation of the cube) such that the regions of $[0,1]^n\setminus\Delta(S)$ appear consecutively in the shelling.
-\item Section 6 from Tricia and Ed's paper.  They have the wrong polynomial.  Otherwise, all of their results would apply.
-%\item Other families of polynomials besides Arboricity?  Even known ones that we can simply put into our framework?
-\end{enumerate}
+%% A couple of additional points:
+%% \begin{enumerate} 
+%% \item This case still includes chromatic polynomials and the matroid polynomials.
+%% \item Do the convex ear decompositions also tell us something about coefficients on the quasisymmetric function level?
+%% \item Which schedules come from matroids? 
+%% \item Give a simpler sufficient criterion for when there is a convex ear decomposition. For example: There is a convex ear decomposition, if there is a shelling of the Coxeter complex (equiv. the Braid triangulation of the cube) such that the regions of $[0,1]^n\setminus\Delta(S)$ appear consecutively in the shelling.
+%% \item Section 6 from Tricia and Ed's paper.  They have the wrong polynomial.  Otherwise, all of their results would apply.
+%% %\item Other families of polynomials besides Arboricity?  Even known ones that we can simply put into our framework?
+%% \end{enumerate}
 
 
 %% A \defn{scheduling problem} $S$ on $d$ items is given by a boolean
@@ -627,56 +660,174 @@ A couple of additional points:
 
 
 
-\subsection{Quasisymmetric functions}
+
 
 The scheduling function $\SSS_S$ is a quasisymmetric function in
-non-commuting variables and $\xi_S(k)$ is a polynomial.  Here we
-consider the intermediate quasisymmetric function $QS_S$ (need
-notation!)  If $\SSS_S$ is given in the monomial bases indexed by
-ordered set partitions, $QS_S$ is defined as the quasisymmetric
-function formed by applying the type map to each monomial term.  We
-will be interested in the expansion of $QS_S$ in bases other than the
-monomial, in particular the fundamental basis.  To this end we review
-analogous bases in NCQSym which allow us to also specialize via the
-type map.
+non-commuting variables and $\xi_S(k)$ is a polynomial.  The structure
+of $\Sigma(S)$ also yields information on the the intermediate
+quasisymmetric function $QS_S$.
 
-\begin{itemize}
-\item Give an example that at the level of ordered set partitions,
-you can not simple sum over refinements and then take the type map.
+  If $\SSS_S$ is given in the monomial
+bases indexed by ordered set partitions, $QS_S$ is defined as the
+quasisymmetric function formed by applying the type map to each
+monomial term.  We will be interested in the expansion of $QS_S$ in
+bases other than the monomial, in particular the fundamental basis.
+To this end we review analogous bases in NCQSym which allow us to also
+specialize via the type map.
 
-\item Define partial ordering, basis and co-basis as in Zabrocki.
 
-\item Draw diagram with type maps.
+Recall that the fundamental quasisymmetric functions are defined from the monomial quasisymmetric functions as follows.  For any composition $\alpha$, 
+$$L_{\alpha} := \sum_{\beta:\beta \textrm{ refines } \alpha} M_{\beta}.$$
 
-\item Note that positivity in NCL is sufficient although not necessary for positivity in L.
-\end{itemize}
+To construct an analogous basis in NCQSym, consider the order relation $\preceq$ on ordered set partitions given by $\Phi \gtrdot (\Phi_i, \ldots,\Phi_{i-1}, \Phi_i \cup \Phi_{i+1}, \Phi_{i+2}, \ldots \Phi_k)$ where every element of the $i$th block is less than every element of the $i+1$th block. 
+% This gives a coarsening order  where blocks can only be merged if their elements in the natural order.
+(Note that this order is opposite to the order $\leq_*$ defined in [cite: Zab].(** Draw poset?**))  Define the $\mathcal{L}$ basis for NCQSym as follows. For any ordered set partition $\Phi$,
+$$\mathcal{L}_{\Phi} := \sum_{\Gamma:\Gamma \preceq \Phi} \ncM_{\Phi}.$$
 
-\begin{theorem} Unique coarsest for each total ordering gives NCL positivity.
+From the $\ncL$ basis, applying the type map gives the corresponding quasisymmetric function in the $L$ basis.  
+
+
+
+%% \begin{diagram}
+%% A &\rTo^{a} &B\\
+%% \dTo_{b} & &\dTo_{c}\\
+%% C &\rTo^{d} &D
+%% \end{diagram}
+
+\begin{diagram}
+NCQSym \ncM & \rTo^{\text{ directed refinement }} & NCQSym \ncL\\
+\dTo^{ \text{type}} & & \dTo_{ \text{type}}\\
+QSym M & \rTo^{\text{refinement}} & QSym L
+\end{diagram}
+
+
+
+
+\begin{example}
+
+Consider the nc-quasisymmetric function 
+\begin{align*}
+ \SSS & = \ncM_{12|3} + \ncM_{1|23} + \ncM_{1|2|3} + \ncM_{2|1|3} + \ncM_{1|3|2}\\
+      & = \ncL_{12|3} + \ncL_{1|23} - \ncL_{1|2|3} + \ncL_{2|1|3} + \ncL_{1|3|2}.
+\end{align*}
+
+\begin{align*}
+ QS & = M_{(2,1)} + M_{(1,2)} + 3M_{(1,1,1)}\\
+ & = L_{(2,1)} + L_{(1,2)} + L_{(1,1,1)}\\
+& = L_{\textrm{type}(12|3)} + L_{\textrm{type}(1|23)} - L_{\textrm{type}(1|2|3)} + L_{\textrm{type}(2|1|3)} + L_{\textrm{type}(1|3|2)}.
+\end{align*}
+
+\end{example}
+
+
+Clearly $\ncL$ positivity of a nc-quasisymmetric function gives a sufficient although not neccesary condition for  $L$ positivity of the quasisymmetric specialization. 
+
+
+%% \begin{remark}
+%% (** Do we want this remark? **) Although one could define a partial order on ordered set partitions
+%% simply by refinement, and sum over all refinements, such elements would not fit into our diagram above.  Consider the example above, ...
+%% \end{remark}
+
+
+
+%% \begin{itemize}
+%% \item Give an example that at the level of ordered set partitions,
+%% you can not simple sum over refinements and then take the type map.
+
+%% \item Define partial ordering, basis and co-basis as in Zabrocki.
+
+%% \item Draw diagram with type maps.
+
+%% \item Note that positivity in NCL is sufficient although not necessary for positivity in L.
+%% \end{itemize}
+
+\begin{theorem} \label{unique} Let $S$ be a scheduling problem on $d$ items.  If the forbidden configuration $\Sigma(S)$ is a subcomplex of the Coxeter complex and if for each total ordering of $[d]$ there is a unique coarsest schedule satisfying $S$, then $\SSS_S$ is $\ncL$-positive and therefore $QS$ is $L$-positive. 
 \end{theorem}
 
-Discussion: This includes Generalized Permutahedron case, which includes the chromatic quasisymmetric function and Billera-Jia-Reiner quasisymmetric function for matroids:
-\begin{corollary}
-If $\Delta(S)$ is the entire codimension-one skeleton of the normal fan of a generalized permutahedron
-then $\SSS_S = \sum h_F' L_F$, then the $h_F'$ are non-negative integers.
-\end{corollary}
+
+\begin{proposition}
+Scheduling problems of the form of Theorem~\ref{posets} satisfy the conditions of Theorem~\ref{unique} and are hence $\ncL$-positive.
+\end{proposition}
+
+\begin{proof}
+Discuss how each $C_{i,j}$ defines a poset of regions in the Coxeter complex and how this yields coarsest.
+\end{proof}
+
+\begin{example}
+Returning to the chromatic scheduling problem, Theorem~\ref{Hilbert}
+was shown by Steingrimmson in [cite], that $\Sigma(S)$ had a convex
+ear decomposition by Hersch and Swartz [cite], and L-positivity of the
+chromatic symmetric function by [cite].  The chromatic scheduling
+problem can also be seen to satisfy the conditions of
+Theorem~\ref{posets} and hence Therorem~\ref{unique}.  This was shown
+in [cite GP] by considering a larger class of scheduling problems
+defined for generalized permutahedron.  
+
+The scheduling problem of [GP] is defined by taking, for each vertex
+$v$ of a generalized permutahedron $P$, the conjugation of all
+hyperplanes defining $v$.  Hence the valid $\omega$ schedules
+correspond to all integer points in the interior of the normal fan or
+equivalently the forbidden configuration is the entire co-dimension
+one skeleton $P$.  The normal fans of generalized permutahedron are
+refined by the Braid arrangement and the $C_{i,j}$ of
+Theorem~\ref{posets} correspond to all interiors of the maximal cones.
+In cite[GP], the conditions of Theorem~\ref{unique} are established in
+the Hopf monoid setting of directed faces.  The chromatic scheduling
+problem is the special instance of the generalized permutahedron
+scheduling problem for graphical zonotopes.  As another special
+instance, the quasisymmetric function $QS$ for matroid polytopes is
+the Biller-Jia-Reiner quasisymmetric function for matroids.
+\end{example}
 
 
+Scheduling problems satisfying the form of Theorem~\ref{posets} can be
+described in terms of $P$-partitions for posets $P$ with all strict
+edges.  Again, each $C_{i,j}$ is a collection of strict edges of the
+form $x_a < x_b$ which defines a poset.  The quasisymmetric function
+$QS$ restricted to a single $C_{i,j}$ is the generating function
+$K_{(P,\omega)}$ where $\omega$ is a ``fully un-natural'' labelling of
+$P$.  For schedules with a single $C_{i,j}$, Theorem~\ref{unique}
+gives the Fundamental theorem of quasisymmetric functions, i.e. the
+expansion of $K_{(P,\omega)}$ in the fundamental basis by descent
+sets.  In this case, with all strict labels, the unique coarsest
+elements for each ordering are also defined by the descent sets.
 
 
-Some ``bigger picture'' thoughts about quasisymmetric functions and a few classes thought about together. 
+Theorem~\ref{unique} is neither strictly stronger nor weaker than the
+$K_{(P,\omega)}$ expansion.  Posets with non-strict edges may easily
+be non-positive in the $\ncL$ basis and many scheduling problems
+satisfy the conditions of Theorem~\ref{unique} but do not arise from
+any poset or P-partition structure.
 
-Consider the following quasisymmetric functions:
+\begin{example} 
+Consider the scheduling nc-quasisymmetric function,
 
-\begin{itemize}
-\item QGP: (Quasi Generalized Permutahedron) - this includes Stanley chromatic quasisymmetric function for graphs and the Biller-Jia-Reiner quasisymmetric functions for matroids as special cases.
+\begin{align*}
+\SSS_S & = \ncL_{24|13} + \ncL_{4|2|13} + \ncL_{24|3|1} + \ncL_{2|14|3} + \ncL_{2|1|34} + \ncL_{4|2|3|1}\\
+& = \ncM_{24|13} + \ncM_{2|4|13} + \ncM_{24|1|3} + \ncM_{2|4|1|3} + \ncM_{4|2|13} + \ncM_{4|2|1|3} + \ncM_{24|3|1}\\
+& + \ncM_{2|4|3|1} + \ncM_{2|14|3} + \ncM_{2|1|4|3} + \ncM_{2|1|34} + \ncM_{2|1|3|4} + \ncM_{4|2|3|1}.
+\end{align*}
 
-In terms of ordered set partitions, these are all integer points in the interiors of all maximal cones of the fan.  In terms of the forbidden subcomplex, we are getting rid of all codimension one faces.  
+This scheduling problem does satisfy the conditions of Theorem~\ref{unique}, but it does not satisfy the conditions of Theorem~\ref{posets}.  In particular, the collection of valid schedules forms a non-convex collection of Braid cones.
 
-\item QBergman: This is defined for any matroid, over the matroid polytope.
+\end{example}
 
-\item QEhrenborg: Not really it's name, but Richard defined a class of quasisymmetric functions for posets.
 
-\end{itemize}
+%
+%Some ``bigger picture'' thoughts about quasisymmetric functions and a few classes thought about together. 
+
+%Consider the following quasisymmetric functions:
+
+%% \begin{itemize}
+%% \item QGP: (Quasi Generalized Permutahedron) - this includes Stanley chromatic quasisymmetric function for graphs and the Biller-Jia-Reiner quasisymmetric functions for matroids as special cases.
+
+%% In terms of ordered set partitions, these are all integer points in the interiors of all maximal cones of the fan.  In terms of the forbidden subcomplex, we are getting rid of all codimension one faces.  
+
+%% \item QBergman: This is defined for any matroid, over the matroid polytope.
+
+%% \item QEhrenborg: Not really it's name, but Richard defined a class of quasisymmetric functions for posets.
+
+%% \end{itemize}
 
 \section{QBergman}
 
@@ -776,23 +927,14 @@ is the forbidden collection is a valid subcomplex of the Coxeter
 complex.  Since the ordered set partitions that contribute to
 NCQBergman are not closed under refinement, we would not have reason
 to predict that QBergman is $L$-positive and it is indeed not.
-
-
-(*** cjk: We can define the cofundamental basis here and go through all the results on Bergman and the relationship to Ehrenborg'squasisymmetric function.  Or, we can do all of this in the previous section as part of the technical section and here we just note that the theorem about flats tells us we are in the case of all flags of a graded poset. ***) 
-
+%% (*** cjk: We can define the cofundamental basis here and go through all the results on Bergman and the relationship to Ehrenborg'squasisymmetric function.  Or, we can do all of this in the previous section as part of the technical section and here we just note that the theorem about flats tells us we are in the case of all flags of a graded poset. ***) 
  Instead, we define the co-fundamental basis and show that QBergman
  has a well behaved expansion in this basis.
-
- 
 %% **** {\bf What I want to notice here is that the ordered set partitions I
 %% am picking up for the Quasisymmetric function are closed under
 %% coarsening.  The forbidden subcomplex is an order filter in the
 %% Coxeter complex.  
-
 %% This quasisymmetric function is not positive in the fundamental (L) basis.  }
-
-Recall that the fundamental basis is defined as:
-$$ L_{\alpha} := \sum_{\beta : \beta \, \textrm{refines} \, \alpha} M_{\beta}.$$
 Define the co-fundamental basis by summing over coarsenings instead of refinements:
 $$ N_{\alpha} := \sum_{\beta : \beta \, \textrm{coarsens} \, \alpha} M_{\beta}.$$
 Let $f_{\beta} = [M_{\beta}]$ be the coefficient of $M_{\beta}$ in
@@ -913,7 +1055,7 @@ Specifically, a schedule with $m$ time slots corresponds to a
 multichain in the lattice of flats of the matroid.  
 
 \begin{proposition}
-The Bergman polynomial of a matroid is equal to the Zeta polynomial of the lattice of flats of the matroid, which counts multichains of length $m$ in the lattice,
+The Bergman polynomial of a matroid is equal to the zeta polynomial of the lattice of flats of the matroid, which counts multichains of length $m$ in the lattice,
 $$QB(M;{\bf 1}^m) = Z(L(M),m) = |\{ \hat{0} = y_0 \leq y_1 \leq \cdots \leq y_m = \hat{1} | y_i \in L(M) \}|.$$
 
 \end{proposition}
