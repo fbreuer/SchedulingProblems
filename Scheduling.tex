@@ -554,86 +554,7 @@ satisfy the following properties:
 \comment{fb: Todo from here...}
 
 \begin{proof}
-\end{proof}
-
-These same results can be extended to the complementary polynomial $(k+1)^n - \xi_S(k)$.
-
-\begin{lemma}
-Let $S$ be a scheduling problem on $n$ items given by the boolean formula $\phi$. Let $\neg S$ denote the scheduling problem given by $\neg\phi$. Then 
-\[
-  \xi_{\neg S}(k) = (k+1)^n - \xi_S(k).
-\]
-\end{lemma}
-
-\subsection{Scheduling ncquasymmetric functions and scheduling polynomials}
-
-% Move to proof. So, geometrically, a satisfiable Scheduling problem can be thought of
-%as a collection of (relative interiors) of faces of the Coxeter
-%complex (more correctly, the cell decomposition of space induced by
-%the Braid arrangement). 
-
-% This does feel awfully restrictive, it does
-%not include flow and tension for example as they need (among other
-%things) the coordinate hyperplanes.  On the other hand, this is a
-%natural class and perhaps managable for us to make somebroader
-%statements.
-
-\comment{fb: More technical remarks about coefficients of Ehrhart polynomials go here. Work in progress.}
-
-A somewhat surprising fact is that the coefficients $f_i^*$ are non-negative integers for every integral partial polytopal complex, even if it \emph{cannot} be triangulated into unimodular simplicies. (Moreover, there is still a counting interpretation for the $f_i^*$ in that case.) However, this case will not concern us here, as all scheduling problems give rise to partial polytopal complexes that do have a unimodular triangulation.
-
-The coefficients $f_i^*$ can be defined through the generating function identity
-\[
-\sum_{k \geq 0}\ehr_K(k) z^k = \frac{f^*_0 z^1}{(1-z)^1} + \ldots + \frac{f^*_d z^{d+1}}{(1-z)^{d+1}}.
-\]
-
-Similarly, if a partial simplicial complex $K$ be partitioned into half-open unimodular simplices $\Delta^d_i$, then the Ehrhart function $\ehr_K$ satisfies
-\[
-  \ehr_K(k) = \sum_{i=0}^{d+1} h_i^* \binom{k+d-i}{d}
-\]
-where $h_i^*$ the number of simplices with $i$ open faces in the decomposition. Such partitions are induced, for example, by shellings of simplicial complexes. In the case of a shelling, the above representation is normalized to $h_0^* = 1$. In that case, the coefficient vector is equal to the $h$-vector of the simplicial complex $K$. On the level of generating functions, this identity can be expressed as
-\[
-  \sum_{k \geq 0} \ehr_K(k) z^k = \frac{\sum_{i=0}^d h_i^* z^i}{(1-z)^{d+1}}.
-\]
-Thus the $f^*$- and $h^*$-coefficients of a polynomial are related by
-\[
-  h^*_0z^0 + \ldots + h^*_d z^d = \sum_{j=0}^d f^*_j z^{j+1} (1-z)^{d-j}.
-\]
-
-\comment{fb: Now move on to statement and proof of theorem.}
-
-\begin{theorem}
-Let $S$ be a scheduling problem. Then the following hold.
-\begin{enumerate}
-\item $\SSS_S$ is an ncquasisymmetric function of the form
-\[
-  \SSS_S = \sum_{F: \phi(F)} M_F.
-\]
-\item $\SSS_S$ specializes to $\xi_S(k)$ when we substitute $1$ for $k$-different variables in $\SSS_S$ and $0$ for all others. In particular, the result of this specialization is independent of which variables are set to 1.
-\end{enumerate}
-\end{theorem}
-
-For any polynomial $p$ of degree $d\leq n$, the \emph{$f^*$-vector} $f^*(p,n)$ of $p$ is the vector of coefficients $f^*_0,\ldots,f^*_n$ defined by
-\[
-  p(k) = \sum_{i=0}^n f_i^* \binom{k-1}{i},
-\]
-or, equivalently, by
-\[
-  \sum_{k \geq 1}p(k) z^k = \frac{f^*_0 z^1}{(1-z)^1} + \ldots + \frac{f^*_d z^{d+1}}{(1-z)^{d+1}}.
-\]
-
-\begin{theorem}
-Let $S$ be a scheduling problem on $n$ items. Let $f^*(\xi_S,n)=(f^*_0,\ldots,f^*_n)$ denote the $f^*$-vector of $p$. Then the following hold for all $0\leq i \leq n$.
-\begin{enumerate}
-\item $f_i^*\in\ZZ$,
-\item $0\leq f_i^* \leq i!\cdot S(n,i)$,
-\item $f^*_i$ counts the number of ordered set partitions $F$ of $[n]$ into $i$ non-empty parts such that $\phi(F)$ holds,
-\end{enumerate}
-Moreover, for any vector $f^*=(f_0^*,\ldots,f_n^*)$ of integers between $0$ and $i!\cdot S(n,i)$ there exists a scheduling problem $S$ such that $f^*(\xi_S,n)=f^*$.
-\end{theorem}
-
-\begin{proof}
-This is just a formal statement of the ideas collected in the preliminary sections above.
+\comment{This proof is still under construction...} This is just a formal statement of the ideas collected in the preliminary sections above.
 
 (i) (**this is just some notes gathered together, needs to be re-written**) Note that
 equivalently $\omega$ can also be viewed as a vector $\omega\in
@@ -653,6 +574,14 @@ the Braid arrangement).
 The $f_i^*$ equal the number of ordered set partitions $F$ of $[n]$ into $i$ non-empty parts such that $\phi(F)$ holds. In particular, the $f_i^*$ are non-negative integers bounded above by $i!\cdot S(n,i)$ where $S(n,i)$ denotes the Stirling numbers of the second kind.  Conversely, for any vector $f=(f_0^*,\ldots,f_n^*)$ of integers between $0$ and $i!\cdot S(n,i)$ there exists a scheduling problems $S$ such that $\xi_S$ has the coefficient vector $f$ with respect to the binomial basis $\binom{k-1}{i}$.
 \end{proof}
 
+These same results can be extended to the complementary polynomial $(k+1)^n - \xi_S(k)$.
+
+\begin{lemma}
+Let $S$ be a scheduling problem on $n$ items given by the boolean formula $\phi$. Let $\neg S$ denote the scheduling problem given by $\neg\phi$. Then 
+\[
+  \xi_{\neg S}(k) = (k+1)^n - \xi_S(k).
+\]
+\end{lemma}
 
 \subsection{Further results}
 
