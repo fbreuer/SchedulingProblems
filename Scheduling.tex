@@ -453,43 +453,117 @@ Writing ${\bf 1}^k$ for the vector of $1$s of length $k$, and continuing the exa
 $$ \mathcal{S}({\bf 1}^k) = 2 {k \choose 2} + {k \choose 3}.$$  
 \end{example}
 
+In general, the schedule counting polynomial $\xi_S(k)$ is defined as
+\[
+  \xi_S(k) = \# \text{$k$-schedules $\omega$ such that $\phi(\omega)$ is true}.
+\]
 
+In summary, we have the following lemma.
+
+\begin{lemma}
+If $S$ is a scheduling problem on $n$ items, then $\SSS_S$ is an ncquasisymmetric function and $\xi_S$ is a polynomial of degree at most $n$. Moreover, $\SSS_S$ specializes to $\xi_S(k)$ when we substitute $1$ for $k$ different variables in $\SSS_S$ and $0$ for all others, i.e.,
+\[
+  \SSS_S({\bf 1}^k) = \xi_S(k).
+\]
+Note that the result of this specialization is independent of which variables are set to 1.
+\end{lemma}
+
+\comment{fb: We should add a statement about quasisymmetric functions to this lemma.}
 
 \section{Scheduling Problems}
 \label{sec:scheduling-problems}
 
-%% Now we have both preliminary sections and should return to scheduling problems.
+\subsection{The monomial basis and the Ehrhart $f^*$-vector}
 
-%% Define, interpret in both contexts, general theorems.  
-
-%% *** We also haven't yet talked about hyperplane/polytope duality,
-%% *** generalized permutahedrons, normal fans, the connection to the
-%% *** Braid arrangement.  We can start this section with that
-%% *** material or some of the more general polytope theory can be
-%% *** back in the Erhart section.  For those who would skip a general
-%% *** Erhart section, this is a better place for the material.  It
-%% *** also might make it easier to lead into the technical results.
-%% *** *****
-
-
-
-
-A \defn{scheduling problem} $S$ on $d$ items is given by a boolean
-formula $\phi$ over atomic formulas $x_i\leq x_j$ for
-$i,j\in[d]$.  A \defn{$k$-schedule} solving $S$ is a function
-$\omega:[d]\rightarrow[k]$ such that $\phi(\omega)$ is true.
-
-
-The schedule function $\SSS_S$ in non-commuting variables
-$x_i$ for $i\in \NN$ is defined as
+For an ordered set partition $\Phi=(\Phi_1,\ldots,\Phi_m)$, we define the relatively open cone $\cone(\Phi)\subset\RR^n$ to be the set of all $a\in\RR^n$ that satisfy the constraints
+\begin{eqnarray*}
+0 < a_i && \text{for all $i\in[n]$}, \\
+a_i = a_j && \text{for all $l\in[m]$ and $i,j\in\Phi_l$}, \\
+a_i < a_j && \text{for all $l_1 < l_2\in[m]$ and all $i\in\Phi_{l_1}, j\in\Phi_{l_2}$}.
+\end{eqnarray*}
+Equivalently, $\cone(\Phi)$ is the set of all real vectors $a$ in the positive orthand, $\RR_{> 0}^n$ such that $\Delta(a)=\Phi$. 
 \[
-  \SSS_S = \sum_{\omega\in \NN^n: \phi(\omega) } x_\omega.
-\] 
-
-The schedule counting function $\xi_S(k)$ is defined as
-\[
-  \xi_S(k) = \# \text{$k$-schedules $\omega$ such that $\phi(\omega)$ is true}.
+\cone(\Phi) = \mset{a\in\RR_{> 0}^n}{\Delta(a)=\Phi}.
 \]
+The cones $\cone(\Phi)$ are simplicial. If $\Phi$ ranges over all ordered set partitions of $[n]$, these cones form a triangulation of the positive orthand $\RR_{> 0}^n$. In particular,
+\[
+  \RR_{> 0}^n = \bigcup_\Phi \cone(\Phi),
+\]
+where the union is disjoint. Thus, a cone $\cone(\Phi')$ is a face of the cone $\cone(\Phi)$ if and only if $\Phi'$ is a coarsening of $\Phi$, or equivalently, $\Phi$ is a refinement of $\Phi'$. Note that the complex $\{\cone(\Phi) \;|\; \Phi\}$ is a partial simplicial complex, as the faces with $x_i=0$ for some $i$ are missing.
+
+This triangulation of $\RR_{> 0}^n$ can also be obtained by subdividing the positive orthand according to the Braid arrangement of all hyperplanes $x_i=x_j$. Combinatorially, the resulting partial polyhedral complex is equivalent to a cone over the Coxeter complex of type $A$. 
+
+As mentioned in the introduction, we can associate to every $a\in\NN^n$ a monomial in non-commuting variables $x_{a_1}\cdot\ldots\cdot x_{a_n}$ which we abbreviate as $x_a$. In this way, we can associate to every set $A\subset\NN^n$ of lattice points a formal sum $N(A)$ of monomials in non-commuting variables
+\[
+  N(A) = \sum_{a\in A} x_a.
+\]
+
+The function $N$ maps the cones $\cone(\Phi)$ to the monomial ncquasisymmetric functions $\ncM_\Phi$, more precisely,
+\[
+  N(\cone(\Phi)\cap\ZZ^n) = \ncM_\Phi.
+\]
+Conversely, we can think of any ncquasisymmetric function $\SSS$ with non-negative coefficients in the monomial basis as a multiset of cones in the positive orthand, where the multiplicity of lattice points in $\cone(\Phi)$ is given by the coefficient of $\ncM_\Phi$ in $\SSS$. In the case of scheduling ncquasisymmetric functions we can conclude that for any scheduling problem $S$, the ncquasisymmetric function $\SSS_S$ has coefficients $0$ or $1$ in the monomial basis.
+
+Substituting 1s for variables $x_1,\ldots,x_k$ and 0s for variables $x_{k+1},\ldots$ effectively sets all monomials $x_a$ to $1$ for which $a_i \leq k$ for all $i$, and it sets all monomials $x_a$ to $0$ for which $a_i > k$ for some $i$. Thus substituting ${\bf 1}^k$ into $\ncM_\Phi$ corresponds to taking the intersection of the cone $\cone(\Phi)$ with the open cube $(0,k+1)^n$, i.e.,
+\[
+ N(\cone(\Phi)\cap(0,k+1)^n\cap\ZZ^n) = \ncM_\Phi({\bf 1}^k) =  \xi_\Phi(k). 
+\]
+We observe that
+\[
+  \cone(\Phi)\cap(0,k+1)^n = (k+1)\cdot (\cone(\Phi)\cap(0,1)^n), 
+\]
+since the hyperplanes defining $\cone(\Phi)$ all go through the origin. We have thus found that
+\[
+  \ncM_\Phi({\bf 1}^k) = \xi_\Phi(k) = \ehr_{\cone(\Phi)\cap[0,1]^n}(k+1),
+\]
+that is, $\ncM_\Phi({\bf 1}^k)$ is the Ehrhart polynomial of the open polytope $\cone(\Phi)\cap(0,1)^n$, up to a shift of 1. As we will see below, $\cone(\Phi)\cap[0,1]^n$ is a relatively open unimodular simplex of dimension $m$, whence
+\[
+  \xi_\Phi(k) = \binom{k}{m}.
+\]
+
+These observations lead to the following theorem about the coefficients of $\SSS_S$ in the monomial basis and the coefficients of $\xi_S$ in the binomial basis $\binom{k}{i}$ for $i=0,\ldots,n$.
+
+\begin{theorem}
+Let $S$ be a scheduling problem on $n$ items. Then $\SSS_S$ is an ncquasisymmetric function of the form
+\[
+  \SSS_S = \sum_{\Phi:S(\Phi)} \ncM_\Phi
+\]
+where the sum ranges over all ordered set partition $\Phi$ that satisfy $S$. In particular, the coefficients of $\SSS_S$ in the monomial basis are either 0 or 1.
+
+Moreover, $\xi_S$ is a polynomial of degree at most $n$. The coefficients $f_1,\ldots,f_n$ of $\xi_S$, given by
+\[
+  \xi_S(k) = \sum_{i=1}^n f_i\binom{k}{i}
+\]
+or, equivalently,
+%\[
+%  z^{-1}\sum_{k\geq 1} \ehr_S(k)z^k = z^{-1}(\frac{f_0z^1}{(1-z)^1} + \cdots + \frac{f_dz^{d+1}}{(1-z)^{d+1}})
+%  z^{-1}\sum_{k\geq 0} \ehr_S(k+1)z^{k+1} = ...
+%  \sum_{k\geq 0} \ehr_S(k+1)z^k = ...
+%\]
+\[
+  \sum_{k\geq 0} \xi_S(k)z^k = \frac{f_1z^1}{(1-z)^2} + \cdots + \frac{f_nz^{n}}{(1-z)^{n+1}},
+\]
+satisfy the following properties:
+\begin{enumerate}
+\item $f_i\in\ZZ$,
+\item $0\leq f_i \leq i!\cdot S(n,i)$,
+\item $f_i$ counts the number of ordered set partitions $\Phi$ of $[n]$ into $i$ non-empty parts such that $S(\Phi)$ holds.
+\end{enumerate}
+\end{theorem}
+
+\comment{fb: Todo from here...}
+
+\begin{proof}
+\end{proof}
+
+These same results can be extended to the complementary polynomial $(k+1)^n - \xi_S(k)$.
+
+\begin{lemma}
+Let $S$ be a scheduling problem on $n$ items given by the boolean formula $\phi$. Let $\neg S$ denote the scheduling problem given by $\neg\phi$. Then 
+\[
+  \xi_{\neg S}(k) = (k+1)^n - \xi_S(k).
+\]
+\end{lemma}
 
 \subsection{Scheduling ncquasymmetric functions and scheduling polynomials}
 
@@ -578,15 +652,6 @@ the Braid arrangement).
 
 The $f_i^*$ equal the number of ordered set partitions $F$ of $[n]$ into $i$ non-empty parts such that $\phi(F)$ holds. In particular, the $f_i^*$ are non-negative integers bounded above by $i!\cdot S(n,i)$ where $S(n,i)$ denotes the Stirling numbers of the second kind.  Conversely, for any vector $f=(f_0^*,\ldots,f_n^*)$ of integers between $0$ and $i!\cdot S(n,i)$ there exists a scheduling problems $S$ such that $\xi_S$ has the coefficient vector $f$ with respect to the binomial basis $\binom{k-1}{i}$.
 \end{proof}
-
-These same results can be extended to the complementary polynomial $(k+1)^n - \xi_S(k)$.
-
-\begin{lemma}
-Let $S$ be a scheduling problem on $n$ items given by the boolean formula $\phi$. Let $\neg S$ denote the scheduling problem given by $\neg\phi$. Then 
-\[
-  \xi_{\neg S}(k) = (k+1)^n - \xi_S(k).
-\]
-\end{lemma}
 
 
 \subsection{Further results}
