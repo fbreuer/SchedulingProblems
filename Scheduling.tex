@@ -485,7 +485,7 @@ Equivalently, $\cone(\Phi)$ is the set of all real vectors $a$ in the positive o
 \[
 \cone(\Phi) = \mset{a\in\RR_{> 0}^n}{\Delta(a)=\Phi}.
 \]
-The cones $\cone(\Phi)$ are simplicial. If $\Phi$ ranges over all ordered set partitions of $[n]$, these cones form a triangulation of the positive orthand $\RR_{> 0}^n$. In particular,
+The cones $\cone(\Phi)$ are simplicial. If $\Phi$ ranges over all ordered set partitions of $[n]$, these cones form a triangulation $T^n$ of the positive orthand $\RR_{> 0}^n$, in particular,
 \[
   \RR_{> 0}^n = \bigcup_\Phi \cone(\Phi),
 \]
@@ -513,18 +513,21 @@ We observe that
   \cone(\Phi)\cap(0,k+1)^n = (k+1)\cdot (\cone(\Phi)\cap(0,1)^n), 
 \]
 since the hyperplanes defining $\cone(\Phi)$ all go through the origin. We have thus found that
-\[
-  \ncM_\Phi({\bf 1}^k) = \xi_\Phi(k) = \ehr_{\cone(\Phi)\cap[0,1]^n}(k+1),
-\]
-that is, $\ncM_\Phi({\bf 1}^k)$ is the Ehrhart polynomial of the open polytope $\cone(\Phi)\cap(0,1)^n$, up to a shift of 1. As we will see below, $\cone(\Phi)\cap[0,1]^n$ is a relatively open unimodular simplex of dimension $m$, whence
+\begin{eqnarray}
+\label{eqn:spec ncM}
+  \ncM_\Phi({\bf 1}^k) = \xi_\Phi(k) = \ehr_{\cone(\Phi)\cap(0,1)^n}(k+1),
+\end{eqnarray}
+that is, $\ncM_\Phi({\bf 1}^k)$ is the Ehrhart polynomial of the open polytope $\cone(\Phi)\cap(0,1)^n$, up to a shift of 1. As we will see below, $\cone(\Phi)\cap(0,1)^n$ is a relatively open unimodular simplex of dimension $m$, whence
 \[
   \xi_\Phi(k) = \binom{k}{m}.
 \]
 
+Let $S$ be a scheduling problem on $n$ items. For any vector $a\in\RR^n_{> 0}$ we write $S(a)$ to denote the boolean value of whether or not $a$ satisfies the constraints imposed by $S$. Note that $S(a)$ depends only on the relative order of the component $a_i$, and therefore is entirely determined by the ordered set partition $\Phi=\Delta(a)$. We use $S(\Phi)$ to denote the boolean value of whether or not $S(a)$ is satisfied for any (or, equivalently, all) $a$ with $\Delta(a)=\Phi$. Geometrically, this means that $S$, viewed as a function on $\RR^n_{>0}$, is constant on each of the open cones $\cone(\Phi)$, i.e., on the relative interior of, each face of the above triangulation $T^n$ of $\RR^n_{> 0}$.
+
 These observations lead to the following theorem about the coefficients of $\SSS_S$ in the monomial basis and the coefficients of $\xi_S$ in the binomial basis $\binom{k}{i}$ for $i=0,\ldots,n$.
 
 \begin{theorem}
-Let $S$ be a scheduling problem on $n$ items. Then $\SSS_S$ is an ncquasisymmetric function of the form
+Let $S$ be a scheduling problem on $n$ items. Then $\SSS_S$ is an nc-quasisymmetric function of the form
 \[
   \SSS_S = \sum_{\Phi:S(\Phi)} \ncM_\Phi
 \]
@@ -551,28 +554,47 @@ satisfy the following properties:
 \end{enumerate}
 \end{theorem}
 
-\comment{fb: Todo from here...}
-
 \begin{proof}
-\comment{This proof is still under construction...} This is just a formal statement of the ideas collected in the preliminary sections above.
+Let $S$ be a scheduling problem. Let $A$ denote the set of all vectors $a\in\RR^n_{> 0}$ such that $S(a)$ holds true. Then, from the above observations, we obtain
+\[
+ \SSS_S = \sum_{a\in A\cap\ZZ^n} x_a = \sum_{\Phi:S(\Phi)} \ncM_\Phi,
+\]
+where the latter sum ranges over all ordered set partitions $\Phi$ for which $S(\Phi)$ holds true. This means in particular that the coefficients of $\SSS_S$ in the monomial basis are either 1 or 0, indicating which open cones $\cone(\Phi)$ are contained in $A$ and which are disjoint from $A$.
 
-(i) (**this is just some notes gathered together, needs to be re-written**) Note that
-equivalently $\omega$ can also be viewed as a vector $\omega\in
-[k]^{[n]}$ or as an ordered set partition $\FFF(\omega)$ of $[n]$ into
-$k$ possibly empty parts. Therefore we will write $\phi(F)$ to mean
-$\phi(\omega)$ for any $\omega$ such that $\FFF(\omega)=F$ and note
-that the value of $\phi(F)$ will only depend on $F$ not on the choice
-of $\omega$. 
+Let $\Phi$ be an ordered set partition with $n$ non-empty parts, i.e., a permutation of the numbers $1,\ldots,n$. Assume without loss of generality that $\Phi=1|2|\cdots|n$. Then
+\[
+  \cone(\Phi)\cap [0,1]^n = \mset{a\in[0,1]^n}{a_1<a_2<\ldots<a_n}
+\]
+which is easily seen to be a unimodular simplex with vertices $(0,\ldots,0)$, $(0,\ldots,0,1)$, $(0,\ldots,0,1,1)$, $\ldots$, $(1,\ldots,1)$. If, more generally, $\Phi=(\Phi_1,\ldots,\Phi_i)$ is any ordered partition with $i\in[n]$ non-empty parts, then $\cone(\Phi)\cap[0,1]^n$ is an $i$-dimensional unimodular simplex with vertices $v_0,\ldots,v_i$ where $v_j$ for $j=0,\ldots,i$ has entries 
+\[
+ v_{j,k} = \choice{1 & \text{if }k\in\Phi_{i-l} \text{ for some } 0\leq l < j, \\ 0 & \text{otherwise.} }
+\]
+In particular, $v_0= \mathbf{0}$ and $v_i=\mathbf{1}$. 
 
-So, geometrically, a satisfiable Scheduling problem can be thought of
-as a collection of (relative interiors) of faces of the Coxeter
-complex (more correctly, the cell decomposition of space induced by
-the Braid arrangement). 
+Passing to the open cube, we find that the collection of relatively open simplices $\cone(\Phi)\cap (0,1)^n$ where $\Phi$ ranges over the ordered set partitions of $[n]$ is a partial simplicial complex that triangulates the open cube $(0,1)^n$. If $\Phi$ has $i$ parts, then $\cone(\Phi)\cap (0,1)^n$ is a relatively open $i$-dimensional simplex whose Ehrhart polynomial is
+\[
+  \ehr_{\cone(\Phi)\cap (0,1)^n}(k) = \binom{k-1}{i} = \#\cone(\Phi)\cap (0,k)^n \cap \ZZ^n
+\] 
 
-(ii) $\SSS_S$ specializes to $\xi_S(k)$ when we substitute $1$ for $k$-different variables in $\SSS_S$ and $0$ for all others. In particular, the result of this specialization is independent of which variables are set to 1. Moreover, $\xi_S(k)$ is the Erhart function corresponding to the partial polytopal complex...(**this should be added**)
+It follows that
+\begin{eqnarray*}
+  \xi_S(k) &=& \#A\cap(0,k+1)^n\cap\ZZ^n \\
+  &=& \ehr_{A\cap(0,1)^n}(k+1) \\
+  &=& \sum_{\Phi:S(\Phi)} \ehr_{\cone(\Phi)\cap(0,1)^n}(k+1) \\
+  &=& \sum_{i=1}^n f_i\binom{k}{i}
+\end{eqnarray*}
+where $f_i$ is the number of ordered set partitions $\Phi$ with $i$ non-empty parts. Note that the binomial coefficients $\binom{k}{i}$ for $i=0,\ldots,n$ form a basis of the space of polynomials of degree at most $n$, to that the coefficients $f_i$ are determined by the polynomial $\xi_S(k)$. To see that the above generating function definition of the coefficients $f_i$ is equivalent, note that 
+\[
+  \frac{1}{(1-z)^{d+1}} = \sum_{k\geq 0} \binom{k+d}{d} z^k
+\]
+from which we get the desired identity by algebraic manipulation.
 
-The $f_i^*$ equal the number of ordered set partitions $F$ of $[n]$ into $i$ non-empty parts such that $\phi(F)$ holds. In particular, the $f_i^*$ are non-negative integers bounded above by $i!\cdot S(n,i)$ where $S(n,i)$ denotes the Stirling numbers of the second kind.  Conversely, for any vector $f=(f_0^*,\ldots,f_n^*)$ of integers between $0$ and $i!\cdot S(n,i)$ there exists a scheduling problems $S$ such that $\xi_S$ has the coefficient vector $f$ with respect to the binomial basis $\binom{k-1}{i}$.
+From this counting interpretation of the coefficients $f_i$ it follows immediately that the $f_i$ are non-negative integers. Moreover there are at most at most $i!\cdot S(n,i)$ ordered set partitions of $[n]$ with $i$ non-empty parts \cite{something}, which proves the upper bound on the $f_i$. \comment{Todo: check upper bound formula and find reference: OEIS.}
+
+Finally, the fact that $\SSS_S$ specializes to $\xi_S(k)$ follows immediately from the specialization (\ref{eqn:spec ncM}).
 \end{proof}
+
+\subsection{Complementarity}
 
 These same results can be extended to the complementary polynomial $(k+1)^n - \xi_S(k)$.
 
