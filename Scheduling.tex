@@ -596,14 +596,32 @@ Finally, the fact that $\SSS_S$ specializes to $\xi_S(k)$ follows immediately fr
 
 \subsection{Complementarity}
 
-These same results can be extended to the complementary polynomial $(k+1)^n - \xi_S(k)$.
+From the above discussion, it is immediate to see a nice complementarity between the counting functions associated with a scheduling problem $S$ and its negation $\neg S$. Let 
+\[
+  \SSS_{\top^n} = \sum_{a\in\NN^n} x_a
+\]
+denote the nc-quasisymmetric function corresponding to all lattice points in the positive orthand. Furthermore, note that $(k-1)^n$ is the Ehrhart polynomial of the open cube $(0,k+1)^n$. Then we have the following complementarity result.
 
 \begin{lemma}
 Let $S$ be a scheduling problem on $n$ items given by the boolean formula $\phi$. Let $\neg S$ denote the scheduling problem given by $\neg\phi$. Then 
-\[
-  \xi_{\neg S}(k) = (k+1)^n - \xi_S(k).
-\]
+\begin{eqnarray*}
+  \xi_{S}(k) + \xi_{\neg S}(k) &=& (k-1)^n, \\
+  \SSS_S + \SSS_{\neg S} &=& \SSS_{\top^n}.
+\end{eqnarray*}
 \end{lemma}
+
+Note that passing from $\SSS_S$ to $\SSS_{\neg S}$ swaps coefficients 0 and 1 in the monomial basis. Also passing from $\xi_S$ to $\xi_{\neq S}$ replaces the coefficient $f_i$ with $i!\cdot S(n,i) - f_i$, thus interchanging the roles of the upper and lower bound on the $f_i$ in the theorem.
+
+\begin{proof}
+The result on $\SSS_S$ is immediate from the above observations. For the result on $\xi_S$, note that 
+\[
+ \xi_{S}(k) + \xi_{\neg S}(k) = \ehr_{A\cap(0,1)^n}(k+1) +  \ehr_{(0,1)^n\setminus A}(k+1) = \ehr_{(0,1)^n}(k+1) = (k-1)^n.
+\]
+\end{proof}
+
+\subsection{The fundamental basis and the Ehrhart $h*$-vector}
+
+\subsection{Convex ear decompositions and strong bounds on the coefficients}
 
 \subsection{Further results}
 
