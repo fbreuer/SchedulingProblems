@@ -470,6 +470,176 @@ Note that the result of this specialization is independent of which variables ar
 
 \comment{fb: We should add a statement about quasisymmetric functions to this lemma.}
 
+\subsection{The Fundamental Basis}
+
+The scheduling function $\SSS_S$ is a quasisymmetric function in
+non-commuting variables and $\xi_S(k)$ is a polynomial.  The structure
+of $\Sigma(S)$ also yields information on the the intermediate
+quasisymmetric function $QS_S$.
+
+  If $\SSS_S$ is given in the monomial
+bases indexed by ordered set partitions, $QS_S$ is defined as the
+quasisymmetric function formed by applying the type map to each
+monomial term.  We will be interested in the expansion of $QS_S$ in
+bases other than the monomial, in particular the fundamental basis.
+To this end we review analogous bases in NCQSym which allow us to also
+specialize via the type map.
+
+
+Recall that the fundamental quasisymmetric functions are defined from the monomial quasisymmetric functions as follows.  For any composition $\alpha$, 
+$$L_{\alpha} := \sum_{\beta:\beta \textrm{ refines } \alpha} M_{\beta}.$$
+
+To construct an analogous basis in NCQSym, consider the order relation $\preceq$ on ordered set partitions given by $\Phi \gtrdot (\Phi_i, \ldots,\Phi_{i-1}, \Phi_i \cup \Phi_{i+1}, \Phi_{i+2}, \ldots \Phi_k)$ where every element of the $i$th block is less than every element of the $i+1$th block. 
+% This gives a coarsening order  where blocks can only be merged if their elements in the natural order.
+(Note that this order is opposite to the order $\leq_*$ defined in [cite: Zab].(** Draw poset?**))  Define the $\mathcal{L}$ basis for NCQSym as follows. For any ordered set partition $\Phi$,
+$$\mathcal{L}_{\Phi} := \sum_{\Gamma:\Gamma \preceq \Phi} \ncM_{\Phi}.$$
+
+From the $\ncL$ basis, applying the type map gives the corresponding quasisymmetric function in the $L$ basis.  
+
+
+
+%% \begin{diagram}
+%% A &\rTo^{a} &B\\
+%% \dTo_{b} & &\dTo_{c}\\
+%% C &\rTo^{d} &D
+%% \end{diagram}
+
+\begin{diagram}
+NCQSym \ncM & \rTo^{\text{ directed refinement }} & NCQSym \ncL\\
+\dTo^{ \text{type}} & & \dTo_{ \text{type}}\\
+QSym M & \rTo^{\text{refinement}} & QSym L
+\end{diagram}
+
+
+
+
+\begin{example}
+
+Consider the nc-quasisymmetric function 
+\begin{align*}
+ \SSS & = \ncM_{12|3} + \ncM_{1|23} + \ncM_{1|2|3} + \ncM_{2|1|3} + \ncM_{1|3|2}\\
+      & = \ncL_{12|3} + \ncL_{1|23} - \ncL_{1|2|3} + \ncL_{2|1|3} + \ncL_{1|3|2}.
+\end{align*}
+
+\begin{align*}
+ QS & = M_{(2,1)} + M_{(1,2)} + 3M_{(1,1,1)}\\
+ & = L_{(2,1)} + L_{(1,2)} + L_{(1,1,1)}\\
+& = L_{\textrm{type}(12|3)} + L_{\textrm{type}(1|23)} - L_{\textrm{type}(1|2|3)} + L_{\textrm{type}(2|1|3)} + L_{\textrm{type}(1|3|2)}.
+\end{align*}
+
+\end{example}
+
+
+Clearly $\ncL$ positivity of a nc-quasisymmetric function gives a sufficient although not neccesary condition for  $L$ positivity of the quasisymmetric specialization. 
+
+
+%% \begin{remark}
+%% (** Do we want this remark? **) Although one could define a partial order on ordered set partitions
+%% simply by refinement, and sum over all refinements, such elements would not fit into our diagram above.  Consider the example above, ...
+%% \end{remark}
+
+
+
+%% \begin{itemize}
+%% \item Give an example that at the level of ordered set partitions,
+%% you can not simple sum over refinements and then take the type map.
+
+%% \item Define partial ordering, basis and co-basis as in Zabrocki.
+
+%% \item Draw diagram with type maps.
+
+%% \item Note that positivity in NCL is sufficient although not necessary for positivity in L.
+%% \end{itemize}
+
+\begin{theorem} \label{unique} Let $S$ be a scheduling problem on $d$ items.  If the forbidden configuration $\Sigma(S)$ is a subcomplex of the Coxeter complex and if for each total ordering of $[d]$ there is a unique coarsest schedule satisfying $S$, then $\SSS_S$ is $\ncL$-positive and therefore $QS$ is $L$-positive. 
+\end{theorem}
+
+
+\begin{proposition}
+Scheduling problems of the form of Theorem~\ref{posets} satisfy the conditions of Theorem~\ref{unique} and are hence $\ncL$-positive.
+\end{proposition}
+
+\begin{proof}
+Discuss how each $C_{i,j}$ defines a poset of regions in the Coxeter complex and how this yields coarsest.
+\end{proof}
+
+\begin{example}
+Returning to the chromatic scheduling problem, Theorem~\ref{Hilbert}
+was shown by Steingrimmson in [cite], that $\Sigma(S)$ had a convex
+ear decomposition by Hersch and Swartz [cite], and L-positivity of the
+chromatic symmetric function by [cite].  The chromatic scheduling
+problem can also be seen to satisfy the conditions of
+Theorem~\ref{posets} and hence Therorem~\ref{unique}.  This was shown
+in [cite GP] by considering a larger class of scheduling problems
+defined for generalized permutahedron.  
+
+The scheduling problem of [GP] is defined by taking, for each vertex
+$v$ of a generalized permutahedron $P$, the conjugation of all
+hyperplanes defining $v$.  Hence the valid $\omega$ schedules
+correspond to all integer points in the interior of the normal fan or
+equivalently the forbidden configuration is the entire co-dimension
+one skeleton $P$.  The normal fans of generalized permutahedron are
+refined by the Braid arrangement and the $C_{i,j}$ of
+Theorem~\ref{posets} correspond to all interiors of the maximal cones.
+In cite[GP], the conditions of Theorem~\ref{unique} are established in
+the Hopf monoid setting of directed faces.  The chromatic scheduling
+problem is the special instance of the generalized permutahedron
+scheduling problem for graphical zonotopes.  As another special
+instance, the quasisymmetric function $QS$ for matroid polytopes is
+the Biller-Jia-Reiner quasisymmetric function for matroids.
+\end{example}
+
+
+Scheduling problems satisfying the form of Theorem~\ref{posets} can be
+described in terms of $P$-partitions for posets $P$ with all strict
+edges.  Again, each $C_{i,j}$ is a collection of strict edges of the
+form $x_a < x_b$ which defines a poset.  The quasisymmetric function
+$QS$ restricted to a single $C_{i,j}$ is the generating function
+$K_{(P,\omega)}$ where $\omega$ is a ``fully un-natural'' labelling of
+$P$.  For schedules with a single $C_{i,j}$, Theorem~\ref{unique}
+gives the Fundamental theorem of quasisymmetric functions, i.e. the
+expansion of $K_{(P,\omega)}$ in the fundamental basis by descent
+sets.  In this case, with all strict labels, the unique coarsest
+elements for each ordering are also defined by the descent sets.
+
+
+Theorem~\ref{unique} is neither strictly stronger nor weaker than the
+$K_{(P,\omega)}$ expansion.  Posets with non-strict edges may easily
+be non-positive in the $\ncL$ basis and many scheduling problems
+satisfy the conditions of Theorem~\ref{unique} but do not arise from
+any poset or P-partition structure.
+
+\begin{example} 
+Consider the scheduling nc-quasisymmetric function,
+
+\begin{align*}
+\SSS_S & = \ncL_{24|13} + \ncL_{4|2|13} + \ncL_{24|3|1} + \ncL_{2|14|3} + \ncL_{2|1|34} + \ncL_{4|2|3|1}\\
+& = \ncM_{24|13} + \ncM_{2|4|13} + \ncM_{24|1|3} + \ncM_{2|4|1|3} + \ncM_{4|2|13} + \ncM_{4|2|1|3} + \ncM_{24|3|1}\\
+& + \ncM_{2|4|3|1} + \ncM_{2|14|3} + \ncM_{2|1|4|3} + \ncM_{2|1|34} + \ncM_{2|1|3|4} + \ncM_{4|2|3|1}.
+\end{align*}
+
+This scheduling problem does satisfy the conditions of Theorem~\ref{unique}, but it does not satisfy the conditions of Theorem~\ref{posets}.  In particular, the collection of valid schedules forms a non-convex collection of Braid cones.
+
+\end{example}
+
+
+%
+%Some ``bigger picture'' thoughts about quasisymmetric functions and a few classes thought about together. 
+
+%Consider the following quasisymmetric functions:
+
+%% \begin{itemize}
+%% \item QGP: (Quasi Generalized Permutahedron) - this includes Stanley chromatic quasisymmetric function for graphs and the Biller-Jia-Reiner quasisymmetric functions for matroids as special cases.
+
+%% In terms of ordered set partitions, these are all integer points in the interiors of all maximal cones of the fan.  In terms of the forbidden subcomplex, we are getting rid of all codimension one faces.  
+
+%% \item QBergman: This is defined for any matroid, over the matroid polytope.
+
+%% \item QEhrenborg: Not really it's name, but Richard defined a class of quasisymmetric functions for posets.
+
+%% \end{itemize}
+
+
 \section{Scheduling Problems}
 \label{sec:scheduling-problems}
 
@@ -759,176 +929,6 @@ such that the $I_{i,j}$ are strict inequalities of the form $x_a < x_b$ for some
 %% such that $\phi(x)$ is true. The schedule function $\xi_S(k)$ counts
 %% the number of $k$-schedules of $S$.
 
-
-
-
-
-The scheduling function $\SSS_S$ is a quasisymmetric function in
-non-commuting variables and $\xi_S(k)$ is a polynomial.  The structure
-of $\Sigma(S)$ also yields information on the the intermediate
-quasisymmetric function $QS_S$.
-
-  If $\SSS_S$ is given in the monomial
-bases indexed by ordered set partitions, $QS_S$ is defined as the
-quasisymmetric function formed by applying the type map to each
-monomial term.  We will be interested in the expansion of $QS_S$ in
-bases other than the monomial, in particular the fundamental basis.
-To this end we review analogous bases in NCQSym which allow us to also
-specialize via the type map.
-
-
-Recall that the fundamental quasisymmetric functions are defined from the monomial quasisymmetric functions as follows.  For any composition $\alpha$, 
-$$L_{\alpha} := \sum_{\beta:\beta \textrm{ refines } \alpha} M_{\beta}.$$
-
-To construct an analogous basis in NCQSym, consider the order relation $\preceq$ on ordered set partitions given by $\Phi \gtrdot (\Phi_i, \ldots,\Phi_{i-1}, \Phi_i \cup \Phi_{i+1}, \Phi_{i+2}, \ldots \Phi_k)$ where every element of the $i$th block is less than every element of the $i+1$th block. 
-% This gives a coarsening order  where blocks can only be merged if their elements in the natural order.
-(Note that this order is opposite to the order $\leq_*$ defined in [cite: Zab].(** Draw poset?**))  Define the $\mathcal{L}$ basis for NCQSym as follows. For any ordered set partition $\Phi$,
-$$\mathcal{L}_{\Phi} := \sum_{\Gamma:\Gamma \preceq \Phi} \ncM_{\Phi}.$$
-
-From the $\ncL$ basis, applying the type map gives the corresponding quasisymmetric function in the $L$ basis.  
-
-
-
-%% \begin{diagram}
-%% A &\rTo^{a} &B\\
-%% \dTo_{b} & &\dTo_{c}\\
-%% C &\rTo^{d} &D
-%% \end{diagram}
-
-\begin{diagram}
-NCQSym \ncM & \rTo^{\text{ directed refinement }} & NCQSym \ncL\\
-\dTo^{ \text{type}} & & \dTo_{ \text{type}}\\
-QSym M & \rTo^{\text{refinement}} & QSym L
-\end{diagram}
-
-
-
-
-\begin{example}
-
-Consider the nc-quasisymmetric function 
-\begin{align*}
- \SSS & = \ncM_{12|3} + \ncM_{1|23} + \ncM_{1|2|3} + \ncM_{2|1|3} + \ncM_{1|3|2}\\
-      & = \ncL_{12|3} + \ncL_{1|23} - \ncL_{1|2|3} + \ncL_{2|1|3} + \ncL_{1|3|2}.
-\end{align*}
-
-\begin{align*}
- QS & = M_{(2,1)} + M_{(1,2)} + 3M_{(1,1,1)}\\
- & = L_{(2,1)} + L_{(1,2)} + L_{(1,1,1)}\\
-& = L_{\textrm{type}(12|3)} + L_{\textrm{type}(1|23)} - L_{\textrm{type}(1|2|3)} + L_{\textrm{type}(2|1|3)} + L_{\textrm{type}(1|3|2)}.
-\end{align*}
-
-\end{example}
-
-
-Clearly $\ncL$ positivity of a nc-quasisymmetric function gives a sufficient although not neccesary condition for  $L$ positivity of the quasisymmetric specialization. 
-
-
-%% \begin{remark}
-%% (** Do we want this remark? **) Although one could define a partial order on ordered set partitions
-%% simply by refinement, and sum over all refinements, such elements would not fit into our diagram above.  Consider the example above, ...
-%% \end{remark}
-
-
-
-%% \begin{itemize}
-%% \item Give an example that at the level of ordered set partitions,
-%% you can not simple sum over refinements and then take the type map.
-
-%% \item Define partial ordering, basis and co-basis as in Zabrocki.
-
-%% \item Draw diagram with type maps.
-
-%% \item Note that positivity in NCL is sufficient although not necessary for positivity in L.
-%% \end{itemize}
-
-\begin{theorem} \label{unique} Let $S$ be a scheduling problem on $d$ items.  If the forbidden configuration $\Sigma(S)$ is a subcomplex of the Coxeter complex and if for each total ordering of $[d]$ there is a unique coarsest schedule satisfying $S$, then $\SSS_S$ is $\ncL$-positive and therefore $QS$ is $L$-positive. 
-\end{theorem}
-
-
-\begin{proposition}
-Scheduling problems of the form of Theorem~\ref{posets} satisfy the conditions of Theorem~\ref{unique} and are hence $\ncL$-positive.
-\end{proposition}
-
-\begin{proof}
-Discuss how each $C_{i,j}$ defines a poset of regions in the Coxeter complex and how this yields coarsest.
-\end{proof}
-
-\begin{example}
-Returning to the chromatic scheduling problem, Theorem~\ref{Hilbert}
-was shown by Steingrimmson in [cite], that $\Sigma(S)$ had a convex
-ear decomposition by Hersch and Swartz [cite], and L-positivity of the
-chromatic symmetric function by [cite].  The chromatic scheduling
-problem can also be seen to satisfy the conditions of
-Theorem~\ref{posets} and hence Therorem~\ref{unique}.  This was shown
-in [cite GP] by considering a larger class of scheduling problems
-defined for generalized permutahedron.  
-
-The scheduling problem of [GP] is defined by taking, for each vertex
-$v$ of a generalized permutahedron $P$, the conjugation of all
-hyperplanes defining $v$.  Hence the valid $\omega$ schedules
-correspond to all integer points in the interior of the normal fan or
-equivalently the forbidden configuration is the entire co-dimension
-one skeleton $P$.  The normal fans of generalized permutahedron are
-refined by the Braid arrangement and the $C_{i,j}$ of
-Theorem~\ref{posets} correspond to all interiors of the maximal cones.
-In cite[GP], the conditions of Theorem~\ref{unique} are established in
-the Hopf monoid setting of directed faces.  The chromatic scheduling
-problem is the special instance of the generalized permutahedron
-scheduling problem for graphical zonotopes.  As another special
-instance, the quasisymmetric function $QS$ for matroid polytopes is
-the Biller-Jia-Reiner quasisymmetric function for matroids.
-\end{example}
-
-
-Scheduling problems satisfying the form of Theorem~\ref{posets} can be
-described in terms of $P$-partitions for posets $P$ with all strict
-edges.  Again, each $C_{i,j}$ is a collection of strict edges of the
-form $x_a < x_b$ which defines a poset.  The quasisymmetric function
-$QS$ restricted to a single $C_{i,j}$ is the generating function
-$K_{(P,\omega)}$ where $\omega$ is a ``fully un-natural'' labelling of
-$P$.  For schedules with a single $C_{i,j}$, Theorem~\ref{unique}
-gives the Fundamental theorem of quasisymmetric functions, i.e. the
-expansion of $K_{(P,\omega)}$ in the fundamental basis by descent
-sets.  In this case, with all strict labels, the unique coarsest
-elements for each ordering are also defined by the descent sets.
-
-
-Theorem~\ref{unique} is neither strictly stronger nor weaker than the
-$K_{(P,\omega)}$ expansion.  Posets with non-strict edges may easily
-be non-positive in the $\ncL$ basis and many scheduling problems
-satisfy the conditions of Theorem~\ref{unique} but do not arise from
-any poset or P-partition structure.
-
-\begin{example} 
-Consider the scheduling nc-quasisymmetric function,
-
-\begin{align*}
-\SSS_S & = \ncL_{24|13} + \ncL_{4|2|13} + \ncL_{24|3|1} + \ncL_{2|14|3} + \ncL_{2|1|34} + \ncL_{4|2|3|1}\\
-& = \ncM_{24|13} + \ncM_{2|4|13} + \ncM_{24|1|3} + \ncM_{2|4|1|3} + \ncM_{4|2|13} + \ncM_{4|2|1|3} + \ncM_{24|3|1}\\
-& + \ncM_{2|4|3|1} + \ncM_{2|14|3} + \ncM_{2|1|4|3} + \ncM_{2|1|34} + \ncM_{2|1|3|4} + \ncM_{4|2|3|1}.
-\end{align*}
-
-This scheduling problem does satisfy the conditions of Theorem~\ref{unique}, but it does not satisfy the conditions of Theorem~\ref{posets}.  In particular, the collection of valid schedules forms a non-convex collection of Braid cones.
-
-\end{example}
-
-
-%
-%Some ``bigger picture'' thoughts about quasisymmetric functions and a few classes thought about together. 
-
-%Consider the following quasisymmetric functions:
-
-%% \begin{itemize}
-%% \item QGP: (Quasi Generalized Permutahedron) - this includes Stanley chromatic quasisymmetric function for graphs and the Biller-Jia-Reiner quasisymmetric functions for matroids as special cases.
-
-%% In terms of ordered set partitions, these are all integer points in the interiors of all maximal cones of the fan.  In terms of the forbidden subcomplex, we are getting rid of all codimension one faces.  
-
-%% \item QBergman: This is defined for any matroid, over the matroid polytope.
-
-%% \item QEhrenborg: Not really it's name, but Richard defined a class of quasisymmetric functions for posets.
-
-%% \end{itemize}
 
 \section{QBergman}
 
