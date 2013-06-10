@@ -122,7 +122,7 @@
 \newcommand{\T}{T} % generic symbol for the triangulation
 \newcommand{\Tn}{T_n} % generic symbol for the triangulation with dimension
 \newcommand{\TRn}{\T_{\RR^n}} % the braid triangulation of space
-\newcommand{\TS}{\T_{S^{n-1}}} % the braid triangulation of the sphere (i.e. the Coxeter complex)
+\newcommand{\TS}{\T_{S^{n-2}}} % the braid triangulation of the sphere (i.e. the Coxeter complex)
 \newcommand{\TP}{\T_{\RR^n_{> 0}}} % the braid triangulation of the positive orthand
 \newcommand{\TC}{\T_{(0,1)^n}} % the braid triangulation of the cube
 
@@ -801,7 +801,7 @@ for $1\leq i,j\leq n$, induces subdivisions $\TRn$, $\TP$, $\TC$, and $\TS$ of t
 \[
 S^{n-2}=\mset{x\in\RR^n}{||x||_2 = 1, \sum_{i=1}^n = 0},
 \]
-respectively. The faces of these subdivisions are the regions of the respective ground set where the function $\Delta$, mapping points $a\in\RR^n$ to ordered set partitions $\Phi$, is constant. The faces of $\TRn$ are relatively open polyhedral cones, each containing the lineality space $\mset{a\in\RR^n}{a_i=a_j \; \forall i,j}$. The faces of $\TP$ are pointed, relatively open simplicial cones. The faces of $\TC$ are relatively open unimodular simplices. The faces of $\TS$ are sections of the $n-2$ sphere. Combinatorially, however, $\TS$ is equivalent to a simplicial complex known as the Coxeter complex of type $A_n$. \comment{TODO: Is the index of $A_n$ correct?}
+respectively. The faces of these subdivisions are the regions of the respective ground set where the function $\Delta$, mapping points $a\in\RR^n$ to ordered set partitions $\Phi$, is constant. The faces of $\TRn$ are relatively open polyhedral cones, each containing the lineality space $\mset{a\in\RR^n}{a_i=a_j \; \forall i,j}$. The faces of $\TP$ are pointed, relatively open simplicial cones. The faces of $\TC$ are relatively open unimodular simplices. The faces of $\TS$ are sections of the $n-2$ sphere. Combinatorially, however, $\TS$ is equivalent to a simplicial complex known as the Coxeter complex of type $A_{n-1}$ \cite{something}.
 
 All of these complexes are closely related. In fact, $\TRn$, $\TP$, and $\TC$ are all combinatorially equivalent, as the function $\Delta$ defines a bijection between their sets of faces that preserves incidences. In particular, the faces of these three complexes are in one-to-one correspondence with the ordered set partions $\Phi$ of $[n]$ into non-empty parts. The only difference with $\TS$ is that there is no face of $\TS$ corresponding to the partition with only one part. Combinatorially, the other complexes are the cone over $\TS$. As these geometric objects are so closely related, we will frequently draw no clear distinction between them and refer loosely to the triangulation $\Tn$. It will be clear from context which of these objects we are referring to in each case.
 
@@ -814,7 +814,13 @@ Correspondingly, define the \emph{forbidden subcomplex} $\forb(S)$ to be the set
   \forb(S) = \mset{\sigma_\Phi \in \Tn}{\neg S(\Phi)}.
 \]
 
-\comment{TODO: Insert remarks from below about the connections of these objects to the literature here.}
+\comment{TODO: Check if this example needs to be rewritten to improve the flow.}
+
+\begin{example} As remarked above, a particularly familiar scheduling polynomial is the chromatic polynomial of a graph.  In this case, the scheduling problem simply specifies which variables can not be equal to each other, $x_i \neq x_j$ for $\{i,j\}$ an edge of the graph. $\xi_S$ is the chromatic polynomial.  The quasisymmetric function obtained by taking the type map on $\SSS_S$ is Stanley's chromatic symmetric function (the quasisymmetric function happens to be fully symmetric in this case).  Gebhard and Sagan studied (essentially) $\SSS_S$ as a symmetric function in non-commuting variables.  Steingrimmson's coloring complex is 
+%the collection of ordered set partitions which require at least one edge in at least one block, namely 
+the forbidden configuration of the scheduling problem.  
+Much work has been done to understand the coloring complex in order to better understand the chromatic polynomial.  This avenue is possible because the Hilbert series connection as shown in [cite:Ein].
+\end{example}
 
 Clearly, $\allow(\neg S)=\forb(S)$. This notion of complementarity translates into basic observations about the counting function defined by $S$. Let 
 \[
@@ -896,61 +902,7 @@ It is possible to turn $L$ into a basis on the level of nc-quasisymmetric functi
 
 \subsection{Convex ear decompositions and strong bounds on the coefficients}
 
-\subsection{Further results}
-
-\comment{
-There are a couple of other things we could add here:
-\begin{enumerate}
-\item Add the quasisymmetric function in commuting variables as an intermediate step.
-\item $\xi_S$ includes the chromatic polynomial of a graph and the "unknown" matroid polynomial as special cases.
-\item $\xi_S$ includes Ehrhart polynomials of order polytopes as a special case.
-\item The values of $\xi_S(-k)$ at negative integers can be written as a difference of two counting functions. (This gives "one half" of a reciprocity theorem.) This should also be true on the quasisymmetric function level.
-\end{enumerate}
-}
-
-Scheduling polynomials include for example, the chromatic polynomial
-of graphs and the Ehrhart polynomials of order polytopes.  In Sections
-6 and 7 below, we will see that they also include the zeta-polynomials
-of posets and the newly defined arboricity polynomial of a matroid,
-which counts the number of covers of a matroid by independent sets.
-
-
-In order to make stronger statements about the functions $\SSS_S$ and $\xi_S(k)$, we will need some niceness conditions on the scheduling problem $S$.  
-%% There are a couple of other things we could add here:
-%% \begin{enumerate}
-%% \item Add the quasisymmetric function in commuting variables as an intermediate step.
-%% \item $\xi_S$ includes the chromatic polynomial of a graph and the "unknown" matroid polynomial as special cases.
-%% \item $\xi_S$ includes Ehrhart polynomials of order polytopes as a special case.
-%% \item The values of $\xi_S(-k)$ at negative integers can be written as a difference of two counting functions. (This gives "one half" of a reciprocity theorem.) This should also be true on the quasisymmetric function level.
-%% \end{enumerate}
-As we have seen, the braid arrangement defines a polyhedral subdivision of the space
-$\RR^n$, a polyhedral subdivision of the positive orthant $\RR_{\geq
-  0}^n$, a polytopal subdivision of the cube $[0,1]^n$ and a simplicial subdivision of the sphere. With
-respect to each of these, given a scheduling problem $S$, define the \emph{forbidden configuration}
-$\Sigma(S)$ to be the set of those faces $\sigma$ of the subdivision
-such that $\phi(\omega)$ does not hold for any $\omega$ in the
-relative interior of $\sigma$. Depending on the topological and
-geometric properties of $\Sigma(S)$, we can make various assertions
-about $\SSS$ and $\xi$. 
-
-
-\begin{example} As remarked above, a particularly familiar scheduling polynomial is the chromatic polynomial of a graph.  In this case, the scheduling problem simply specifies which variables can not be equal to each other, $x_i \neq x_j$ for $\{i,j\}$ an edge of the graph. $\xi_S$ is the chromatic polynomial.  The quasisymmetric function obtained by taking the type map on $\SSS_S$ is Stanley's chromatic symmetric function (the quasisymmetric function happens to be fully symmetric in this case).  Gebhard and Sagan studied (essentially) $\SSS_S$ as a symmetric function in non-commuting variables.  Steingrimmson's coloring complex is 
-%the collection of ordered set partitions which require at least one edge in at least one block, namely 
-the forbidden configuration of the scheduling problem.  
-Much work has been done to understand the coloring complex in order to better understand the chromatic polynomial.  This avenue is possible because the Hilbert series connection as shown in [cite:Ein].
-\end{example}
-
-Before making restrictions on $S$, or equivalently $\Sigma(S)$, we
-prove the following theorem relating the polynomial $\xi_S$ and the
-$h$-vector of $\Sigma(S)$ for \emph{all} scheduling problems, generalizing the previous example.
-
-
-
-We say $\Sigma(S)$ has a convex ear
-decomposition, if $\Sigma(S)$ (viewed as subcomplex of the cube)
-together with the boundary of the cube, has a convex ear
-decomposition. (**We are hoping for a simpler/better way to say/imply this**)
-
+\comment{Under construction}
 
 \begin{proposition}
 Let $S$ be a scheduling problem such that $\Sigma(S)$ is of codimension 1 and has a convex ear decomposition. Then 
@@ -965,13 +917,9 @@ as above, and moreover the coefficients $h_i$ satisfy
 \end{enumerate}
 \end{proposition}
 
+\subsection{Co-fundamental basis and the $N$-coefficients}
 
-
-%% ** fb: I think this is almost the same thing as saying that $S$ comes from a generalized permutahedron. It is a tiny bit more general, as this allows regions of the arrangement (i.e. the complement of $\Delta(S)$) to be non-convex. But because the Braid arrangement is so simple, there should be an easier way to define this notion, without referring to convex ear decompositions. **
-
-%% ***cjk: I'm not sure precisely what you mean by $S$ comes from a generalized permutahedron? ***
-
-%% **** fb: I guess I was trying to say the following. Consider two constructions: 1) Start with a generalized permutahedron and take its face fan. 2) Start with the full permutahedron, take its face fan (which is a polyhedral subdivision of space) and take any subcomplex. 2) is a bit more general than 1) because it allows non-convex regions. ****
+\subsection{Reciprocity theorems}
 
 \begin{theorem}\label{posets}
 Let $S$ be a scheduling problem such that the regions of $[0,1]^n\setminus\Sigma(S)$ are the interiors of convex polytopes of dimension $n$. Equivalently, we assume $S$ can be written as a disjunction of conjunctions of strict inequalities, i.e.,
@@ -997,12 +945,23 @@ such that the $I_{i,j}$ are strict inequalities of the form $x_a < x_b$ for some
 %% %\item Other families of polynomials besides Arboricity?  Even known ones that we can simply put into our framework?
 %% \end{enumerate}
 
+\subsection{Notes}
 
-%% A \defn{scheduling problem} $S$ on $d$ items is given by a boolean
-%% formula $\phi$ over atomic formulas $x_i\leq x_j$ for $i,j\in[d]$. A
-%% \defn{$k$-schedule} solving $S$ is a function $x:[d]\rightarrow[k]$
-%% such that $\phi(x)$ is true. The schedule function $\xi_S(k)$ counts
-%% the number of $k$-schedules of $S$.
+\comment{
+There are a couple of other things we could add here:
+\begin{enumerate}
+\item Add the quasisymmetric function in commuting variables as an intermediate step.
+\item $\xi_S$ includes the chromatic polynomial of a graph and the "unknown" matroid polynomial as special cases.
+\item $\xi_S$ includes Ehrhart polynomials of order polytopes as a special case.
+\item The values of $\xi_S(-k)$ at negative integers can be written as a difference of two counting functions. (This gives "one half" of a reciprocity theorem.) This should also be true on the quasisymmetric function level.
+\end{enumerate}
+}
+
+Scheduling polynomials include for example, the chromatic polynomial
+of graphs and the Ehrhart polynomials of order polytopes.  In Sections
+6 and 7 below, we will see that they also include the zeta-polynomials
+of posets and the newly defined arboricity polynomial of a matroid,
+which counts the number of covers of a matroid by independent sets.
 
 
 \section{QBergman}
