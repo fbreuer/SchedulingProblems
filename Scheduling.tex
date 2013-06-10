@@ -839,9 +839,31 @@ The result on $\SSS_S$ is immediate from the above observations. For the result 
 \]
 \end{proof}
 
-\subsection{The fundamental basis and the Ehrhart $h*$-vector}
+\subsection{The fundamental basis and the $h$-vector}
 
-\comment{We start out with the "Hilbert" result.} 
+We have seen how we can use the $f$-vectors of the allowed and forbidden complexes of a scheduling problem $S$, that is the number of faces of various dimension, to obtain constraints on the counting functions, in particular the scheduling polynomial $\xi_S$. Geometrically, this corresponds to decomposing $\allow(S)$ as a disjoint union of relatively open unimodular simplices of different dimension. However, there are other important ways of decomposing simplicial complexes. The idea of writing a simplicial complex as a disjoint union of half-open simplices gives rise to the notion of an $h$-vector.
+
+We have seen in the preliminaries that the Ehrhart polynomial of a $d$-dimensional unimodular simplex $\Delta^d_i$ with $i$ open faces is
+\[
+  \ehr_{\Delta^d_i}(k) = \binom{k+d-i}{d}.
+\]
+A $d$-dimensional simplex can have between 0 and $d+1$ open faces, and indeed it turns out that the polynomials $\binom{k+d-i}{d}$ for $i=0,\ldots,d+1$ generate the space of all polynomials of degree at most $d$. That is, for every polynomial $p$ of degree at most $d$ there exist coefficients $h_0,\ldots,h_{d+1}$ such that
+\[
+  p(k) = \sum_{i=0}^{d+1} h_i \binom{k+d-i}{d}.
+\] 
+However, these coefficients $h_i$ are not uniquely determined as there is one degree of freedom too many. Two conventions for normalization exist in the literature. The first convention is to fix $h_0=1$, which gives rise to the $h$-vector as commonly used in the study of simplicial complexes. The second convention is to fix $h_{d+1}=0$, which gives rise to the $h^*$-vector used in Ehrhart theory. Formally, given numbers $f_0,\ldots,f_d$, the \emph{$h$-vector} $h_0,\ldots,h_{d+1}$ and the \emph{$h^*$-vector} are defined, respectively, via
+\[
+  \binom{k+d}{d} + \sum_{i=1}^{d+1} h_i \binom{k+d-i}{d} = \sum_{i=0}^{d} f_i \binom{k-1}{i} = \sum_{i=0}^{d} h^*_i \binom{k+d-i}{d},
+\]
+and $h_0=1$. If $f$ is the $f$-vector of a simplicial complex, this yields precisely the $h$-vector of a simplicial complex \cite{something}. If $X$ is a integral unimodular simplicial complex (as is the case throughout this paper) with $f$-vector $f$, then $h^*$ is the Ehrhart $h^*$-vector or Ehrhart $\delta$-vector of $X$ \cite{something}.\footnote{Note that in Ehrhart theory one does not have to compute the $f$-vector first, but can define the $h^*$-vectors directly as the coefficients of the Ehrhart polynomial in term so the binomial basis $\binom{k+d-i}{d}$ for $i=0,ldots,d$.} These definitions apply also to partial complexes. Note that 
+\[ 
+h^*_0=\sum_{i=0}^d (-1)^i f_i
+\]
+from which it follows that $h$- and $h^*$-vectors of a complex coincide if and only if its Euler characteristic is zero.
+
+\comment{TODO: $h$ and $h^*$ in terms of generating functions.}
+
+\comment{fb: Under construction from here on down.} 
 
 \begin{theorem}
 \label{Hilbert}
