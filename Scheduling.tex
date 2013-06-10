@@ -113,8 +113,31 @@
 \newcommand{\Hom}{\mathrm{ Hom}}
 \newcommand{\om}{\omega}
 
+%% IMPORTANT OBJECTS FOR THIS ARTICLE
+
 \newcommand{\ncM}{\mathcal{M}}
 \newcommand{\ncL}{\mathcal{L}}
+
+% we are working with (at least) four different "Braid triangulations"
+\newcommand{\T}{T} % generic symbol for the triangulation
+\newcommand{\Tn}{T_n} % generic symbol for the triangulation with dimension
+\newcommand{\TRn}{\T_{\RR^n}} % the braid triangulation of space
+\newcommand{\TS}{\T_{S^{n-1}}} % the braid triangulation of the sphere (i.e. the Coxeter complex)
+\newcommand{\TP}{\T_{\RR^n_{> 0}}} % the braid triangulation of the positive orthand
+\newcommand{\TC}{\T_{(0,1)^n}} % the braid triangulation of the cube
+
+\newcommand{\allow}{\operatorname{Allow}} % the allowed subcomplex
+\newcommand{\forb}{\operatorname{Forb}} % the forbidden subcomplex
+% variants of allowed and forbidden subcomplexes for different triangulations
+\newcommand{\allowRn}{\allow_{\RR^n}} % the braid triangulation of space
+\newcommand{\allowS}{\allow_{S^{n-1}}} % the braid triangulation of the sphere (i.e. the Coxeter complex)
+\newcommand{\allowP}{\allow_{\RR^n_{> 0}}} % the braid triangulation of the positive orthand
+\newcommand{\allowC}{\allow_{(0,1)^n}} % the braid triangulation of the cube
+\newcommand{\forbRn}{\forb_{\RR^n}} % the braid triangulation of space
+\newcommand{\forbS}{\forb_{S^{n-1}}} % the braid triangulation of the sphere (i.e. the Coxeter complex)
+\newcommand{\forbP}{\forb_{\RR^n_{> 0}}} % the braid triangulation of the positive orthand
+\newcommand{\forbC}{\forb_{(0,1)^n}} % the braid triangulation of the cube
+
 
 \newcommand{\comment}[1]{\textsf{\footnotesize #1}}
 
@@ -228,7 +251,11 @@ But half-open simplices do not suffice to capture all scheduling problems. Consi
 
 A \emph{polytopal complex} $K$ is a finite set of polytopes in some $\RR^d$ such that $K$ is closed under taking faces and the intersection of any two polytopes in $K$ is a face of both. A polytopal complex is \emph{integral} if all vertices have integer coordinates. We define the \emph{relative interior} of a polytope to be the interior of the polytope taken with respect to its affine hull, so that, for example, the interior of a 2-dimensional triangle in 3-space is the triangle minus its edges and vertices. This definition is important because of the following property: The union of all faces of a polytopal complex is equal to the \emph{disjoint} union of the relative interiors of all faces. For example, a triangle is equal to the open 2-dimension region, plus the open line segments corresponding to the edges, plus the vertices (which are open in their 0-dimensional affine hull). This observation implies that the Ehrhart function of a polytopal complex is just the sum of all Ehrhart functions of the relative interiors of all faces.
 
-Now, how about our half-open triangle with that one extra point? It can be written as the disjoint union of the open 2-dimensional region, the open line segments corresponding to the two closed edges, and the two vertices that we want to include: the origin and $e_2$. However, we exclude the open line segment from 0 to $e_1+e_2$ and the vertex $e_1+e_2$ from the union. This idea of taking the relative interiors of just some of the faces of a polytopal complex gives rise to the notion of a \emph{partial polytopal complex}, which can be defined simply as the disjoint union of a finite collection relatively open polytopes. A partial polytopal complex is integral if all vertices\footnote{In this context, the term "vertices" refers to the vertices of the polytopal complex obtained by taking the closure of all faces in the partial polytopal complex.} have integer coordinates. The Ehrhart function of a partial polytopal complex is simply the sum of the Ehrhart functions of the open faces contained in it, and if the complex is integral it is straightforward to show that the Ehrhart function is again a polynomial. In the example of half-open simplex with the extra point, we can thus observe that its Ehrhart function is $\binom{k+1}{2} + 1$.
+Now, how about our half-open triangle with that one extra point? It can be written as the disjoint union of the open 2-dimensional region, the open line segments corresponding to the two closed edges, and the two vertices that we want to include: the origin and $e_2$. However, we exclude the open line segment from 0 to $e_1+e_2$ and the vertex $e_1+e_2$ from the union. This idea of taking the relative interiors of just some of the faces of a polytopal complex gives rise to the notion of a partial polytopal complex. A \emph{partial polytopal complex} is a subset of the faces of a polytopal complex; in particular, partial polytopal complex is not closed under taking faces. The \emph{support} $|K|$ of a partial polytopal complex $K$ is the union of the relative interiors of all faces contained in $K$.
+
+It will be useful to also consider the following alternative definition of a partial polytopal complex. We call the relative interior of a polytope $P$ an \emph{open polytope}. The \emph{faces of an open polytope} are the faces of its closure. By extension, we define the \emph{closure} of any set of open polytopes as the set of all faces of these polytopes. A \emph{partial polytopal complex} $K$ is now any set of open polytopes whose closure $\bar{K}$ is a polytopal complex. Note that indeed $\bar{|K|}=|\bar{K}|$, i.e., the closure of the support is the support of the closure. We will at certain points need to distinguish between the faces of $K$ and the faces of $\bar{K}$. For example, let $K$ be the interior of a triangle together with one of its vertices. In this case, $K$ will have just two faces: the open triangle and the vertex. However, we will have recourse to refer to the other faces of the (closed) triangle as well. These make up the faces of $\bar{K}$.
+
+The Ehrhart function of a partial polytopal complex is the Ehrhart function of its support. If the complex is integral it is straightforward to show that the Ehrhart function is again a polynomial. In the example of half-open simplex with the extra point, we can thus observe that its Ehrhart function is $\binom{k+1}{2} + 1$.
 
 This motivates the following observation: If $K$ is a partial simplicial complex in which all vertices are integral and all simplices are unimodular. Then, the Ehrhart function $\ehr_K$ satisfies
 \[
@@ -764,9 +791,32 @@ From this counting interpretation of the coefficients $f_i$ it follows immediate
 Finally, the fact that $\SSS_S$ specializes to $\xi_S(k)$ follows immediately from the specialization (\ref{eqn:spec ncM}).
 \end{proof}
 
-\subsection{Complementarity}
+\subsection{Triangulations and their Allowed and Forbidden Subcomplexes}
 
-From the above discussion, it is immediate to see a nice complementarity between the counting functions associated with a scheduling problem $S$ and its negation $\neg S$. Let 
+The Braid arrangement, consisting of all hyperplanes
+\[
+  H_{i,j} = \mset{a\in\RR^n}{a_i \leq a_j}
+\]
+for $1\leq i,j\leq n$, induces subdivisions $\TRn$, $\TP$, $\TC$, and $\TS$ of the space $\RR^n$, the positive orthand $\RR^n_{> 0}$, the open unit cube $(0,1)^n$ and the $n-2$ dimensional sphere
+\[
+S^{n-2}=\mset{x\in\RR^n}{||x||_2 = 1, \sum_{i=1}^n = 0},
+\]
+respectively. The faces of these subdivisions are the regions of the respective ground set where the function $\Delta$, mapping points $a\in\RR^n$ to ordered set partitions $\Phi$, is constant. The faces of $\TRn$ are relatively open polyhedral cones, each containing the lineality space $\mset{a\in\RR^n}{a_i=a_j \; \forall i,j}$. The faces of $\TP$ are pointed, relatively open simplicial cones. The faces of $\TC$ are relatively open unimodular simplices. The faces of $\TS$ are sections of the $n-2$ sphere. Combinatorially, however, $\TS$ is equivalent to a simplicial complex known as the Coxeter complex of type $A_n$. \comment{TODO: Is the index of $A_n$ correct?}
+
+All of these complexes are closely related. In fact, $\TRn$, $\TP$, and $\TC$ are all combinatorially equivalent, as the function $\Delta$ defines a bijection between their sets of faces that preserves incidences. In particular, the faces of these three complexes are in one-to-one correspondence with the ordered set partions $\Phi$ of $[n]$ into non-empty parts. The only difference with $\TS$ is that there is no face of $\TS$ corresponding to the partition with only one part. Combinatorially, the other complexes are the cone over $\TS$. As these geometric objects are so closely related, we will frequently draw no clear distinction between them and refer loosely to the triangulation $\Tn$. It will be clear from context which of these objects we are referring to in each case.
+
+We write $\sigma\in\Tn$ to denote that $\sigma$ is a face of the triangulation $\Tn$. We use $\sigma_\Phi$ to mean the face of $\Tn$ corresponding to the ordered set partition $\Phi$. A scheduling problem $S$ defines which faces of in these complexes are allowed and which are forbidden. Recall that $S(\Phi)$ denotes the truth value of whether $S(a)$ holds for any (or, equivalently, all) $a\in\RR^n$ with $\Delta(a)=\Phi$. We define the \emph{allowed subcomplex} $\allow(S)$ of the triangulation $\Tn$ to be the set of faces 
+\[
+  \allow(S) = \mset{\sigma_\Phi \in \Tn}{S(\Phi)}.
+\]
+Correspondingly, define the \emph{forbidden subcomplex} $\forb(S)$ to be the set of faces
+\[
+  \forb(S) = \mset{\sigma_\Phi \in \Tn}{\neg S(\Phi)}.
+\]
+
+\comment{TODO: Insert remarks from below about the connections of these objects to the literature here.}
+
+Clearly, $\allow(\neg S)=\forb(S)$. This notion of complementarity translates into basic observations about the counting function defined by $S$. Let 
 \[
   \SSS_{\top^n} = \sum_{a\in\NN^n} x_a
 \]
@@ -791,7 +841,26 @@ The result on $\SSS_S$ is immediate from the above observations. For the result 
 
 \subsection{The fundamental basis and the Ehrhart $h*$-vector}
 
-\comment{Todo: This section is under construction...} 
+\comment{We start out with the "Hilbert" result.} 
+
+\begin{theorem}
+\label{Hilbert}
+Let $S$ be a scheduling problem and $\Sigma(S)$ the forbidden configuration, then
+%Suppose $\Delta(S)$ is simply a valid subcomplex of the Coxeter complex.  Equivalently, the collection of $\omega$ 
+%corresponding to faces in $\Delta(S)$ are closed under coarsening. (** fb: actually, this should work even for partial polytopal complexes, i.e., $\Delta(S)$ does not need to be closed under coarsening. **) Then:
+%\begin{enumerate}
+%\item If $\SSS_S = \sum h_F' L_F$, then the $h_F'$ are non-negative integers.
+$$ \sum_{n \geq 0} ((n+1)^d - \xi_S(n+1)) t^n = \frac{h_{\Sigma(S)}(t)}{(1-t)^d} $$
+%(** I worked this out with Marcelo, that paper is not written, may never be, but the credit should go to a preprint**) 
+%\end{enumerate}
+where $h_{\Sigma(S)}$ is... (**this needs to be defined for general configurations**).
+\end{theorem}
+\begin{proof}
+Felix, can you write this proof?
+\end{proof}
+
+
+\comment{Todo: Next, we talk about partitionability...} 
 
 A partial simplicial complex $K$ is \emph{partitionable} if $K$ can be written as a disjoint union of half-open simplicies. In general, a $d$-dimensional simplex in $\RR^n$ with $i$ open faces is given by $n-d$ linear equation and $d+1$ linear inequalities in general position where $i$ of these inequalities are strict and $d+1-i$ are weak. However, in our case, we will be interested only in half-open unimodular simplicies, and these are precisely the lattice transformation of the simplicies $\Delta^d_i$ defined above.
 
@@ -852,22 +921,6 @@ Much work has been done to understand the coloring complex in order to better un
 Before making restrictions on $S$, or equivalently $\Sigma(S)$, we
 prove the following theorem relating the polynomial $\xi_S$ and the
 $h$-vector of $\Sigma(S)$ for \emph{all} scheduling problems, generalizing the previous example.
-
-\begin{theorem}
-\label{Hilbert}
-Let $S$ be a scheduling problem and $\Sigma(S)$ the forbidden configuration, then
-%Suppose $\Delta(S)$ is simply a valid subcomplex of the Coxeter complex.  Equivalently, the collection of $\omega$ 
-%corresponding to faces in $\Delta(S)$ are closed under coarsening. (** fb: actually, this should work even for partial polytopal complexes, i.e., $\Delta(S)$ does not need to be closed under coarsening. **) Then:
-%\begin{enumerate}
-%\item If $\SSS_S = \sum h_F' L_F$, then the $h_F'$ are non-negative integers.
-$$ \sum_{n \geq 0} ((n+1)^d - \xi_S(n+1)) t^n = \frac{h_{\Sigma(S)}(t)}{(1-t)^d} $$
-%(** I worked this out with Marcelo, that paper is not written, may never be, but the credit should go to a preprint**) 
-%\end{enumerate}
-where $h_{\Sigma(S)}$ is... (**this needs to be defined for general configurations**).
-\end{theorem}
-\begin{proof}
-Felix, can you write this proof?
-\end{proof}
 
 
 
