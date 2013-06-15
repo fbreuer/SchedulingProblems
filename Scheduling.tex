@@ -867,17 +867,15 @@ Formally, given numbers $f_0,\ldots,f_d$, the \emph{$h$-vector} $h_0,\ldots,h_{d
   & = & \sum_{i=0}^{d} h^*_i \binom{k+d-i}{d} \\
     & = & \sum_{i=1}^{d+1} h^\circ_i \binom{k+d-i}{d}.
 \end{eqnarray*}
-Generally, the vector $(f_0,\ldots,f_d)$ is going to be the $f$-vector $f(X)$ of a partial simplicial complex $X$, which means that $f_i$ denotes the number of $i$-dimensional faces of $X$. Correspondingly, the $h$-, $h^*$- and $h^\circ$-vectors of $X$ are defined via the above relations.
+Generally, the vector $(f_0,\ldots,f_d)$ is going to be the $f$-vector $f(X)$ of a partial simplicial complex $X$, which means that $f_i$ denotes the number of $i$-dimensional faces of $X$. Correspondingly, the $h$-, $h^*$- and $h^\circ$-vectors of $X$ are defined via the above relations, and are denoted by $h(X)$, $h^*(X)$ and $h^\circ(X)$, respectively. All of these definitions work for partial complexes as well.
 
-\comment{Todo: Insert definition of these object in terms of generating functions.}
-
-Alternatively, instead of defining the $h$-vectors of $X$ in terms of $f(X)$, it is possible to define them in terms of the Ehrhart polynomial $\ehr_X$ via $ehr_X(k) = \sum_{i=0}^{d} f_i \binom{k-1}{i}$. Note that if $X$ is a $d$-dimensional partial unimodular integral simplicial complex these two definitions yield the same result. As all simplicial complexes considered in this article are unimodular, we will use both definitions interchangeably. In general, we are going to use $f(p)$, $h(p)$, etc.~to denote the $f$- and $h$-vectors of a polynomial $p$ determined via $p(k)=\sum_{i=0}^{d} f_i \binom{k-1}{i}$.
+Alternatively, instead of defining the $h$-vectors of $X$ in terms of $f(X)$, it is possible to define them in terms of the Ehrhart polynomial $\ehr_X$ via $\ehr_X(k) = \sum_{i=0}^{d} f_i \binom{k-1}{i}$. Note that if $X$ is a $d$-dimensional partial unimodular integral simplicial complex these two definitions yield the same result. As all simplicial complexes considered in this article are unimodular, we will use both definitions interchangeably. In general, we are going to use $f(p)$, $h(p)$, etc.~to denote the $f$- and $h$-vectors of a polynomial $p$ determined via $p(k)=\sum_{i=0}^{d} f_i \binom{k-1}{i}$.
 
 On the level of generating functions, the above definitions can be expressed as follows. Let $p(k)=\sum_{i=0}^{d} f_i \binom{k-1}{i}$. Then the $h$-, $h^*$- and $h^\circ$-vectors can be defined, equivalently, by 
 \begin{eqnarray*}
-1 + \sum_{i=1}^\infty p(k) z^k & = &  \frac{\sum_{i=0}^{d+1}h_i z^i}{(1-z)^{d+1}}, \\
-\sum_{i=0}^\infty p(k) z^k & = &  \frac{\sum_{i=0}^{d}h^*_i z^i}{(1-z)^{d+1}}, \\
-\sum_{i=1}^\infty p(k) z^k & = &  \frac{\sum_{i=1}^{d+1}h^\circ_i z^i}{(1-z)^{d+1}},
+1 + \sum_{k=1}^\infty p(k) z^k & = &  \frac{\sum_{i=0}^{d+1}h_i z^i}{(1-z)^{d+1}}, \\
+\sum_{k=0}^\infty p(k) z^k & = &  \frac{\sum_{i=0}^{d}h^*_i z^i}{(1-z)^{d+1}}, \\
+\sum_{k=1}^\infty p(k) z^k & = &  \frac{\sum_{i=1}^{d+1}h^\circ_i z^i}{(1-z)^{d+1}},
 \end{eqnarray*}
 respectively. Note that 
 \[ 
@@ -885,27 +883,40 @@ h^*_0=\sum_{i=0}^d (-1)^i f_i
 \]
 from which it follows that the $h$- and $h^*$-vectors of a complex $X$ coincide if and only if the Euler characteristic of $X$ is one.
 
-
-\comment{TODO: $h$ and $h^*$ in terms of generating functions.}
-
-\comment{fb: Under construction from here on down.} 
+In particular, the scheduling polynomial encodes data about the allowed and forbidden subcomplexes. Regarding the $h$-vector, for example, the following theorem holds. Analogous statements about the $h^*$-vector and $h^\circ$-vector are straightforward to derive using the same technique.
 
 \begin{theorem}
 \label{Hilbert}
-Let $S$ be a scheduling problem and $\Sigma(S)$ the forbidden configuration, then
-%Suppose $\Delta(S)$ is simply a valid subcomplex of the Coxeter complex.  Equivalently, the collection of $\omega$ 
-%corresponding to faces in $\Delta(S)$ are closed under coarsening. (** fb: actually, this should work even for partial polytopal complexes, i.e., $\Delta(S)$ does not need to be closed under coarsening. **) Then:
-%\begin{enumerate}
-%\item If $\SSS_S = \sum h_F' L_F$, then the $h_F'$ are non-negative integers.
-$$ \sum_{n \geq 0} ((n+1)^d - \xi_S(n+1)) t^n = \frac{h_{\Sigma(S)}(t)}{(1-t)^d} $$
-%(** I worked this out with Marcelo, that paper is not written, may never be, but the credit should go to a preprint**) 
-%\end{enumerate}
-where $h_{\Sigma(S)}$ is... (**this needs to be defined for general configurations**).
+Let $S$ be a scheduling problem. Then the $h$-vector of the shifted scheduling polynomial $\xi_S(k-1)$ is the $h$-vector of the allowed subcomplex $\allowC(S)$ and the $h$-vector of the polynomial $(k-2)^n-\xi_S(k-1)$ is the $h$-vector of the forbidden subcomplex $\forbC(S)$, i.e.,
+\begin{eqnarray*}
+  h(\xi_S(k-1)) &=& h(\allowC(S)),   \text{ and}\\
+  h((k-2)^n - \xi_S(k-1)) &=& h(\forbC(S)),
+\end{eqnarray*}
+or equivalently,
+\begin{eqnarray*}
+ 1 + z\sum_{k = 0}^\infty \xi_S(k) z^k &=& \frac{\sum_{i=0}^{d+1} h_i(\allow(S)) z^i}{(1-z)^{d+1}}, \text{ and} \\
+ 1 + z\sum_{k = 0}^\infty \left( (k-1)^n - \xi_S(k) \right) z^k &=& \frac{\sum_{i=0}^{d+1} h_i(\forb(S)) z^i}{(1-z)^{d+1}}.
+\end{eqnarray*}
 \end{theorem}
+
+\comment{TODO: Credit work with Marcelo here.}
+
 \begin{proof}
-Felix, can you write this proof?
+Let $S$ be a scheduling problem. As we have seen in the previous two sections, we have
+\[
+  \xi_S(k) = \ehr_{\allow(S)}(k+1) \;\;\; \text{ and } \;\;\; (k-1)^n - \xi_{S}(k) = \ehr_{\forb(S)}(k+1),
+\]
+where we are working with the allowed and forbidden partial subcomplexes of the open cube $(0,1)^n$. The partial complexes $\allowC(S)$ and $\forbC(S)$ are partial subcomplexes of $\TC$ which is an integral unimodular triangulation of the open unit cube $(0,1)^n$. Therefore, the $h$-vector of these complexes coincide with the $h$-vectors of their respective Ehrhart polynomials. The statement about the generating functions then follows from 
+\[
+ 1 + z\sum_{k = 0}^\infty \xi_S(k) z^k =  1 + \sum_{k = 1}^\infty \ehr_{\allow(S)}(k) z^k = \frac{\sum_{i=0}^{d+1} h_i(\allow(S)) z^i}{(1-z)^{d+1}}
+\]
+and
+\[
+ 1 + z\sum_{k = 0}^\infty \left( (k-1)^n - \xi_S(k) \right) z^k =  1 + \sum_{k = 1}^\infty \ehr_{\forb(S)}(k) z^k = \frac{\sum_{i=0}^{d+1} h_i(\forb(S)) z^i}{(1-z)^{d+1}}.
+\]
 \end{proof}
 
+\comment{fb: Under construction from here...}
 
 \comment{Todo: Next, we talk about partitionability...} 
 
