@@ -906,7 +906,7 @@ Let $S$ be a scheduling problem. As we have seen in the previous two sections, w
 \[
   \xi_S(k) = \ehr_{\allow(S)}(k+1) \;\;\; \text{ and } \;\;\; (k-1)^n - \xi_{S}(k) = \ehr_{\forb(S)}(k+1),
 \]
-where we are working with the allowed and forbidden partial subcomplexes of the open cube $(0,1)^n$. The partial complexes $\allowC(S)$ and $\forbC(S)$ are partial subcomplexes of $\TC$ which is an integral unimodular triangulation of the open unit cube $(0,1)^n$. Therefore, the $h$-vector of these complexes coincide with the $h$-vectors of their respective Ehrhart polynomials. The statement about the generating functions then follows from 
+where we are working with the allowed and forbidden partial subcomplexes of the open cube $(0,1)^n$. The partial complexes $\allowC(S)$ and $\forbC(S)$ are partial subcomplexes of $\TC$ which is an integral unimodular triangulation of the open unit cube $(0,1)^n$. Therefore, the $h$-vector of these complexes coincide with the $h$-vectors of their respective Ehrhart polynomials. Moreover
 \[
  1 + z\sum_{k = 0}^\infty \xi_S(k) z^k =  1 + \sum_{k = 1}^\infty \ehr_{\allow(S)}(k) z^k = \frac{\sum_{i=0}^{d+1} h_i(\allow(S)) z^i}{(1-z)^{d+1}}
 \]
@@ -914,9 +914,64 @@ and
 \[
  1 + z\sum_{k = 0}^\infty \left( (k-1)^n - \xi_S(k) \right) z^k =  1 + \sum_{k = 1}^\infty \ehr_{\forb(S)}(k) z^k = \frac{\sum_{i=0}^{d+1} h_i(\forb(S)) z^i}{(1-z)^{d+1}}.
 \]
+imply the statement about generating functions.
 \end{proof}
 
+To understand the relationship of the $h$- and $h^*$-vectors to the fundamental basis of quasisymmetric functions, it is instructive to consider nc-quasisymmetric functions first.
+
+For $i=1,\ldots,d+1$, a half-open $d$-dimensional simplex $\Delta$ has precisely $i$ open faces if and only if the minimal dimension of a face of $\Delta$ is $i-1$.\footnote{Here we view $\Delta$ as a partial simplicial complex.} For example, the half-open tetrahedron $\Delta^3_1$ with one open face, can be written as the disjoint union of one open 3-simplex, three relatively open 2-simplices, three relatively open 1-simplices and one (relatively open) vertex. The minimal dimension of a face of $\Delta^3_1$ is therefore $1=3-1-1$. \comment{Todo: Add picture.} Moreover, this minimal face is uniquely determined: it is the unique minimum of the face poset of the partial simplicial complex induced by a half-open simplex. In fact, for $i=0,\ldots,d+1$ the face poset of $\Delta^d_i$ is a boolean lattice of dimension $d+1-i$ with the relatively open $d$-simplex as its maximum and the minimal $(i-1)$-simplex as its minimum. This also works for $i=0$ if we take as the empty face as a minimum, which is of dimension $-1$.
+
+In our case, these boolean lattices arise as subposets of the poset of ordered set partitions ordered by refinement relation. Let $\Delta$ be an $n$-dimensional half-open simplex with $i$ open faces, that, as a partial simplicial complex, is a subcomplex of $\TC$. As we have seen above, its faces are in one-to-one correspondence with ordered set partitions. Its minimal $i-1$-dimensional face corresponds to an ordered set partition $\Phi_\text{coarse}$ with $i-1$ parts. Its maximal $n$-dimensional face corresponds to an ordered set partition $\Phi_\text{fine}$ with $n$ parts, i.e., a permutation of $n$. The interval of ordered set partitions between $\Phi_\text{fine}$ and $\Phi_\text{coarse}$ corresponds precisely to the face poset of $\Delta$. This motivates the definition of nc-quasisymmetric functions $\ncL_{(\Phi_\text{coarse},\Phi_\text{fine})}$ indexed by pairs of ordered set partitions $(\Phi_\text{coarse},\Phi_\text{fine})$ where $\Phi_\text{coarse}$ is a coarsening of $\Phi_\text{fine}$ and which are given by
+\[
+  \ncL_{(\Phi_\text{coarse},\Phi_\text{fine})} = \sum_{\Phi_\text{coarse}\leq \Phi \leq \Phi_\text{fine}} \ncM_\Phi
+\]
+where $\Phi\leq\Phi'$ denotes that $\Phi$ is a coarsening of $\Phi'$. By virtue of this construction, we now immediately have
+\[
+  \ncL_{(\Phi_\text{coarse},\Phi_\text{fine})}(\mathbf{1}^k) = \ehr_\Delta(k+1) = \binom{k+n-i+1}{n}.
+\]
+
+This observation can be extended to quasisymmetric functions. As we have discussed, an nc-quasisymmetric function can be specialized to a quasisymmetric function by allowing the variables to commute. On the level of the monomial basis, this corresponds to taking the type map, i.e., $q(\ncM_\Phi)=M_{\operatorname{type}(\Phi)}$ where $q$ denotes the specialization that allows variables to commute. Conversely, there is a natural lifting $l$ that turns a quasisymmetric function into an nc-quasisymmetric function, simply by putting the variables in each monomial in ascending order. This motivates the following construction. Recall that the fundamental basis functions $L_\alpha$ for quasisymmetric functions are defined by
+\[
+  L_\alpha = \sum_{\beta: \beta\text{ refines }\alpha} M_\beta
+\]
+where $\alpha$ ranges over all ordered number partitions. For every number partition $\alpha$, let $\Phi_\alpha$ denote the lexicographically minimal ordered set partition with type $\alpha$. For example, if $\alpha=1+2+1$ as a partition of $4$, then $\Phi_\alpha=1|23|4$. Using this notation, the poset $P_\alpha$ consisting of all ordered number partitions $\beta$ that refine $\alpha$ is isomorphic to the poset $\mathcal{P}_{\Phi_\alpha}$ of all ordered set partitions that refine $\Phi_\alpha$ and coarsen $1|2|\cdots|n$. In particular,
+\[
+  L_\alpha(\mathbf{1}^k) = q(\ncL_{(\Phi_\alpha,1|2|\cdots|n)})(\mathbf{1}^k) = \binom{k+n-i}{n}
+\]
+where $i$ is the number of parts of $\alpha$.
+
+We summarize the connection between the fundamental basis functions and the $h$- and $h^*$-vectors in the following theorem.
+
 \comment{fb: Under construction from here...}
+
+\comment{The theorem is not quite right. I still need to take care of some shifting.}
+
+\begin{theorem}
+Let $S$ be a scheduling problem. Let $Q_S$ denote the scheduling quasisymmetric function and let
+\[
+  Q_S = \sum_{\alpha} \lambda_\alpha L_\alpha
+\]
+be its representation in terms of the fundamental basis. Then
+\[
+  \xi_S(k) = \sum_{i=1}^{d} h_i \binom{k+n-i}{n} \;\;\; \text{ where } \;\;\; h_i = \sum_{\alpha: \operatorname{parts}(\alpha)=i} \lambda_\alpha.
+\]
+The coefficients $h_i$ and $\lambda_\alpha$ are integral but can be negative.
+\end{theorem}
+
+\begin{proof}
+We have $Q_S(\mathbf{1}^k)=\xi_S(k)$. Moreover, we have seen that $L_\alpha(\mathbf{1}^k)=\binom{k+n-i}{n}$ where $I$ denotes the number of parts of $\alpha$. By collecting terms, we obtain the theorem.
+\end{proof}
+
+\comment{Todo: Stuff to add to this subsection.}
+
+\begin{itemize}
+\item Remark about working with the half-open cube to get rid of shifts.
+\item Work connection to Ehrhart into statement of theorem.
+\item Add theorem about quasisymmetric functions and the fundamental "basis" in terms of directed pairs.
+\item Turn fundamental generating system into a proper basis using "lexicographic refinement".
+\item Define partitionability and express positivity results in terms of partitionability.
+\item Remark on connection of partitionability
+\end{itemize}
 
 \comment{Todo: Next, we talk about partitionability...} 
 
