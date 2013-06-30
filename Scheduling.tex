@@ -984,16 +984,17 @@ where
 for $i=1,\ldots,n$. In particular $(0,h^*_1,\ldots,h^*_n)$ is the $h^*$-vector of the polynomial $\xi_S(k)$. The coefficients $h_i^*$, $\mu_\Phi$ and $\mu_{(\Phi_\text{coarse};\Phi_\text{fine})}$ are integral but may be negative.
 \end{theorem}
 
-\comment{Todo: revise this proof.}
-
 \begin{proof}
-We have $Q_S(\mathbf{1}^k)=\xi_S(k)$. Moreover, we have seen that $L_\alpha(\mathbf{1}^k)=\binom{k+n-i}{n}$ where $i$ denotes the length of $\alpha$. The length of an ordered partition of $n$ can range from $1$ to $n$. By collecting terms, we obtain the theorem. Note that the coefficients in the fundamental basis are integral because the coefficients in the monomial basis are integral (in fact, binary) for any scheduling problem.
+We have $\SSS_S(\mathbf{1}^k)=Q_S(\mathbf{1}^k)=\xi_S(k)$. Moreover, we have seen that 
+\[
+  \ncL_{(\Phi_\text{coarse};\Phi_\text{fine})}(\mathbf{1}^k) = L_\alpha(\mathbf{1}^k)=\binom{k+n-i}{n}
+\]
+where $i$ denotes the length of $\Phi_\text{coarse}$ and $\alpha$, respectively. The length of an ordered set partition of $[n]$ or, respectively, an ordered partition of $n$ can range from $1$ to $n$. By collecting terms in each case, we obtain the theorem. Note that the coefficients in the fundamental basis are integral because the coefficients in the monomial basis are integral for any scheduling problem.
 \end{proof}
 
 \comment{Todo: Stuff to add to this subsection.}
 
 \begin{itemize}
-\item Revise proof.
 \item Integrate with preliminaries.
 \item Remark about working with the half-open cube to get rid of shifts.
 \item Work connection to Ehrhart into statement of theorem.
