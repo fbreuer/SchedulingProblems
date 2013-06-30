@@ -944,27 +944,6 @@ When we let $(\Phi_\text{coarse};\Phi_\text{fine})$ range over all such pairs, t
 \]
 We call this the \emph{fundamental generating system} of the nc-quasisymmetric functions. To obtain a basis, we can fix a canonical choice for $\Phi_\text{fine}$ given $\Phi_\text{coarse}$: For any ordered set partition $\Phi$, let $\hat{\Phi}$ denote the permutation refining $\Phi$ with the property that the elements of each part of $\Phi$ are listed in order. For example, if $\Phi=35|247|16$ then $\hat{\Phi}=3|5|2|4|7|1|6$. We then define $L_\Phi:=L_{(\Phi;\hat{\Phi})}$. As $\Phi$ ranges over all ordered set partitions, the functions $L_\Phi$ form a basis for the space of nc-quasisymmetric functions. This is precisely the \emph{fundamental basis} for nc-quasisymmetric functions defined in terms of the relation $\preceq$ in the preliminaries. \comment{Todo: Unify this paragraph with preliminaries.}
 
-\begin{theorem}
-Let $S$ be a scheduling problem. Let
-\[
-  \SSS_S = \sum_\Phi \lambda_\Phi L_\Phi = \sum_{(\Phi_\text{coarse};\Phi_\text{fine})} \lambda_{(\Phi_\text{coarse};\Phi_\text{fine})} L_{(\Phi_\text{coarse};\Phi_\text{fine})}
-\]
-be the unique representation of $\SSS_S$ in the fundamental basis of nc-quasisymmetric functions and a representation of $\SSS_S$ in the fundamental generating system of nc-quasisymmetric functions, respectively. Then
-\[
-  \xi_S(k) = \sum_{i=1}^n h^*_i \binom{k+n-i}{n}
-\]
-where 
-\[
-  h^*_i = \sum_{\Phi: \operatorname{length}(\Phi) = i} \lambda_\Phi =
-   \sum_{\substack{(\Phi_\text{coarse};\Phi_\text{fine}): 
-        \\ \Phi_\text{coarse} \leq \Phi_\text{fine}
-        \\ \operatorname{length}(\Phi_\text{coarse}) = i
-        \\ \operatorname{length}(\Phi_\text{fine}) = n
-   }} \lambda_{(\Phi_\text{coarse};\Phi_\text{fine})}
-\]
-for $i=1,\ldots,n$. In particular $(0,h^*_1,\ldots,h^*_n)$ is the $h^*$-vector of the polynomial $\xi_S(k)$. The coefficients $h_i^*$, $\lambda_\Phi$ and $\lambda_{(\Phi_\text{coarse};\Phi_\text{fine})}$ are integral but may be negative.
-\end{theorem}
-
 This observation can be extended to quasisymmetric functions. As we have discussed, an nc-quasisymmetric function can be specialized to a quasisymmetric function by allowing the variables to commute. On the level of the monomial basis, this corresponds to taking the type map, i.e., $q(\ncM_\Phi)=M_{\operatorname{type}(\Phi)}$ where $q$ denotes the specialization that allows variables to commute. Conversely, there is a natural lifting $l$ that turns a quasisymmetric function into an nc-quasisymmetric function, simply by putting the variables in each monomial in ascending order. This motivates the following construction. Recall that the fundamental basis functions $L_\alpha$ for quasisymmetric functions are defined by
 \[
   L_\alpha = \sum_{\beta: \beta\text{ refines }\alpha} M_\beta
@@ -977,21 +956,35 @@ where $i$ is the length of $\alpha$.
 
 We summarize the connection between the fundamental basis functions and the $h$- and $h^*$-vectors in the following theorem.
 
-\comment{fb: Under construction from here...}
-
-\comment{The theorem is not quite right. I still need to take care of some shifting.}
-
 \begin{theorem}
-Let $S$ be a scheduling problem. Let $Q_S$ denote the scheduling quasisymmetric function and let
+Let $S$ be a scheduling problem. Let
+\[
+  \SSS_S = \sum_\Phi \mu_\Phi L_\Phi = \sum_{(\Phi_\text{coarse};\Phi_\text{fine})} \mu_{(\Phi_\text{coarse};\Phi_\text{fine})} L_{(\Phi_\text{coarse};\Phi_\text{fine})}
+\]
+be the unique representation of $\SSS_S$ in the fundamental basis of nc-quasisymmetric functions and a representation of $\SSS_S$ in the fundamental generating system of nc-quasisymmetric functions, respectively. Moreover, let $Q_S$ denote the scheduling quasisymmetric function and let
 \[
   Q_S = \sum_{\alpha} \lambda_\alpha L_\alpha
 \]
-be its representation in terms of the fundamental basis. Then
+be its representation in terms of the fundamental basis of quasisymmetric functions. Then
 \[
-  \xi_S(k) = \sum_{i=1}^{n} h^*_i \binom{k+n-i}{n} \;\;\; \text{ where } \;\;\; h^*_i = \sum_{\alpha: \operatorname{length}(\alpha)=i} \lambda_\alpha.
+  \xi_S(k) = \sum_{i=1}^n h^*_i \binom{k+n-i}{n}
 \]
-In particular, the vector $(0,h^*_1,\ldots,h^*_n)$ is the $h^*$-vector of the polynomial $\xi_S$. The coefficients $h^*_i$ and $\lambda_\alpha$ are integral but can be negative.
+where 
+\[
+  h^*_i 
+  = \sum_{\Phi: \operatorname{length}(\Phi) = i} \mu_\Phi 
+  =
+   \sum_{\substack{(\Phi_\text{coarse};\Phi_\text{fine}): 
+        \\ \Phi_\text{coarse} \leq \Phi_\text{fine}
+        \\ \operatorname{length}(\Phi_\text{coarse}) = i
+        \\ \operatorname{length}(\Phi_\text{fine}) = n
+   }} \mu_{(\Phi_\text{coarse};\Phi_\text{fine})}
+  = \sum_{\alpha: \operatorname{length}(\alpha)=i} \lambda_\alpha.
+\]
+for $i=1,\ldots,n$. In particular $(0,h^*_1,\ldots,h^*_n)$ is the $h^*$-vector of the polynomial $\xi_S(k)$. The coefficients $h_i^*$, $\mu_\Phi$ and $\mu_{(\Phi_\text{coarse};\Phi_\text{fine})}$ are integral but may be negative.
 \end{theorem}
+
+\comment{Todo: revise this proof.}
 
 \begin{proof}
 We have $Q_S(\mathbf{1}^k)=\xi_S(k)$. Moreover, we have seen that $L_\alpha(\mathbf{1}^k)=\binom{k+n-i}{n}$ where $i$ denotes the length of $\alpha$. The length of an ordered partition of $n$ can range from $1$ to $n$. By collecting terms, we obtain the theorem. Note that the coefficients in the fundamental basis are integral because the coefficients in the monomial basis are integral (in fact, binary) for any scheduling problem.
@@ -1000,6 +993,8 @@ We have $Q_S(\mathbf{1}^k)=\xi_S(k)$. Moreover, we have seen that $L_\alpha(\mat
 \comment{Todo: Stuff to add to this subsection.}
 
 \begin{itemize}
+\item Revise proof.
+\item Integrate with preliminaries.
 \item Remark about working with the half-open cube to get rid of shifts.
 \item Work connection to Ehrhart into statement of theorem.
 \item Add theorem about quasisymmetric functions and the fundamental "basis" in terms of directed pairs.
