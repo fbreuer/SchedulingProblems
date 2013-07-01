@@ -51,10 +51,11 @@
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\ZZ}{\mathbb{Z}}
-\newcommand{\HHH}{\mathcal{H}}
 \newcommand{\AAA}{\mathcal{A}}
-\newcommand{\SSS}{\mathcal{S}}
 \newcommand{\FFF}{\mathcal{F}}
+\newcommand{\HHH}{\mathcal{H}}
+\newcommand{\NNN}{\mathcal{N}}
+\newcommand{\SSS}{\mathcal{S}}
 \newcommand{\K}{\mathbf{K}}
 \renewcommand{\L}{\mathbf{L}}
 \newcommand{\U}{\mathbf{U}}
@@ -512,33 +513,31 @@ bases other than the monomial, in particular the fundamental basis.
 To this end we review analogous bases in NCQSym which allow us to also
 specialize via the type map.
 
-
 Recall that the fundamental quasisymmetric functions are defined from the monomial quasisymmetric functions as follows.  For any composition $\alpha$, 
 $$L_{\alpha} := \sum_{\beta:\beta \textrm{ refines } \alpha} M_{\beta}.$$
+The poset of all compositions that refine $\alpha$, ordered by the refinement relation, forms a boolean lattice of dimension $n-i$ where $n$ is the total number of elements in the ground set and $i$ is the length of $\alpha$. For example, the composition $3+1$ is refined by $1+2+1$, $2+1+1$ and $1+1+1+1$, where $1+2+1$ and $2+1+1$ are incomparable under the refinement relation.
 
-To construct an analogous basis in NCQSym, consider the order relation $\preceq$ on ordered set partitions given by $\Phi \gtrdot (\Phi_i, \ldots,\Phi_{i-1}, \Phi_i \cup \Phi_{i+1}, \Phi_{i+2}, \ldots \Phi_k)$ where every element of the $i$th block is less than every element of the $i+1$th block. 
-% This gives a coarsening order  where blocks can only be merged if their elements in the natural order.
-(Note that this order is opposite to the order $\leq_*$ defined in [cite: Zab].(** Draw poset?**))  Define the $\mathcal{L}$ basis for NCQSym as follows. For any ordered set partition $\Phi$,
-$$\mathcal{L}_{\Phi} := \sum_{\Gamma:\Gamma \preceq \Phi} \ncM_{\Phi}.$$
+In the case of nc-quasisymmetric functions, we can perform a similar construction as follows. Let $\Phi_\text{coarse}$ and $\Phi_\text{fine}$ and be two ordered set partitions such that $\Phi_\text{fine}$ is a permutation\footnote{$\Phi_text{fine}$ is an ordered set partition of length $n$, i.e., a maximum of the refinement relation.} that refines $\Phi_\text{coarse}$. Then the poset of all ordered set partitions $\Phi$ in between $\Phi_\text{coarse}$ and $\Phi_\text{fine}$ under the refinement relation forms again a boolean lattice of dimension $n-i$ where $i$ is the length of $\Phi_\text{coarse}$. Moreover, the type map gives an isomorphism from this boolean lattice to the boolean lattice of all compositions refining $\operatorname{type}(\Phi_\text{coarse})$. Thus, when we define
+\[
+  \ncL_{(\Phi_\text{coarse};\Phi_\text{fine})} = \sum_{\Phi_\text{coarse}\leq \Phi \leq \Phi_\text{fine}} \ncM_\Phi
+\]
+we obtain an nc-quasisymmetric function $\ncL_{(\Phi_\text{coarse};\Phi_\text{fine})}$ that specializes to $L_{\operatorname{type}(\Phi_\text{coarse})}$ when we allow variables to commute.
 
-From the $\ncL$ basis, applying the type map gives the corresponding quasisymmetric function in the $L$ basis.  
+As $(\Phi_\text{coarse};\Phi_\text{fine})$ ranges over all such pairs of ordered set partitions, which are comparable under the refinement relation and  where$\Phi_\text{fine}$ has length $n$, the functions $\ncL_{(\Phi_\text{coarse};\Phi_\text{fine})}$ form a generating system of the linear space of all nc-quasisymmetric functions. However, they do not form a basis as there are multiple representations of the same quasisymmetric function, for example
+\[
+  \ncL_{(1|2|3;1|2|3)} + \ncL_{(1|23;1|3|2)} =   \ncL_{(1|23;1|2|3)} +  \ncL_{(1|3|2;1|3|2)}.
+\]
+We call this the \emph{fundamental generating system} of the nc-quasisymmetric functions. To obtain a basis, we can fix a canonical choice for $\Phi_\text{fine}$ given $\Phi_\text{coarse}$: For any ordered set partition $\Phi$, let $\hat{\Phi}$ denote the permutation refining $\Phi$ with the property that the elements of each part of $\Phi$ are listed in order. For example, if $\Phi=35|247|16$ then $\hat{\Phi}=3|5|2|4|7|1|6$. We then define $L_\Phi:=L_{(\Phi;\hat{\Phi})}$. As $\Phi$ ranges over all ordered set partitions, the functions $L_\Phi$ form a basis for the space of nc-quasisymmetric functions, which we call the \emph{fundamental basis}.
 
-
-
-%% \begin{diagram}
-%% A &\rTo^{a} &B\\
-%% \dTo_{b} & &\dTo_{c}\\
-%% C &\rTo^{d} &D
-%% \end{diagram}
+Alternatively, this fundamental basis for nc-quasisymmetric functions can be defined in terms of a \emph{directed refinement relation} $\preceq$ on ordered set partitions given by $\Phi \gtrdot (\Phi_i, \ldots,\Phi_{i-1}, \Phi_i \cup \Phi_{i+1}, \Phi_{i+2}, \ldots \Phi_k)$ where every element of the $i$th block is less than every element of the $i+1$th block. (Note that this order is opposite to the order $\leq_*$ defined in [cite: Zab].(** Draw poset?**)) Then, the $\mathcal{L}$ basis for NCQSym can be defined by
+$$\mathcal{L}_{\Phi} := \sum_{\Gamma:\Gamma \preceq \Phi} \ncM_{\Phi},$$
+where $\Phi$ ranges over all ordered set partitions. Note this definition coincides with the previous one. Applying the type map to the $\ncL$ basis gives the corresponding quasisymmetric function in the $L$ basis, in such a way that directed refinement on the level of nc-quasisymmetric functions corresponds to refinement on the level of quasisymmetric functions.
 
 \begin{diagram}
 NCQSym \ncM & \rTo^{\text{ directed refinement }} & NCQSym \ncL\\
 \dTo^{ \text{type}} & & \dTo_{ \text{type}}\\
 QSym M & \rTo^{\text{refinement}} & QSym L
 \end{diagram}
-
-
-
 
 \begin{example}
 
@@ -925,51 +924,37 @@ To understand the relationship of the $h$- and $h^*$-vectors to the fundamental 
 
 For $i=1,\ldots,d+1$, a half-open $d$-dimensional simplex $\Delta$ has precisely $i$ open faces if and only if the minimal dimension of a face of $\Delta$ is $i-1$.\footnote{Here we view $\Delta$ as a partial simplicial complex.} For example, the half-open tetrahedron $\Delta^3_1$ with one open face, can be written as the disjoint union of one open 3-simplex, three relatively open 2-simplices, three relatively open 1-simplices and one (relatively open) vertex. The minimal dimension of a face of $\Delta^3_1$ is therefore $1=3-1-1$. \comment{Todo: Add picture.} Moreover, this minimal face is uniquely determined: it is the unique minimum of the face poset of the partial simplicial complex induced by a half-open simplex. In fact, for $i=0,\ldots,d+1$ the face poset of $\Delta^d_i$ is a boolean lattice of dimension $d+1-i$ with the relatively open $d$-simplex as its maximum and the minimal $(i-1)$-simplex as its minimum. This also works for $i=0$ if we take as the empty face as a minimum, which is of dimension $-1$.
 
-In our case, these boolean lattices arise as subposets of the poset of ordered set partitions ordered by refinement relation. Let $\Delta$ be an $n$-dimensional half-open simplex with $i$ open faces, that, as a partial simplicial complex, is a subcomplex of $\TC$. As we have seen above, its faces are in one-to-one correspondence with ordered set partitions. Its minimal $i-1$-dimensional face corresponds to an ordered set partition $\Phi_\text{coarse}$ of length $i-1$. Its maximal $n$-dimensional face corresponds to an ordered set partition $\Phi_\text{fine}$ of length $n$, i.e., a permutation of $n$. The interval of ordered set partitions between $\Phi_\text{fine}$ and $\Phi_\text{coarse}$ corresponds precisely to the face poset of $\Delta$. This motivates the definition of nc-quasisymmetric functions $\ncL_{(\Phi_\text{coarse};\Phi_\text{fine})}$ indexed by pairs of ordered set partitions $(\Phi_\text{coarse};\Phi_\text{fine})$ where $\Phi_\text{coarse}$ is a coarsening of $\Phi_\text{fine}$ and which are given by
-\[
-  \ncL_{(\Phi_\text{coarse};\Phi_\text{fine})} = \sum_{\Phi_\text{coarse}\leq \Phi \leq \Phi_\text{fine}} \ncM_\Phi
-\]
-where $\Phi\leq\Phi'$ denotes that $\Phi$ is a coarsening of $\Phi'$. By virtue of this construction, we now immediately have
+In the case of $\TC$, these boolean lattices arise correspond precisely to the boolean lattices we encountered in the definition of $\ncL$ basis for nc-quasisymmetric functions. Let $\Delta$ be an $n$-dimensional half-open simplex with $i$ open faces, that, as a partial simplicial complex, is a subcomplex of $\TC$. As we have seen above, its faces are in one-to-one correspondence with ordered set partitions. Its minimal $i-1$-dimensional face corresponds to an ordered set partition $\Phi_\text{coarse}$ of length $i-1$. Its maximal $n$-dimensional face corresponds to an ordered set partition $\Phi_\text{fine}$ of length $n$, i.e., a permutation of $n$. The interval of ordered set partitions between $\Phi_\text{fine}$ and $\Phi_\text{coarse}$ corresponds precisely to the face poset of $\Delta$. Therefore, we now immediately have
 \[
   \ncL_{(\Phi_\text{coarse};\Phi_\text{fine})}(\mathbf{1}^k) = \ehr_\Delta(k+1) = \binom{k+n-i+1}{n}.
 \]
 
 In other words, if $\Phi_{\text{coarse}}$ is an ordered set partition of length $j=1,\ldots,n$ and $\Phi_{\text{fine}}$ is a permutation refining it, then 
 \[
-  \ncL_{(\Phi_\text{coarse};\Phi_\text{fine})}(\mathbf{1}^k) = \binom{k+n-j}{n}.
+  \ncL_{(\Phi_\text{coarse};\Phi_\text{fine})}(\mathbf{1}^k) ) = \ncL_{\Phi_\text{coarse}}(\mathbf{1}^k) = \binom{k+n-j}{n}.
 \]
-When we let $(\Phi_\text{coarse};\Phi_\text{fine})$ range over all such pairs, the functions $\ncL_{(\Phi_\text{coarse};\Phi_\text{fine})}$ form a generating system of the linear space of all nc-quasisymmetric functions. However, they do not form a basis as there are multiple representations of the same quasisymmetric function, for example
-\[
-  \ncL_{(1|2|3;1|2|3)} + \ncL_{(1|23;1|3|2)} =   \ncL_{(1|23;1|2|3)} +  \ncL_{(1|3|2;1|3|2)}.
-\]
-We call this the \emph{fundamental generating system} of the nc-quasisymmetric functions. To obtain a basis, we can fix a canonical choice for $\Phi_\text{fine}$ given $\Phi_\text{coarse}$: For any ordered set partition $\Phi$, let $\hat{\Phi}$ denote the permutation refining $\Phi$ with the property that the elements of each part of $\Phi$ are listed in order. For example, if $\Phi=35|247|16$ then $\hat{\Phi}=3|5|2|4|7|1|6$. We then define $L_\Phi:=L_{(\Phi;\hat{\Phi})}$. As $\Phi$ ranges over all ordered set partitions, the functions $L_\Phi$ form a basis for the space of nc-quasisymmetric functions. This is precisely the \emph{fundamental basis} for nc-quasisymmetric functions defined in terms of the relation $\preceq$ in the preliminaries. \comment{Todo: Unify this paragraph with preliminaries.}
 
-This observation can be extended to quasisymmetric functions. As we have discussed, an nc-quasisymmetric function can be specialized to a quasisymmetric function by allowing the variables to commute. On the level of the monomial basis, this corresponds to taking the type map, i.e., $q(\ncM_\Phi)=M_{\operatorname{type}(\Phi)}$ where $q$ denotes the specialization that allows variables to commute. Conversely, there is a natural lifting $l$ that turns a quasisymmetric function into an nc-quasisymmetric function, simply by putting the variables in each monomial in ascending order. This motivates the following construction. Recall that the fundamental basis functions $L_\alpha$ for quasisymmetric functions are defined by
+This observation extends directly to quasisymmetric functions. If $q$ denotes the specialization that turns an nc-quasisymmetric function into a quasisymmetric function by allowing variables to commute, then we have 
 \[
-  L_\alpha = \sum_{\beta: \beta\text{ refines }\alpha} M_\beta
+  L_\alpha(\mathbf{1}^k) = q(\ncL_{\Phi_\alpha})(\mathbf{1}^k) = \binom{k+n-i}{n}
 \]
-where $\alpha$ ranges over all ordered number partitions. For every number partition $\alpha$, let $\Phi_\alpha$ denote the lexicographically minimal ordered set partition with type $\alpha$. For example, if $\alpha=1+2+1$ as a partition of $4$, then $\Phi_\alpha=1|23|4$. Using this notation, the poset $P_\alpha$ consisting of all ordered number partitions $\beta$ that refine $\alpha$ is isomorphic to the poset $\mathcal{P}_{\Phi_\alpha}$ of all ordered set partitions that refine $\Phi_\alpha$ and coarsen $1|2|\cdots|n$. In particular,
-\[
-  L_\alpha(\mathbf{1}^k) = q(\ncL_{(\Phi_\alpha,1|2|\cdots|n)})(\mathbf{1}^k) = \binom{k+n-i}{n}
-\]
-where $i$ is the length of $\alpha$.
+for any composition $\alpha$, where $\Phi_\alpha$ denotes any ordered set partition with $\operatorname{type}(\Phi_\alpha) = \alpha$, and $i$ is the length of $\alpha$.
 
-We summarize the connection between the fundamental basis functions and the $h$- and $h^*$-vectors in the following theorem.
+This leads to the following connection between the fundamental basis of (nc-)quasisymmetric functions and the $h^*$-vector of corresponding polynomials.
 
 \begin{theorem}
-Let $S$ be a scheduling problem. Let
+Let $\NNN$ denote an nc-quasisymmetric function, let $Q$ denote a quasisymmetric function and let $p$ denote a polynomial of degree at most $n$ such that
 \[
-  \SSS_S = \sum_\Phi \mu_\Phi L_\Phi = \sum_{(\Phi_\text{coarse};\Phi_\text{fine})} \mu_{(\Phi_\text{coarse};\Phi_\text{fine})} L_{(\Phi_\text{coarse};\Phi_\text{fine})}
+  q(\NNN) = Q \;\;\; \text{ and } \;\;\; \NNN(\mathbf{1}^k) = Q(\mathbf{1}^k) = p(k),
 \]
-be the unique representation of $\SSS_S$ in the fundamental basis of nc-quasisymmetric functions and a representation of $\SSS_S$ in the fundamental generating system of nc-quasisymmetric functions, respectively. Moreover, let $Q_S$ denote the scheduling quasisymmetric function and let
-\[
-  Q_S = \sum_{\alpha} \lambda_\alpha L_\alpha
-\]
-be its representation in terms of the fundamental basis of quasisymmetric functions. Then
-\[
-  \xi_S(k) = \sum_{i=1}^n h^*_i \binom{k+n-i}{n}
-\]
-where 
+i.e., $\NNN$ specializes to $Q$ when we allow variables to commute and both $\NNN$ and $Q$ specialize to $p$ when we plug in $k$ ones. Moreover, let $\mu_\Phi$, $\mu_{(\Phi_\text{coarse};\Phi_\text{fine})}$ and $\lambda_\alpha$ denote coefficient vectors of $\NNN$ and $Q$ in terms of the fundamental bases and let $(0,h^*_1,\ldots,h^*_n)$ denote the $h^*$-vector of $p$, i.e.,
+\begin{eqnarray*}
+  \NNN &=& \sum_\Phi \mu_\Phi L_\Phi 
+  \\ &=& \sum_{(\Phi_\text{coarse};\Phi_\text{fine})} \mu_{(\Phi_\text{coarse};\Phi_\text{fine})} L_{(\Phi_\text{coarse};\Phi_\text{fine})}, \\
+  Q &=& \sum_{\alpha} \lambda_\alpha L_\alpha,\\
+  p(k) &=& \sum_{i=1}^n h^*_i \binom{k+n-i}{n}
+\end{eqnarray*}
+Then
 \[
   h^*_i 
   = \sum_{\Phi: \operatorname{length}(\Phi) = i} \mu_\Phi 
@@ -981,8 +966,10 @@ where
    }} \mu_{(\Phi_\text{coarse};\Phi_\text{fine})}
   = \sum_{\alpha: \operatorname{length}(\alpha)=i} \lambda_\alpha.
 \]
-for $i=1,\ldots,n$. In particular $(0,h^*_1,\ldots,h^*_n)$ is the $h^*$-vector of the polynomial $\xi_S(k)$. The coefficients $h_i^*$, $\mu_\Phi$ and $\mu_{(\Phi_\text{coarse};\Phi_\text{fine})}$ are integral but may be negative.
+for $i=1,\ldots,n$. The coefficients $h_i^*$, $\mu_\Phi$, $\mu_{(\Phi_\text{coarse};\Phi_\text{fine})}$ and $\lambda_\alpha$ are integral but may be negative. However, non-negativity of the $\mu_\Phi$ or the $\mu_{(\Phi_\text{coarse};\Phi_\text{fine})}$ implies non-negativity of the $\lambda_\alpha$, and, in turn, non-negativity of the $\lambda_\alpha$ implies non-negativity of the $h^*_i$.
 \end{theorem}
+
+In particular, the theorem holds if $\NNN=\SSS_S$ is a scheduling nc-quasisymmetric function and $p(k)=\xi_S(k)$ is the corresponding scheduling polynomial.
 
 \begin{proof}
 We have $\SSS_S(\mathbf{1}^k)=Q_S(\mathbf{1}^k)=\xi_S(k)$. Moreover, we have seen that 
@@ -995,7 +982,6 @@ where $i$ denotes the length of $\Phi_\text{coarse}$ and $\alpha$, respectively.
 \comment{Todo: Stuff to add to this subsection.}
 
 \begin{itemize}
-\item Integrate with preliminaries.
 \item Remark about working with the half-open cube to get rid of shifts.
 \item Work connection to Ehrhart into statement of theorem.
 \item Add theorem about quasisymmetric functions and the fundamental "basis" in terms of directed pairs.
