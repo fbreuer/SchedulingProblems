@@ -856,25 +856,23 @@ A $d$-dimensional simplex can have between 0 and $d+1$ open faces, and indeed it
 \[
   p(k) = \sum_{i=0}^{d+1} h_i \binom{k+d-i}{d}.
 \] 
-However, these coefficients $h_i$ are not uniquely determined as there is one degree of freedom too many. There are three different conventions for normalization, which determine the coefficient vector uniquely. The first convention is to fix $h_0=1$, which gives rise to the $h$-vector as commonly used in the study of simplicial complexes \cite{something}. This choice is motivated by the notion of a shelling, which induces a partition of a triangulation into half-open simplices in which exactly one is closed. The second convention is to fix $h_{d+1}=0$, which gives rise to the $h^*$-vector (or Ehrhart $\delta$-vector) used in Ehrhart theory \cite{something}. The third convention is to fix $h_0=0$, which arises naturally from the study of the fundamental basis for quasisymmetric functions, as we will see below, and which we will use to introduce the $h^\circ$-vector. Geometrically, the $h^*$- and $h^\circ$-vectors correspond to partitions of a triangulation into half-open simplicies without fully-open and fully-closed simplicies, respectively. It is important to note, however, that all three coefficient vectors are well-defined, even if such partitions do not exist.
+However, these coefficients $h_i$ are not uniquely determined as there is one degree of freedom too many. There are two different conventions for normalization, which determine the coefficient vector uniquely. The first convention is to fix $h_0=1$, which gives rise to the $h$-vector as commonly used in the study of simplicial complexes \cite{something}. This choice is motivated by the notion of a shelling, which induces a partition of a triangulation into half-open simplices in which exactly one is closed. The second convention is to fix $h_{d+1}=0$, which gives rise to the $h^*$-vector (or Ehrhart $\delta$-vector) used in Ehrhart theory \cite{something}. Geometrically, the $h^*$- and $h^\circ$-vectors correspond to partitions of a triangulation into half-open simplicies without fully-open simplicies. It is important to note, however, that the two coefficient vectors are well-defined, even if such partitions do not exist.
 
-Formally, given numbers $f_0,\ldots,f_d$, the \emph{$h$-vector} $h_0,\ldots,h_{d+1}$, the \emph{$h^*$-vector} $h^*_0,\ldots,h^*_{d}$ and the \emph{$h^\circ$-vector} $h^\circ_1,\ldots,h^\circ_{d+1}$ are defined, respectively, via $h_0=1$ and
+Formally, given numbers $f_0,\ldots,f_d$, the \emph{$h$-vector} $h_0,\ldots,h_{d+1}$ and the \emph{$h^*$-vector} $h^*_0,\ldots,h^*_{d}$ are defined, respectively, via $h_0=1$ and
 \begin{eqnarray*}
   \sum_{i=0}^{d} f_i \binom{k-1}{i} & = &
   \binom{k+d}{d} + \sum_{i=1}^{d+1} h_i \binom{k+d-i}{d} 
   \\ 
-  & = & \sum_{i=0}^{d} h^*_i \binom{k+d-i}{d} \\
-    & = & \sum_{i=1}^{d+1} h^\circ_i \binom{k+d-i}{d}.
+  & = & \sum_{i=0}^{d} h^*_i \binom{k+d-i}{d} 
 \end{eqnarray*}
-Generally, the vector $(f_0,\ldots,f_d)$ is going to be the $f$-vector $f(X)$ of a partial simplicial complex $X$, which means that $f_i$ denotes the number of $i$-dimensional faces of $X$. Correspondingly, the $h$-, $h^*$- and $h^\circ$-vectors of $X$ are defined via the above relations, and are denoted by $h(X)$, $h^*(X)$ and $h^\circ(X)$, respectively. All of these definitions work for partial complexes as well.
+Generally, the vector $(f_0,\ldots,f_d)$ is going to be the $f$-vector $f(X)$ of a partial simplicial complex $X$, which means that $f_i$ denotes the number of $i$-dimensional faces of $X$. Correspondingly, the $h$- and $h^*$-vectors of $X$ are defined via the above relations, and are denoted by $h(X)$ and $h^*(X)$, respectively. All of these definitions work for partial complexes as well.
 
-Alternatively, instead of defining the $h$-vectors of $X$ in terms of $f(X)$, it is possible to define them in terms of the Ehrhart polynomial $\ehr_X$ via $\ehr_X(k) = \sum_{i=0}^{d} f_i \binom{k-1}{i}$. Note that if $X$ is a $d$-dimensional partial unimodular integral simplicial complex these two definitions yield the same result. As all simplicial complexes considered in this article are unimodular, we will use both definitions interchangeably. In general, we are going to use $f(p)$, $h(p)$, etc.~to denote the $f$- and $h$-vectors of a polynomial $p$ determined via $p(k)=\sum_{i=0}^{d} f_i \binom{k-1}{i}$.
+Alternatively, instead of defining the $h$- and $h^*$-vectors of $X$ in terms of $f(X)$, it is possible to define them in terms of the Ehrhart polynomial $\ehr_X$ via $\ehr_X(k) = \sum_{i=0}^{d} f_i \binom{k-1}{i}$. Note that if $X$ is a $d$-dimensional partial unimodular integral simplicial complex these two definitions yield the same result. As all simplicial complexes considered in this article are unimodular, we will use both definitions interchangeably. In general, we are going to use $f(p)$, $h(p)$, and $h^*(p)$ to denote the $f$-, $h$- and $h^*$-vectors of a polynomial $p$ determined via $p(k)=\sum_{i=0}^{d} f_i \binom{k-1}{i}$.
 
-On the level of generating functions, the above definitions can be expressed as follows. Let $p(k)=\sum_{i=0}^{d} f_i \binom{k-1}{i}$. Then the $h$-, $h^*$- and $h^\circ$-vectors can be defined, equivalently, by 
+On the level of generating functions, the above definitions can be expressed as follows. Let $p(k)=\sum_{i=0}^{d} f_i \binom{k-1}{i}$. Then the $h$- and $h^*$-vectors can be defined, equivalently, by 
 \begin{eqnarray*}
-1 + \sum_{k=1}^\infty p(k) z^k & = &  \frac{\sum_{i=0}^{d+1}h_i z^i}{(1-z)^{d+1}}, \\
+1 + \sum_{k=1}^\infty p(k) z^k & = &  \frac{\sum_{i=0}^{d+1}h_i z^i}{(1-z)^{d+1}} \;\;\; \text{ and } \\
 \sum_{k=0}^\infty p(k) z^k & = &  \frac{\sum_{i=0}^{d}h^*_i z^i}{(1-z)^{d+1}}, \\
-\sum_{k=1}^\infty p(k) z^k & = &  \frac{\sum_{i=1}^{d+1}h^\circ_i z^i}{(1-z)^{d+1}},
 \end{eqnarray*}
 respectively. Note that 
 \[ 
@@ -882,7 +880,7 @@ h^*_0=\sum_{i=0}^d (-1)^i f_i
 \]
 from which it follows that the $h$- and $h^*$-vectors of a complex $X$ coincide if and only if the Euler characteristic of $X$ is one.
 
-In particular, the scheduling polynomial encodes data about the allowed and forbidden subcomplexes. Regarding the $h$-vector, for example, the following theorem holds. Analogous statements about the $h^*$-vector and $h^\circ$-vector are straightforward to derive using the same technique.
+In particular, the scheduling polynomial encodes data about the allowed and forbidden subcomplexes. Regarding the $h$-vector, for example, the following theorem holds. Analogous statements about the $h^*$-vector are straightforward to derive using the same technique.
 
 \begin{theorem}
 \label{Hilbert}
@@ -939,12 +937,12 @@ In the case of $\TC$, these boolean lattices arise correspond precisely to the b
 
 In other words, if $\Phi_{\text{coarse}}$ is an ordered set partition of length $j=1,\ldots,n$ and $\Phi_{\text{fine}}$ is a permutation refining it, then 
 \[
-  \ncL_{(\Phi_\text{coarse};\Phi_\text{fine})}(\mathbf{1}^k) ) = \ncL_{\Phi_\text{coarse}}(\mathbf{1}^k) = \binom{k+n-j}{n}.
+  \ncL_{(\Phi_\text{coarse};\Phi_\text{fine})}(\mathbf{1}^k) = \ncL_{\Phi_\text{coarse}}(\mathbf{1}^k) = \binom{k+n-j}{n}.
 \]
 
 This observation extends directly to quasisymmetric functions. If $q$ denotes the specialization that turns an nc-quasisymmetric function into a quasisymmetric function by allowing variables to commute, then we have 
 \[
-  L_\alpha(\mathbf{1}^k) = q(\ncL_{\Phi_\alpha})(\mathbf{1}^k) = \binom{k+n-i}{n}
+  L_\alpha = q(\ncL_{\Phi_\alpha}) \;\;\; \text{ and } \;\;\; L_\alpha(\mathbf{1}^k) = \ncL_{\Phi_\alpha}(\mathbf{1}^k) = \binom{k+n-i}{n}
 \]
 for any composition $\alpha$, where $\Phi_\alpha$ denotes any ordered set partition with $\operatorname{type}(\Phi_\alpha) = \alpha$, and $i$ is the length of $\alpha$.
 
@@ -987,26 +985,37 @@ We have $\NNN(\mathbf{1}^k)=Q(\mathbf{1}^k)=p(k)$. Moreover, we have seen that
 where $i$ denotes the length of $\Phi_\text{coarse}$ and $\alpha$, respectively. The length of an ordered set partition of $[n]$ or, respectively, an ordered partition of $n$ can range from $1$ to $n$. By collecting terms in each case, we obtain the theorem. Note that the coefficients in the fundamental basis are integral because the coefficients in the monomial basis are integral for any scheduling problem.
 \end{proof}
 
-\comment{fb: Under construction from here.}
+An important class of results in the literature on quasisymmetric functions, simplicial complexes and Ehrhart theory are theorems asserting the non-negativity of the $h$- and $h^*$-vectors as well as the non-negativity of coefficients in the fundamental basis. \comment{Todo: Add examples/citations.} One class of theorems of this type are phrased in terms of partitionability, which we can generalize for our purposes.
 
-\comment{Todo: Stuff to add to this subsection.}
+A pure partial simplicial complex $K$ is \emph{partitionable} if $K$ can be written as a disjoint union of half-open full-dimensional simplicies. This corresponds to decomposing the face poset of $K$ into boolean lattices whose minimal and maximal elements correspond to the pairs $(\Phi_{\text{coarse}};\Phi_{\text{fine}})$ we discussed above.
 
-\begin{itemize}
-\item Define partitionability and state positivity results in terms of partitionability.
-\item Present the special case of partitionability given by directed refinement.
-\end{itemize}
+\begin{theorem}
+Let $S$ be a scheduling problem such that $\allowC(S)$ is partitionable. Then there exists a representation
+\[
+  \SSS_S = \sum_{(\Phi_\text{coarse};\Phi_\text{fine})} \mu_{(\Phi_\text{coarse};\Phi_\text{fine})} L_{(\Phi_\text{coarse};\Phi_\text{fine})}
+\]
+with non-negative coefficients $\mu_{(\Phi_\text{coarse};\Phi_\text{fine})}\in \{0,1\}$. In particular, the coefficients of scheduling quasisymmetric function $Q_S$ in the fundamental basis and the $h^*$-vectors of the scheduling polynomial $\xi_S$ are non-negative.
+\end{theorem}
 
-\comment{Todo: Next, we talk about partitionability...} 
+Note that, conversely, the existence of a representation of $\SSS_S$ with 0-1 coefficients in terms of the fundamental generating system implies that $\allowC(S)$ is partitionable. However, the same is not true of the coefficients of $\xi_S$ and $Q_S$: There are scheduling problems where $h^*(\xi_S)$ is non-negative but $\allowC(S)$ is not partitionable. \comment{Todo: add example.}
 
-A partial simplicial complex $K$ is \emph{partitionable} if $K$ can be written as a disjoint union of half-open simplicies. In general, a $d$-dimensional simplex in $\RR^n$ with $i$ open faces is given by $n-d$ linear equation and $d+1$ linear inequalities in general position where $i$ of these inequalities are strict and $d+1-i$ are weak. However, in our case, we will be interested only in half-open unimodular simplicies, and these are precisely the lattice transformation of the simplicies $\Delta^d_i$ defined above.
+\begin{proof}
+As $\allowC(S)$ is partitionable, there exists a collection $C$ of half-open $n$-dimensional simplices $\sigma\in\TC$ such that $\allowC(S)=\bigcup_{\sigma\in C}\sigma$ and this union is disjoint. Each element $\sigma\in C$ corresponds to a distinct pair $(\Phi_\text{coarse};\Phi_\text{fine})$ of ordered set partitions, where $\Phi_\text{fine}$ refines $\Phi_\text{coarse}$ and $\Phi_\text{fine}$ has length $n$. Let $P$ denote the collection of all pairs corresponding to half-open simplices in $C$. Then
+\[
+  \SSS_S = \sum_{(\Phi_c;\Phi_f)\in P} \ncL_{(\Phi_c;\Phi_f)}
+\]
+as desired. The non-negativity of the coefficients of $Q_S$ in the fundamental basis and the $h^*$-vector of $\xi_S$ is implied by the existence of a non-negative representation of $\SSS_S$ in the fundamental generating system.
+\end{proof}
 
-Observation: The half-open simplicies (actually: cones) of the braid arrangement are given by ordered pairs of ordered set partitions $\Phi_{\text{fine}},\Phi_{\text{coarse}}$ where $\Phi_{\text{fine}}$ is a partition of $[n]$ into $n$ parts (i.e., a permutation) and $\Phi_{\text{coarse}}$ is a refinement of $\Phi_{\text{fine}}$. Note that $\Phi_{\text{fine}},\Phi_{\text{coarse}}$ is allowed and corresponds to an open simplex (open cone).
+A special case of this criterion appears when the representation of $\SSS_S$ in terms of the fundamental basis of NCQSym is non-negative. As it turns out, this condition has a very convenient description in terms of the poset of ordered set partitions and ordered by the directed refinement relation.
 
-Observation: Indexing $L$ with all such ordered pairs gives a generating set of all nc-quasisymmetric functions, but not a basis: nc-quasisymmetric functions have multiple representations in term of this generating set $L$.
+\begin{theorem}
+Let $S$ be a scheduling problem such that the poset of allowed ordered set partitions is closed under the directed refinement relation. If for every allowed ordered set partition $\Phi$ there exists a \emph{unique} coarsest allowed ordered set partition $\Phi_c \preceq \Phi$ such that $\Phi$ is a directed refinement of $\Phi_c$, then the coefficients of $\SSS_S$ and $Q_S$ in terms of the fundamental bases as well as the $h^*$-vector of $\xi_S$ are non-negative.
+\end{theorem}
 
-Lemma: If $K$ is partitionable, then $\SSS$ has *some* non-negative representation in terms of the $L$ basis on the level of nc-quasisymmetric functions and *the* representation in terms of the $L$ basis on the level of quasisymmetric functions is non-negative.
-
-It is possible to turn $L$ into a basis on the level of nc-quasisymmetric functions. There are several ways to do this. We present one definition in terms of a lexicographic ordering. Geometrically, this corresponds to a special type of shelling of the "allowed" partial subcomplex.
+\begin{proof}
+For any allows ordered set partition $\Phi_f$ of length $n$, there exists by assumption a unique coarsest allowed ordered set partition $\Phi_c$ with $\Phi_c\preceq\Phi_f$. Let $P$ be the collection of all these pairs. Because we assume that the poset of allowed ordered set partitions is closed under the directed refinement relation, we know that the intervals of all $\Phi$ with $\Phi_c\preceq\Phi_f$ are boolean lattices. Thus, the interval between $\Phi_c$ and $\Phi_f$ under the directed refinement relation coincides with the interval between $\Phi_c$ and $\Phi_f$ under the ordinary refinement relation. Because of the uniqueness assumption, these intervals are disjoint. Finally, again because of the assumption that the allowed poset is closed under directed refinement and has unique coarsest elements, we have that for any allowed ordered set partition $\Phi$ there exists a $\Phi_f$ of length $n$ that is a directed refinement of $\Phi$, whence $\Phi$ is contained in the interval with $\Phi_f$ as its maximal element. Therefore, $P$ forms a partition of the allowed poset, which completes the proof of the theorem.
+\end{proof}
 
 \subsection{Convex ear decompositions and strong bounds on the coefficients}
 
