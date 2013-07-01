@@ -917,7 +917,15 @@ imply the statement about generating functions.
 \end{proof}
 
 \begin{remark}
-\comment{Half-open cube...}
+The above theorem draws connections between the $h$- and $h^*$-vectors of the complexes $\allowC(S)$ and $\forbC(s)$ and the $h$- and $h^*$-vectors of the \emph{shifted} scheduling polynomial $\xi_S$. This shift can be avoided by working with the half-open cube $(0,1]^n$ instead of the open cube $(0,1)^n$. In this case we have, for example,
+\[
+  \ehr_{\allow_{(0,1]^n}(S)}(k) = \xi_S(k)
+\]
+and hence
+\[
+  h^*(\allow_{(0,1]^n}(S)) = h^*(\xi_S(k))
+\]
+with similar statements holding for the forbidden subcomplexes and/or the $h$-vector. The reason for our choice of working with the open cube throughout this paper, is that the faces of the partial simplicial complex $T_{(0,1]^n}$ are not in one-to-one correspondence with ordered set partitions: there are additional faces on the boundary of the half-open cube which correspond to the last part of an ordered set partition being maximal. To avoid this additional complication we work with the open cube at the expense of having to deal with the shift $\ehr_{\allow_{(0,1)^n}(S)}(k+1) = \xi_S(k)$.
 \end{remark}
 
 To understand the relationship of the $h$- and $h^*$-vectors to the fundamental basis of quasisymmetric functions, it is instructive to consider the case of nc-quasisymmetric functions first.
@@ -972,22 +980,20 @@ for $i=1,\ldots,n$. The coefficients $h_i^*$, $\mu_\Phi$, $\mu_{(\Phi_\text{coar
 In particular, the theorem holds if $\NNN=\SSS_S$ is a scheduling nc-quasisymmetric function and $p(k)=\xi_S(k)$ is the corresponding scheduling polynomial.
 
 \begin{proof}
-We have $\SSS_S(\mathbf{1}^k)=Q_S(\mathbf{1}^k)=\xi_S(k)$. Moreover, we have seen that 
+We have $\NNN(\mathbf{1}^k)=Q(\mathbf{1}^k)=p(k)$. Moreover, we have seen that 
 \[
   \ncL_{(\Phi_\text{coarse};\Phi_\text{fine})}(\mathbf{1}^k) = L_\alpha(\mathbf{1}^k)=\binom{k+n-i}{n}
 \]
 where $i$ denotes the length of $\Phi_\text{coarse}$ and $\alpha$, respectively. The length of an ordered set partition of $[n]$ or, respectively, an ordered partition of $n$ can range from $1$ to $n$. By collecting terms in each case, we obtain the theorem. Note that the coefficients in the fundamental basis are integral because the coefficients in the monomial basis are integral for any scheduling problem.
 \end{proof}
 
+\comment{fb: Under construction from here.}
+
 \comment{Todo: Stuff to add to this subsection.}
 
 \begin{itemize}
-\item Remark about working with the half-open cube to get rid of shifts.
-\item Work connection to Ehrhart into statement of theorem.
-\item Add theorem about quasisymmetric functions and the fundamental "basis" in terms of directed pairs.
-\item Turn fundamental generating system into a proper basis using "lexicographic refinement".
-\item Define partitionability and express positivity results in terms of partitionability.
-\item Remark on connection of partitionability
+\item Define partitionability and state positivity results in terms of partitionability.
+\item Present the special case of partitionability given by directed refinement.
 \end{itemize}
 
 \comment{Todo: Next, we talk about partitionability...} 
