@@ -1009,6 +1009,16 @@ As $\allowC(S)$ is partitionable, there exists a collection $C$ of half-open $n$
 as desired. The non-negativity of the coefficients of $Q_S$ in the fundamental basis and the $h^*$-vector of $\xi_S$ is implied by the existence of a non-negative representation of $\SSS_S$ in the fundamental generating system.
 \end{proof}
 
+A special case of this criterion appears when the representation of $\SSS_S$ in terms of the fundamental basis of NCQSym is non-negative. As it turns out, this condition has a very convenient description in terms of the poset of ordered set partitions and ordered by the directed refinement relation.
+
+\begin{theorem}
+Let $S$ be a scheduling problem such that the poset of allowed ordered set partitions is closed under the directed refinement relation. If for every allowed ordered set partition $\Phi$ there exists a \emph{unique} coarsest allowed ordered set partition $\Phi_c \preceq \Phi$ such that $\Phi$ is a directed refinement of $\Phi_c$, then the coefficients of $\SSS_S$ and $Q_S$ in terms of the fundamental bases as well as the $h^*$-vector of $\xi_S$ are non-negative.
+\end{theorem}
+
+\begin{proof}
+For any allows ordered set partition $\Phi_f$ of length $n$, there exists by assumption a unique coarsest allowed ordered set partition $\Phi_c$ with $\Phi_c\preceq\Phi_f$. Let $P$ be the collection of all these pairs. Because we assume that the poset of allowed ordered set partitions is closed under the directed refinement relation, we know that the intervals of all $\Phi$ with $\Phi_c\preceq\Phi_f$ are boolean lattices. Thus, the interval between $\Phi_c$ and $\Phi_f$ under the directed refinement relation coincides with the interval between $\Phi_c$ and $\Phi_f$ under the ordinary refinement relation. Because of the uniqueness assumption, these intervals are disjoint. Finally, again because of the assumption that the allowed poset is closed under directed refinement and has unique coarsest elements, we have that for any allowed ordered set partition $\Phi$ there exists a $\Phi_f$ of length $n$ that is a directed refinement of $\Phi$, whence $\Phi$ is contained in the interval with $\Phi_f$ as its maximal element. Therefore, $P$ forms a partition of the allowed poset, which completes the proof of the theorem.
+\end{proof}
+
 
 \comment{fb: Under construction from here.}
 
