@@ -939,12 +939,12 @@ In the case of $\TC$, these boolean lattices arise correspond precisely to the b
 
 In other words, if $\Phi_{\text{coarse}}$ is an ordered set partition of length $j=1,\ldots,n$ and $\Phi_{\text{fine}}$ is a permutation refining it, then 
 \[
-  \ncL_{(\Phi_\text{coarse};\Phi_\text{fine})}(\mathbf{1}^k) ) = \ncL_{\Phi_\text{coarse}}(\mathbf{1}^k) = \binom{k+n-j}{n}.
+  \ncL_{(\Phi_\text{coarse};\Phi_\text{fine})}(\mathbf{1}^k) = \ncL_{\Phi_\text{coarse}}(\mathbf{1}^k) = \binom{k+n-j}{n}.
 \]
 
 This observation extends directly to quasisymmetric functions. If $q$ denotes the specialization that turns an nc-quasisymmetric function into a quasisymmetric function by allowing variables to commute, then we have 
 \[
-  L_\alpha(\mathbf{1}^k) = q(\ncL_{\Phi_\alpha})(\mathbf{1}^k) = \binom{k+n-i}{n}
+  L_\alpha = q(\ncL_{\Phi_\alpha}) \;\;\; \text{ and } \;\;\; L_\alpha(\mathbf{1}^k) = \ncL_{\Phi_\alpha}(\mathbf{1}^k) = \binom{k+n-i}{n}
 \]
 for any composition $\alpha$, where $\Phi_\alpha$ denotes any ordered set partition with $\operatorname{type}(\Phi_\alpha) = \alpha$, and $i$ is the length of $\alpha$.
 
@@ -987,18 +987,34 @@ We have $\NNN(\mathbf{1}^k)=Q(\mathbf{1}^k)=p(k)$. Moreover, we have seen that
 where $i$ denotes the length of $\Phi_\text{coarse}$ and $\alpha$, respectively. The length of an ordered set partition of $[n]$ or, respectively, an ordered partition of $n$ can range from $1$ to $n$. By collecting terms in each case, we obtain the theorem. Note that the coefficients in the fundamental basis are integral because the coefficients in the monomial basis are integral for any scheduling problem.
 \end{proof}
 
+An important class of results in the literature on quasisymmetric functions, simplicial complexes and Ehrhart theory are theorems asserting the non-negativity of the $h$- and $h^*$-vectors as well as the non-negativity of coefficients in the fundamental basis. \comment{Todo: Add examples/citations.} One class of theorems of this type are phrased in terms of partitionability, which we can generalize for our purposes.
+
+A pure partial simplicial complex $K$ is \emph{partitionable} if $K$ can be written as a disjoint union of half-open full-dimensional simplicies. This corresponds to decomposing the face poset of $K$ into boolean lattices whose minimal and maximal elements correspond to the pairs $(\Phi_{\text{coarse}};\Phi_{\text{fine}})$ we discussed above.
+
+\begin{theorem}
+Let $S$ be a scheduling problem such that $\allowC(S)$ is partitionable. Then there exists a representation
+\[
+  \SSS_S = \sum_{(\Phi_\text{coarse};\Phi_\text{fine})} \mu_{(\Phi_\text{coarse};\Phi_\text{fine})} L_{(\Phi_\text{coarse};\Phi_\text{fine})}
+\]
+with non-negative coefficients $\mu_{(\Phi_\text{coarse};\Phi_\text{fine})}\in \{0,1\}$. In particular, the coefficients of scheduling quasisymmetric function $Q_S$ in the fundamental basis and the $h^*$-vectors of the scheduling polynomial $\xi_S$ are non-negative.
+\end{theorem}
+
+Note that, conversely, the existence of a representation of $\SSS_S$ with 0-1 coefficients in terms of the fundamental generating system implies that $\allowC(S)$ is partitionable. However, the same is not true of the coefficients of $\xi_S$ and $Q_S$: There are scheduling problems where $h^*(\xi_S)$ is non-negative but $\allowC(S)$ is not partitionable. \comment{Todo: add example.}
+
+\begin{proof}
+As $\allowC(S)$ is partitionable, there exists a collection $C$ of half-open $n$-dimensional simplices $\sigma\in\TC$ such that $\allowC(S)=\bigcup_{\sigma\in C}\sigma$ and this union is disjoint. Each element $\sigma\in C$ corresponds to a distinct pair $(\Phi_\text{coarse};\Phi_\text{fine})$ of ordered set partitions, where $\Phi_\text{fine}$ refines $\Phi_\text{coarse}$ and $\Phi_\text{fine}$ has length $n$. Let $P$ denote the collection of all pairs corresponding to half-open simplices in $C$. Then
+\[
+  \SSS_S = \sum_{(\Phi_c;\Phi_f)\in P} \ncL_{(\Phi_c;\Phi_f)}
+\]
+as desired. The non-negativity of the coefficients of $Q_S$ in the fundamental basis and the $h^*$-vector of $\xi_S$ is implied by the existence of a non-negative representation of $\SSS_S$ in the fundamental generating system.
+\end{proof}
+
+
 \comment{fb: Under construction from here.}
-
-\comment{Todo: Stuff to add to this subsection.}
-
-\begin{itemize}
-\item Define partitionability and state positivity results in terms of partitionability.
-\item Present the special case of partitionability given by directed refinement.
-\end{itemize}
 
 \comment{Todo: Next, we talk about partitionability...} 
 
-A partial simplicial complex $K$ is \emph{partitionable} if $K$ can be written as a disjoint union of half-open simplicies. In general, a $d$-dimensional simplex in $\RR^n$ with $i$ open faces is given by $n-d$ linear equation and $d+1$ linear inequalities in general position where $i$ of these inequalities are strict and $d+1-i$ are weak. However, in our case, we will be interested only in half-open unimodular simplicies, and these are precisely the lattice transformation of the simplicies $\Delta^d_i$ defined above.
+ In general, a $d$-dimensional simplex in $\RR^n$ with $i$ open faces is given by $n-d$ linear equation and $d+1$ linear inequalities in general position where $i$ of these inequalities are strict and $d+1-i$ are weak. However, in our case, we will be interested only in half-open unimodular simplicies, and these are precisely the lattice transformation of the simplicies $\Delta^d_i$ defined above.
 
 Observation: The half-open simplicies (actually: cones) of the braid arrangement are given by ordered pairs of ordered set partitions $\Phi_{\text{fine}},\Phi_{\text{coarse}}$ where $\Phi_{\text{fine}}$ is a partition of $[n]$ into $n$ parts (i.e., a permutation) and $\Phi_{\text{coarse}}$ is a refinement of $\Phi_{\text{fine}}$. Note that $\Phi_{\text{fine}},\Phi_{\text{coarse}}$ is allowed and corresponds to an open simplex (open cone).
 
@@ -1007,6 +1023,14 @@ Observation: Indexing $L$ with all such ordered pairs gives a generating set of 
 Lemma: If $K$ is partitionable, then $\SSS$ has *some* non-negative representation in terms of the $L$ basis on the level of nc-quasisymmetric functions and *the* representation in terms of the $L$ basis on the level of quasisymmetric functions is non-negative.
 
 It is possible to turn $L$ into a basis on the level of nc-quasisymmetric functions. There are several ways to do this. We present one definition in terms of a lexicographic ordering. Geometrically, this corresponds to a special type of shelling of the "allowed" partial subcomplex.
+
+\comment{Todo: Stuff to add to this subsection.}
+
+\begin{itemize}
+\item Present the special case of partitionability given by directed refinement.
+\item Remove $h^\circ$ stuff. 
+\end{itemize}
+
 
 \subsection{Convex ear decompositions and strong bounds on the coefficients}
 
