@@ -1161,6 +1161,72 @@ of posets and the newly defined arboricity polynomial of a matroid,
 which counts the number of covers of a matroid by independent sets.
 
 
+\section{[Construction Site]}
+
+Decision trees are a very commonly used form of boolean expression. Intuitively, they are simply nested if-then-else statements. For our purposes we will work with decision trees where the conditions in the if-clauses are inequalities of the form $x_i \leq x_j$ and the conditions in the leaves of the tree are conjunctions of such inequalities (either strict or weak). Moreover we will require that our decision trees are "well-behaved" at each node in the tree.
+
+We start out with an example.
+
+\begin{figure}[h]
+\includegraphics[width=13cm]{decision-tree}
+\caption{An example of a decision tree and the associated geometric region.}
+\end{figure}
+
+More formally, decision trees are boolean expression defined recursively as follows. A \emph{leaf} is a boolean expression that is conjunction of inequalities $x_i \leq x_j$ or $x_i < x_j$. A \emph{decision tree} is either a leaf, or a boolean expression of the form
+\[
+  \text{if $\phi$ then $\psi_t$ else $\psi_f$}
+\]
+where $\phi$ is an inequality of the form $x_i \leq x_j$ and $\psi_t,\psi_f$ are decision trees. 
+
+Decision trees are therefore binary trees. For every node $v$ in a decision tree, there is a unique path from the root of the tree to $v$. At each node this path chooses either the "true" or "false" branch of the corresponding if-then-else clause. Let $v$ be a node in the tree and let $v_0,\ldots,v_k$ be the sequence of its ancestors. For each node $v_i$ in this path we define $\phi'_i$ to be the condition of the if-statement of $v_i$ if $v$ resides in the "true" branch of the node $v_i$, and its negation if $v_i$ resides in the "false" branch of $v_i$. The \emph{local condition} at $v$ is then the conjunction of all $\phi'_i$. The constraints imposed by $v$ only apply to points $x$ that satisfy the local condition. Notice that the set of points $x$ satisfying the local condition is always a polyhedron.
+
+The decision trees we study will have to be well-behaved in the following sense. Let $v$ be a node in a decision tree $\tau$ of the form "if $\phi$ then $\psi_t$ else $\psi_f$". Let $\zeta$ denote the local condition at $v$ and let $P$ denote the (possibly half-open) polyhedron defined by $\zeta$. Let $\phi_=$ denote the equality constraint induced by $\phi$, i.e., if $\phi$ is $x_i \leq x_j$ then $\phi_=$ is $x_i = x_j$. Now we say that the decision tree is \emph{convex at $v$} if the following hold:
+\begin{enumerate}
+\item The conditions given by the left and right branches of $v$ agree on the hyperplane given by $\phi_=$, where they define a convex solution set. Formally, the two boolean formulas $(\zeta \wedge \phi_= \wedge \psi_t)$ and $(\zeta \wedge \phi_= \wedge \psi_f)$ are both equivalent to a formula $\kappa$ which is a conjunction of inequalities.
+\item The polytope defined by $\kappa$ has codimension 1. On the level of boolean functions this means that $\phi_=$ is the only equality implied by $\kappa$.
+\end{enumerate}
+A decision tree is \emph{locally convex} if it is convex at every node.
+
+With this setup we can now show the following.
+
+\begin{proposition}
+Let $\tau$ be a locally convex decision tree. Let $P$ be the set of all $x$ that satisfy $\tau$. Then $P$ is contractible as a topological space. Moreover $P$ is a manifold, however, parts of its boundary may be open. We say $P$ is open or closed, if all of its boundary is open or closed, respectively.
+
+Note that $P$ is not necessarily convex and it is not necessarily star shaped (i.e., there does not exist a point that can be connected to all other with a straight line).
+\end{proposition}
+
+In particular this condition suffices to show partitionability.
+
+\begin{proposition}
+If a scheduling problem $\Phi$ can be writen as a disjoint union\footnote{I.e., a disjunction of locally convex decisions trees such that there is no $x$ that simultaneously satisfies two or more of the decision trees.} of locally convex decision trees, then $\allow(\Phi)$ is partitionable.
+\end{proposition}
+
+Note that all scheduling problems that can be written as disjunctions of conjunctions are trivially of this form.
+
+This condition suffices to prove a reciprocity theorem that is more general than talking about just convex pieces.
+
+\begin{theorem}
+If $\Phi$ is a scheduling problem that is a disjoint union of open locally convex decision trees and $\Phi'$ is the scheduling problem given by the corresponding union of closed locally convex decision trees and this union is disjoint, then 
+\[
+  \xi_\Phi(-k) = (-1)^d \xi_{\Phi'}(k).
+\]
+\end{theorem}
+
+This theorem can be strengthened to include the case of closed locally convex decision trees that are not disjoint.
+
+\begin{theorem}
+If $\Phi$ is a scheduling problem that is a disjoint union of open locally convex decision trees and $\Phi'$ is the scheduling problem given by the corresponding union of closed locally convex decision trees, then 
+\[
+  \xi_\Phi(-k) = (-1)^d \sum_{\tau} \xi_{\tau}(k),
+\]
+where the sum ranges over the closed decision trees $\tau$ in $\Phi'$. In other words, up to sign, $\xi_\Phi(-k)$ counts the lattice points $x\in\Phi'$ with multiplicity given by the number of decision trees $\tau$ the lattice point $x$ is contained in.
+\end{theorem}
+
+\comment{fb:
+It could be that the decision tree condition is strong enough to show the existence of a convex ear decomposition. However, the standard methods do not suffice for that purpose, as far as I know. We would need additional arguments.
+}
+
+
 \section{QBergman}
 
 In the final two sections, we explore two instances of scheduling
