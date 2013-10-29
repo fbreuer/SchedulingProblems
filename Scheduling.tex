@@ -580,8 +580,8 @@ $$ \mathcal{S}({\bf 1}^k) = 2 {k \choose 2} + {k \choose 3}.$$
 \section{Scheduling Problems}
 \label{sec:scheduling-problems}
 
-\comment{Needs short introductory paragraph mainly to give an overview of what is coming in this section.  Connecting NCQSym, Ehrhart and Scheduling.
-I think section 5.1 needs to be tightened up quite a bit...also make more explicit the contributions of Thm 5.1, in particular that we are showing that counting function is a polynomial}
+\comment{Needs short introductory paragraph mainly to give an overview of what is coming in this section.  Connecting NCQSym, Ehrhart and Scheduling.}
+
 
 
 For an ordered set partition $\Phi=(\Phi_1,\ldots,\Phi_m)$, we define the relatively open cone $\cone(\Phi)\subset\RR^n$ to be the set of all $a\in\RR^n$ that satisfy the constraints
@@ -788,7 +788,7 @@ Correspondingly, define the \emph{forbidden subcomplex} $\forb(S)$ to be the set
 \begin{example} As remarked above, a particularly familiar scheduling polynomial is the chromatic polynomial of a graph.  In this case, the scheduling problem simply specifies which variables can not be equal to each other, $x_i \neq x_j$ for $\{i,j\}$ an edge of the graph.   Steingrimmson's coloring complex is 
 the collection of ordered set partitions with at least one edge in at least one block, namely 
 the forbidden configuration of the chromatic scheduling problem.  
-Much work has been done to understand the coloring complex in particular to better understand the chromatic polynomial.  This avenue is possible because of the Hilbert series connection as shown in [cite:Ein].  As we will see below this connection holds more generally for all scheduling problems.
+Much work has been done to understand the coloring complex in particular to better understand the chromatic polynomial.  This avenue is possible because of the Hilbert series connection as shown in~\cite{Ein}.  As we will see below this connection holds more generally for all scheduling problems.
 \end{example}
 
 Clearly, $\allow(\neg S)=\forb(S)$. This translates into basic observations about the counting function defined by $S$. Let 
@@ -1283,13 +1283,13 @@ collection of faces closed under taking subsets.
 
 
 \subsubsection{Disjunction of Conjunctions}
-An important class of scheduling problems that satisfy the conditions of Theorem~\ref{unique} are those scheduling problems that can be expressed as a disjunction of conjunctions of strict inequalities,i.e.,
+An important class of scheduling problems that satisfy the conditions of Theorem~\ref{unique} are those scheduling problems that can be expressed as a disjunction of conjunctions of strict inequalities, i.e.,
 \[
   S = \bigvee_i C_i \text{ where } C_i = \bigwedge_j I_{i,j}
 \] \label{posets}
 such that the $I_{i,j}$ are strict inequalities of the form $x_a <
 x_b$ for some $a$ and $b$, and the conjunctions $C_i$ are satisfiable
-for all $i$.  Equivalently, the regions of $[0,1]^n \backslash
+for all $i$.  Equivalently, the regions of $[0,1]^n \, \backslash \,
 \forb(S)$ are interiors of convex polytopes of dimension $n$.  Such
 scheduling problems are a special case of unions of  convex
 decision trees.  Therefore, Theorem~\ref{thm:part-pos} already
@@ -1318,46 +1318,47 @@ subarrangement of the Braid arrangement consisting of the hyperplanes
 $\{x_i = x_j | \, i,j \in E\}$. The graphical zonotope ${P}_G$ is
 the zonotope dual to this arrangement formed by the sum of all normals
 to all planes in the arrangement.  Geometrically, this leads to a
-perspective first noted explicitly by Hersch and Swartz: the coloring
+perspective first noted explicitly by Hersh and Swartz: the coloring
 complex is the codimension one skeleton of the normal fan of
-${P}_G$ as subdivided by the Coxeter comple~\cite{SW}.
+${P}_G$ as subdivided by the Coxeter complex~\cite{HS}.
 
-The construction above was extended from graphical zonotopes to 
-generalized permutahedron in~\cite{ABK}.  Generalized permutahedron
-are typically defined as the class of polytopes in $\mathbb{R}^n$ such
-that every edge is parallel to $e_i - e_j$ for some $i,j \in [n]$.  An
-equivalent characterization of this class is the following: A polytope
-is a generalized permutahedron if and only if its normal fan is
-refined by the Braid arrangement~\cite{PRW, MPSSW}.  Hence the
-graphical zonotope, dual to a subarrangement of the Braid arrangement
+This construction was extended from graphical zonotopes to generalized
+permutahedron in~\cite{ABK}.  Generalized permutahedron are typically
+defined as the class of polytopes in $\mathbb{R}^n$ such that every
+edge is parallel to $e_i - e_j$ for some $i,j \in [n]$.  An equivalent
+characterization of generalized permutahedron is the following: A
+polytope is a generalized permutahedron if and only if its normal fan
+is refined by the Braid arrangement~\cite{PRW, MPSSW}.  Hence the
+graphical zonotope, dual to a subarrangement of the Braid arrangement,
 is a generalized permutahedron.  Other examples include matroid
 polytopes, associahedra and graph associahedra.  A scheduling problem
-$S$ can be associated to any generalized permutahedron $GP$ by defining
-the forbidden configuraiton $\forb(S)$ to be the codimension one
-skeleton of the normal fan of $GP$ as subdivided by the Coxeter
+$S$ can be associated to any generalized permutahedron $GP$ by
+defining the forbidden configuraiton $\forb(S)$ to be the codimension
+one skeleton of the normal fan of $GP$ as subdivided by the Coxeter
 complex.  Such a scheduling problem is then given as a disjunction of
 conjunctions.  Namely, the scheduling problem of a generalized
 permutahedron is defined by taking, for each vertex $v$ of a
 generalized permutahedron $GP$, the conjunction of all hyperplanes
 defining $v$.  Hence the valid $\omega$ schedules correspond to all
-integer points in the interior of the normal fan
+integer points in the interior of the normal fan.  In~\cite{ABK}, it
+is shown that the scheduling nc-quasisymmetric function is $\ncL$
+positive and $\forb(S)$ is $h$-positive.
 
-In~\cite{SW}, this perspective is used to prove that the coloring
+In~\cite{HS}, this perspective of the normal fan is used to prove that the coloring
 complex has a convex ear decomposition which implies strong relations on
-the chromatic polynomial.  Due to the close relation of the chromatic
-polynomial of a graph, the authors attempt to generalize their results
-to characteristic polynomials of matroids.  They note empiracally
+the chromatic polynomial. The authors attempt to generalize this result from chromatic polynomials of graphs to characteristic polynomials of matroids.
+ They note empirically
 however that their results do not seem to generalize.  The perspective
 here suggests that the generalization should not be from chromatic
 polynomials to chracteristic polynomials, but from the scheduling
 polynomials of graphic zonotopes to the scheduling polynomials of
-matroid polytopes.  Namely to scheduling problems whose forbidden
+matroid polytopes.  Namely, to scheduling problems whose forbidden
 configuration is the codimension one skeleton of the normal fan of a
-matroid polytope.  The corresponding scheduling polynomial is the
+matroid polytope  (and more generally to any generalized permutahedron).  The corresponding scheduling polynomial for matroid polytopes is the
 polynomial restriction of the Billera-Jia-Reiner quasisymmetric
 function for matroids~\cite{BJR}.
 
-Talk about previous results on quasisymmetric function positivity.
+%Talk about previous results on quasisymmetric function positivity.
 
 %% \begin{theorem} \label{unique} Let $S$ be a scheduling problem on $d$ items.  If the forbidden configuration $\Sigma(S)$ is a subcomplex of the Coxeter complex and if for each total ordering of $[d]$ there is a unique coarsest schedule satisfying $S$, then $\SSS_S$ is $\ncL$-positive and therefore $QS$ is $L$-positive. 
 %% \end{theorem}
@@ -1463,30 +1464,32 @@ $\poly(S)$.
 % In particular, many special cases above resulted in
 %$\forb(S)$ being a valid subcomplex of the Coxeter complex (as
 %opposed to simply a collection of faces). 
- Here we consider Scheduling
-problem such that $\allow(S)$ is a valid subcomplex of $\cox_A$,
-i.e. the ordered set partitions satisfying $S$ are closed under
-coarsening.  In this case, expansion in the fundamental bases is not a
-natural choice.  Expansion in the co-fundamental bases, however, is
-natural and does yield good behavior.
+ Here we consider Scheduling problem such that $\allow(S)$ is a valid
+ subcomplex of $\cox_A$, i.e. the ordered set partitions satisfying
+ $S$ are closed under coarsening.  In this case, expansion in the
+ fundamental basis is not a natural choice.  Expansion in the
+ co-fundamental basis, however, is natural and does yield good
+ behavior.  The co-fundamental basis for quasisymmetric functions is
+ defined analogously to the fundamental basis but instead of summing
+ over all compositions that refine a fixed composition, one sums over
+ all compositions that coarsen a fixed composition:
+
+$$N_{\alpha} := \sum_{\beta : \beta \, \textrm{coarsens} \, \alpha} M_{\beta}.$$
 
 
-   We will use the notation $\ncN_{\Phi}$ for the basis which sums
-   over all ordered set partitions that \emph{coarsen} a fixed
-   partition with respect to a fixed direction and refer to it as the
-   co-nc-fundamental basis.  This basis was introduced in~\cite{Zab} and is precisely opposite the directed refinement relation defined for the findamental basis.   Namely,
- $$\ncN_{\Phi} := \sum_{\Psi:\Phi \preceq \Psi} \ncM_{\Phi}.$$
- Again, after applying the type map to the indexing ordered set partitions, we arrive at a quasisymmetric expansion in terms of all compositions that coarsen a fixed composition.  Namely, if 
 
-\comment{Displayed equation of N written in terms of M for QSym.  Comment about antipode?}
-
-
+ %%   We will use the notation $\ncN_{\Phi}$ for the basis which sums
+ %%   over all ordered set partitions that \emph{coarsen} a fixed
+ %%   partition with respect to a fixed direction and refer to it as the
+ %%   co-nc-fundamental basis.  This basis was introduced in~\cite{Zab} and denoted *.  It is precisely opposite the directed refinement relation defined for the findamental basis.   Namely,
+ %% $$\ncN_{\Phi} := \sum_{\Psi:\Phi \preceq \Psi} \ncM_{\Phi}.$$
+ %% Again, after applying the type map to the indexing ordered set partitions, we arrive at a quasisymmetric expansion in terms of all compositions that coarsen a fixed composition. 
 
 
   Recall that for an integer point $a\ \in \mathbb{N}^n$,
   $\Delta(a)$ is the ordered set partition recording the relative
   ordering of components of a; i.e. $a$ is constant on each $\Delta_i$
-  and satisfies $a|_{\Delta_i} < a|_{\Delta_{i+1}}$ for all $i$
+  and satisfies $a|_{\Delta_i} < a|_{\Delta_{i+1}}$ for all $i$.
 Given an integer point $a$ or an ordered set partition $\Delta(a)$ we now associate a flag:
 $$\mathcal{F}_{a} = \mathcal{F}_{\Delta(a)} := F_0 \subset F_1 \subset \ldots \subset F_k := [n]$$
 such that $a$ is constant on each set $F_i - F_{i-1}$ and  $a|_{F_i -
@@ -1497,64 +1500,87 @@ Suppose $a$ is an integer point satisying $a_2 < a_1 = a_3 = a_4$ then $\Delta(a
 \end{example}
 
 
-\begin{theorem}
-\label{thm:flags}
-Let $S$ be a scheduling problem such that the collection of flags corresponding to the elements of $\allow(S)$
-$$\{ \mathcal{F}_{\Delta(a)} | \Delta(a) \in \allow(S) \}$$
-forms the collection of all flags of a graded poset.  Then the coefficient $\eta_{\alpha}$ of $N_{\alpha}$ in the expansion of $QS$ in the co-fundamental basis is given by:
+
+Given a scheduling problem, if the allowable configuration corresponds
+to the collection of all flags of a graded poset, then clearly $\allow(S)$ is closed under coarsening.  In this case, the
+quasisymmetric function QSym(S) has a particularly nice expansion.
+
+\begin{proposition}
+\label{prop:flags}
+Let $S$ be a scheduling problem such that the collection of flags corresponding to the elements of $\allow(S)$,
+$$\{ \mathcal{F}_{\Delta(a)} | \Delta(a) \in \allow(S) \},$$
+forms the collection of all flags of a graded poset.  Then the coefficient of $N_{\alpha}$ in the expansion of QSym(S) in the co-fundamental basis is given by:
 $$[N_{\alpha}] = (-1)^{|\alpha|} \sum_{\alpha \, \textrm{flags}} \prod_i \mu(f_i,f_{i+1})$$
 where an $\alpha$-flag is a flag such that $|f_{i+1}| - |f_i| = \alpha_i$ and $\mu$ is the M\"{o}bius function of the poset.
-\end{theorem}
+\end{proposition}
 
-\begin{proof}
-\end{proof}
 
-As an example of Theorem~\ref{thm:flags} we consider the Bergman
-Scheduling problem, so named because the lattice points we will be
-interested in are precisely those contained in the Bergman fan of a
-matroid. The specialized Bergman quasisymmetric function is closely
-related to Ehrenborg's quasisymmetric function for posets and the
-specialized Scheduling polynomial is the Zeta-polynomial of the
-matroid.
 
+Proposition~\ref{prop:flags} associates a quasisymmetric function to a
+graded poset.  The allowable flags are all chains in the poset.  Thus,
+in the monomial basis, the quasisymmetric function QSym(M) is indexed
+by compositions recording the size of each step in the flag.  This
+quasisymmetric function is very similar to but not the same as
+Ehrenborg's quasisymmetric function associated to graded
+posets~\cite{Ehrenborg}.  For any graded poset $P$, Ehrenborg defines
+a quasisymmetric function $F(P)$ by summing over all chains of the
+poset and recording the rank jump of the flag at each step.  Although
+the quasisymmetric functions record different data from the poset, our
+Proposition~\ref{prop:flags} is equivalent to
+~\cite{Ehrenborg,Proposition 5.1}, where our expansion in the
+co-fundamental basis is equivalent to his expansion of the image of
+the Malvenuto and Reutenauer involution of quasisymmetric functions.
+The equivalence is seen by noting that the coefficients are given by a
+manipulation of the Mobius function, and the compositions indexing the
+monomials could be any collection of compositions associated to a
+chain that is closed under coarsening.
+
+
+
+
+\subsubsection{The Bergman scheduling problem} As an explicit example of Proposition~\ref{prop:flags} we consider the Bergman
+Scheduling problem, so named because the lattice points of the
+allowable configuration are precisely those contained in the Bergman
+fan of a matroid. In this case, the scheduling polynomial is the
+Zeta-polynomial of the matroid.
 
 Let $M$ be a matroid on ground set $[n]$ and let $\omega \in \mathbb{N}^n$.
-Consider $\omega$ as a weight function on the ground set of $M$ and define the weight of a basis $B$ to be: $\omega(B) = \sum_{e\in B} \omega(e)$. 
-%Call a weight function
-% $\omega$ on the ground set of a matroid $M$
-Furthermore define $M_{\omega}$ to be the induced matroid of all
-$\omega$-minimal bases.  Three different perspectives on this induced
-matroid and that fact that it is indeed a matroid are discussed in [ref Section 2].
-
-  We will call $\omega$ $M$-loopless if the matroid $M_{\omega}$ has
-  no loops, i.e.  every element of the ground set is contained in some
-  minimal weight basis.  In [ref], such $\omega$ are called valid and
-  precisely constitute the integral points of the Bergman fan of $M$.
-  (** Put in at least a small motivation for Bergman.**) 
-
-$M_{\omega}$ is completely determined by the relative ordering of the
-  componants of $\omega$ and not their exact value, hence we make the
-  following definitions.
-
-The Bergman Scheduling problem is the scheduling problem with allowable configuration $\allow(S)$ equal to all $\Delta(\om)$ such that $\om$ is $M$-loopless.  The Bergman nc-quasisymmetric function is the generating function,
-$$NCQB(M,{\bf x}) := \sum_{M\textrm{-loopless} \, \omega} {\bf x}_{\omega},$$
-where ${\bf x}_{\omega} = \prod_{e \in E} x_{\omega(e)}$.
-
-In [ref] it is shown that a weight function $\omega$ is $M$-loopless
+Consider $\omega$ as a weight function on the ground set of $M$ and define the weight of a basis $B$ to be: $\omega(B) = \sum_{e\in B} \omega(e)$.   Furthermore define $M_{\omega}$ to be the induced matroid of all
+$\omega$-minimal bases. 
+% Three different perspectives on this induced
+%matroid and that fact that it is indeed a matroid are discussed in~\cite{AK, Section 2}.
+The function $\omega$ is called $M$-loopless if the matroid
+  $M_{\omega}$ has no loops, i.e.  every element of the ground set is
+  contained in some minimal weight basis.  In~\cite{AK}, such $\omega$ are
+  called valid and precisely constitute the integral points of the
+  Bergman fan of $M$.  Considering $\omega$ simply as an integer
+  point, we associate a flag $\mathcal{F}_{\omega}$ as above.
+In ~\cite{AK} it is shown that a weight function $\omega$ is $M$-loopless (equiv. in the Bergman fan)
 if and only if $\mathcal{F}(\om)$ is a flag of flats of $M$.
 
 
 
-\subsection{Extended example: QBergman}
+%% $M_{\omega}$ is completely determined by the relative ordering of the
+%%   componants of $\omega$ and not their exact value, hence we make the
+%%   following definitions.
 
-In the final two sections, we explore two instances of scheduling
-problems associated to a matroid.  First, we define the Bergman
-nc-quasisymmetric function, so named because the lattice points we will be
-interested in are precisely those contained in the Bergman fan of a
-matroid [ref].  The specialized Bergman quasisymmetric function is
-closely related to Ehrenborg's quasisymmetric function for posets and
-the specialized Scheduling polynomial is the Zeta-polynomial of the
-matroid.
+The Bergman Scheduling problem is the scheduling problem with allowable configuration $\allow(S)$ equal to all $\Delta(\om)$ such that $\mathcal{F}_{\omega}$ is a flag of flats of $M$. 
+
+%% $\om$ is $M$-loopless.  The Bergman nc-quasisymmetric function is the generating function,
+%% $$NCQB(M,{\bf x}) := \sum_{M\textrm{-loopless} \, \omega} {\bf x}_{\omega},$$
+%% where ${\bf x}_{\omega} = \prod_{e \in E} x_{\omega(e)}$.
+
+
+%% \subsection{Extended example: QBergman}
+
+%% In the final two sections, we explore two instances of scheduling
+%% problems associated to a matroid.  First, we define the Bergman
+%% nc-quasisymmetric function, so named because the lattice points we will be
+%% interested in are precisely those contained in the Bergman fan of a
+%% matroid [ref].  The specialized Bergman quasisymmetric function is
+%% closely related to Ehrenborg's quasisymmetric function for posets and
+%% the specialized Scheduling polynomial is the Zeta-polynomial of the
+%% matroid.
 
 
 
@@ -1569,115 +1595,126 @@ matroid.
 
 
 
-Let $M$ be a matroid on ground set $[n]$ and let $\omega \in \mathbb{N}^n$.
-Consider $\omega$ as a weight function on the ground set of $M$ and define the weight of a basis $B$ to be: $\omega(B) = \sum_{e\in B} \omega(e)$. 
-%Call a weight function
-% $\omega$ on the ground set of a matroid $M$
-Furthermore define $M_{\omega}$ to be the induced matroid of all
-$\omega$-minimal bases.  Three different perspectives on this induced
-matroid and that fact that it is indeed a matroid are discussed in [ref Section 2].
+%% Let $M$ be a matroid on ground set $[n]$ and let $\omega \in \mathbb{N}^n$.
+%% Consider $\omega$ as a weight function on the ground set of $M$ and define the weight of a basis $B$ to be: $\omega(B) = \sum_{e\in B} \omega(e)$. 
+%% %Call a weight function
+%% % $\omega$ on the ground set of a matroid $M$
+%% Furthermore define $M_{\omega}$ to be the induced matroid of all
+%% $\omega$-minimal bases.  Three different perspectives on this induced
+%% matroid and that fact that it is indeed a matroid are discussed in [ref Section 2].
 
-  We will call $\omega$ $M$-loopless if the matroid $M_{\omega}$ has
-  no loops, i.e.  every element of the ground set is contained in
-  some minimal weight basis.  In [ref], such $\omega$ are called 
-    valid and precisely constitute the integral points of the Bergman
-  fan of $M$.
+%%   We will call $\omega$ $M$-loopless if the matroid $M_{\omega}$ has
+%%   no loops, i.e.  every element of the ground set is contained in
+%%   some minimal weight basis.  In [ref], such $\omega$ are called 
+%%     valid and precisely constitute the integral points of the Bergman
+%%   fan of $M$.
 
- (** Put in at least a small motivation for Bergman.**)
+%%  (** Put in at least a small motivation for Bergman.**)
 
-$M_{\omega}$ is completely determined by the
-relative ordering of the componants of $\omega$ and not their exact
-value, hence we make the following definition.
+%% $M_{\omega}$ is completely determined by the
+%% relative ordering of the componants of $\omega$ and not their exact
+%% value, hence we make the following definition.
 
 
-\begin{definition}
-The Bergman nc-quasisymmetric function is the generating function,
-$$NCQB(M,{\bf x}) := \sum_{M\textrm{-loopless} \, \omega} {\bf x}_{\omega},$$
+%% \begin{definition}
+%% The Bergman nc-quasisymmetric function is the generating function,
+%% $$NCQB(M,{\bf x}) := \sum_{M\textrm{-loopless} \, \omega} {\bf x}_{\omega},$$
 
-where ${\bf x}_{\omega} = \prod_{e \in E} x_{\omega(e)}$.
-\end{definition}
+%% where ${\bf x}_{\omega} = \prod_{e \in E} x_{\omega(e)}$.
+%% \end{definition}
 
 
 \begin{example}
 
 Let $U_{2,4}$ be the uniform matroid of rank $2$ on a ground set of
-size $4$.  Consider any $\omega \in \mathbb{N}^n$ such that
-$\omega_{i_1} < \omega_{i_2} = \omega_{i_3} = \omega_{i_4}$.  Then the
-bases of minimum weight are $\{12, 13, 14\}$.  This $\omega$ is
-$U_{2,4}$-loopless since all elements of the ground set are contained
-in some basis of minimum weight.  Considering all integer points with this same relative ordering,  contributes the term
-${\ncM}_{1|234}$ to NCQB($U_{2,4}$).  The full nc-quasisymmetric function
-is
+size $4$.  
 $$NCQB(U_{2,4})  = {\ncM}_{1234} + {\ncM}_{1|234} + {\ncM}_{2|134} + {\ncM}_{3|124} + {\ncM}_{4|123}. $$
+
+The presence of the term ${\ncM}_{1|234}$, for example, is from the
+fact that any $\omega$ such that $\omega_{i_1} < \omega_{i_2} =
+\omega_{i_3} = \omega_{i_4}$ yields the minimum weight bases:
+$\{12,13,14\}$.  Alternatively, $\{ 1 \subset 1234\}$ is a flag of
+flats.  The contribution to QSym(S) will be $M_{(1,3)}$ since $(1,3)$
+is the image of the ordered set partition under the type map.
+Ehrenborg's quasisymmetric function would instead record the rank jumps of this flag giving a contribution of $M_{(1,2)}$.
+
+
+\end{example}
+%% Consider any $\omega \in \mathbb{N}^n$ such that
+%% $\omega_{i_1} < \omega_{i_2} = \omega_{i_3} = \omega_{i_4}$.  Then the
+%% bases of minimum weight are $\{12, 13, 14\}$.  This $\omega$ is
+%% $U_{2,4}$-loopless since all elements of the ground set are contained
+%% in some basis of minimum weight.  Considering all integer points with this same relative ordering,  contributes the term
+%% ${\ncM}_{1|234}$ to NCQB($U_{2,4}$).  The full nc-quasisymmetric function
+%% is
 
 %% Let us consider what these terms reflect.  The term $4M_{1,3}$
 %% appearing in $QB(U_{2,4})$ reflects the fact that there are $4$
 %% different types of $M$-loopless weight vectors with the form
 %% $\omega_{i_1} < \omega_{i_2} = \omega_{i_3} = \omega_{i_4}$.
 %% (** I am copying an pasting from other notes, so this is written as a quasisymmetric function.  For us, it should be written out as an ncqsym.**)
-\end{example}
+%\end{example}
 
 
-Again because the weight vector only depends on the relative ordering
-of elements, we can correspond a weight vector $\om$ to a flag of
-elements in $M$.  Given $\om$, let $\mathcal{F}(\om)$ be the flag
-$$\emptyset =: F_0 \subset F_1 \subset \ldots \subset F_k := [n]$$
-such that $\om$ is constant on each set $F_i - F_{i-1}$ and $\om|_{F_i -
-  F_{i-1}} < \om|_{F_{i+1} - F_{i}} $.  For example, the weight vector
-above, $\om_{i_1} < \om_{i_2} = \om_{i_3} = \om_{i_4}$, corresponds to
-the flag ${\emptyset \subset \{i_1\} \subset \{i_1,i_2,i_3,i_4\}}$.
+%% Again because the weight vector only depends on the relative ordering
+%% of elements, we can correspond a weight vector $\om$ to a flag of
+%% elements in $M$.  Given $\om$, let $\mathcal{F}(\om)$ be the flag
+%% $$\emptyset =: F_0 \subset F_1 \subset \ldots \subset F_k := [n]$$
+%% such that $\om$ is constant on each set $F_i - F_{i-1}$ and $\om|_{F_i -
+%%   F_{i-1}} < \om|_{F_{i+1} - F_{i}} $.  For example, the weight vector
+%% above, $\om_{i_1} < \om_{i_2} = \om_{i_3} = \om_{i_4}$, corresponds to
+%% the flag ${\emptyset \subset \{i_1\} \subset \{i_1,i_2,i_3,i_4\}}$.
 
-\begin{theorem}\label{thm:Bergman}[Theorem 1 ref]
-A weight function $\omega$ is $M$-loopless if and only if $\mathcal{F}(\om)$ is a flag of flats of $M$.
-\end{theorem}
+%% \begin{theorem}\label{thm:Bergman}[Theorem 1 ref]
+%% A weight function $\omega$ is $M$-loopless if and only if $\mathcal{F}(\om)$ is a flag of flats of $M$.
+%% \end{theorem}
 
 
-Applying the type map to NCQBergman gives the quasisymmetric
-function QBergman, 
-$$QB(U_{2,4}) = M_4 + 4M_{1,3}.$$
+%% Applying the type map to NCQBergman gives the quasisymmetric
+%% function QBergman, 
+%% $$QB(U_{2,4}) = M_4 + 4M_{1,3}.$$
 
 
 The collection of ordered set partitions which index the Bergman
-nc-quasisymmetric function are closed under {\em coarsening}, hence it
-is the forbidden collection is a valid subcomplex of the Coxeter
-complex.  Since the ordered set partitions that contribute to
-NCQBergman are not closed under refinement, we would not have reason
-to predict that QBergman is $L$-positive and it is indeed not.
-%% (*** cjk: We can define the cofundamental basis here and go through all the results on Bergman and the relationship to Ehrenborg'squasisymmetric function.  Or, we can do all of this in the previous section as part of the technical section and here we just note that the theorem about flats tells us we are in the case of all flags of a graded poset. ***) 
- Instead, we define the co-fundamental basis and show that QBergman
- has a well behaved expansion in this basis.
-%% **** {\bf What I want to notice here is that the ordered set partitions I
-%% am picking up for the Quasisymmetric function are closed under
-%% coarsening.  The forbidden subcomplex is an order filter in the
-%% Coxeter complex.  
-%% This quasisymmetric function is not positive in the fundamental (L) basis.  }
+nc-quasisymmetric function are closed under {\em coarsening} and moreover form the collection of flags of the lattice of flats of the matroid. 
 
-\begin{proposition}
+
+
+%% , hence it
+%% is the forbidden collection is a valid subcomplex of the Coxeter
+%% complex.  Since the ordered set partitions that contribute to
+%% NCQBergman are not closed under refinement, we would not have reason
+%% to predict that QBergman is $L$-positive and it is indeed not.
+%% %% (*** cjk: We can define the cofundamental basis here and go through all the results on Bergman and the relationship to Ehrenborg'squasisymmetric function.  Or, we can do all of this in the previous section as part of the technical section and here we just note that the theorem about flats tells us we are in the case of all flags of a graded poset. ***) 
+%%  Instead, we define the co-fundamental basis and show that QBergman
+%%  has a well behaved expansion in this basis.
+%% %% **** {\bf What I want to notice here is that the ordered set partitions I
+%% %% am picking up for the Quasisymmetric function are closed under
+%% %% coarsening.  The forbidden subcomplex is an order filter in the
+%% %% Coxeter complex.  
+%% %% This quasisymmetric function is not positive in the fundamental (L) basis.  }
+
+\begin{proposition} For the Bergman scheduling problem $S$, the coefficients of the quasisymmetric function QSym(S) in the cofundamental basis satisfy:
+\begin{enumerate}
+\item
 $$[N_{\alpha}] = (-1)^{|\alpha|} \sum_{\alpha \, \textrm{flags}} \prod_i \mu(f_i,f_{i+1})$$
 where an $\alpha$-flag is a flag of flats such that $|f_{i+1}| - |f_i| = \alpha_i$ and $\mu$ is the M\"{o}bius function of the lattice of flats of $M$.
-\end{proposition}
-
-\begin{proof}
-\end{proof}
-
-\begin{corollary}
-\begin{enumerate}
 \item The sign of $[N_{\alpha}]$ alternates with the length of $\alpha$.  
 \item $\sum_{\alpha} [N_{\alpha}] = 1$ 
-\item $\eta_{|E|} = [N_{|E|}]$ = (sign) Mobius function of the lattice
-of flats = (sign) Reduced Euler characteristic of order complex of
-proper part of lattice of flats.
+\item Up to sign, $ [N_{|E|}]$ is equal to the Mobius function of the lattice
+of flats $\mu(0,1)$, equivalently the reduced Euler characteristic of the order complex of
+proper part of the lattice of flats.
 \end{enumerate}
-\end{corollary}
+\end{proposition}
+
 
 \begin{proof}
-
-(i) In any composition of $n$, the parity of the number of odd parts is the same.
-
-(ii) Alternating sum over subsets
-
-(iii) (It is the alternating sum of the f-vector just broken up by the refinement).
-
+\begin{enumerate}
+\item This is an immediate corollary of Proposition~\ref{prop:flags}.
+\item  In any composition of $n$, the parity of the number of odd parts is the same.
+\item  Alternating sum over subsets
+\item (It is the alternating sum of the f-vector just broken up by the refinement).
+\end{enumerate}
 \end{proof}
 
 \begin{example}
@@ -1694,11 +1731,12 @@ proper part of lattice of flats.
 %% QB(U_{3,4}) & =  M_4 + 6M_{2,2} + 4M_{1,3} + 12M_{1,1,2}\\
 %%             & =  12 N_{1,1,2} - 8 N_{1,3} - 6N_{2,2} + 3N_4
 %% \end{align*}
-
-The Bergman quasisymmetric function of the Schubert matroid consisting of all bases componentwise less than or equal to $(135)$:
+The Schubert matroid $M_{<135>}$ is the matroid consisting of 
+all bases componentwise less than or equal to $(135)$.  The Bergman quasisymmetric function is given by
 \begin{align*}
-QB(M_{<135>}) & =  M_5 + 3M_{2,3} + M_{3,2} + M_{4,1} + 3M_{1,4} \\ & + 4M_{1,1,3} + M_{1,2,2} + M_{2,1,2} + M_{2,2,1} + 2M_{1,3,1}\\
-&  =  2N_{1,3,1} + N_{2,2,1} + N_{2,1,2} + N_{1,2,2} + 4N_{1,1,3} \\ & - 4 N_{1,4} - 2N_{4,1} - N_{3,2} - 3N_{2,3} + 2N_5
+& QSym(M_{<135>})  \\
+&  =  M_5 + 3M_{2,3} + M_{3,2} + M_{4,1} + 3M_{1,4}  + 4M_{1,1,3} + M_{1,2,2} + M_{2,1,2} + M_{2,2,1} + 2M_{1,3,1}\\
+&  =  2N_{1,3,1} + N_{2,2,1} + N_{2,1,2} + N_{1,2,2} + 4N_{1,1,3}  - 4 N_{1,4} - 2N_{4,1} - N_{3,2} - 3N_{2,3} + 2N_5.
 \end{align*}
 
 \end{example}
@@ -1719,11 +1757,7 @@ QB(M_{<135>}) & =  M_5 + 3M_{2,3} + M_{3,2} + M_{4,1} + 3M_{1,4} \\ & + 4M_{1,1,
 %% color.
 
 
-\comment{See Richard's result on chromatic in the power sum basis, alternates in sign by length of partition.}
-
-\begin{remark}
-(Compare to Ehrenborg)
-Ehrenborgs quasisymmetric function gives rise to a quasisymmetric function via ranks (i.e. not the type map, which uses sizes of the pieces).  Given an ordered set partition, interpret it as a flag (in a graded poset) and record the rank jumps of the flag.  
+%\comment{See Richard's result on chromatic in the power sum basis, alternates in sign by length of partition.}
 
 %I have put the paper in the dropbox folder: Ehrenborg-Hopf.pdf  
 
@@ -1733,37 +1767,13 @@ Ehrenborgs quasisymmetric function gives rise to a quasisymmetric function via r
 %being closed under coarsening is not enough to gaurentee the coefficients result.  The proof in Ehrenborg works for any collection that can be seen as all flags of a graded poset.  I don't know how much further this can be pushed...  
 
 
-\end{remark}
+%
 
 
-
-
-%% Summary...
-
-%% \begin{itemize}
-
-%% \item QBergman and QEhrenborg alternate sign in the co-L basis.  (Closed under coarsening)
-
-%% \item QGP (inclduing Chromatic and Biller-Jia-Reiner) are positive in the L-basis.  (Closed under refinement)
-
-%% \end{itemize}
-
-%% In the second class, it is easy to see geometrically which cones (faces) are being forbidden.  In the first class, it is not easy to see which faces you are taking.  
-
-%% I haven't spent much time thinking about what the polynomial restrictions of these mean.  
-
-
-
-
-In light of Theorem~\ref{thm:Bergman}, the Bergman polynomial obtained
+The Bergman polynomial obtained
 by evaluating QBergman at ${\bf 1}^m$ counts the number of
 $m$-schedules satisfying the boolean formula prescribed by the closure
-operator.  One could interpret the rank as a kind of cost function -
-once certain jobs are started, others of the same rank can be added
-without additional cost.  To minimize cost, we require that in any
-scheduling of jobs, at each time step we have a closed subset of jobs.
-Specifically, a schedule with $m$ time slots corresponds to a
-multichain in the lattice of flats of the matroid.  
+operator. 
 
 \begin{proposition}
 The Bergman polynomial of a matroid is equal to the zeta polynomial of the lattice of flats of the matroid, which counts multichains of length $m$ in the lattice,
@@ -1771,7 +1781,10 @@ $$QB(M;{\bf 1}^m) = Z(L(M),m) = |\{ \hat{0} = y_0 \leq y_1 \leq \cdots \leq y_m 
 
 \end{proposition}
 
-
+ One could interpret the rank as a kind of cost function -
+once certain jobs are started, others of the same rank can be added
+without additional cost.  To minimize cost, we require that in any
+scheduling of jobs, at each time step we have a closed subset of jobs.
 
 \begin{example}
 Returning to the example of $U_{2,4}$, the Bergman polynomial is
@@ -2049,38 +2062,41 @@ The flats of this matroid are all singletons and the entire set [4].  In terms o
 %polynomials that fit into our framework.  Here we demonstrate a new polynomial 
 %that falls naturally out of our framework. ***
 
-
+In the last section we introduce the arboricity polynomial, a
+scheduling polynomial naturally associated to a graph or matroid.
 Given a simple graph $G$, the arboricity of $G$ is defined to be the
 minimum number of forests needed to decompose (cover) the edges of
-$G$.  The parameter was introduced by Nash-Williams and Tutte [refs].
+$G$.  The parameter was introduced by Nash-Williams and Tutte~\cite{Nash, Tutte}.
 This definition is easily extend to an arbitrary matroid $M$ where the
-arboricity becomes the minimum number of independent sets needed to
+arboricity of $M$ is then the minimum number of independent sets needed to
 cover the ground set of $M$.  The constructive version of partitioning
-a matroid into as few independent subsetes as possible is known as the
-matroid partitioning problem. [History?  Edmonds has first algorithm
-  but did he first extend definition to matroids?]  The initial
-literature is concerned with computing this minimum number.  As
-[Nash-Williams, Tutte, Edmonds] show, the arboricity $a(M)$ is given
+a matroid into as few independent subsets as possible is known as the
+matroid partitioning problem. The initial
+literature on arboricty is concerned with computing this minimum number.  As shown in 
+~\cite{Nash, Tutte} and extended by Edmonds~\cite{Edmonds}, the arboricity $a(M)$ is given
 by:
 
-$$ a(M) = \textrm{ max}_{X\subseteq E} \lceil { \frac{|X|}{rk(X)}} \rceil . $$
+$$ a(M) = \textrm{ max}_{X\subseteq E} \lceil { \frac{|X|}{rk(X)}} \rceil, $$
+where $X$ ranges over all possible subsets of the ground set.
 
 Here we will be concerned with the problem of enumerating independent
 set covers by size.  In particular we will show that the number of
 covers of $M$ with at most $k$ independent sets is a polynomial in
-$k$.  An appropriate analogy to keep in mind is the chromatic
+$k$.  Again, an appropriate analogy to keep in mind is the chromatic
 polynomial of a graph.  The chromatic polynomial is the enumerate
 function which counts the number of proper coloring of a graph with at
-most $k$ colors.  After defining the enumerative function, the first
-result one proves is that it is in fact a polynomial function in $k$.
-The standard proof follows by induction after establishing a deletion
-/ contraction recurrence for the number of colorings.  An important
-distinction for counting independent coverings is that they do not
-satisfy deletion/contraction hence this standard proof technique will
-not apply in our case.  We consider it a particularly appealing aspect
-of our theory that the polynomiality of this function follows almost
-immediately once the counting function is viewed in our geometric
-framework.
+most $k$ colors.  
+%% After defining the enumerative function, the first
+%% result one proves is that it is in fact a polynomial function in $k$.
+%% The standard proof follows by induction after establishing a deletion
+%% / contraction recurrence for the number of colorings. 
+ An important distinction for counting independent set coverings is
+ that they do not satisfy a deletion contraction recursion hence the
+ standard inductive proof technique for plynomiality does not apply in
+ this case.  Instead, independent set covers are seen as solutions to
+ a scheduling problem and hence are enumerated by the corresponding
+ scheduling polynomial.
+
 
 \subsection{The Arboricity polynomial}
 
@@ -2089,7 +2105,13 @@ framework.
   The arboricity polynomial $A_M(k)$ is the counting function equal to the number of independent covers of $E$ with at most $k$ parts.
 \end{definition}
 
-**Write out as a  Scheduling problem**
+
+As a scheduling problem, given a matroid $M$ on a finite ground set
+$E$, an independent cover is all ordered set partitions of $E$ such
+that no block contains a circuit of $M$. Let $\mathcal{C}$ denote the set of circuits of $M$, then the scheduling boolean function is
+$$\phi(M) = \wedge_{C \in \mathcal{C}} (x_{i_1} \neq x_{i_2} \neq \cdots \neq x_{i_m}),$$
+where the conjuction runs over all circuits $C$ and $\{i_1, i_2, \ldots, i_m\} = C$.
+The forbidden configuration consists of all ordered set partitions such that at least one block contains a circuit and the scheduling polynomial counts the number of covers with at most $k$ parts.   In terms of scheduling, the collection of jobs which may start at a fixed time can not be dependent.  
 
 \begin{example}
 
@@ -2102,14 +2124,34 @@ Let $M$ be the free matroid on a ground set of size $n$; i.e. all subsets of the
 Let $M(C_n)$ be the graphical matroid of the cycle graph on $n$
 vertices.  Independent sets of this matroid correspond to acyclic
 subsets of edges (forests) of the graph.  For $k \leq 1$ we find no
-indpendent covers of $M$.  For $k \geq 2$, indpendent covers
-correspond to labeled partitions of $[n]$ with at least $2$ parts.
+independent covers of $M$.  For $k \geq 2$, independent covers
+correspond to ordered set partitions of $[n]$ with at least $2$ parts.
 
-$$A_{M(C_n)}(k) = \sum_{m=2}^{n} S(n,m) k(k-1) \cdots (k-m+1) $$
 
-Using the identity that $\sum_0^n S(n,m) k(k-1) \cdots (k-m+1) = k^n$, we find:
+For $n=3$,  consider the Braid arrangement in $R^3$, the ground set space of the
+matroid, or edge set space of the graph.  The allowable configuration consists of ordered set partitions
+corresponding to collections of integer points which lie off of the
+intersection: $x_1 = x_2 = x_3$. Hence the corresponding element of NCQSym is 
+$${\bf{{\mathcal A}}}(M) = M_{(1|23)} + M_{(2|13)} + M_{(3|12)} + M_{(23|1)} + M_{(13|2)} +  M_{(12|3)} + $$ $$ M_{(1|2|3)} + M_{(1|3|2)}
++ M_{(2|1|3)} + M_{(2|3|1)} + M_{(3|1|2)} + M_{(3|2|1)}. $$
 
-$$A_{M(C_n)}(k) = k^n - k $$
+\noindent Specializing under the type map we have an element of Qsym:
+
+$${\mathcal A}(M) = 3 M_{(1,2)} + 3 M_{(2,1)} + 6 M_{(1,1,1)}. $$
+
+\noindent Evaluating at ${\bf 1}^k $ we have the arboricity polynomial:
+
+$$ A(M) = 3 { k \choose 2} + 3 { k \choose 2} + 6 { k \choose 3} = k^3 - k. $$
+
+In general,
+$$A_{M(C_n)}(k) = \sum_{m=2}^{n} S(n,m) \cdot k(k-1) \cdots (k-m+1), $$
+where $S(n,m)$ is the stirling number of the second kind. 
+Using the identity that $\sum_0^n S(n,m) \cdot k(k-1) \cdots (k-m+1) = k^n$, we find that the number of covers of the cycle graph with at most $k$ forests is
+
+$$A_{M(C_n)}(k) = k^n - k. $$
+
+
+
 
 \end{example}
 
@@ -2117,7 +2159,7 @@ $$A_{M(C_n)}(k) = k^n - k $$
 
 \begin{example}
 Let $M$ be the graphical matroid of the graph $G$ with $5$ edges as
-shown in Figure 1.  The entire ground set is not independent so there
+shown in Figure [].  The entire ground set is not independent so there
 are no independent covers of size $1$.  We can achieve independent
 partitions of size $2$.  Written as ordered set partitions, they are:
 $$ 34e|12, 12e|34, 124|3e, 134|2e, 234|1e, 123|4e, 13e|24, 13|24e, $$
@@ -2128,19 +2170,28 @@ partition, the edges form a forest.  These are the partitions of
 minimal size, clearly any refinement of these partitions will also
 yield independent partitions.
 
-\end{example}
 
-We can utlize this example to show explicitly that $A_M(k)$ does not
+
+We can utilize this example to show explicitly that $A_M(k)$ does not
 satisfy deletion/contraction.  Consider the deletion and contraction
 of the edge $e$, $M-e$ and $M/e$.  The independent covers of size $2$
 of $M-e$ are
 $$ 123|4, 124|3, 134|2, 234|1, 12|34, 13|24, 14|23, $$ and all those
-with the order of the blocks reversed.  We could also note that $M-e$
-corresponds to a cycle graph and $2^4 - 2 = 14$.  The independent
+with the order of the blocks reversed. (We could also note that $M-e$
+corresponds to a cycle graph and $2^4 - 2 = 14$.)  The independent
 covers of $M/e$ are $$12|34, 13|24,$$ and those with the order of the
 blocks reversed.  Therefore $A_M(2) \neq A_{M-e}(2) + A_{M/e}(2)$.
 
 
+
+
+\begin{figure}[h]
+\includegraphics[width=10cm]{arboricity.pdf}
+\caption{The arboricity polynomial does not satisfy a deletion contraction recursion.}
+\end{figure}
+
+
+\end{example}
 
 
 %\subsection{Quasisymmetric Functions}
@@ -2148,35 +2199,35 @@ blocks reversed.  Therefore $A_M(2) \neq A_{M-e}(2) + A_{M/e}(2)$.
 %I am assuming that we'll have this general theory set up earlier so I can just work through it in an example. 
 
 
-****cjk: I just wrote out examples but here we should explicitly describe arboricity in terms of the Erhart and Quasisymmetric picture.  I want to wait to do this until the other sections are written so we can point out specific results that apply.  Also, I actually don't like how all the examples are italized.****
+%% ****cjk: I just wrote out examples but here we should explicitly describe arboricity in terms of the Erhart and Quasisymmetric picture.  I want to wait to do this until the other sections are written so we can point out specific results that apply.  Also, I actually don't like how all the examples are italized.****
 
 
-\begin{example}
+%% \begin{example}
 
-Consider the matroid of the $3$-cycle $M(C_3)$.  The only circuit is the entire ground set $\{1,2,3\}$.  All other ordered set partitions correspond to independent coverings of $C_3$: 
-$$1|23, 2|13, 3|12, 1|2|3,$$
-and all those with the order of the blocks permuted. 
+%% Consider the matroid of the $3$-cycle $M(C_3)$.  The only circuit is the entire ground set $\{1,2,3\}$.  All other ordered set partitions correspond to independent coverings of $C_3$: 
+%% $$1|23, 2|13, 3|12, 1|2|3,$$
+%% and all those with the order of the blocks permuted. 
 
-Consider the Braid arrangement in $R^3$, the ground set space of the
-matroid, or edge set space of the graph.  These ordered set partitions
-correspond to the collection of integer points which lie off of the
-intersection: $x_1 = x_2 = x_3$.
+%% Consider the Braid arrangement in $R^3$, the ground set space of the
+%% matroid, or edge set space of the graph.  These ordered set partitions
+%% correspond to the collection of integer points which lie off of the
+%% intersection: $x_1 = x_2 = x_3$.
 
 
- Hence the corresponding element of NCQSym is 
+%%  Hence the corresponding element of NCQSym is 
 
-$${\bf{{\mathcal A}}}(M) = M_{(1|23)} + M_{(2|13)} + M_{(3|12)} + M_{(23|1)} + M_{(13|2)} +  M_{(12|3)} + $$ $$ M_{(1|2|3)} + M_{(1|3|2)}
-+ M_{(2|1|3)} + M_{(2|3|1)} + M_{(3|1|2)} + M_{(3|2|1)}. $$
+%% $${\bf{{\mathcal A}}}(M) = M_{(1|23)} + M_{(2|13)} + M_{(3|12)} + M_{(23|1)} + M_{(13|2)} +  M_{(12|3)} + $$ $$ M_{(1|2|3)} + M_{(1|3|2)}
+%% + M_{(2|1|3)} + M_{(2|3|1)} + M_{(3|1|2)} + M_{(3|2|1)}. $$
 
-\noindent Specializing under the type map we have an element of Qsym:
+%% \noindent Specializing under the type map we have an element of Qsym:
 
-$${\mathcal A}(M) = 3 M_{(1,2)} + 3 M_{(2,1)} + 6 M_{(1,1,1)}. $$
+%% $${\mathcal A}(M) = 3 M_{(1,2)} + 3 M_{(2,1)} + 6 M_{(1,1,1)}. $$
 
-\noindent Evaluating at ${\bf 1}^k $ we have the arboricity polynomial:
+%% \noindent Evaluating at ${\bf 1}^k $ we have the arboricity polynomial:
 
-$$ A(M) = 3 { k \choose 2} + 3 { k \choose 2} + 6 { k \choose 3} = k^3 - k $$
+%% $$ A(M) = 3 { k \choose 2} + 3 { k \choose 2} + 6 { k \choose 3} = k^3 - k $$
 
-\end{example}
+%% \end{example}
 
 
 
