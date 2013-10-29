@@ -1021,7 +1021,7 @@ A nice conjunction $C$ of dimension $k$ is $k$-partitionable.
 (Sketch.) The Braid triangulation gives a regular triangulation of $C$. As $C$ is convex, this triangulation admits a line shelling (of the closure of $C$). Because $C$ is nice, at most one face of $C$ is open. By choosing the line-shelling such that the simplicies incident to the open face of $C$ are "seen first" by the shelling, we can construct a shelling order that induces a partition of (the half-open) $C$.
 \end{proof}
 
-Note that, by symmetry, this also works for "co-nice" polytopes that have just one closed face and are otherwise open.
+Note that, by symmetry, this also works for "co-nice" polytopes that have just one closed face and are otherwise open. \comment{TODO: Check that this really works.}
 
 Now we can apply this tool to decision trees. We use the following definition of a decision tree.
 
@@ -1040,7 +1040,7 @@ Every leaf of a decision tree defines a cell. Let $v$ denote a leaf of the decis
 Let $S$ be a decision tree such that all cells of $S$ are nice of dimension $k$. Then $\allow(S)$ is $k$-partitionable.
 \end{theorem}
 
-\comment{TODO: Examples with pictures. (I hope to digitize a nice blackboard example that I have as soon as possible.)}
+\comment{TODO: Examples with pictures. First draft of an example in coxeter\_complex.pdf}
 
 Note that a cell can be in the "strict inequality" branch of many of its ancestors and still be nice. The reason is that, in practice, many of these strict ancestral inequalities will be redundant.
 
@@ -1053,8 +1053,12 @@ Note that a cell can be in the "strict inequality" branch of many of its ancesto
 \item The above condition for the partitionability theorem is incomparable with the one that we had before. Still, I think of it as weaker, since it excludes some decision trees that I wanted to cover.
 \item However, the above condition has going for it that it includes some scheduling problems $S$ such that $\allow(S)$ has non-trivial topology (an annulus, for example).
 \item Most importantly: The proof for this definition is straightforward, whereas I ran in some unexpected trouble with the other definition.
-\item If we allow $k<d$, this definition does include non-convex, non-star-convex cases. But if $k<d$, the meaning of partitionability is not so nice. We would have to use a shifted basis to get non-negativity.
-\item On the other hand, if we restrict to $k=d$, then I do not know whether we can avoid star-convexity with the decision trees. (How to get rid of the main diagonal, given that our decision trees are now (mostly) closed?)
+\item Should we allow complexes of codimension $>1$? Should we talk about $k$-partitionability, or restrict to $k=d$? (Contrary to what I wrote before, I do not think this makes a difference wrt star-convexity.)
+\item Currently, (if we restrict ourselves to connected allowable subcomplexes) we get non-convex allowable subcomplexes, but not non-star-convex allowable subcomplexes. The reason is that because our allowable subcomplexes are closed (mostly), they always include the main diagonal of the $[0,1]^d$ cube and are thus star-convex. The best way out would be to allow \emph{co-nice} cells. This way we could construct open allowable subcomplexes that can then be properly non-star-convex. Two questions in this regard:
+\begin{itemize}
+  \item How to extend the proof of partitionability to co-nice conjunctions?
+  \item Is it possible to construct a non-star-convex example, even if $k=d$?
+\end{itemize}
 \item We would need to place some additional restrictions on the decision tree to guarantee that reciprocity works. I am not sure it is worth opening this can of worms for this paper, though. Maybe we should leave reciprocity for the next one?
 \end{enumerate}
 }
