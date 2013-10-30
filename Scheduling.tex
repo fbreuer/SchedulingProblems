@@ -241,10 +241,10 @@ scheduling problems can be naturally viewed from all of these
 perspectives.  The polynomiality of the scheduling counting function
 is established in Theorem~\ref{fbasis} along with properties of its
 coefficients.  Theorem~\ref{hilbert} relates the scheduling polynomial
-to the $h$-vector of the \emph{allowed subcomplex} of solutions.
+to the $h$-vector of the \emph{allowed configuration} of solutions.
 Section~\ref{geometry} contains positivity results of the expansions
 of scheduling functions based on the geometry of the allowed
-subcomplex.  And, Section~\ref{arboricty} introduces  the arboricty polynomial.
+configuration.  And, Section~\ref{arboricty} introduces  the arboricty polynomial.
 
 
 %% \begin{figure}[h]
@@ -384,11 +384,8 @@ corresponding to $G$; the face lattice is dual to the face lattice of the permut
 
 \begin{figure}[h]
 \includegraphics[height=2.5in]{Cox.pdf}
-\caption{Two front faces of the Coxeter complex of type A labeled by ordered set partitions.*** Add dashed bottom back edge}
+\caption{Two front sides of the Coxeter complex of type A on $4$ elements labeled by ordered set partitions.}
 \end{figure}
-
-
-%**Figure of Coxeter complex labeled with ordered set partitions.**
 
 \subsection{NCQSym}
 
@@ -760,7 +757,7 @@ specialization of a symmetric function and as an Ehrhart polynomial.
 General scheduling, counting function is a polynomial.
 \end{example}
 
-\subsection{Triangulations and their Allowed and Forbidden Subcomplexes}
+\subsection{Triangulations and their Allowed and Forbidden configurations}
 Geometrically we have seen that
 the Braid arrangement, consisting of all hyperplanes
 \[
@@ -774,11 +771,11 @@ S^{n-2}=\mset{x\in\RR^n}{||x||_2 = 1, \sum_{i=1}^n = 0}.
 
 All of these complexes are closely related. In fact, $\TRn$, $\TP$, and $\TC$ are all combinatorially equivalent, as the function $\Delta$ defines a bijection between their sets of faces that preserves incidences. In particular, the faces of these three complexes are in one-to-one correspondence with the ordered set partions $\Phi$ of $[n]$ into non-empty parts. The only difference with $\TS$ is that there is no face of $\TS$ corresponding to the partition with only one part. Combinatorially, the other complexes are the cone over $\TS$. As these geometric objects are so closely related, we will frequently draw no clear distinction between them and refer loosely to the triangulation $\Tn$. It will be clear from context which of these objects we are referring to in each case.
 
-We write $\sigma\in\Tn$ to denote that $\sigma$ is a face of the triangulation $\Tn$. We use $\sigma_\Phi$ to mean the face of $\Tn$ corresponding to the ordered set partition $\Phi$.  Recall that for a scheduling problem $S$, $S(\Phi)$ denotes the truth value of whether $S(a)$ holds for any (or, equivalently, all) $a\in\RR^n$ with $\Delta(a)=\Phi$. We define the \emph{allowed subcomplex} $\allow(S)$ of the triangulation $\Tn$ to be the set of faces 
+We write $\sigma\in\Tn$ to denote that $\sigma$ is a face of the triangulation $\Tn$. We use $\sigma_\Phi$ to mean the face of $\Tn$ corresponding to the ordered set partition $\Phi$.  Recall that for a scheduling problem $S$, $S(\Phi)$ denotes the truth value of whether $S(a)$ holds for any (or, equivalently, all) $a\in\RR^n$ with $\Delta(a)=\Phi$. We define the \emph{allowed configuration} $\allow(S)$ of the triangulation $\Tn$ to be the set of faces 
 \[
   \allow(S) = \mset{\sigma_\Phi \in \Tn}{S(\Phi) \textrm{ holds}}.
 \]
-Correspondingly, define the \emph{forbidden subcomplex} $\forb(S)$ to be the set of faces
+Correspondingly, define the \emph{forbidden configuration} $\forb(S)$ to be the set of faces
 \[
   \forb(S) = \mset{\sigma_\Phi \in \Tn}{\neg S(\Phi) \textrm{ holds}}.
 \]
@@ -851,7 +848,7 @@ from which it follows that the $h$- and $h^*$-vectors of a complex $X$ coincide 
 
 \begin{theorem}
 \label{hilbert}
-Let $S$ be a scheduling problem. Then the $h$-vector of the shifted scheduling polynomial $\poly_S(k-1)$ is the $h$-vector of the allowed subcomplex $\allow(S)$ and the $h$-vector of the polynomial $(k-2)^n-\poly_S(k-1)$ is the $h$-vector of the forbidden subcomplex $\forb(S)$, i.e.,
+Let $S$ be a scheduling problem. Then the $h$-vector of the shifted scheduling polynomial $\poly_S(k-1)$ is the $h$-vector of the allowed configuration $\allow(S)$ and the $h$-vector of the polynomial $(k-2)^n-\poly_S(k-1)$ is the $h$-vector of the forbidden configuration $\forb(S)$, i.e.,
 \begin{eqnarray*}
   h(\poly_S(k-1)) &=& h(\allow(S)),   \text{ and}\\
   h((k-2)^n - \poly_S(k-1)) &=& h(\forb(S)),
@@ -1113,7 +1110,7 @@ Note that a cell can be in the "strict inequality" branch of many of its ancesto
 Above we established that if a scheduling problem can be written as a
 disjoint union of  convex decision trees then the allowable
 configuration is partitionable.  Here we prove that partitionability
-of the allowable subcomplex implies positivity of the scheduling
+of the allowable configuration implies positivity of the scheduling
 (nc-)quasisymmetric function in the (nc-)fundamental basis.
 
 
@@ -1200,13 +1197,13 @@ We summarize the connections
 \begin{proposition}
 Let $\mathcal{F}$ denote an nc-quasisymmetric function, let $F$ denote a quasisymmetric function and let $p$ denote a polynomial such that
 \[
-  \type(\mathcal{F}) = F \;\;\; \text{ and } \;\;\; \mathcal{F}(\mathbf{1}^k) = F(\mathbf{1}^k) = p(k),
+  \type(\mathcal{F}) = F \;\;\; \text{ and } \;\;\; \mathcal{F}(\mathbf{1}^k) = F(\mathbf{1}^k) = p(k).
 \]
-i.e., $\mathcal{F}$ specializes to $F$ when we allow variables to commute and both $\mathcal{F}$ and $F$ specialize to $p$ when we plug in $k$ ones. Moreover, let $\mu_\Phi$, $\mu_{(\Phi_\text{c};\Phi_\text{f})}$ and $\lambda_\alpha$ denote coefficient vectors of $\mathcal{F}$ and $F$ in terms of the fundamental bases and let $(0,h^*_1,\ldots,h^*_n)$ denote the $h^*$-vector of $p$, i.e.,
+Namely, $\mathcal{F}$ specializes to $F$ when the variables are allowed to commute and both $\mathcal{F}$ and $F$ specialize to $p$ when the first $k$ variables are set equal to $1$ and the rest to $0$.   Moreover, let $\mu_\Phi$, $\mu_{(\Phi_\text{c};\Phi_\text{f})}$ and $\lambda_\alpha$ denote the coefficient vectors of $\mathcal{F}$ and $F$ in terms of the fundamental bases and let $(0,h^*_1,\ldots,h^*_n)$ denote the $h^*$-vector of $p$,
 \begin{eqnarray*}
   \mathcal{F} &=& \sum_\Phi \mu_\Phi \ncL_\Phi = \sum_{(\Phi_\text{c};\Phi_\text{f})} \mu_{(\Phi_\text{c};\Phi_\text{f})} \ncL_{(\Phi_\text{c};\Phi_\text{f})}, \\
   F &=& \sum_{\alpha} \lambda_\alpha L_\alpha,\\
-  p(k) &=& \sum_{i=1}^n h^*_i \binom{k+n-i}{n}
+  p(k) &=& \sum_{i=1}^n h^*_i \binom{k+n-i}{n}.
 \end{eqnarray*}
 Then
 \[
@@ -1224,6 +1221,9 @@ The coefficients $h_i^*$, $\mu_\Phi$, $\mu_{(\Phi_\text{c};\Phi_\text{f})}$ and 
 
 Non-negativity of the $\mu_\Phi$ or the $\mu_{(\Phi_\text{c};\Phi_\text{f})}$ implies non-negativity of the $\lambda_\alpha$, and, in turn, non-negativity of the $\lambda_\alpha$ implies non-negativity of the $h^*_i$.
 \end{proposition}
+
+
+\comment{Notation on allow - sometimes we see (0,1) }
 
 %In particular, the theorem holds if $\mathcal{F}=\SSS_S$ is a scheduling nc-quasisymmetric function and $p(k)=\poly_S(k)$ is the corresponding scheduling polynomial.
 
@@ -1406,17 +1406,18 @@ form $x_a < x_b$ which defines a poset.  The quasisymmetric function
 $QS$ restricted to a single $C_{i,j}$ is the generating function
 $K_{(P,\omega)}$ where $\omega$ is a ``fully un-natural'' labelling of
 $P$.  For schedules with a single $C_{i,j}$, Theorem~\ref{unique}
-gives the Fundamental theorem of quasisymmetric functions, i.e. the
+gives a special case of Stanley and Gessels~\cite{Gessel,StanP} 
+%the Fundamental theorem of quasisymmetric functions, i.e. the
 expansion of $K_{(P,\omega)}$ in the fundamental basis by descent
 sets.  In this case, with all strict labels, the unique coarsest
-elements for each ordering are also defined by the descent sets.
+elements for each ordering can also be defined by the descent sets.
 
 
 Theorem~\ref{unique} is neither strictly stronger nor weaker than the
 $K_{(P,\omega)}$ expansion.  Posets with non-strict edges may easily
 be non-positive in the $\ncL$ basis and many scheduling problems
 satisfy the conditions of Theorem~\ref{unique} but do not arise from
-any poset or P-partition structure.
+any poset or P-partition structure as seen in the example below.
 
 \begin{example} 
 Consider the scheduling nc-quasisymmetric function,
@@ -1427,7 +1428,7 @@ Consider the scheduling nc-quasisymmetric function,
 & + \ncM_{2|4|3|1} + \ncM_{2|14|3} + \ncM_{2|1|4|3} + \ncM_{2|1|34} + \ncM_{2|1|3|4} + \ncM_{4|2|3|1}.
 \end{align*}
 
-The corresponding scheduling problem $S$ does satisfy the conditions of Theorem~\ref{unique}, but can not be written as the conjunction of disjunctions.
+The corresponding scheduling problem $S$ does satisfy the conditions of Theorem~\ref{unique}, for every allowable ordered set partition $\Phi$ there is a unique coarsest ordered set partition $\Phi_c$ below $\Phi$ in the directed refinement ordereding.  On the other hand, $S$ can not be written as the conjunction of disjunctions.
 
 
 \end{example}
@@ -1454,12 +1455,11 @@ The corresponding scheduling problem $S$ does satisfy the conditions of Theorem~
 %% \end{enumerate}
 %% \end{proposition}
 
-
-
+\comment{I don't actually work at the level of NCQsym in the next section.}
 \subsection{Allow is a subcomplex, the Co-fundamental basis and the $\ncN$-coefficients}
 
 
-We have seen how particular niceness conditions on the Allowable
+We have seen how particular niceness conditions on the allowable
 configuration $\allow(S)$ and the forbidden configuration $\forb(S)$
 translate into strong properties of the expansions of NCQsym(S) and
 QSym(S) in the fundamental bases and the relationship between the
@@ -1468,16 +1468,13 @@ $\poly(S)$.
 % In particular, many special cases above resulted in
 %$\forb(S)$ being a valid subcomplex of the Coxeter complex (as
 %opposed to simply a collection of faces). 
- Here we consider Scheduling problem such that $\allow(S)$ is a valid
+ Here we consider scheduling problems such that $\allow(S)$ is a valid
  subcomplex of $\cox_A$, i.e. the ordered set partitions satisfying
  $S$ are closed under coarsening.  In this case, expansion in the
  fundamental basis is not a natural choice.  Expansion in the
  co-fundamental basis, however, is natural and does yield good
  behavior.  The co-fundamental basis for quasisymmetric functions is
- defined analogously to the fundamental basis but instead of summing
- over all compositions that refine a fixed composition, one sums over
- all compositions that coarsen a fixed composition:
-
+ defined analogously to the fundamental basis with refinement replaced by coarsening.  Namely, for a fixed composition $\alpha$, define $N_{\alpha}$ as the sum over all monomials indexed by compositions that coarsen $\alpha$,
 $$N_{\alpha} := \sum_{\beta : \beta \, \textrm{coarsens} \, \alpha} M_{\beta}.$$
 
 
@@ -1531,7 +1528,7 @@ a quasisymmetric function $F(P)$ by summing over all chains of the
 poset and recording the rank jump of the flag at each step.  Although
 the quasisymmetric functions record different data from the poset, our
 Proposition~\ref{prop:flags} is equivalent to
-~\cite{Ehrenborg,Proposition 5.1}, where our expansion in the
+~\cite{Ehrenborg}Proposition 5.1, where our expansion in the
 co-fundamental basis is equivalent to his expansion of the image of
 the Malvenuto and Reutenauer involution of quasisymmetric functions.
 The equivalence is seen by noting that the coefficients are given by a
@@ -1541,7 +1538,7 @@ chain that is closed under coarsening.
 
 
 
-
+\comment{How much of this should I include?  Jump straight to lattice of flats?}
 \subsubsection{The Bergman scheduling problem} As an explicit example of Proposition~\ref{prop:flags} we consider the Bergman
 Scheduling problem, so named because the lattice points of the
 allowable configuration are precisely those contained in the Bergman
@@ -1575,58 +1572,6 @@ The Bergman Scheduling problem is the scheduling problem with allowable configur
 %% where ${\bf x}_{\omega} = \prod_{e \in E} x_{\omega(e)}$.
 
 
-%% \subsection{Extended example: QBergman}
-
-%% In the final two sections, we explore two instances of scheduling
-%% problems associated to a matroid.  First, we define the Bergman
-%% nc-quasisymmetric function, so named because the lattice points we will be
-%% interested in are precisely those contained in the Bergman fan of a
-%% matroid [ref].  The specialized Bergman quasisymmetric function is
-%% closely related to Ehrenborg's quasisymmetric function for posets and
-%% the specialized Scheduling polynomial is the Zeta-polynomial of the
-%% matroid.
-
-
-
-%% ** I don't know what to call this thing.  Is it the Bergman scheduling problem?  There is an NCQsym object, a quasisymmetric function, a polynomial, and then there is the forbidden collection, a partial-polytopal complex, etc.  For arboricity, the polynomial is the interesting thing.  For Bergman, it's the entire collection together.   **
-
-%% ** Hopefully we will have a general statement above in the previous section and this will be a special instance. **
-
-%% In this section we explore a new instance of a scheduling problem naturally arising for any matroid.   In this case we will see a forbidden collection $\Delta(S)$ that does not form a subcomplex of the Coxeter complex.  Instead, the forbidden cones will form an order filter.  (*** ref: as in ...***)
-
-%% quasisymmetric
-%% function, the Bergman quasisymmetric function of a matroid.
-
-
-
-%% Let $M$ be a matroid on ground set $[n]$ and let $\omega \in \mathbb{N}^n$.
-%% Consider $\omega$ as a weight function on the ground set of $M$ and define the weight of a basis $B$ to be: $\omega(B) = \sum_{e\in B} \omega(e)$. 
-%% %Call a weight function
-%% % $\omega$ on the ground set of a matroid $M$
-%% Furthermore define $M_{\omega}$ to be the induced matroid of all
-%% $\omega$-minimal bases.  Three different perspectives on this induced
-%% matroid and that fact that it is indeed a matroid are discussed in [ref Section 2].
-
-%%   We will call $\omega$ $M$-loopless if the matroid $M_{\omega}$ has
-%%   no loops, i.e.  every element of the ground set is contained in
-%%   some minimal weight basis.  In [ref], such $\omega$ are called 
-%%     valid and precisely constitute the integral points of the Bergman
-%%   fan of $M$.
-
-%%  (** Put in at least a small motivation for Bergman.**)
-
-%% $M_{\omega}$ is completely determined by the
-%% relative ordering of the componants of $\omega$ and not their exact
-%% value, hence we make the following definition.
-
-
-%% \begin{definition}
-%% The Bergman nc-quasisymmetric function is the generating function,
-%% $$NCQB(M,{\bf x}) := \sum_{M\textrm{-loopless} \, \omega} {\bf x}_{\omega},$$
-
-%% where ${\bf x}_{\omega} = \prod_{e \in E} x_{\omega(e)}$.
-%% \end{definition}
-
 
 \begin{example}
 
@@ -1644,30 +1589,6 @@ Ehrenborg's quasisymmetric function would instead record the rank jumps of this 
 
 
 \end{example}
-%% Consider any $\omega \in \mathbb{N}^n$ such that
-%% $\omega_{i_1} < \omega_{i_2} = \omega_{i_3} = \omega_{i_4}$.  Then the
-%% bases of minimum weight are $\{12, 13, 14\}$.  This $\omega$ is
-%% $U_{2,4}$-loopless since all elements of the ground set are contained
-%% in some basis of minimum weight.  Considering all integer points with this same relative ordering,  contributes the term
-%% ${\ncM}_{1|234}$ to NCQB($U_{2,4}$).  The full nc-quasisymmetric function
-%% is
-
-%% Let us consider what these terms reflect.  The term $4M_{1,3}$
-%% appearing in $QB(U_{2,4})$ reflects the fact that there are $4$
-%% different types of $M$-loopless weight vectors with the form
-%% $\omega_{i_1} < \omega_{i_2} = \omega_{i_3} = \omega_{i_4}$.
-%% (** I am copying an pasting from other notes, so this is written as a quasisymmetric function.  For us, it should be written out as an ncqsym.**)
-%\end{example}
-
-
-%% Again because the weight vector only depends on the relative ordering
-%% of elements, we can correspond a weight vector $\om$ to a flag of
-%% elements in $M$.  Given $\om$, let $\mathcal{F}(\om)$ be the flag
-%% $$\emptyset =: F_0 \subset F_1 \subset \ldots \subset F_k := [n]$$
-%% such that $\om$ is constant on each set $F_i - F_{i-1}$ and $\om|_{F_i -
-%%   F_{i-1}} < \om|_{F_{i+1} - F_{i}} $.  For example, the weight vector
-%% above, $\om_{i_1} < \om_{i_2} = \om_{i_3} = \om_{i_4}$, corresponds to
-%% the flag ${\emptyset \subset \{i_1\} \subset \{i_1,i_2,i_3,i_4\}}$.
 
 %% \begin{theorem}\label{thm:Bergman}[Theorem 1 ref]
 %% A weight function $\omega$ is $M$-loopless if and only if $\mathcal{F}(\om)$ is a flag of flats of $M$.
@@ -1684,19 +1605,7 @@ nc-quasisymmetric function are closed under {\em coarsening} and moreover form t
 
 
 
-%% , hence it
-%% is the forbidden collection is a valid subcomplex of the Coxeter
-%% complex.  Since the ordered set partitions that contribute to
-%% NCQBergman are not closed under refinement, we would not have reason
-%% to predict that QBergman is $L$-positive and it is indeed not.
-%% %% (*** cjk: We can define the cofundamental basis here and go through all the results on Bergman and the relationship to Ehrenborg'squasisymmetric function.  Or, we can do all of this in the previous section as part of the technical section and here we just note that the theorem about flats tells us we are in the case of all flags of a graded poset. ***) 
-%%  Instead, we define the co-fundamental basis and show that QBergman
-%%  has a well behaved expansion in this basis.
-%% %% **** {\bf What I want to notice here is that the ordered set partitions I
-%% %% am picking up for the Quasisymmetric function are closed under
-%% %% coarsening.  The forbidden subcomplex is an order filter in the
-%% %% Coxeter complex.  
-%% %% This quasisymmetric function is not positive in the fundamental (L) basis.  }
+
 
 \begin{proposition} For the Bergman scheduling problem $S$, the coefficients of the quasisymmetric function QSym(S) in the cofundamental basis satisfy:
 \begin{enumerate}
@@ -1763,15 +1672,8 @@ all bases componentwise less than or equal to $(135)$.  The Bergman quasisymmetr
 
 %\comment{See Richard's result on chromatic in the power sum basis, alternates in sign by length of partition.}
 
-%I have put the paper in the dropbox folder: Ehrenborg-Hopf.pdf  
-
 %It might be hard to recognize, but see proposition 5.1 which is really the same as the proposition above interpreted via the antipode formula for a Hopf algebra. 
 
-%This set-up also gives us ordered set paritions closed under coarsening and hence an order filter in the Coxeter complex. 
-%being closed under coarsening is not enough to gaurentee the coefficients result.  The proof in Ehrenborg works for any collection that can be seen as all flags of a graded poset.  I don't know how much further this can be pushed...  
-
-
-%
 
 
 The Bergman polynomial obtained
@@ -1848,118 +1750,6 @@ The flats of this matroid are all singletons and the entire set [4].  In terms o
 
 
 
-%% \section{QBergman}
-
-%% In the final two sections, we explore two instances of scheduling
-%% problems associated to a matroid.  First, we define the Bergman
-%% nc-quasisymmetric function, so named because the lattice points we will be
-%% interested in are precisely those contained in the Bergman fan of a
-%% matroid [ref].  
-
-
-
-%% %% ** I don't know what to call this thing.  Is it the Bergman scheduling problem?  There is an NCQsym object, a quasisymmetric function, a polynomial, and then there is the forbidden collection, a partial-polytopal complex, etc.  For arboricity, the polynomial is the interesting thing.  For Bergman, it's the entire collection together.   **
-
-%% %% ** Hopefully we will have a general statement above in the previous section and this will be a special instance. **
-
-%% %% In this section we explore a new instance of a scheduling problem naturally arising for any matroid.   In this case we will see a forbidden collection $\Delta(S)$ that does not form a subcomplex of the Coxeter complex.  Instead, the forbidden cones will form an order filter.  (*** ref: as in ...***)
-
-%% %% quasisymmetric
-%% %% function, the Bergman quasisymmetric function of a matroid.
-
-
-
-
-%% \begin{example}
-
-%% Let $U_{2,4}$ be the uniform matroid of rank $2$ on a ground set of
-%% size $4$.  Consider any $\omega \in \mathbb{N}^n$ such that
-%% $\omega_{i_1} < \omega_{i_2} = \omega_{i_3} = \omega_{i_4}$.  Then the
-%% bases of minimum weight are $\{12, 13, 14\}$.  This $\omega$ is
-%% $U_{2,4}$-loopless since all elements of the ground set are contained
-%% in some basis of minimum weight.  Considering all integer points with this same relative ordering,  contributes the term
-%% ${\ncM}_{1|234}$ to NCQB($U_{2,4}$).  The full nc-quasisymmetric function
-%% is
-%% $$NCQB(U_{2,4})  = {\ncM}_{1234} + {\ncM}_{1|234} + {\ncM}_{2|134} + {\ncM}_{3|124} + {\ncM}_{4|123}. $$
-
-%% %% Let us consider what these terms reflect.  The term $4M_{1,3}$
-%% %% appearing in $QB(U_{2,4})$ reflects the fact that there are $4$
-%% %% different types of $M$-loopless weight vectors with the form
-%% %% $\omega_{i_1} < \omega_{i_2} = \omega_{i_3} = \omega_{i_4}$.
-%% %% (** I am copying an pasting from other notes, so this is written as a quasisymmetric function.  For us, it should be written out as an ncqsym.**)
-%% \end{example}
-
-
-%% Again because the weight vector only depends on the relative ordering
-%% of elements, we can correspond a weight vector $\om$ to a flag of
-%% elements in $M$.  Given $\om$, let $\mathcal{F}(\om)$ be the flag
-%% $$\emptyset =: F_0 \subset F_1 \subset \ldots \subset F_k := [n]$$
-%% such that $\om$ is constant on each set $F_i - F_{i-1}$ and $\om|_{F_i -
-%%   F_{i-1}} < \om|_{F_{i+1} - F_{i}} $.  For example, the weight vector
-%% above, $\om_{i_1} < \om_{i_2} = \om_{i_3} = \om_{i_4}$, corresponds to
-%% the flag ${\emptyset \subset \{i_1\} \subset \{i_1,i_2,i_3,i_4\}}$.
-
-%% \begin{theorem}\label{thm:Bergman}[Theorem 1 ref]
-%% A weight function $\omega$ is $M$-loopless if and only if $\mathcal{F}(\om)$ is a flag of flats of $M$.
-%% \end{theorem}
-
-
-%% Applying the type map to NCQBergman gives the quasisymmetric
-%% function QBergman, 
-%% $$QB(U_{2,4}) = M_4 + 4M_{1,3}.$$
-
-
-%% The collection of ordered set partitions which index the Bergman
-%% nc-quasisymmetric function are closed under {\em coarsening}, hence it
-%% is the forbidden collection is a valid subcomplex of the Coxeter
-%% complex.  Since the ordered set partitions that contribute to
-%% NCQBergman are not closed under refinement, we would not have reason
-%% to predict that QBergman is $L$-positive and it is indeed not.
-%% %% (*** cjk: We can define the cofundamental basis here and go through all the results on Bergman and the relationship to Ehrenborg'squasisymmetric function.  Or, we can do all of this in the previous section as part of the technical section and here we just note that the theorem about flats tells us we are in the case of all flags of a graded poset. ***) 
-%%  Instead, we define the co-fundamental basis and show that QBergman
-%%  has a well behaved expansion in this basis.
-%% %% **** {\bf What I want to notice here is that the ordered set partitions I
-%% %% am picking up for the Quasisymmetric function are closed under
-%% %% coarsening.  The forbidden subcomplex is an order filter in the
-%% %% Coxeter complex.  
-%% %% This quasisymmetric function is not positive in the fundamental (L) basis.  }
-%% Define the co-fundamental basis by summing over coarsenings instead of refinements:
-%% $$ N_{\alpha} := \sum_{\beta : \beta \, \textrm{coarsens} \, \alpha} M_{\beta}.$$
-%% Let $f_{\beta} = [M_{\beta}]$ be the coefficient of $M_{\beta}$ in
-%% QBergman in the monomial basis.  Define: 
-%% $$\eta_{\alpha} := \sum_{\beta \leq \alpha} (-1)^{l(\beta)-l(\alpha)}f_{\beta},$$
-%% then $\eta_{\alpha} = [N_{\alpha}]$ is the coefficient of $N_{\alpha}$ in $QB(M)$ in the cofundamental basis.
-
-
-%% \begin{proposition}
-%% $$[N_{\alpha}] = (-1)^{|\alpha|} \sum_{\alpha \, \textrm{flags}} \prod_i \mu(f_i,f_{i+1})$$
-%% where an $\alpha$-flag is a flag of flats such that $|f_{i+1}| - |f_i| = \alpha_i$ and $\mu$ is the M\"{o}bius function of the lattice of flats of $M$.
-%% \end{proposition}
-
-%% \begin{proof}
-%% \end{proof}
-
-%% \begin{corollary}
-%% \begin{enumerate}
-%% \item The sign of $[N_{\alpha}]$ alternates with the length of $\alpha$.  
-%% \item $\sum_{\alpha} [N_{\alpha}] = 1$ 
-%% \item $\eta_{|E|} = [N_{|E|}]$ = (sign) Mobius function of the lattice
-%% of flats = (sign) Reduced Euler characteristic of order complex of
-%% proper part of lattice of flats.
-%% \end{enumerate}
-%% \end{corollary}
-
-%% \begin{proof}
-
-%% (i) In any composition of $n$, the parity of the number of odd parts is the same.
-
-%% (ii) Alternating sum over subsets
-
-%% (iii) (It is the alternating sum of the f-vector just broken up by the refinement).
-
-%% \end{proof}
-
-%% \begin{example}
 
 
 %% The Bergman quasisymmetric functions of the uniform matroids of rank $2$ and $3$ on a ground set of size $3$ and $4$:
@@ -1997,65 +1787,6 @@ The flats of this matroid are all singletons and the entire set [4].  In terms o
 %% %% lattice of flats. Flats of the same size (NOT RANK) are given the same
 %% %% color.
 
-
-%% \begin{remark}
-%% (Compare to Ehrenborg)
-%% Ehrenborgs quasisymmetric function gives rise to a quasisymmetric function via ranks (i.e. not the type map, which uses sizes of the pieces).  Given an ordered set partition, interpret it as a flag (in a graded poset) and record the rank jumps of the flag.  
-
-%% %I have put the paper in the dropbox folder: Ehrenborg-Hopf.pdf  
-
-%% %It might be hard to recognize, but see proposition 5.1 which is really the same as the proposition above interpreted via the antipode formula for a Hopf algebra. 
-
-%% %This set-up also gives us ordered set paritions closed under coarsening and hence an order filter in the Coxeter complex. 
-%% %being closed under coarsening is not enough to gaurentee the coefficients result.  The proof in Ehrenborg works for any collection that can be seen as all flags of a graded poset.  I don't know how much further this can be pushed...  
-
-
-%% \end{remark}
-
-
-
-
-%% %% Summary...
-
-%% %% \begin{itemize}
-
-%% %% \item QBergman and QEhrenborg alternate sign in the co-L basis.  (Closed under coarsening)
-
-%% %% \item QGP (inclduing Chromatic and Biller-Jia-Reiner) are positive in the L-basis.  (Closed under refinement)
-
-%% %% \end{itemize}
-
-%% %% In the second class, it is easy to see geometrically which cones (faces) are being forbidden.  In the first class, it is not easy to see which faces you are taking.  
-
-%% %% I haven't spent much time thinking about what the polynomial restrictions of these mean.  
-
-
-
-
-%% In light of Theorem~\ref{thm:Bergman}, the Bergman polynomial obtained
-%% by evaluating QBergman at ${\bf 1}^m$ counts the number of
-%% $m$-schedules satisfying the boolean formula prescribed by the closure
-%% operator.  One could interpret the rank as a kind of cost function -
-%% once certain jobs are started, others of the same rank can be added
-%% without additional cost.  To minimize cost, we require that in any
-%% scheduling of jobs, at each time step we have a closed subset of jobs.
-%% Specifically, a schedule with $m$ time slots corresponds to a
-%% multichain in the lattice of flats of the matroid.  
-
-%% \begin{proposition}
-%% The Bergman polynomial of a matroid is equal to the zeta polynomial of the lattice of flats of the matroid, which counts multichains of length $m$ in the lattice,
-%% $$QB(M;{\bf 1}^m) = Z(L(M),m) = |\{ \hat{0} = y_0 \leq y_1 \leq \cdots \leq y_m = \hat{1} | y_i \in L(M) \}|.$$
-
-%% \end{proposition}
-
-
-
-%% \begin{example}
-%% Returning to the example of $U_{2,4}$, the Bergman polynomial is
-%% $$QB(U_{2,4};{\bf 1}^m) = 2m^2 - m.$$
-
-%% The flats of this matroid are all singletons and the entire set [4].  In terms of scheduling, any job may be started first and then all others must be started simultaneously.  Alternatively, all jobs may be started at the same time, but we do not allow for only two jobs to start at the same time. 
-%% \end{example}
 
 
 
