@@ -942,7 +942,7 @@ written as convex decision trees below.
 
 
 
-\section{Positivity, Reciprocity and Partitionability}
+\section{Positivity and Partitionability}
 \label{geometry}
 
 An important class of results in the literature on quasisymmetric
@@ -950,85 +950,33 @@ functions, simplicial complexes and Ehrhart theory are theorems
 asserting the non-negativity of coefficient vectors in various bases.
 Here we consdier the expansions of the scheduling nc-quasisymmetric,
 symmetric and polynomial functions in various bases and the relations
-of these expansions to the geometry of the allowed and forbidden complexes.  
+of these expansions to the geometry of the allowable and forbidden configuration.  
 
 
 \subsection{Decision Trees}
 
 Decision trees are a very commonly used form of boolean expression. Intuitively, they are simply nested if-then-else statements. We will work with decision trees where the conditions in the if-clauses are inequalities of the form $x_i \leq x_j$ and the conditions in the leaves of the tree are conjunctions of such inequalities (either strict or weak).
-% Moreover we will require that our decision trees are ``well-behaved" at each node in the tree.
-  Figure~\ref{fig:tree} shows the example of a decision tree with only one if-then-else statement and the geometric region of points that satisfy the statement.   
+
+Figure~\ref{fig:tree} shows the example of a decision tree with only one if-then-else statement and the geometric region of points that satisfy the statement.   
 \begin{figure}[h]
 \includegraphics[width=13cm]{decision-tree}
 \caption{An example of a decision tree and the associated geometric region.}
 \label{fig:tree}
 \end{figure}
-The collection of points $x \in \mathbb{R}^n$ that satisfy the conditions of a tree form a union of faces of the cell decomposition induced by the braid arrangement or equivalently a collection of faces of the Coxeter complex $\cox_A$.  In general, this union of faces can be non-convex (as seen in the Figure) or non star-convex.  Below we show that if a scheduling problem can be expressed as the union of decision trees with good local behavior, then the allowable configuration $\allow(S)$ is partitionable which in turn implies positivity of coefficients for the scheduling functions. 
+The collection of points $x \in \mathbb{R}^n$ that satisfy the conditions of a tree form a union of faces of the cell decomposition induced by the braid arrangement or equivalently a collection of faces of the Coxeter complex $\cox_A$.  In general, this union of faces can be non-convex (as seen in the Figure) or non star-convex.  Below we show that if a scheduling problem can be expressed as the union of decision trees with satisfy a certain property, then the allowable configuration $\allow(S)$ is partitionable which in turn implies positivity of coefficients for the scheduling functions. 
 
-More formally, decision trees are boolean expression defined recursively as follows.
-\begin{definition} A \emph{leaf} is a boolean expression that is a conjunction of inequalities of the form $x_i \leq x_j$ or $x_i < x_j$. A \emph{decision tree} is either a leaf, or a boolean expression of the form
+More formally, decision trees of boolean expressions defined recursively as follows.
+
+\begin{definition} A \emph{leaf} is a boolean expression $\psi$ that is a conjunction of inequalities of the form $x_i \leq x_j$ or $x_i < x_j$. A \emph{decision tree} is either a leaf, or a boolean expression of the form
 \[
-  \text{if $\phi$ then $\psi_t$ else $\psi_f$}
+  \text{if $\varphi$ then $\psi_t$ else $\psi_f$}
 \]
-where $\phi$ is an inequality of the form $x_i \leq x_j$ and $\psi_t,\psi_f$ are decision trees. 
+where $\varphi$ is an inequality of the form $x_i \leq x_j$ and $\psi_t,\psi_f$ are decision trees. As decision trees are binary trees, it will be convenient to distinguish notationally between a node $v$ of the tree and the boolean expression $\Phi_v$ at that node.
 \end{definition}
-Decision trees are therefore binary trees. For every node $v$ in a decision tree, there is a unique path from the root of the tree to $v$. At each node this path chooses either the ``true" or ``false" branch of the corresponding if-then-else clause. Let $v$ be a node in the tree and let $v_0,\ldots,v_k$ be the sequence of its ancestors. For each node $v_i$ in this path we define $\phi_i$ to be the condition of the if-statement of $v_i$ if $v$ resides in the true branch of the node $v_i$, and its negation if $v_i$ resides in the false branch of $v_i$. The \emph{local condition} at $v$ is then the conjunction of all $\phi_i$. 
-%The constraints imposed by $v$ only apply to points $x$ that satisfy the local condition.
- Notice that the set of points $x$ satisfying the local condition is always a polyhedron.
 
-\comment{Example}
+Every leaf $v$ of a decision tree corresponds to a conjunction of inequalities which we call the \emph{cell} at $v$. The cell at $v$ is the conjunction of $\Phi_v$ (the inequalities given by the leaf $v$ itself) and the constraints given in the if-clauses of ancestors of $v$, negated according to whether $v$ resides in the ``true" or ``false" branch of the corresponding if-then-else clause. Let $v$ denote a leaf of the tree and let $v_0,\ldots,v_k$ denote its ancestors. Then $\Phi_{v_i}$ is a boolean formula of the form ``if $\varphi$ then $\psi_t$ else $\psi_f$'' and we define $\varphi_{v_i}' := \varphi$ if $v$ resides in the branch $\psi_t$ and $\varphi_{v_i}' := \neg\varphi$ if $v$ resides in the branch $\psi_f$. We denote by $\rho_v$ the conjunction $\varphi_{v_0}'\wedge\ldots\wedge\varphi_{v_k}'\wedge\Phi_v$ and by $P_v$ the polyhedron of all $x\in \RR^n$ satisfying $\rho_v$. By slight abuse of terminology, we will refer to both $\rho_v$ and $P_v$ as the \emph{cell} at $v$. Note that the set of formulas $\rho_v$ for all leaves $v$ of the tree corresponds to conjunctions in the disjunctive normal form of the decision tree.
 
-The decision trees we study will have to be well-behaved in the following sense. Let $v$ be a node in a decision tree corresponding to the statement (if $\phi$ then $\psi_t$ else $\psi_f$). Let $\ell_v$ denote the local condition at $v$ and let $P$ denote the (possibly half-open) polyhedron defined by $\ell_v$. Let $\phi_=$ denote the equality constraint induced by $\phi$, i.e., if $\phi$ is $x_i \leq x_j$ then $\phi_=$ is $x_i = x_j$. A decision tree is \emph{convex} if the following holds for all nodes $v$ of the tree:
-\begin{enumerate}
-\item The conditions given by the left and right branches of $v$ agree on the hyperplane given by $\phi_=$, where they define a convex solution set. Equivalently, the boolean formulas $(\ell_v \wedge \phi_= \wedge \psi_t)$ and $(\ell_v \wedge \phi_= \wedge \psi_f)$ are equal.
-%both equivalent to a formula $\kappa$ which is a conjunction of inequalities.
-\item The polytope defined by  $(\ell_v \wedge \phi_= \wedge \psi_f)$ has codimension 1. On the level of boolean functions this means that $\phi_=$ is the only equality implied by  $(\ell_v \wedge \phi_= \wedge \psi_f)$.
-\end{enumerate}
-
-Let $\tau$ be a convex decision tree and let $P$ be the set of all $x$ that satisfy $\tau$. Then $P$ is contractible as a topological space.  We say $P$ is open or closed, if all of its boundary is open or closed, respectively.
-Again note that $P$ is not necessarily convex and it is not necessarily star shaped.
-The structure of a decision tree suffices to prove that a scheduling problem is partitionable.
-% Moreover $P$ is a manifold, however, parts of its boundary may be open. 
-% (i.e., there does not exist a point that can be connected to all other with a straight line).
-%\end{proposition}
-
-%In particular this condition suffices to show partitionability.
-
-\begin{theorem}
-\label{thm:tree-part}
-If a scheduling problem $S$ can be writen as a disjoint union of convex decision trees, i.e. a disjunction of convex decisions trees such that there is no $x$ that simultaneously satisfies two or more of the decision trees, then $\allow(S)$ is partitionable.
-\end{theorem}
-
-%Note that all scheduling problems that can be written as disjunctions of conjunctions are trivially of this form.
-
-The structure of the a decision tree also suffices to prove the following reciprocity theorem.
-
-\begin{theorem}
-If $\Phi$ is a scheduling problem that is a disjoint union of open  convex decision trees and $\Phi'$ is the scheduling problem given by the corresponding union of closed  convex decision trees and this union is disjoint, then 
-\[
-  \xi_\Phi(-k) = (-1)^d \xi_{\Phi'}(k).
-\]
-\end{theorem}
-
-This theorem can be strengthened to include the case of closed convex decision trees that are not disjoint.
-
-\begin{theorem}
-If $\Phi$ is a scheduling problem that is a disjoint union of open  convex decision trees and $\Phi'$ is the scheduling problem given by the corresponding union of closed convex decision trees, then 
-\[
-  \xi_\Phi(-k) = (-1)^d \sum_{\tau} \xi_{\tau}(k),
-\]
-where the sum ranges over the closed decision trees $\tau$ in $\Phi'$. In other words, up to sign, $\xi_\Phi(-k)$ counts the lattice points $x\in\Phi'$ with multiplicity given by the number of decision trees $\tau$ the lattice point $x$ is contained in.
-\end{theorem}
-
-\comment{fb:
-It could be that the decision tree condition is strong enough to show the existence of a convex ear decomposition. However, the standard methods do not suffice for that purpose, as far as I know. We would need additional arguments.
-}
-
-\bigskip\hrule\bigskip
-
-\comment{Construction site to get the proofs done.}
-
-\comment{fb: After a closer look at the previous definitions and statement of the partitionability theorem, I had the impression that both the proof and the statement of the theorem would be much simpler using the following setup.}
+\comment{Introduce example from coxeter\_complex.pdf here.}
 
 In the following, we are going to apply some geometric terminology to boolean formulas. A disjunction $\bigvee_i C_i(x)$ is called \emph{disjoint}, if the solution sets are disjoint, i.e., if for every $x$ at most one of the $C_i(x)$ is true. Moreover, the \emph{dimension} a conjunction $C$ of inequalities is the dimension of the polyhedron of all solutions, i.e, it is the number of variables minus the maximal number of linearly independent equations implied by $C$.
 
@@ -1041,39 +989,24 @@ If a scheduling problem $S$ is equivalent to a formula of the form
 \[
   S \equiv \bigvee_i C_i \text{ where } C_i = \bigwedge_j I_{i,j}
 \]
-where the disjunction is disjoint and the $C_i$ are nice of dimension $k$, then $\allow(S)$ is $k$-partitionable.
+where the disjunction is disjoint and the $C_i$ are nice of dimension $d$, then $\allow(S)$ is partitionable.
 \end{theorem}
 
 Because the disjunction is disjoint, this theorem follows immediately, if we can prove it for nice conjunctions.
 
 \begin{lemma}
-A nice conjunction $C$ of dimension $k$ is $k$-partitionable.
+A nice conjunction $C$ of dimension $d$ is partitionable.
 \end{lemma}
 
 \begin{proof} 
 (Sketch.) The braid triangulation gives a regular triangulation of $C$. As $C$ is convex, this triangulation admits a line shelling (of the closure of $C$). Because $C$ is nice, at most one face of $C$ is open. By choosing the line-shelling such that the simplicies incident to the open face of $C$ are "seen first" by the shelling, we can construct a shelling order that induces a partition of (the half-open) $C$.
 \end{proof}
 
-Note that, by symmetry, this also works for "co-nice" polytopes that have just one closed face and are otherwise open. \comment{TODO: Check that this really works.}
-
-Now we can apply this tool to decision trees. We use the following definition of a decision tree.
-
-\begin{definition} A \emph{leaf} is a boolean expression that is a conjunction of inequalities of the form $x_i \leq x_j$. A \emph{decision tree} is either a leaf, or a boolean expression of the form
-\[
-  \text{if $\phi$ then $\psi_t$ else $\psi_f$}
-\]
-where $\phi$ is an inequality of the form $x_i \leq x_j$ and $\psi_t,\psi_f$ are decision trees. 
-\end{definition}
-
-\comment{fb: In contrast to what we have before, leaves must now be conjunctions of weak inequalities.}
-
-Every leaf of a decision tree defines a cell. Let $v$ denote a leaf of the decision tree $S$. Let $Q_v$ denote the conjunction of weak inequalities corresponding to $v$. Let $R_v$ denote the conjunction of all the conditions in the if-clauses above $v$ in the tree, where the condition is negated if $v$ resides in the "false" subtree at that node. Then the \emph{cell} at $v$ is the polytope defined by $Q_v \wedge R_v$.
+Note that, by symmetry, this also works for "co-nice" polytopes that have just one closed face and are otherwise open.
 
 \begin{theorem}
-Let $S$ be a decision tree such that all cells of $S$ are nice of dimension $k$. Then $\allow(S)$ is $k$-partitionable.
+Let $S$ be a decision tree such that all cells of $S$ are nice of dimension $d$. Then $\allow(S)$ is partitionable. Moreover, disjoint unions of such decision trees are partitionable.
 \end{theorem}
-
-\comment{TODO: Examples with pictures. First draft of an example in coxeter\_complex.pdf}
 
 Note that a cell can be in the "strict inequality" branch of many of its ancestors and still be nice. The reason is that, in practice, many of these strict ancestral inequalities will be redundant.
 
@@ -1081,24 +1014,18 @@ Note that a cell can be in the "strict inequality" branch of many of its ancesto
 (Sketch.) A decision tree is the disjoint union of all its cells. All cells are $k$-partitionable because they are nice. Therefore the decision tree is $k$-partitionable.
 \end{proof}
 
-\comment{fb:
+\comment{Felix' ToDo List
 \begin{enumerate}
-\item The above condition for the partitionability theorem is incomparable with the one that we had before. Still, I think of it as weaker, since it excludes some decision trees that I wanted to cover.
-\item However, the above condition has going for it that it includes some scheduling problems $S$ such that $\allow(S)$ has non-trivial topology (an annulus, for example).
-\item Most importantly: The proof for this definition is straightforward, whereas I ran in some unexpected trouble with the other definition.
-\item Should we allow complexes of codimension $>1$? Should we talk about $k$-partitionability, or restrict to $k=d$? (Contrary to what I wrote before, I do not think this makes a difference wrt star-convexity.)
-\item Currently, (if we restrict ourselves to connected allowable subcomplexes) we get non-convex allowable subcomplexes, but not non-star-convex allowable subcomplexes. The reason is that because our allowable subcomplexes are closed (mostly), they always include the main diagonal of the $[0,1]^d$ cube and are thus star-convex. The best way out would be to allow \emph{co-nice} cells. This way we could construct open allowable subcomplexes that can then be properly non-star-convex. Two questions in this regard:
-\begin{itemize}
-  \item How to extend the proof of partitionability to co-nice conjunctions?
-  \item Is it possible to construct a non-star-convex example, even if $k=d$?
-\end{itemize}
-\item We would need to place some additional restrictions on the decision tree to guarantee that reciprocity works. I am not sure it is worth opening this can of worms for this paper, though. Maybe we should leave reciprocity for the next one?
+\item Introduce co-nice decision trees.
+\item Expand proof of partitionability.
+\item Extend proof to cover the co-nice case.
+\item Remark on $k$-partitionability.
+\item Add detailed example to text.
+\item Redo pictures.
+\item Add detailed example from coxeter\_complex.pdf.
+\item Find a different word for "nice".
 \end{enumerate}
 }
-
-\bigskip\hrule\bigskip
-
-
 
 %% \begin{example}
 %% Returning to the chromatic scheduling problem, Theorem~\ref{hilbert}
