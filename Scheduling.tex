@@ -971,61 +971,85 @@ More formally, decision trees of boolean expressions defined recursively as foll
 \[
   \text{if $\varphi$ then $\psi_t$ else $\psi_f$}
 \]
-where $\varphi$ is an inequality of the form $x_i \leq x_j$ and $\psi_t,\psi_f$ are decision trees. As decision trees are binary trees, it will be convenient to distinguish notationally between a node $v$ of the tree and the boolean expression $\Phi_v$ at that node.
+where $\varphi$ is an inequality of the form $x_i \leq x_j$ and $\psi_t,\psi_f$ are decision trees.
 \end{definition}
 
-Every leaf $v$ of a decision tree corresponds to a conjunction of inequalities which we call the \emph{cell} at $v$. The cell at $v$ is the conjunction of $\Phi_v$ (the inequalities given by the leaf $v$ itself) and the constraints given in the if-clauses of ancestors of $v$, negated according to whether $v$ resides in the ``true" or ``false" branch of the corresponding if-then-else clause. Let $v$ denote a leaf of the tree and let $v_0,\ldots,v_k$ denote its ancestors. Then $\Phi_{v_i}$ is a boolean formula of the form ``if $\varphi$ then $\psi_t$ else $\psi_f$'' and we define $\varphi_{v_i}' := \varphi$ if $v$ resides in the branch $\psi_t$ and $\varphi_{v_i}' := \neg\varphi$ if $v$ resides in the branch $\psi_f$. We denote by $\rho_v$ the conjunction $\varphi_{v_0}'\wedge\ldots\wedge\varphi_{v_k}'\wedge\Phi_v$ and by $P_v$ the polyhedron of all $x\in \RR^n$ satisfying $\rho_v$. By slight abuse of terminology, we will refer to both $\rho_v$ and $P_v$ as the \emph{cell} at $v$. Note that the set of formulas $\rho_v$ for all leaves $v$ of the tree corresponds to conjunctions in the disjunctive normal form of the decision tree.
+As decision trees are binary trees, it will be convenient to distinguish notationally between a node $v$ of the tree $S$ and the boolean expression $S_v$ at that node.
+
+Every leaf $v$ of a decision tree corresponds to a conjunction of inequalities which we call the \emph{cell} at $v$. The cell at $v$ is the conjunction of $S_v$ (the inequalities given by the leaf $v$ itself) and the constraints given in the if-clauses of ancestors of $v$, negated according to whether $v$ resides in the ``true" or ``false" branch of the corresponding if-then-else clause. Let $v$ denote a leaf of the tree and let $v_0,\ldots,v_k$ denote its ancestors. Then $\S_{v_i}$ is a boolean formula of the form ``if $\varphi$ then $\psi_t$ else $\psi_f$'' and we define $\varphi_{v_i}' := \varphi$ if $v$ resides in the branch $\psi_t$ and $\varphi_{v_i}' := \neg\varphi$ if $v$ resides in the branch $\psi_f$. We denote by $C_v$ the conjunction
+\[
+ C_v := \varphi_{v_0}'\wedge\ldots\wedge\varphi_{v_k}'\wedge S_v\wedge \bigwedge_{i=1}^n (0 < x_i \wedge x_i < 1).
+\]
+By alight abuse of notation, we will also use $C_v$ to denote polytope of all $x\in \RR^n$ satisfying $C_v$. In the above formula, the purpose of $\bigwedge (0 < x_i <1)$ is to ensure that all solutions $x$ lie in the open cube $(0,1)^n$, as usual in the Ehrhart theory setting. When working with quasisymmetric functions, this condition would be replaced, accordingly, with $\bigwedge (0 < x_i)$ so as to ensure that solutions are positive. In this case the solution sets $C_v$ would be cones. Note that the set of formulas $\varphi_{v_0}'\wedge\ldots\wedge\varphi_{v_k}'\wedge S_v$ for all leaves $v$ of $S$ correspond exactly to the conjunctions in the disjunctive normal form of $S$.
 
 \comment{Introduce example from coxeter\_complex.pdf here.}
 
 In the following, we are going to apply some geometric terminology to boolean formulas. A disjunction $\bigvee_i C_i(x)$ is called \emph{disjoint}, if the solution sets are disjoint, i.e., if for every $x$ at most one of the $C_i(x)$ is true. Moreover, the \emph{dimension} a conjunction $C$ of inequalities is the dimension of the polyhedron of all solutions, i.e, it is the number of variables minus the maximal number of linearly independent equations implied by $C$.
 
-We call a formula $C$ \emph{nice}, if it is equivalent to a conjunction $\bigwedge_j I_{j}$ of inequalities $I_j$ such that at most one of the $I_j$ is strict and all of the $I_j$ are facet-defining. (Note that the $I_j$ are facet-defining if the closure $\bar{C}$ of (the polytope defined by) $C$ has irredundant (!) description $\bar{C} = \bigwedge_j \bar{I}_j$, where $\bar{I}_j$ denotes the weak inequality defined by $I_j$.)
+We call a formula $C$ \emph{almost open}, if it is equivalent to a conjunction $\bigwedge_j I_{j}$ of inequalities $I_j$ such that at most one of the $I_j$ is weak and all of the $I_j$ are facet-defining. Note that the $I_j$ are facet-defining if the closure $\bar{C}$ of (the polytope defined by) $C$ has irredundant (!) description $\bar{C} = \bigwedge_j \bar{I}_j$, where $\bar{I}_j$ denotes the weak inequality defined by $I_j$. Geometrically, this means that the polytope $C$ is open except for at most one face which may be closed.
 
-We say a partial polytopal complex is $k$-partitionable, if it can be written as the disjoint union of half-open simplicies of dimension $k$. (In our case, we are of course restricted to use simplicies given by the braid triangulation.)
+We say a partial polytopal complex is partitionable, if it can be written as the disjoint union of half-open simplicies of full dimension $n$. (In our case, we are of course restricted to use simplicies given by the braid triangulation.)
 
 \begin{theorem}
 If a scheduling problem $S$ is equivalent to a formula of the form
 \[
   S \equiv \bigvee_i C_i \text{ where } C_i = \bigwedge_j I_{i,j}
 \]
-where the disjunction is disjoint and the $C_i$ are nice of dimension $d$, then $\allow(S)$ is partitionable.
+where the disjunction is disjoint and the $C_i$ are almost open of dimension $d$, then $\allow(S)$ is partitionable.
 \end{theorem}
 
 Because the disjunction is disjoint, this theorem follows immediately, if we can prove it for nice conjunctions.
 
 \begin{lemma}
-A nice conjunction $C$ of dimension $d$ is partitionable.
+\label{lem:almost-open}
+An almost open conjunction $C$ of dimension $d$ is partitionable.
 \end{lemma}
 
+It is well-known that boundary complexes of simplicial polytopes are partitionable, a fact that is usually shown using line-shellings \cite{}. This method can also be used to construct shellings (and thus partitions) of regular triangulations of polytopes \cite{} an approach that also works if the triangulated polytope is open \cite{}. These techniques extend naturally to almost open polytopes, as shown in the following proof. For the proof, we assume familiarity with regular triangulations, line-shellings and their connection to partitionability.
+
 \begin{proof} 
-(Sketch.) The braid triangulation gives a regular triangulation of $C$. As $C$ is convex, this triangulation admits a line shelling (of the closure of $C$). Because $C$ is nice, at most one face of $C$ is open. By choosing the line-shelling such that the simplicies incident to the open face of $C$ are "seen first" by the shelling, we can construct a shelling order that induces a partition of (the half-open) $C$.
+We can restrict our attention to the case where $C$ actually does have a closed face. The case where $C$ is open is standard in the literature \cite{}.
+
+The triangulation $T$ of the almost open polytope $C$ is regular. Let $F$ be the facet of $C$ which is closed, and let $v$ denote a new point close to $F$ but outside of $C$. We then create an open polytope $C'$ with $v$ as a new vertex by taking the open convex hull of $C$ and $v$:
+\[
+  C' = \operatorname{oconv}(C,v) := \mset{\lambda x + (1-\lambda)v}{x\in C, \lambda\in (0,1] }.
+\]
+Note that $C'$ is open because $(1-\lambda)<1$ and $F$ is the only closed face of $C$. The extended polytope $C'$ then has a triangulation $T'$ which consists of all the simplices in $T$ and the open convex hulls $\operatorname{oconv}(\sigma,v)$ of simplices $\sigma\in T$ such that $\sigma\subset F$ with the new vertex $v$. 
+
+The triangulation $T'$ is regular.\footnote{The new simplices $\sigma\in T'\setminus T$ are separated from $C$ by the hyperplane defining $F$. Moreover $T$ induces a regular triangulation of $F$ and thus the triangulation of $C'\setminus C$ induced by $T'$ is regular as well.} Therefore, there exists a polytope $P$ that has $C'$ as its lower hull. We now construct a line shelling of the lower hull of $P$ which starts with a facet in $T'\setminus T$. The lifted polytope $P$ can be chosen such that that all facets in $T'\setminus T$ are shelled first, again because $T$ is separated from $T'\setminus T$ by a single hyperplane, see \cite{}.
+
+Let $\sigma_1,\ldots,\sigma_N$ be the induced shelling order of the maximal-dimensional simplicies in $C$. Let $\bar{\sigma_i}$ denote the closure of $\sigma_i$. Then, the sequence of half-open simplices
+\[
+  \bar{\sigma_1}, \; \bar{\sigma_2}\setminus \bar{\sigma_1}, \; \bar{\sigma_3}\setminus  (\bar{\sigma_2} \cup \bar{\sigma_1}), \; \ldots, \; \bar{\sigma_N} \setminus \bigcup_{i=1}^{N-1} \sigma_i
+\]
+form a partition of the closed polytope $\bar{C'}$. By reversing which faces of these half-open simplices are open and which are closed, we obtain a partition 
+\[
+  (\tau_i)_{i=1,\ldots,N}\;  :=\; \bar{\sigma}_N\setminus \partial C' ,\;  \bar{\sigma}_{N-1}\setminus (\partial C' \cup\bar{\sigma}_N),\;  \ldots,\;  \bar{\sigma}_1 \setminus  (\partial C' \cup \bigcup_{i=2}^N \bar{\sigma}_i)
+\]
+of the open polytope $C'$. Let $\tau_i$ denote the $i$-th element in this sequence, that is, 
+\[
+  \tau_i = \bar{\sigma}_{N-i+1} \setminus (\partial C' \cup \bigcup_{i=N-i+2}^N \bar{\sigma_i})
+\]
+for $i=1,\ldots,N$. The rule is that a face is open if it occurred in a previous simplex of the sequence or the boundary. Because we run through the sequence in reverse order, this flips the state of all faces versus the first partition defined above.
+
+By construction, the simplices in $T'\setminus T$ are the last half-open simplexes in the sequence $(\tau_i)_i$ above, that is, there exists an $l$ such that $\sigma_i\subset C$ for all $i\leq l$ and $\sigma_i\subset C'\setminus C$ for all $i>l$. Then, the sequence $\tau_1,\ldots,\tau_l$ is a partition of $C$, as desired. Note in particular that $\bigcup_{i=1}^l \tau_i$ includes the closed face $F$, precisely because all faces of $C$ come first in the sequence $C$.
 \end{proof}
 
-Note that, by symmetry, this also works for "co-nice" polytopes that have just one closed face and are otherwise open.
-
 \begin{theorem}
-Let $S$ be a decision tree such that all cells of $S$ are nice of dimension $d$. Then $\allow(S)$ is partitionable. Moreover, disjoint unions of such decision trees are partitionable.
+Let $S$ be a decision tree such that all cells of $S$ are almost open of dimension $d$. Then $\allow(S)$ is partitionable. Moreover, disjoint unions of such decision trees are partitionable.
 \end{theorem}
 
 Note that a cell can be in the "strict inequality" branch of many of its ancestors and still be nice. The reason is that, in practice, many of these strict ancestral inequalities will be redundant.
 
 \begin{proof} 
-(Sketch.) A decision tree is the disjoint union of all its cells. All cells are $k$-partitionable because they are nice. Therefore the decision tree is $k$-partitionable.
+A decision tree is the disjoint union of all its cells. By Lemma~\ref{lem:almost-open}, all cells are partitionable because they are almost open. Therefore the decision tree is partitionable.
 \end{proof}
 
-\comment{Felix' ToDo List
-\begin{enumerate}
-\item Introduce co-nice decision trees.
-\item Expand proof of partitionability.
-\item Extend proof to cover the co-nice case.
-\item Remark on $k$-partitionability.
-\item Add detailed example to text.
-\item Redo pictures.
-\item Add detailed example from coxeter\_complex.pdf.
-\item Find a different word for "nice".
-\end{enumerate}
-}
+Note that all theorems stated here hold for $\allowC(S)$ as well as for $\allowP(S)$, with analogous proofs.
+
+\begin{remark}
+In general, a partial complex of dimension $k$ is partitionable if it can be written as a disjoint union of half-open simplices of dimension $k$. In the above, we have defined partitionable with respect to the ambient dimension $n$, as this will be convenient when working with the fundamental bases of NCSym and QSzm below. However, this restriction is not essential. If $\allow(S)$ can be written as a disjoint union of almost open cells of a fixed dimension $k<d$, then the proofs still go through and show partitionability of $\allow(S)$.
+\end{remark}
 
 %% \begin{example}
 %% Returning to the chromatic scheduling problem, Theorem~\ref{hilbert}
