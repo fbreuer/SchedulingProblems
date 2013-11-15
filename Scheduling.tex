@@ -966,7 +966,7 @@ Figure~\ref{fig:tree} shows the example of a decision tree with only one if-then
 \end{figure}
 The collection of points $x \in \mathbb{R}^n$ that satisfy the conditions of a tree form a union of faces of the cell decomposition induced by the braid arrangement or equivalently a collection of faces of the Coxeter complex $\cox_A$.  In general, this union of faces can be non-convex (as seen in the Figure) or non star-convex.  Below we show that if a scheduling problem can be expressed as the union of decision trees with satisfy a certain property, then the allowable configuration $\allow(S)$ is partitionable which in turn implies positivity of coefficients for the scheduling functions. 
 
-More formally, decision trees of boolean expressions defined recursively as follows.
+More formally, decision trees of boolean expressions are defined recursively as follows.
 
 \begin{definition} A \emph{leaf} is a boolean expression $\psi$ that is a conjunction of inequalities of the form $x_i \leq x_j$ or $x_i < x_j$. A \emph{decision tree} is either a leaf, or a boolean expression of the form
 \[
@@ -1033,10 +1033,10 @@ Because the disjunction is disjoint, this theorem follows immediately, if we can
 An almost open conjunction $C$ of dimension $d$ is partitionable.
 \end{lemma}
 
-It is well-known that boundary complexes of simplicial polytopes are partitionable, a fact that is usually shown using line-shellings \cite{}. This method can also be used to construct shellings (and thus partitions) of regular triangulations of polytopes \cite{} an approach that also works if the triangulated polytope is open \cite{}. These techniques extend naturally to almost open polytopes, as shown in the following proof. For the proof, we assume familiarity with regular triangulations, line-shellings and their connection to partitionability.
+It is well-known that boundary complexes of simplicial polytopes are partitionable, a fact that can for example be shown using line-shellings \cite{Bruggesser1971}. This method can also be used to construct shellings (and thus partitions) of regular triangulations of polytopes \cite[Corollary~8.14]{Ziegler1995}. These techniques extend naturally to almost open polytopes, as shown in the following proof. For the proof, we assume familiarity with regular triangulations, line-shellings and their connection to partitionability \cite{DeLoera2010,Lee2004,Ziegler1995}.
 
 \begin{proof} 
-We can restrict our attention to the case where $C$ actually does have a closed face. The case where $C$ is open is standard in the literature \cite{}.
+We first deal with the case where the polytope $C$ has exactly one closed face. Recall that having one closed face means that all but one of the facet-defining inequalities of $C$ are strict.
 
 The triangulation $T$ of the almost open polytope $C$ is regular. Let $F$ be the facet of $C$ which is closed, and let $v$ denote a new point close to $F$ but outside of $C$. We then create an open polytope $C'$ with $v$ as a new vertex by taking the open convex hull of $C$ and $v$:
 \[
@@ -1044,7 +1044,7 @@ The triangulation $T$ of the almost open polytope $C$ is regular. Let $F$ be the
 \]
 Note that $C'$ is open because $(1-\lambda)<1$ and $F$ is the only closed face of $C$. The extended polytope $C'$ then has a triangulation $T'$ which consists of all the simplices in $T$ and the open convex hulls $\operatorname{oconv}(\sigma,v)$ of simplices $\sigma\in T$ such that $\sigma\subset F$ with the new vertex $v$. 
 
-The triangulation $T'$ is regular.\footnote{The new simplices $\sigma\in T'\setminus T$ are separated from $C$ by the hyperplane defining $F$. Moreover $T$ induces a regular triangulation of $F$ and thus the triangulation of $C'\setminus C$ induced by $T'$ is regular as well.} Therefore, there exists a polytope $P$ that has $C'$ as its lower hull. We now construct a line shelling of the lower hull of $P$ which starts with a facet in $T'\setminus T$. The lifted polytope $P$ can be chosen such that that all facets in $T'\setminus T$ are shelled first, again because $T$ is separated from $T'\setminus T$ by a single hyperplane, see \cite{}.
+The triangulation $T'$ is regular.\footnote{The new simplices $\sigma\in T'\setminus T$ are separated from $C$ by the hyperplane defining $F$. Moreover $T$ induces a regular triangulation of $F$ and thus the triangulation of $C'\setminus C$ induced by $T'$ is regular as well.} Therefore, there exists a polytope $P$ that has $C'$ as its lower hull. We now construct a line shelling of the lower hull of $P$ which starts with a facet in $T'\setminus T$. The lifted polytope $P$ can be chosen such that that all facets in $T'\setminus T$ are shelled first, again because $T$ is separated from $T'\setminus T$ by a single hyperplane, see also \cite[Lemma~2]{Breuer2011}.
 
 Let $\sigma_1,\ldots,\sigma_N$ be the induced shelling order of the maximal-dimensional simplicies in $C$. Let $\bar{\sigma_i}$ denote the closure of $\sigma_i$. Then, the sequence of half-open simplices
 \[
@@ -1061,6 +1061,8 @@ of the open polytope $C'$. Let $\tau_i$ denote the $i$-th element in this sequen
 for $i=1,\ldots,N$. The rule is that a face is open if it occurred in a previous simplex of the sequence or the boundary. Because we run through the sequence in reverse order, this flips the state of all faces versus the first partition defined above.
 
 By construction, the simplices in $T'\setminus T$ are the last half-open simplexes in the sequence $(\tau_i)_i$ above, that is, there exists an $l$ such that $\sigma_i\subset C$ for all $i\leq l$ and $\sigma_i\subset C'\setminus C$ for all $i>l$. Then, the sequence $\tau_1,\ldots,\tau_l$ is a partition of $C$, as desired. Note in particular that $\bigcup_{i=1}^l \tau_i$ includes the closed face $F$, precisely because all faces of $C$ come first in the sequence $C$.
+
+This concludes the proof for the case that $C$ has one closed face. The proof for the case that $C$ is an open polytope without closed faces is completely analogous, only simpler as there is no need to add the new vertex $v$.
 \end{proof}
 
 \begin{theorem}
