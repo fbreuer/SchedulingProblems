@@ -19,6 +19,7 @@
 %\usepackage{xypic}
 \usepackage{enumerate}
 %\usepackage{sidenotes}
+\usepackage{listings}
 
 %\usepackage{fourier}
 %\usepackage{a4wide}
@@ -982,11 +983,38 @@ Every leaf $v$ of a decision tree corresponds to a conjunction of inequalities w
 \]
 By alight abuse of notation, we will also use $C_v$ to denote polytope of all $x\in \RR^n$ satisfying $C_v$. In the above formula, the purpose of $\bigwedge (0 < x_i <1)$ is to ensure that all solutions $x$ lie in the open cube $(0,1)^n$, as usual in the Ehrhart theory setting. When working with quasisymmetric functions, this condition would be replaced, accordingly, with $\bigwedge (0 < x_i)$ so as to ensure that solutions are positive. In this case the solution sets $C_v$ would be cones. Note that the set of formulas $\varphi_{v_0}'\wedge\ldots\wedge\varphi_{v_k}'\wedge S_v$ for all leaves $v$ of $S$ correspond exactly to the conjunctions in the disjunctive normal form of $S$.
 
-\comment{Introduce example from coxeter\_complex.pdf here.}
+\begin{figure}[h]
+%\includegraphics[width=13cm]{}
+\caption{An example of a decision tree and its cells.}
+\label{fig:decision-tree-with-cells}
+\end{figure}
+
+To illustrate these definitions, we consider the following example, which is illustrated in Figure~\ref{fig:decision-tree-example}. Let $S$ denote the following decision tree.
+
+\begin{lstlisting}[mathescape,basicstyle=\sffamily\small]
+if $x_1\leq x_2$ then
+    if $x_1 < x_4$ then
+        if $x_2 < x_3$ then $x_3 < x_4$ else ($x_4 < x_2$ and $x_1 < x_3$)
+    else
+        $x_3 < x_2$ and $x_1 < x_3$
+else
+    if $x_1 \leq x_3$ then ($x2 < x_4$ and $x_4 < x3$) else ($x_1 < x_4$ and $x_2 < x3$)
+\end{lstlisting}
+
+Of course, the same boolean function can be represented by a different decision trees. The cells of this decision tree are
+\begin{align*}
+C_1 &=& x_1\leq x_2 \wedge x_1 < x_4 \wedge x_2 < x_3 \wedge x_3 < x_4, \\
+C_2 &=& x_1\leq x_2 \wedge x_1 < x_4 \wedge x_3 \leq x_2 \wedge x_4 < x_2 \wedge x_1 < x_3, \\
+C_3 &=& x_1\leq x_2 \wedge x_4 \leq x_1 \wedge x_3 < x_2 \wedge x_1 < x_3, \\
+C_4 &=& x_2 < x_1 \wedge x_1 \leq x_3 \wedge x_2 < x_4 \wedge x_4 < x3, \\
+C_5 &=& x_2 < x_1 \wedge x_3 < x_1 \wedge x_1 < x_4 \wedge x_2 < x3.
+\end{align*}
 
 In the following, we are going to apply some geometric terminology to boolean formulas. A disjunction $\bigvee_i C_i(x)$ is called \emph{disjoint}, if the solution sets are disjoint, i.e., if for every $x$ at most one of the $C_i(x)$ is true. Moreover, the \emph{dimension} a conjunction $C$ of inequalities is the dimension of the polyhedron of all solutions, i.e, it is the number of variables minus the maximal number of linearly independent equations implied by $C$.
 
 We call a formula $C$ \emph{almost open}, if it is equivalent to a conjunction $\bigwedge_j I_{j}$ of inequalities $I_j$ such that at most one of the $I_j$ is weak and all of the $I_j$ are facet-defining. Note that the $I_j$ are facet-defining if the closure $\bar{C}$ of (the polytope defined by) $C$ has irredundant (!) description $\bar{C} = \bigwedge_j \bar{I}_j$, where $\bar{I}_j$ denotes the weak inequality defined by $I_j$. Geometrically, this means that the polytope $C$ is open except for at most one face which may be closed.
+
+In the above example, all cells of the decision tree $S$ are almost open. Note that in $C_2$, the weak inequality $x_1 \leq x_2$ is redundant, whence $C_2$ can equivalently be written as $C_2 = x_1 < x_4 \wedge x_3 \leq x_2 \wedge x_4 < x_2 \wedge x_1 < x_3$. Similarly, $C_3$ can be rewritten using only one weak inequality (and two strict inequalities). Note that in Figure~\ref{fig:decision-tree-with-cells} all cells have at most one closed face.
 
 We say a partial polytopal complex is partitionable, if it can be written as the disjoint union of half-open simplicies of full dimension $n$. (In our case, we are of course restricted to use simplicies given by the braid triangulation.)
 
