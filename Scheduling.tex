@@ -808,6 +808,7 @@ specialization of a symmetric function and as an Ehrhart polynomial.  We will re
 
 
 \subsection{Triangulations and their Allowed and Forbidden configurations}
+\label{sec:allow-forb-configurations}
 Geometrically we have seen that
 the braid arrangement, consisting of all hyperplanes
 \[
@@ -1007,12 +1008,12 @@ Every leaf $v$ of a decision tree corresponds to a conjunction of inequalities w
 By alight abuse of notation, we will also use $C_v$ to denote polytope of all $x\in \RR^n$ satisfying $C_v$. In the above formula, the purpose of $\bigwedge (0 < x_i <1)$ is to ensure that all solutions $x$ lie in the open cube $(0,1)^n$, as usual in the Ehrhart theory setting. When working with quasisymmetric functions, this condition would be replaced, accordingly, with $\bigwedge (0 < x_i)$ so as to ensure that solutions are positive. In this case the solution sets $C_v$ would be cones. Note that the set of formulas $\varphi_{v_0}'\wedge\ldots\wedge\varphi_{v_k}'\wedge S_v$ for all leaves $v$ of $S$ correspond exactly to the conjunctions in the disjunctive normal form of $S$.
 
 \begin{figure}[h]
-%\includegraphics[width=13cm]{}
+\includegraphics[angle=270,width=5in]{cells.pdf}
 \caption{An example of a decision tree and its cells.}
 \label{fig:decision-tree-with-cells}
 \end{figure}
 
-To illustrate these definitions, we consider the following example, which is illustrated in Figure~\ref{fig:decision-tree-example}. Let $S$ denote the following decision tree.
+To illustrate these definitions, we consider the following example, which is illustrated in Figure~\ref{fig:decision-tree-with-cells}. Let $S$ denote the following decision tree.
 
 \begin{lstlisting}[mathescape,basicstyle=\sffamily\small]
 if $x_1\leq x_2$ then
@@ -1024,13 +1025,13 @@ else
     if $x_1 \leq x_3$ then ($x2 < x_4$ and $x_4 < x3$) else ($x_1 < x_4$ and $x_2 < x3$)
 \end{lstlisting}
 
-Of course, the same boolean function can be represented by a different decision trees. The cells of this decision tree are
+Of course, the same boolean function can be represented by a different decision trees. The cells of this decision tree are the following (up to conjuncts of the form $\bigwedge (0 < x_i <1)$ which have been omitted for brevity).
 \begin{align*}
 C_1 &=& x_1\leq x_2 \wedge x_1 < x_4 \wedge x_2 < x_3 \wedge x_3 < x_4, \\
 C_2 &=& x_1\leq x_2 \wedge x_1 < x_4 \wedge x_3 \leq x_2 \wedge x_4 < x_2 \wedge x_1 < x_3, \\
 C_3 &=& x_1\leq x_2 \wedge x_4 \leq x_1 \wedge x_3 < x_2 \wedge x_1 < x_3, \\
-C_4 &=& x_2 < x_1 \wedge x_1 \leq x_3 \wedge x_2 < x_4 \wedge x_4 < x3, \\
-C_5 &=& x_2 < x_1 \wedge x_3 < x_1 \wedge x_1 < x_4 \wedge x_2 < x3.
+C_4 &=& x_2 < x_1 \wedge x_1 \leq x_3 \wedge x_2 < x_4 \wedge x_4 < x_3, \\
+C_5 &=& x_2 < x_1 \wedge x_3 < x_1 \wedge x_1 < x_4 \wedge x_2 < x_3.
 \end{align*}
 
 In the following, we are going to apply some geometric terminology to boolean formulas. A disjunction $\bigvee_i C_i(x)$ is called \emph{disjoint}, if the solution sets are disjoint, i.e., if for every $x$ at most one of the $C_i(x)$ is true. Moreover, the \emph{dimension} a conjunction $C$ of inequalities is the dimension of the polyhedron of all solutions, i.e, it is the number of variables minus the maximal number of linearly independent equations implied by $C$.
@@ -1061,17 +1062,17 @@ It is well-known that boundary complexes of simplicial polytopes are partitionab
 \begin{proof} 
 We first deal with the case where the polytope $C$ has exactly one closed face. Recall that having one closed face means that all but one of the facet-defining inequalities of $C$ are strict.
 
-The triangulation $T$ of the almost open polytope $C$ is regular. Let $F$ be the facet of $C$ which is closed, and let $v$ denote a new point close to $F$ but outside of $C$. We then create an open polytope $C'$ with $v$ as a new vertex by taking the open convex hull of $C$ and $v$:
+$C$ is a subconfiguration of the braid triangulation $\TC$ of the open cube, as defined in Section~\ref{sec:allow-forb-configurations}. Therefore, the induced triangulation $T$ of the almost open polytope $C$ is regular. Let $F$ be the facet of $C$ which is closed, and let $z$ denote a new point close to $F$ but outside of $C$. We then create an open polytope $C'$ with $z$ as a new vertex by taking the open convex hull of $C$ and $z$:
 \[
   C' = \operatorname{oconv}(C,v) := \mset{\lambda x + (1-\lambda)v}{x\in C, \lambda\in (0,1] }.
 \]
-Note that $C'$ is open because $(1-\lambda)<1$ and $F$ is the only closed face of $C$. The extended polytope $C'$ then has a triangulation $T'$ which consists of all the simplices in $T$ and the open convex hulls $\operatorname{oconv}(\sigma,v)$ of simplices $\sigma\in T$ such that $\sigma\subset F$ with the new vertex $v$. 
+Note that $C'$ is open because $(1-\lambda)<1$ and $F$ is the only closed face of $C$. The extended polytope $C'$ then has a triangulation $T'$ which consists of all the simplices in $T$ and the open convex hulls $\operatorname{oconv}(\sigma,z)$ of simplices $\sigma\in T$ such that $\sigma\subset F$ with the new vertex $z$. 
 
 The triangulation $T'$ is regular.\footnote{The new simplices $\sigma\in T'\setminus T$ are separated from $C$ by the hyperplane defining $F$. Moreover $T$ induces a regular triangulation of $F$ and thus the triangulation of $C'\setminus C$ induced by $T'$ is regular as well.} Therefore, there exists a polytope $P$ that has $C'$ as its lower hull. We now construct a line shelling of the lower hull of $P$ which starts with a facet in $T'\setminus T$. The lifted polytope $P$ can be chosen such that that all facets in $T'\setminus T$ are shelled first, again because $T$ is separated from $T'\setminus T$ by a single hyperplane, see also \cite[Lemma~2]{Breuer2011}.
 
 Let $\sigma_1,\ldots,\sigma_N$ be the induced shelling order of the maximal-dimensional simplicies in $C$. Let $\bar{\sigma_i}$ denote the closure of $\sigma_i$. Then, the sequence of half-open simplices
 \[
-  \bar{\sigma_1}, \; \bar{\sigma_2}\setminus \bar{\sigma_1}, \; \bar{\sigma_3}\setminus  (\bar{\sigma_2} \cup \bar{\sigma_1}), \; \ldots, \; \bar{\sigma_N} \setminus \bigcup_{i=1}^{N-1} \sigma_i
+ (\nu_i)_{i=1,\ldots,N}\;  :=\;   \bar{\sigma_1}, \; \bar{\sigma_2}\setminus \bar{\sigma_1}, \; \bar{\sigma_3}\setminus  (\bar{\sigma_2} \cup \bar{\sigma_1}), \; \ldots, \; \bar{\sigma_N} \setminus \bigcup_{i=1}^{N-1} \sigma_i
 \]
 form a partition of the closed polytope $\bar{C'}$. By reversing which faces of these half-open simplices are open and which are closed, we obtain a partition 
 \[
@@ -1085,7 +1086,7 @@ for $i=1,\ldots,N$. The rule is that a face is open if it occurred in a previous
 
 By construction, the simplices in $T'\setminus T$ are the last half-open simplexes in the sequence $(\tau_i)_i$ above, that is, there exists an $l$ such that $\sigma_i\subset C$ for all $i\leq l$ and $\sigma_i\subset C'\setminus C$ for all $i>l$. Then, the sequence $\tau_1,\ldots,\tau_l$ is a partition of $C$, as desired. Note in particular that $\bigcup_{i=1}^l \tau_i$ includes the closed face $F$, precisely because all faces of $C$ come first in the sequence $C$.
 
-This concludes the proof for the case that $C$ has one closed face. The proof for the case that $C$ is an open polytope without closed faces is completely analogous, only simpler as there is no need to add the new vertex $v$.
+This concludes the proof for the case that $C$ has one closed face. The proof for the case that $C$ is an open polytope without closed faces is completely analogous, only simpler as there is no need to add the new vertex $z$.
 \end{proof}
 
 \begin{theorem}
