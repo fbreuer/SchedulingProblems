@@ -984,15 +984,15 @@ These results fall into two broad categories. In Section~\ref{sec:partitionabili
 
 A partial simplicial complex is partitionable if it can be written as a disjoint union of half-open simplices, see Figure~\ref{fig:partitionability}. As we have seen in the preliminaries on Ehrhart theory (Section~\ref{Ehrhart}), unimodular half-open simplices have certain binomial coefficients as their Ehrhart polynomials. This ties the coefficients of Ehrhart polynomials in the corresponding binomial basis to the number of half-open simplices in a partition, and shows non-negativity of the $h^*$-vector if such a partition exists. On the level of nc-quasisymmetric functions, a partition corresponds to a decomposition into half-open simplicial cones which can be identified with elements of the fundamental basis.
 
+\begin{figure}[h]
+\includegraphics[angle=270,width=4.5in]{partitions}
+\caption{a) A partial simplicial complex and a partition of it. Dashed edges are open, solid lines are closed. White vertices are not contained in the complex, but black vertices are. b) A triangle with one closed edge and one vertex is not partitionable. c) A non-partitionable partial simplicial complex. This complex has 0 vertices, 6 edges and 4 triangles. Thus, in a partition, one simplex would need to have at least two closed edges. But then it would also have to contain a vertex, which is impossible.}
+\label{fig:partitionability}
+\end{figure}
+
 In this section we develop these connections. First, we introduce decision trees as a natural class of scheduling problems that give rise to partitionable allowable configurations. Then, we draw the connection between partitionability and non-negativity of coefficients on the level of polynomials and (nc-)quasisymmetric functions. Finally we discuss important special cases, including generalized permutahedra and $P$-partitions.
 
 Let $\Delta$ be a simplicial complex and assume that $\Delta$ is pure, i.e., that all maximal simplices have the same dimension $k$. A \emph{partition} of $\Delta$ is a map from maximal simplices $\sigma\in\Delta$ to half-open simplices $\hat{\sigma}$ such that $\relint(\sigma)=\relint(\hat{\sigma})$, any two half-open simplicies $\hat{\sigma}_1$, $\hat{\sigma}_2$ are disjoint, and the union of all half-open simplices $\hat{\sigma}$ equals $\Delta$. A partial simplicial complex $\Delta$ is \emph{partitionable} if there exists a partition of $\Delta$. This generalizes the standard notion of partitionability to partial complexes.\footnote{For simplicial complexes, partitionability is often defined in terms of the face poset, which is equivalent to the above definition in terms of half-open simplicies. The face-poset-definition can also be carried over to partial simplicial complexes as follows. Let $\bar{\Delta}$ be the closure of $\Delta$ as defined in Section~\ref{Ehrhart}. Let $\bar{P}$ be the face poset of $\bar{\Delta}$ and let $P$ be the subposet consisting of those faces of $\bar{\Delta}$ whose relative interior is contained in $\Delta$. Then $\Delta$ is partitionable if $P$ can be written as the disjoint union of boolean lattices whose top elements are all at the same height, with respect to $\bar{\Delta}$.} Examples of partitionable and non-partitionable complexes are given in Figure~\ref{fig:partitionability}.
-
-\begin{figure}[h]
-%\includegraphics[width=13cm]{decision-tree}
-\caption{TODO}
-\label{fig:partitionability}
-\end{figure}
 
 \subsubsection{Decision Trees} Decision trees are a very commonly used form of boolean expression. Intuitively, they are simply nested if-then-else statements. We will work with decision trees where the conditions in the if-clauses are inequalities of the form $x_i \leq x_j$ and the conditions in the leaves of the tree are conjunctions of such inequalities (either strict or weak).
 
