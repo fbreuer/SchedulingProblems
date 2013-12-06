@@ -1016,7 +1016,7 @@ As decision trees are binary trees, it will be convenient to distinguish notatio
 
 Every leaf $v$ of a decision tree corresponds to a conjunction of inequalities which we call the \emph{cell} at $v$. The cell at $v$ is the conjunction of $S_v$ (the inequalities given by the leaf $v$ itself) and the constraints given in the if-clauses of ancestors of $v$, negated according to whether $v$ resides in the ``true" or ``false" branch of the corresponding if-then-else clause. Let $v$ denote a leaf of the tree and let $v_0,\ldots,v_k$ denote its ancestors. Then $\S_{v_i}$ is a boolean formula of the form ``if $\varphi$ then $\psi_t$ else $\psi_f$'' and we define $\varphi_{v_i}' := \varphi$ if $v$ resides in the branch $\psi_t$ and $\varphi_{v_i}' := \neg\varphi$ if $v$ resides in the branch $\psi_f$. We denote by $C_v$ the conjunction
 \[
- C_v := \varphi_{v_0}'\wedge\ldots\wedge\varphi_{v_k}'\wedge S_v\wedge \bigwedge_{i=1}^n (0 < x_i \wedge x_i < 1).
+ C_v := \varphi_{v_0}'\wedge\ldots\wedge\varphi_{v_k}'\wedge S_v\wedge \bigwedge_{i=1}^n (0 < x_i < 1).
 \]
 By alight abuse of notation, we will also use $C_v$ to denote polytope of all $x\in \RR^n$ satisfying $C_v$. In the above formula, the purpose of $\bigwedge (0 < x_i <1)$ is to ensure that all solutions $x$ lie in the open cube $(0,1)^n$, as usual in the Ehrhart theory setting. When working with quasisymmetric functions, this condition would be replaced, accordingly, with $\bigwedge (0 < x_i)$ so as to ensure that solutions are positive. In this case the solution sets $C_v$ would be cones. Note that the set of formulas $\varphi_{v_0}'\wedge\ldots\wedge\varphi_{v_k}'\wedge S_v$ for all leaves $v$ of $S$ correspond exactly to the conjunctions in the disjunctive normal form of $S$.
 
@@ -1040,11 +1040,11 @@ else
 
 Of course, the same boolean function can be represented by a different decision trees. The cells of this decision tree are the following (up to conjuncts of the form $\bigwedge (0 < x_i <1)$ which have been omitted for brevity).
 \begin{align*}
-C_1 &=& x_1\leq x_2 \wedge x_1 < x_4 \wedge x_2 < x_3 \wedge x_4 < x_3, \\
-C_2 &=& x_1\leq x_2 \wedge x_1 < x_4 \wedge x_3 \leq x_2 \wedge x_4 < x_2 \wedge x_1 < x_3, \\
-C_3 &=& x_1\leq x_2 \wedge x_4 \leq x_1 \wedge x_3 < x_2 \wedge x_1 < x_3, \\
-C_4 &=& x_2 < x_1 \wedge x_1 \leq x_3 \wedge x_2 < x_4 \wedge x_4 < x_3, \\
-C_5 &=& x_2 < x_1 \wedge x_3 < x_1 \wedge x_1 < x_4 \wedge x_2 < x_3.
+C_1 &=& (x_1\leq x_2) \wedge (x_1 < x_4) \wedge (x_2 < x_3) \wedge (x_4 < x_3), \\
+C_2 &=& (x_1\leq x_2) \wedge (x_1 < x_4) \wedge (x_3 \leq x_2) \wedge (x_4 < x_2) \wedge (x_1 < x_3), \\
+C_3 &=& (x_1\leq x_2) \wedge (x_4 \leq x_1) \wedge (x_3 < x_2) \wedge (x_1 < x_3), \\
+C_4 &=& (x_2 < x_1) \wedge (x_1 \leq x_3) \wedge (x_2 < x_4) \wedge (x_4 < x_3), \\
+C_5 &=& (x_2 < x_1) \wedge (x_3 < x_1) \wedge (x_1 < x_4) \wedge (x_2 < x_3).
 \end{align*}
 
 In the following, we are going to apply some geometric terminology to boolean formulas. A disjunction $\bigvee_i C_i(x)$ is called \emph{disjoint}, if the solution sets are disjoint, i.e., if for every $x$ at most one of the $C_i(x)$ is true. Moreover, the \emph{dimension} a conjunction $C$ of inequalities is the dimension of the polyhedron of all solutions, i.e, it is the number of variables minus the maximal number of linearly independent equations implied by $C$.
