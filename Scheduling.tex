@@ -976,7 +976,7 @@ Here we consider the expansions of the scheduling nc-quasisymmetric,
 symmetric and polynomial functions in various bases and the relations
 of these expansions to the geometry of the allowable and forbidden configuration.  
 
-These results fall into two broad categories. In Section~\ref{sec:partitionability}, we study non-negativity in the fundamental basis of (nc-)quasisymmetric functions, which turns out to be closely related to non-negativity of the $h^*$-vector of the Ehrhart polynomial. A geometric condition that guarantees non-negativity of this type is partitionability. In Section~\ref{sec:cofundamental}, we consider non-negativity in the co-fundamental basis of quasisymmetric functions, which, geometrically, is guaranteed if the allowed configuration is a subcomplex, i.e., closed under taking faces.
+These results fall into two broad categories. In Section~\ref{sec:partitionability}, we study non-negativity in the fundamental basis of (nc-)quasisymmetric functions, which is closely related to non-negativity of the $h^*$-vector of the Ehrhart polynomial. A geometric condition that guarantees non-negativity of this type is partitionability. In Section~\ref{sec:cofundamental}, we consider non-negativity in the co-fundamental basis of quasisymmetric functions, which, geometrically, is guaranteed if the allowed configuration is a subcomplex, i.e., closed under taking faces.
 
 \subsection{Partitionability, the Ehrhart $h^*$-vector, and the Fundamental Basis}
 \label{sec:partitionability}
@@ -997,7 +997,7 @@ Let $\Delta$ be a simplicial complex and assume that $\Delta$ is pure, i.e., tha
 
 Figure~\ref{fig:tree} shows the example of a decision tree with only one if-then-else statement and the geometric region of points that satisfy the statement.   
 \begin{figure}[h]
-\includegraphics[angle=270,width=4in]{simple_decision_tree}
+\includegraphics[angle=270,width=3.5in]{simple_decision_tree}
 \caption{The allowable configuration associated to the decision tree ``If $x_1<x_2$ then $x_3<x_2$ else $x_3<x_1$,'' shaded in gray, shown as a subconfiguration of the Coxeter complex of type A. Note that the edges of the outer triangle correspond to the inequalities $x_1>0$, $x_2>0$ and $x_3>0$, which are not shown in the boolean formula.}
 \label{fig:tree}
 \end{figure}
@@ -1012,17 +1012,17 @@ More formally, decision trees of boolean expressions are defined recursively as 
 where $\varphi$ is an inequality of the form $x_i \leq x_j$ and $\psi_t,\psi_f$ are decision trees.
 \end{definition}
 
-As decision trees are binary trees, it will be convenient to distinguish notationally between a node $v$ of the tree $S$ and the boolean expression $S_v$ at that node.
+As decision trees are binary trees, it will be convenient to distinguish notationally between a node $v$ of a tree $S$ and the boolean expression $S_v$ at that node.
 
-Every leaf $v$ of a decision tree corresponds to a conjunction of inequalities which we call the \emph{cell} at $v$. The cell at $v$ is the conjunction of $S_v$ (the inequalities given by the leaf $v$ itself) and the constraints given in the if-clauses of ancestors of $v$, negated according to whether $v$ resides in the ``true" or ``false" branch of the corresponding if-then-else clause. Let $v$ denote a leaf of the tree and let $v_0,\ldots,v_k$ denote its ancestors. Then $\S_{v_i}$ is a boolean formula of the form ``if $\varphi$ then $\psi_t$ else $\psi_f$'' and we define $\varphi_{v_i}' := \varphi$ if $v$ resides in the branch $\psi_t$ and $\varphi_{v_i}' := \neg\varphi$ if $v$ resides in the branch $\psi_f$. We denote by $C_v$ the conjunction
+Every leaf $v$ of a decision tree corresponds to a conjunction of inequalities which we call the \emph{cell} at $v$. The cell at $v$ is the conjunction of $S_v$ (the inequalities given by the leaf $v$ itself) and the constraints given in the if-clauses of ancestors of $v$, negated according to whether $v$ resides in the ``true" or ``false" branch of the corresponding if-then-else clause. Let $v$ denote a leaf of the tree and let $v_0,\ldots,v_k$ denote its ancestors. Then $S_{v_i}$ is a boolean formula of the form ``if $\varphi$ then $\psi_t$ else $\psi_f$'' and we define $\varphi_{v_i}' := \varphi$ if $v$ resides in the branch $\psi_t$ and $\varphi_{v_i}' := \neg\varphi$ if $v$ resides in the branch $\psi_f$. We denote by $C_v$ the conjunction
 \[
  C_v := \varphi_{v_0}'\wedge\ldots\wedge\varphi_{v_k}'\wedge S_v\wedge \bigwedge_{i=1}^n (0 < x_i < 1).
 \]
-By alight abuse of notation, we will also use $C_v$ to denote polytope of all $x\in \RR^n$ satisfying $C_v$. In the above formula, the purpose of $\bigwedge (0 < x_i <1)$ is to ensure that all solutions $x$ lie in the open cube $(0,1)^n$, as usual in the Ehrhart theory setting. When working with quasisymmetric functions, this condition would be replaced, accordingly, with $\bigwedge (0 < x_i)$ so as to ensure that solutions are positive. In this case the solution sets $C_v$ would be cones. Note that the set of formulas $\varphi_{v_0}'\wedge\ldots\wedge\varphi_{v_k}'\wedge S_v$ for all leaves $v$ of $S$ correspond exactly to the conjunctions in the disjunctive normal form of $S$.
+By a slight abuse of notation, we will also use $C_v$ to denote the polytope of all $x\in \RR^n$ satisfying $C_v$. In the above formula, the purpose of $\bigwedge (0 < x_i <1)$ is to ensure that all solutions $x$ lie in the open cube $(0,1)^n$, as is usual in the Ehrhart theory setting. When working with quasisymmetric functions, this condition would be replaced, accordingly, with $\bigwedge (0 < x_i)$ so as to ensure that solutions are positive. In this case the solution sets $C_v$ are cones. Note that the set of formulas $\varphi_{v_0}'\wedge\ldots\wedge\varphi_{v_k}'\wedge S_v$ for all leaves $v$ of $S$ correspond exactly to the conjunctions in the disjunctive normal form of $S$.
 
 \begin{figure}[h]
-\includegraphics[width=5.5in,angle=270]{cells.pdf}
-\caption{The decision tree described in the text and its cells. a) The front faces of the Coxeter complex, with the faces contained in the allowable configuration of the decision tree shaded in gray. The face $4|1|3|2$ of the allowable configuration lies on the back face of the Coxeter complex. b) A view from above onto the Coxeter complex, showing all faces in the allowable configuration at once. c) The faces of the allowable configuration as partitioned by the decision tree. The cells of the decision tree are the gray components shown in the figure. Dashed lines indicate open faces, while solid lines indicate closed faces. Note how $C_2$ satisfies both $x_1 \leq x_2$ and $x_3 \leq x_2$, however, $x_1 \leq x_2$ is redundant and therefore does not produce a closed facet. }
+\includegraphics[width=5in,angle=270]{cells.pdf}
+\caption{The decision tree described in the text and its cells. a) The front faces of the Coxeter complex, with the faces contained in the allowable configuration of the decision tree shaded in gray. The face $4|1|3|2$ of the allowable configuration lies on the back face of the Coxeter complex. b) A view from above onto the Coxeter complex, showing all faces in the allowable configuration at once. c) The faces of the allowable configuration as partitioned by the decision tree. The cells of the decision tree are the gray components shown in the figure. Dashed lines indicate open faces, while solid lines indicate closed faces. Note that $C_2$ satisfies both $x_1 \leq x_2$ and $x_3 \leq x_2$, however, $x_1 \leq x_2$ is redundant and therefore does not produce a closed facet. }
 \label{fig:decision-tree-with-cells}
 \end{figure}
 
@@ -1038,7 +1038,7 @@ else
     if $x_1 \leq x_3$ then ($x_2 < x_4$ and $x_4 < x_3$) else ($x_1 < x_4$ and $x_2 < x_3$)
 \end{lstlisting}
 
-Of course, the same boolean function can be represented by a different decision trees. The cells of this decision tree are the following (up to conjuncts of the form $\bigwedge (0 < x_i <1)$ which have been omitted for brevity).
+Of course, the same boolean function can be represented by different decision trees. The cells of this decision tree are the following (up to conjuncts of the form $\bigwedge (0 < x_i <1)$ which have been omitted for brevity).
 \begin{align*}
 C_1 &=& (x_1\leq x_2) \wedge (x_1 < x_4) \wedge (x_2 < x_3) \wedge (x_4 < x_3), \\
 C_2 &=& (x_1\leq x_2) \wedge (x_1 < x_4) \wedge (x_3 \leq x_2) \wedge (x_4 < x_2) \wedge (x_1 < x_3), \\
@@ -1047,11 +1047,11 @@ C_4 &=& (x_2 < x_1) \wedge (x_1 \leq x_3) \wedge (x_2 < x_4) \wedge (x_4 < x_3),
 C_5 &=& (x_2 < x_1) \wedge (x_3 < x_1) \wedge (x_1 < x_4) \wedge (x_2 < x_3).
 \end{align*}
 
-In the following, we are going to apply some geometric terminology to boolean formulas. A disjunction $\bigvee_i C_i(x)$ is called \emph{disjoint}, if the solution sets are disjoint, i.e., if for every $x$ at most one of the $C_i(x)$ is true. Moreover, the \emph{dimension} a conjunction $C$ of inequalities is the dimension of the polyhedron of all solutions, i.e, it is the number of variables minus the maximal number of linearly independent equations implied by $C$.
+In the following, we are going to apply some geometric terminology to boolean formulas. A disjunction $\bigvee_i C_i(x)$ is called \emph{disjoint}, if the solution sets are disjoint, i.e., if for every $x$ at most one of the $C_i(x)$ is true. Moreover, the \emph{dimension} of a conjunction $C$ of inequalities is the dimension of the polyhedron of all solutions, i.e, it is the number of variables minus the maximal number of linearly independent equations implied by $C$.
 
-We call a formula $C$ \emph{almost open}, if it is equivalent to a conjunction $\bigwedge_j I_{j}$ of inequalities $I_j$ such that at most one of the $I_j$ is weak and all of the $I_j$ are facet-defining. Note that the $I_j$ are facet-defining if the closure $\bar{C}$ of (the polytope defined by) $C$ has irredundant (!) description $\bar{C} = \bigwedge_j \bar{I}_j$, where $\bar{I}_j$ denotes the weak inequality defined by $I_j$. Geometrically, this means that the polytope $C$ is open except for at most one face which may be closed.
+We call a formula $C$ \emph{almost open}, if it is equivalent to a conjunction $\bigwedge_j I_{j}$ of inequalities $I_j$ such that at most one of the $I_j$ is weak and all of the $I_j$ are facet-defining. Note that the $I_j$ are facet-defining if the closure $\bar{C}$ of (the polytope defined by) $C$ has a non-redundant description $\bar{C} = \bigwedge_j \bar{I}_j$, where $\bar{I}_j$ denotes the weak inequality defined by $I_j$. Geometrically, this means that the polytope $C$ is open except for at most one face which may be closed.
 
-In the above example, all cells of the decision tree $S$ are almost open. Note that in $C_2$, the weak inequality $x_1 \leq x_2$ is redundant, whence $C_2$ can equivalently be written as $C_2 = x_1 < x_4 \wedge x_3 \leq x_2 \wedge x_4 < x_2 \wedge x_1 < x_3$. Similarly, $C_3$ can be rewritten using only one weak inequality (and two strict inequalities). Note that in Figure~\ref{fig:decision-tree-with-cells} all cells have at most one closed face.
+In the above example, all cells of the decision tree $S$ are almost open. Note that in $C_2$, the weak inequality $x_1 \leq x_2$ is redundant, whence $C_2$ can equivalently be written as $C_2 = (x_1 < x_4) \wedge (x_3 \leq x_2) \wedge (x_4 < x_2) \wedge (x_1 < x_3)$. Similarly, $C_3$ can be rewritten using only one weak inequality (and two strict inequalities). Note that in Figure~\ref{fig:decision-tree-with-cells} all cells have at most one closed face.
 
 We say a partial polytopal complex is partitionable, if it can be written as the disjoint union of half-open simplicies of full dimension $n$. (In our case, we are of course restricted to use simplicies given by the braid triangulation.)
 
@@ -1063,7 +1063,7 @@ If a scheduling problem $S$ is equivalent to a formula of the form
 where the disjunction is disjoint and the $C_i$ are almost open of dimension $d$, then $\allow(S)$ is partitionable.
 \end{theorem}
 
-Because the disjunction is disjoint, this theorem follows immediately, if we can prove it for nice conjunctions.
+Because the disjunction is disjoint, this theorem follows immediately, if we can prove it for almost open conjunctions.
 
 \begin{lemma}
 \label{lem:almost-open}
@@ -1095,7 +1095,7 @@ of the open polytope $C'$. Let $\tau_i$ denote the $i$-th element in this sequen
 \[
   \tau_i = \bar{\sigma}_{N-i+1} \setminus (\partial C' \cup \bigcup_{i=N-i+2}^N \bar{\sigma_i})
 \]
-for $i=1,\ldots,N$. The rule is that a face is open if it occurred in a previous simplex of the sequence or the boundary. Because we run through the sequence in reverse order, this flips the state of all faces versus the first partition defined above.
+for $i=1,\ldots,N$. A face is open if it occurred in a previous simplex of the sequence or the boundary. Because we run through the sequence in reverse order, this flips the state of all faces versus the first partition defined above.
 
 By construction, the simplices in $T'\setminus T$ are the last half-open simplexes in the sequence $(\tau_i)_i$ above, that is, there exists an $l$ such that $\sigma_i\subset C$ for all $i\leq l$ and $\sigma_i\subset C'\setminus C$ for all $i>l$. Then, the sequence $\tau_1,\ldots,\tau_l$ is a partition of $C$, as desired. Note in particular that $\bigcup_{i=1}^l \tau_i$ includes the closed face $F$, precisely because all faces of $C$ come first in the sequence $C$.
 
@@ -1107,16 +1107,16 @@ This concludes the proof for the case that $C$ has one closed face. The proof fo
 Let $S$ be a decision tree such that all cells of $S$ are almost open of dimension $d$. Then $\allow(S)$ is partitionable. Moreover, disjoint unions of such decision trees are partitionable.
 \end{theorem}
 
-Note that a cell can be in the "strict inequality" branch of many of its ancestors and still be nice. The reason is that, in practice, many of these strict ancestral inequalities will be redundant.
-
 \begin{proof} 
 A decision tree is the disjoint union of all its cells. By Lemma~\ref{lem:almost-open}, all cells are partitionable because they are almost open. Therefore the decision tree is partitionable.
 \end{proof}
 
-Note that all theorems stated here hold for $\allowC(S)$ as well as for $\allowP(S)$, with analogous proofs.
+Note that a cell can be in the "strict inequality" branch of many of its ancestors and still be almost open. The reason is that, in practice, many of these strict ancestral inequalities will be redundant.
+
+%Note that all theorems stated here hold for $\allowC(S)$ as well as for $\allowP(S)$, with analogous proofs.
 
 \begin{remark}
-In general, a partial complex of dimension $k$ is partitionable if it can be written as a disjoint union of half-open simplices of dimension $k$. In the above, we have defined partitionable with respect to the ambient dimension $n$, as this will be convenient when working with the fundamental bases of NCSym and QSzm below. However, this restriction is not essential. If $\allow(S)$ can be written as a disjoint union of almost open cells of a fixed dimension $k<d$, then the proofs still go through and show partitionability of $\allow(S)$.
+In general, a partial complex of dimension $k$ is partitionable if it can be written as a disjoint union of half-open simplices of dimension $k$. In the above, we have defined partitionable with respect to the ambient dimension $n$, as this will be convenient when working with the fundamental bases of NCSym and QSym below. However, this restriction is not essential. If $\allow(S)$ can be written as a disjoint union of almost open cells of a fixed dimension $k<d$, then the same proofs show partitionability of $\allow(S)$.
 \end{remark}
 
 %% \begin{example}
