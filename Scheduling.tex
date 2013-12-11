@@ -166,7 +166,7 @@
  Scheduling polynomials include the chromatic polynomial of a graph, the Zeta polynomial of a lattice, the Billera-Jia-Reiner polynomial of a matroid and the newly defined arboricity polynomial of a matroid.  
 
 
- We extend a result of Steingrimmson by proving that the $h$-vector of the space of solutions is given by a shift of the scheduling polynomial.
+ We extend a result of Steingr\'{i}mmson by proving that the $h$-vector of the space of solutions is given by a shift of the scheduling polynomial.
 %Our approach to scheduling problems is both algebraic and geometric. Algebraically, 
 To any scheduling problem, we associate not only a counting function for solutions, but also a quasisymmetric function and a quasisymmetric function in non-commuting variables. 
 %Geometrically, we consider the space of all solutions to a given scheduling problem via Ehrhart theory, hyperplanes arrangements, and the Coxeter complex of type A.  From these perspectives,
@@ -226,7 +226,7 @@ Geometrically, we consider the space of all solutions to a given
 scheduling problem via Ehrhart theory, hyperplanes arrangements, and
 the Coxeter complex of type A.  As special instances, the varying scheduling structures include the
 chromatic functions of Sagan and Gebhard, and Stanley, the chromatic
-complex of Steingrimmson, the matroid invariant of Billera-Jia-Reiner,
+complex of Stein\-gr\'{i}mm\-son, the matroid invariant of Billera-Jia-Reiner,
 and a variant of Ehrenborg's quasisymmetric function for posets.
 
 
@@ -236,7 +236,7 @@ and a variant of Ehrenborg's quasisymmetric function for posets.
 We first use the interplay of geometry and algebra to prove a Hilbert
 series type result showing that the $h$-vector of the solution space
 is given by a shift of the scheduling polynomial.  This includes and
-generalizes Steingrimmson's result on the chromatic polynomial and
+generalizes Stein\-gr\'{i}mm\-son's result on the chromatic polynomial and
 coloring complex to all scheduling problems.  Imposing certain
 niceness conditions on the space of solutions allows for stronger
 results.  We focus on the case when the boolean function $S$ can be
@@ -291,6 +291,8 @@ scheduling problems can naturally be viewed.
 \section{Preliminaries: Ehrhart Theory}
 \label{Ehrhart}
 
+In this section we introduce the basic notions from Ehrhart theory that we need throughout the paper, however we assume some familiarity with polyhedral geometry. As references on these subjects we recommend \cite{Beck2007,Ziegler1995}.
+
 Consider a (bounded) set $X\subset \RR^d$. The \emph{Ehrhart function} 
 \[
   \ehr_X:\ZZ_{> 0}\rar\ZZ_{\geq 0}
@@ -299,13 +301,13 @@ of $X$ counts the number of integer points in integer dilates of $X$, i.e.,
 \[
   \ehr_X(k) = \#\ZZ^d \cap k\cdot X
 \]
-for any positive integer $k$. Ehrhart's theorem states that if $X$ is a polytope whose vertices have integer coordinates, then the Ehrhart function $\ehr_X$ of $X$ coincides with a polynomial, called the Ehrhart polynomial of the polytope. We call polytopes whose vertices have integer coordinates \emph{integral} or \emph{lattice polytopes}. Two polytopes in $\RR^d$ are \emph{lattice equivalent} if there is an affine automorphism $\phi$ of $\RR^d$ with $\phi(P)=Q$ which induces a bijection on the integer lattice $\ZZ^d$.
+for any positive integer $k$. Ehrhart's theorem states that if $X$ is a polytope whose vertices have integer coordinates, then the Ehrhart function $\ehr_X$ of $X$ coincides with a polynomial, called the Ehrhart polynomial of the polytope. We call polytopes whose vertices have integer coordinates \emph{integral} or \emph{lattice polytopes}. Two polytopes in $\RR^d$ are \emph{lattice equivalent} if there is an affine automorphism $\phi$ of $\RR^d$ with $\phi(P)=Q$ which induces a bijection on the integer lattice $\ZZ^d$. Lattice equivalent sets $X$ have the same Ehrhart function.
 
-The most important example for our purposes is the Ehrhart polynomials of simplices. The $d$-dimensional \emph{standard simplex} $\Delta^d$ is the convex hull of the standard unit vector $e_1,\ldots,e_d\in\RR^{d+1}$, i.e.,
-\begin{eqnarray*}
-  \Delta^d &=& \mset{x\in\RR^{d+1}}{\sum x_i =1, x_1 \geq 0, \ldots, x_{d+1} \geq 0} \\
-  &=& \mset{\sum_{i=1}^{d+1} \lambda_i e_i\in\RR^{d+1}}{\sum_{i=1}^{d+1} \lambda_i = 1, \lambda_i\geq 0, }.
-\end{eqnarray*}
+The most important example for our purposes are Ehrhart polynomials of simplices. The $d$-dimensional \emph{standard simplex} $\Delta^d$ is the convex hull of the standard unit vector $e_1,\ldots,e_d\in\RR^{d+1}$, i.e.,
+\[
+  \Delta^d = \mset{x\in\RR^{d+1}}{\sum_{i=1}^{d+1} x_i =1, x_i \geq 0} 
+  = \mset{\sum_{i=1}^{d+1} \lambda_i e_i\in\RR^{d+1}}{\sum_{i=1}^{d+1} \lambda_i = 1, \lambda_i\geq 0, }.
+\]
 Its Ehrhart polynomial is given by a binomial coefficient
 \[
   \ehr_{\Delta^d}(k) = \binom{k+d}{d},
@@ -313,37 +315,42 @@ Its Ehrhart polynomial is given by a binomial coefficient
 \]
 which is a polynomial of degree $d$ in the variable $k$. An integral simplex is \emph{unimodular} if it is lattice equivalent to a standard simplex, whence all unimodular simplices of the same dimension have the same Ehrhart polynomial. Note that all faces of a unimodular simplex are themselves unimodular simplices.
 
-Ehrhart polynomials of unimodular simplices arise naturally from the study of scheduling problems. Consider the following scheduling problem: ``Schedule two jobs, 1 and 2, such that job 2 starts after or at the same time as job 1." Suppose jobs can be run in discrete time slots, numbered $0$ through $k$. A feasible schedule is a pair of integer numbers $0\leq x_1,x_2 \leq k$ such that $x_1 \leq x_2$. The feasible schedules are precisely the integer points $x=(x_1,x_2)$ contained in the $k$-th dilate of the unimodular simplex $\conv(0,e_2,e_1+e_2)$. Therefore, if we let the deadline $k$ vary, the number of feasible schedules is given by the Ehrhart polynomial of a 2-dimensional unimodular simplex, $\ehr_{\Delta^d}(k)=\binom{k+2}{2}$.
+Ehrhart polynomials of unimodular simplices arise naturally from the study of scheduling problems. Consider the following scheduling problem $S$: ``Schedule two jobs, 1 and 2, such that job 2 starts after or at the same time as job 1." Suppose jobs can be run in $k+1$ discrete time slots, numbered $0$ through $k$. A feasible schedule is a pair of integer numbers $0\leq x_1,x_2 \leq k$ such that $x_1 \leq x_2$. The feasible schedules are precisely the integer points $x=(x_1,x_2)$ contained in the $k$-th dilate of the unimodular simplex $\conv(0,e_2,e_1+e_2)$. Therefore, if we let the deadline $k$ vary, the number of feasible $(k+1)$-schedules is given by the Ehrhart polynomial of a 2-dimensional unimodular simplex, i.e., $\chi_S(k+1)=\ehr_{\Delta^2}(k)=\binom{k+2}{2}$.
 
-If instead, we require job 2 to run strictly after job 1, feasible schedules are then integer points $x\in\ZZ^2$ such that $0\leq x_1,x_2 \leq k$ and $x_1 < x_2$. The strict inequality gives rise to a \emph{half-open simplex}. The $d$-dimensional standard simplex $\Delta^d_i$ with $i$ open faces is defined just as the standard simplex above, except that $i$ of the inequalities are strict. More precisely
+If instead, we require job 2 to run strictly after job 1, feasible schedules are then integer points $x\in\ZZ^2$ such that $0\leq x_1,x_2 \leq k$ and $x_1 < x_2$. Denote this scheduling problem by $S'$. The strict inequality gives rise to a \emph{half-open simplex}. The $d$-dimensional standard simplex $\Delta^d_i$ with $i$ open faces is defined just as the standard simplex above, except that $i$ of the inequalities are strict. More precisely
 \[
     \Delta^d_i = \mset{x\in\RR^{d+1}}{\sum x_i =1, x_1 \geq 0, \ldots, x_i > 0, x_{i+1} \geq 0, x_{d+1} \geq 0}.
 \]
 For every face of the standard simplex that we open, the Ehrhart polynomial is shifted by one:
-\[
+\begin{eqnarray}
   \ehr_{\Delta^d_i}(k) = \binom{k+d-i}{d}.
-\]
-In particular, the open simplex $\Delta^d_{d+1} = \relint{\Delta^d}$ has Ehrhart polynomial $\ehr_{\Delta^d_{d+1}}(k) = \binom{k-1}{d}$. The feasible schedules in the example mentioned above therefore correspond to the integer points in the $k$-th dilate of a $2$-dimensional unimodular simplex with $1$ open face, and their number is $\ehr_{\Delta^2_1} = \binom{k+1}{2}$.
+  \label{eqn:half-open-simplex}
+\end{eqnarray}
+In particular, the open simplex $\Delta^d_{d+1}$ has Ehrhart polynomial $\ehr_{\Delta^d_{d+1}}(k) = \binom{k-1}{d}$. In the example $S'$, the feasible $(k+1)$-schedules therefore correspond to the integer points in the $k$-th dilate of a $2$-dimensional unimodular simplex with $1$ open face, and their number is $\chi_{S'}(k+1)=\ehr_{\Delta^2_1}(k) = \binom{k+1}{2}$.\footnote{Note that in later sections, we will be using a slightly different setup than in the previous two examples: We will identify time slots with integers $1$ through $k$ by letting $0<x_i<k+1$. This alternate construction then yields $\chi_S(k)=\ehr_{\Delta^2_2}(k+1)=\binom{k+1}{2}$ and $\chi_S(k)=\ehr_{\Delta^2_3}(k+1)=\binom{k}{2}$.}
 
-Half-open simplices do not suffice to capture all scheduling problems. Consider the following variation of our running example: "Schedule two jobs, 1 and 2, such that job 2 starts strictly after job 1. However, if job 1 starts immediately, then both can run at the same time." The exception that both jobs may run simultaneously if they are started immediately adds one point to our half-open simplex: the origin $(0,0)$. The resulting set is no longer a half-open simplex. In fact, it is not even the set-theoretic difference of two closed polytopes. In order to capture this type of geometric object, we work with partial polytopal complexes. \comment{change example of this paragraph - fb}
+Half-open simplices do not suffice to capture all scheduling problems. Consider the following example $S''$ of a scheduling problem on three jobs: "Either run all three jobs at the same time, or first job 1, then job 2, and then job 3." A feasible $(k-1)$-schedule is a triple $(x_1,x_2,x_3)$ with $0< x_1,x_2,x_3 < k$ such that $x_1<x_2<x_3$ or $x_1=x_2=x_3$. The resulting geometric region is the union of an open 3-dimensional simplex and (the relative interior of) the main diagonal of the cube $[0,k]^3$. This set is no longer a half-open simplex. In fact, it is not even the set-theoretic difference of two closed polytopes. In order to capture this type of geometric object, we work with partial polytopal complexes.
 
 %
 
-A \emph{polytopal complex} $K$ is a finite set of polytopes in some $\RR^d$ such that $K$ is closed under taking faces and the intersection of any two polytopes in $K$ is a face of both. A polytopal complex is \emph{integral} if all vertices have integer coordinates. We define the \emph{relative interior} of a polytope to be the interior of the polytope taken with respect to its affine hull, so that, for example, the interior of a 2-dimensional triangle in 3-space is the triangle minus its edges and vertices. 
- The union of all faces of a polytopal complex is equal to the disjoint union of the relative interiors of all faces. For example, a triangle is equal to the open 2-dimension region, plus the open line segments corresponding to the edges, plus the vertices (which are open in their 0-dimensional affine hull). This observation implies that the Ehrhart function of a polytopal complex is just the sum of all Ehrhart functions of the relative interiors of all faces.
+A \emph{polytopal complex} $K$ is a finite set of polytopes in some $\RR^d$ such that $K$ is closed under taking faces and the intersection of any two polytopes in $K$ is a face of both. A polytopal complex is \emph{integral} if all vertices have integer coordinates. We define the \emph{relative interior} $\relint(P)$ of a polytope $P$ to be the interior of the polytope taken with respect to its affine hull, so that, for example, the interior of a 2-dimensional triangle in 3-space is the triangle minus its edges and vertices and, more generally, $\relint{\Delta^d} = \Delta^d_{d+1}$.
+ The union of all faces of a polytopal complex is equal to the disjoint union of the relative interiors of all faces. For example, a triangle is equal to the open 2-dimensional region, plus the open line segments corresponding to the edges, plus the vertices (which are open with respect to their 0-dimensional affine hull). This observation implies that the Ehrhart function of a polytopal complex is just the sum of all Ehrhart functions of the relative interiors of all faces.
 
-Now, returning to the half-open triangle with that one extra point, it can be written as the disjoint union of the open 2-dimensional region, the open line segments corresponding to the two closed edges, and the two vertices that we want to include: the origin and $e_2$. However, we exclude the open line segment from 0 to $e_1+e_2$ and the vertex $e_1+e_2$ from the union. This idea of taking the relative interiors of just some of the faces of a polytopal complex gives rise to the notion of a partial polytopal complex. A \emph{partial polytopal complex} is a subset of the faces of a polytopal complex; in particular, a partial polytopal complex is not closed under taking faces. The \emph{support} $|K|$ of a partial polytopal complex $K$ is the union of the relative interiors of all faces contained in $K$.
-
-It will be useful to also consider the following alternative definition of a partial polytopal complex. We call the relative interior of a polytope $P$ an \emph{open polytope}. The \emph{faces of an open polytope} are the faces of its closure. By extension, we define the \emph{closure} of any set of open polytopes as the set of all faces of these polytopes. A \emph{partial polytopal complex} $K$ is now any set of open polytopes whose closure $\bar{K}$ is a polytopal complex. Note that indeed $\overline{|K|}=|\bar{K}|$, i.e., the closure of the support is the support of the closure.
- %% We will at certain points need to distinguish between the faces of $K$ and the faces of $\bar{K}$. For example, let $K$ be the interior of a triangle together with one of its vertices. In this case, $K$ will have just two faces: the open triangle and the vertex. However, we will have recourse to refer to the other faces of the (closed) triangle as well. These make up the faces of $\bar{K}$.
-
-The Ehrhart function of a partial polytopal complex is the Ehrhart function of its support. If the complex is integral it is straightforward to show that the Ehrhart function is again a polynomial. In the example of the half-open simplex with the extra point, we can thus observe that its Ehrhart function is $\binom{k+1}{2} + 1$.
-
-This motivates the following observation: If $K$ is a partial simplicial complex in which all vertices are integral and all simplices are unimodular. Then, the Ehrhart function $\ehr_K$ satisfies
+Now, returning to the example $S''$, the set $X$ of feasible points $x\in\RR^3$ for $k=1$ can be written as the disjoint union of the open 3-dimensional simplex $\sigma$ which is the relative interior of the convex hull of the vectors $(0,0,0)$, $(0,0,1)$, $(0,1,1)$ and $(1,1,1)$ and the open line segment $\lambda$ which is the relative interior of the convex hull of $(0,0,0)$ and $(1,1,1)$. Then the feasible $(k-1)$-schedules are precisely the integer points in $k\cdot X$, i.e., 
 \[
-  \ehr_K(k) = \sum_{i=0}^d f_i^* \binom{k-1}{i}
+\chi_{S''}(k-1)=\ehr_X(k) = \ehr_{\Delta^2_3}(k) + \ehr_{\Delta^1_2}(k) = \binom{k-1}{2} + \binom{k-1}{1}.
 \]
-where $d$ is the dimension of $K$ and $f_i^*$ denotes the number of $i$-dimensional faces in $K$.  The polynomials $\binom{k+d-i}{d}$ form a basis of the space of polynomials of degree at most $d$. Thus every Ehrhart polynomial can be written in the above form and the $f_i^*$ are the coefficients of the polynomial with respect to this binomial basis. Intuitively, the coefficients $f_i^*$ count how many unimodular simplices of dimension $i$ the complex contains. This will be made precise in Section~\ref{sec:scheduling-problems}.
+However, we note that the triangle $\tau$ that is the relative interior of the convex hull of $(0,0,0)$, $(0,0,1)$ and $(1,1,1)$ is not contained in $X$, even though $\tau$ is a face of $\sigma$ and $\lambda$ is a face of $\tau$. This idea of taking the relative interiors of just some of the faces of a polytopal complex gives rise to the notion of a partial polytopal complex, which was introduced in \cite{fstar}. A \emph{partial polytopal complex} is a subset of the faces of a polytopal complex; in particular, a partial polytopal complex is not closed under taking faces. The \emph{support} $|K|$ of a partial polytopal complex $K$ is the union of the relative interiors of all faces contained in $K$. By abuse of terminology, we will often refer to both $K$ and $|K|$ as the polytopal complex $K$ and let it be clear from context whether we are referring to the subset of Euclidean space or the set of polytopes ordered by the face relation.
+
+Note that in the above example it is still convenient to speak of $(0,0,0)$, $(0,0,1)$, etc.\ as vertices of $\sigma$ and, consequently, as vertices of $X$, even though they are neither contained in $X$ nor in the relative interior of $\sigma$. It will generally be clear from context, whether we are referring to vertices that are actually contained in $X$, or merely to vertices of the closure of some face of the partial complex. However, when we need to carefully distinguish between these two cases, we adopt the following terminology: We call the relative interior of a polytope $P$ an \emph{open polytope}. The \emph{faces of an open polytope} are the faces of its closure. By extension, we define the \emph{closure} of any set of open polytopes as the set of all faces of these polytopes. A \emph{partial polytopal complex} $K$ is now any set of open polytopes whose closure $\bar{K}$ is a polytopal complex. This allows us to distinguish between the faces of a partial polytopal complex $K$ and the faces of its closure $\bar{K}$. Note that indeed $\overline{|K|}=|\bar{K}|$, i.e., the closure of the support is the support of the closure.
+%% We will at certain points need to distinguish between the faces of $K$ and the faces of $\bar{K}$. For example, let $K$ be the interior of a triangle together with one of its vertices. In this case, $K$ will have just two faces: the open triangle and the vertex. However, we will have recourse to refer to the other faces of the (closed) triangle as well. These make up the faces of $\bar{K}$.
+
+%The Ehrhart function of a partial polytopal complex is the Ehrhart function of its support. If the complex is integral it is straightforward to show that the Ehrhart function is again a polynomial. In the example of the half-open simplex with the extra point, we can thus observe that its Ehrhart function is $\binom{k+1}{2} + 1$.
+
+%This motivates the following observation: If $K$ is a partial simplicial complex in which all vertices are integral and all simplices are unimodular. Then, the Ehrhart function $\ehr_K$ satisfies
+%\[
+%  \ehr_K(k) = \sum_{i=0}^d f_i^* \binom{k-1}{i}
+%\]
+%where $d$ is the dimension of $K$ and $f_i^*$ denotes the number of $i$-dimensional faces in $K$.  The polynomials $\binom{k+d-i}{d}$ form a basis of the space of polynomials of degree at most $d$. Thus every Ehrhart polynomial can be written in the above form and the $f_i^*$ are the coefficients of the polynomial with respect to this binomial basis. Intuitively, the coefficients $f_i^*$ count how many unimodular simplices of dimension $i$ the complex contains. This will be made precise in Section~\ref{sec:scheduling-problems}.
 
 \section{Preliminaries: Coxeter Complexes, QSym and NCQsym}
 \label{ncqsym}
