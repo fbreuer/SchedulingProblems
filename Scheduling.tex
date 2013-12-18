@@ -163,14 +163,15 @@
 
 \begin{abstract} We introduce the notion of a scheduling problem which is a boolean function $S$ over atomic formulas of the form $x_i \leq x_j$.  Considering the $x_i$ as jobs to be performed, an integer assignment satisfying $S$ schedules the jobs subject to the constraints of the atomic fomulas.  The scheduling counting function counts the number of solutions to $S$. We prove that this counting function is a polynomial in the number of time slots allowed. 
 % Polynomiality arises naturally by considering scheduling problems in the context of both Ehrhart theory and quasisymmetric functions. 
- Scheduling polynomials include the chromatic polynomial of a graph, the Zeta polynomial of a lattice, the Billera-Jia-Reiner polynomial of a matroid and the newly defined arboricity polynomial of a matroid.  
+ Scheduling polynomials include the chromatic polynomial of a graph, the Zeta polynomial of a lattice, the Billera-Jia-Reiner polynomial of a matroid and the newly defined arboricity polynomial of a matroid. 
 
-
- We extend a result of Steingr\'{i}mmson by proving that the $h$-vector of the space of solutions is given by a shift of the scheduling polynomial.
 %Our approach to scheduling problems is both algebraic and geometric. Algebraically, 
-To any scheduling problem, we associate not only a counting function for solutions, but also a quasisymmetric function and a quasisymmetric function in non-commuting variables. 
-%Geometrically, we consider the space of all solutions to a given scheduling problem via Ehrhart theory, hyperplanes arrangements, and the Coxeter complex of type A.  From these perspectives,
-Furthermore, under certain niceness conditions on the defining boolean function, we prove partitionability of the space of solutions and positivity of fundamental expansions of the scheduling quasisymmetric functions and of the $h$-vector of the scheduling polynomial.  
+To any scheduling problem, we associate not only a counting function for solutions, but also a quasisymmetric function and a quasisymmetric function in non-commuting variables. These scheduling functions include the chromatic symmetric functions of Sagan, Gebhard, and Stanley, and a close variant of  Ehrenborg's quasisymmetric function for posets.  
+
+
+Geometrically, we consider the space of all solutions to a given scheduling problem.
+% via Ehrhart theory, hyperplanes arrangements, and the Coxeter complex of type A.  From these perspectives,
+We extend a result of Steingr\'{i}mmson by proving that the $h$-vector of the space of solutions is given by a shift of the scheduling polynomial.  Furthermore, under certain niceness conditions on the defining boolean function, we prove partitionability of the space of solutions and positivity of fundamental expansions of the scheduling quasisymmetric functions and of the $h$-vector of the scheduling polynomial.  
 
 
 
@@ -208,7 +209,7 @@ arboricity polynomial of a matroid. The arboricity polynomial counts
 the number of covers of a matroid with independent sets or, as a
 special case, the number of covers of a graph with disjoint spanning
 trees, naturally extending the notion of arboricity introduced by
-Nash-Williams, Tutte, and Edmonds, which is the size of the minimum
+Nash-Williams~\cite{Nash}, Tutte~\cite{Tutte}, and Edmonds~\cite{Edmonds}, which is the size of the minimum
 possible independent cover.
  Many scheduling problems will be naturally associated to
 a graph or a matroid but do not generally satisfy a
@@ -225,9 +226,9 @@ successively more information about the solutions themselves.
 Geometrically, we consider the space of all solutions to a given
 scheduling problem via Ehrhart theory, hyperplanes arrangements, and
 the Coxeter complex of type A.  As special instances, the varying scheduling structures include the
-chromatic functions of Sagan and Gebhard, and Stanley, the chromatic
-complex of Stein\-gr\'{i}mm\-son, the matroid invariant of Billera-Jia-Reiner,
-and a variant of Ehrenborg's quasisymmetric function for posets.
+chromatic functions of Sagan and Gebhard~\cite{GS}, and Stanley~\cite{stan-chromatic}, the chromatic
+complex of Stein\-gr\'{i}mm\-son~\cite{Ein}, the matroid invariant of Billera-Jia-Reiner~\cite{BJR},
+and a variant of Ehrenborg's quasisymmetric function for posets~\cite{Ehrenborg}.
 
 
 
@@ -264,7 +265,8 @@ scheduling problems can naturally be viewed.
  Section~\ref{geometry} also includes numerous examples of schedulig
  problems in connection to $P$-partitions, generalized permutahedra,
  and Bergman fans.  Finally, section~\ref{arboricty} introduces the
- arboricity polynomial as a scheduling counting function. The arboricity polynomial provides a natural example where deletion contraction does not hold. 
+ arboricity polynomial as a scheduling counting function.
+% The arboricity polynomial provides a natural example where deletion contraction does not hold. 
 
 
 %% \begin{figure}[h]
@@ -352,7 +354,7 @@ Note that in the above example it is still convenient to speak of $(0,0,0)$, $(0
 %\]
 %where $d$ is the dimension of $K$ and $f_i^*$ denotes the number of $i$-dimensional faces in $K$.  The polynomials $\binom{k+d-i}{d}$ form a basis of the space of polynomials of degree at most $d$. Thus every Ehrhart polynomial can be written in the above form and the $f_i^*$ are the coefficients of the polynomial with respect to this binomial basis. Intuitively, the coefficients $f_i^*$ count how many unimodular simplices of dimension $i$ the complex contains. This will be made precise in Section~\ref{sec:scheduling-problems}.
 
-\section{Preliminaries: Coxeter Complexes, QSym and NCQsym}
+\section{Preliminaries: Coxeter Complexes, QSym and NCQSym}
 \label{ncqsym}
 
 
@@ -465,20 +467,6 @@ are in the same order class, $\Delta(\gamma) =
 \Delta(\tau)$, the coefficient of $x_{\gamma_1}x_{\gamma_2} \cdots
 x_{\gamma_n}$ is the same as the coefficient of $x_{\tau_1}x_{\tau_2} \cdots x_{\tau_n}$.
 \end{definition}
-
-Let $\Phi$ be an ordered set partition.  Define the monomial quasisymmetric function in non-commuting variables indexed by $\Phi$ as follows:
-$$\ncM_{\Phi} = \sum_{a \in \mathbb{N}^n \, \Delta(a) = \Phi} {\bf{x}}_{a}.$$
-
-Alternatively, quasisymmetric functions in non-commuting variables can be defined as any function which can be expressed as a sum of monomial terms $\ncM_{\Phi}$.
-
-\begin{example}
-Consider the order class of points that satisfy $x_1 = x_3 < x_2 =
-x_4$.  The corresponding ordered set partition $\Phi$ is $(13|24)$.
-$$\ncM_{13|24} = x_1x_2x_1x_2 + x_1x_3x_1x_3 + x_2x_3x_2x_3 + x_3x_4x_3x_4 + \cdots$$  
-\end{example}
-
-
-
  One of the staples of geometric methods in combinatorics is to
  interpret a monomial as an integer point in space. The standard
  construction is to view a monomial in commuting variables
@@ -506,6 +494,22 @@ $\sum_{0<i_3=i_1<i_2} x_{i_1}x_{i_2}x_{i_3}$, we obtain two facets of
 this cone. More precisely, we obtain the set of lattice points in the
 relative interiors of the cones $\cone_\ZZ(e_1+e_2,e_1+e_2+e_3)$ and
 $\cone_\ZZ(e_2,e_1+e_2+e_3)$, respectively.
+
+
+
+
+
+Let $\Phi$ be an ordered set partition.  Define the monomial quasisymmetric function in non-commuting variables indexed by $\Phi$ as follows:
+$$\ncM_{\Phi} = \sum_{a \in \mathbb{N}^n \, \Delta(a) = \Phi} {\bf{x}}_{a}.$$
+Alternatively, quasisymmetric functions in non-commuting variables can be defined as any function which can be expressed as a sum of monomial terms $\ncM_{\Phi}$.
+
+\begin{example}
+Consider the order class of points that satisfy $x_1 = x_3 < x_2 =
+x_4$.  The corresponding ordered set partition $\Phi$ is $(13|24)$.
+$$\ncM_{13|24} = x_1x_2x_1x_2 + x_1x_3x_1x_3 + x_2x_3x_2x_3 + x_3x_4x_3x_4 + \cdots$$  
+\end{example}
+
+
 
 
 \begin{figure}[h]
@@ -536,7 +540,7 @@ $$ \ncS_S = \sum_{\substack{\Phi \text{ such that } \\ \exists a\in\NN^k: (\Delt
 
 
 
-\subsection{From NCQsym to QSym to Polynomials}
+\subsection{From NCQSym to QSym to Polynomials}
 
 
  In order to impose a deadline, or $k$ time slots, we restrict to
@@ -563,7 +567,7 @@ linear combination of monomial quasisymmetric functions.
 Thus elements of QSym are naturally indexed by
 compositions and elements of NCQSym are naturally indexed by ordered
 set partitions.  
-The \emph{type map} maps elements of NCQSym to Qsym by sending ordered set partitions to compositions.
+The \emph{type map} maps elements of NCQSym to QSym by sending ordered set partitions to compositions.
  %We can use the type map from partitions to
 %compositions to specialize an element of NCQSym to an element of QSym.
 The type map of an ordered set partition simply records the size of each block:
@@ -1353,7 +1357,7 @@ configuration $\forb(S)$ be a valid subcomplex of the Coxeter complex; i.e. a
 collection of faces closed under taking subsets.
 
 
-\subsubsection{Disjunction of Conjunctions}
+\subsubsection{Chromatic Complexes and Generalized Permutahedra}
 An important class of scheduling problems that satisfy the conditions of Theorem~\ref{unique} are those scheduling problems that can be expressed as a disjunction of conjunctions of strict inequalities, i.e.,
 \[
   S = \bigvee_i C_i \text{ where } C_i = \bigwedge_j I_{i,j}
@@ -1386,7 +1390,7 @@ Suppose $C = (x_1 < x_2) \wedge (x_1 < x_3) \wedge (x_3 < x_4)$.  The correspond
 \label{fig:poset}
 \end{figure}
 
-The case of a disjunction of conjunctions includes the coloring complex regarded as the forbidden
+This case  includes the coloring complex regarded as the forbidden
 subcomplex of the graph coloring problem.  Again recall that the
 coloring complex can be interpreted as all those ordered set
 partitions of the vertices such that at least one block contains at
@@ -1447,9 +1451,9 @@ one skeleton of the normal fan of $GP$ as subdivided by the Coxeter
 complex.  Such a scheduling problem is then given as a disjunction of
 conjunctions.  Namely, the scheduling problem of a generalized
 permutahedron is defined by taking, for each vertex $v$ of a
-generalized permutahedron $GP$, the conjunction of all hyperplanes
-defining $v$.  Hence the valid  schedules correspond to all
-integer points in the interior of the normal fan.  In~\cite{ABK}, this allowable configuration and nc-quasisymmetric funciton were studied not as a schedulign problem but in connection to the Hopf monoid of generalized permutahedron.  There it
+generalized permutahedron $GP$, the conjunction of all defining hyperplanes
+meeting $v$.  Hence the valid  schedules correspond to all
+integer points in the interior of the normal fan.  In~\cite{ABK}, this allowable configuration and nc-quasisymmetric function were studied not as a scheduling problem but in connection to the Hopf monoid of generalized permutahedron.  There it
 was shown that the  generalized permutahedron nc-quasisymmetric function is $\ncL$
 positive and $\forb(S)$ is $h$-positive.
 
@@ -2062,7 +2066,7 @@ not satisfy a contraction deletion recurrsion analogous to the chromatic polynom
 %% $${\bf{{\mathcal A}}}(M) = M_{(1|23)} + M_{(2|13)} + M_{(3|12)} + M_{(23|1)} + M_{(13|2)} +  M_{(12|3)} + $$ $$ M_{(1|2|3)} + M_{(1|3|2)}
 %% + M_{(2|1|3)} + M_{(2|3|1)} + M_{(3|1|2)} + M_{(3|2|1)}. $$
 
-%% \noindent Specializing under the type map we have an element of Qsym:
+%% \noindent Specializing under the type map we have an element of QSym:
 
 %% $${\mathcal A}(M) = 3 M_{(1,2)} + 3 M_{(2,1)} + 6 M_{(1,1,1)}. $$
 
