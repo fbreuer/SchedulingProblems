@@ -28,6 +28,7 @@
 
 \newtheorem{definition}{Definition} 
 \numberwithin{definition}{section}
+\newtheorem{definition_lemma}[definition]{Definition and Lemma} 
 \newtheorem{proposition}[definition]{Proposition} 
 \newtheorem{theorem}[definition]{Theorem} 
 \newtheorem{lemma}[definition]{Lemma} 
@@ -527,14 +528,15 @@ above on two jobs such that job 2 must start after job 1 unless they
 start at the same time.  The solutions corresponds to the integer points satisying $\{x_1 < x_2\}$ or $\{x_1 = x_2\}$ and are recorded by the
 nc-quasisymmetric function $\ncM_{1|2} + \ncM_{12}$.
 
-\begin{definition}
+\begin{definition_lemma}
+\label{scheduling-ncqsym}
 Given a scheduling problem $S$ on $k$ items, the scheduling quasisymmetric function in noncommuting variables is the sum of monomial quasisymmetric functions in non-commuting variables $\ncM_{\Phi}$ over all ordered set partitions ${\Phi}$ such that $S$ is satisfied by any (and hence all) integer points $a \in \mathbb{N}^k$ with relative ordering given by $\Phi$,
 
-$$ \ncS_S = \sum_{\substack{\Phi \text{ such that } \\ \exists a\in\NN^k: (\Delta(a) =\Phi) \wedge S(a)}} \ncM_{\Phi}.  $$
+$$ \ncS_S := \sum_{a\in\NN^k: S(a)} \bf{x}_a = \sum_{\substack{\Phi \text{ such that } \\ \exists a\in\NN^k: (\Delta(a) =\Phi) \wedge S(a)}} \ncM_{\Phi}.  $$
 
 %\text{ with } \\ \Delta(a) =\Phi \\ a \, {\operatorname{satisfies}} \,S}} \ncM_{\Phi}. $$
 
-\end{definition}
+\end{definition_lemma}
 
 
 
@@ -655,7 +657,7 @@ Equivalently, $\cone(\Phi)$ is the set of all real vectors $a$ in the positive o
 \]
 
 
-This triangulation of $\RR_{> 0}^n$ can also be obtained by subdividing the positive orthand according to the braid arrangement of all hyperplanes $x_i=x_j$. Combinatorially, the resulting partial polyhedral complex is equivalent to a cone over the Coxeter complex of type $A$. 
+This triangulation of $\RR_{> 0}^n$ can also be obtained by subdividing the positive orthand according to the braid arrangement of all hyperplanes $x_i=x_j$.
 
 As discussed in the previous section, we associate to every $a\in\NN^n$ a monomial in non-commuting variables $x_{a_1}\cdots x_{a_n}$ which we abbreviate as ${\bf x}_a$. In this way, we can associate to every set of lattice points, $A\subset\NN^n$, a formal sum $N(A)$ of monomials in non-commuting variables
 \[
@@ -699,9 +701,10 @@ Let $S$ be a scheduling problem on $n$ items.
 The scheduling counting function,
  $$\poly_S(k) = \textrm{ the number of $k$-schedules satisfying $S$}, $$ is a polynomial in $k$.
   Its degree is at most $n$ and the coefficients $f_1,\ldots,f_n$ of $\poly_S$, given by
-\[
+\begin{equation}
+\label{eqn:fbasis}
   \poly_S(k) = \sum_{i=1}^n f_i\binom{k}{i}
-\]
+\end{equation}
 %or, equivalently,
 %\[
 %  z^{-1}\sum_{k\geq 1} \ehr_S(k)z^k = z^{-1}(\frac{f_0z^1}{(1-z)^1} + \cdots + \frac{f_dz^{d+1}}{(1-z)^{d+1}})
@@ -711,8 +714,7 @@ The scheduling counting function,
 %\[
 %  \sum_{k\geq 0} \poly_S(k)z^k = \frac{f_1z^1}{(1-z)^2} + \cdots + \frac{f_nz^{n}}{(1-z)^{n+1}},
 %\]
-are positive integers bounded above by $i!\cdot S(n,i)$. where the $S(n,i)$ are the Stirling numbers of the second kind.
-
+are non-negative integers, counting the number of ordered set partitions $\Phi$ with $i$ non-empty parts such that $S(\Phi)$ holds. In particular, the $f_i$ are bounded above by $i!\cdot S(n,i)$, where the $S(n,i)$ are the Stirling numbers of the second kind.
 
 %% satisfy the following properties:
 %% \begin{enumerate}
@@ -721,6 +723,8 @@ are positive integers bounded above by $i!\cdot S(n,i)$. where the $S(n,i)$ are 
 %% \item $f_i$ counts the number of ordered set partitions $\Phi$ of $[n]$ into $i$ non-empty parts such that $S(\Phi)$ holds.
 %% \end{enumerate}
 \end{theorem}
+
+As we have seen in Definition and Lemma~\ref{scheduling-ncqsym}, the coefficients of the scheduling nc-quasisymmetric function $\S_S$ in terms of the monomial basis $\ncM_\Phi$ are 0 or 1 depending on whether or not $S(\Phi)$ holds. Theorem~\ref{fbasis} can be viewed as a specialization of this results, obtained by collecting terms according to the number of parts of $\Phi$ or, equivalently, the dimension of the corresponding simplex. As we will see in the proof, Theorem~\ref{fbasis} can be obtained both from the perspective of nc-quasisymmetric functions and the perspective of Ehrhart theory.
 
 \begin{proof}
 Let $S$ be a scheduling problem. Let $A$ denote the set of all vectors $a\in\RR^n_{> 0}$ such that $S(a)$ holds true. Recall that the scheduling nc-quasisymmetric function is
@@ -761,7 +765,7 @@ since the hyperplanes defining $\cone(\Phi)$ all go through the origin. We have 
 %= \poly_\Phi(k) 
 = \ehr_{\cone(\Phi)\cap(0,1)^n}(k+1),
 \end{eqnarray}
-that is, $\ncM_\Phi({\bf 1}^k)$ is the Ehrhart polynomial of the open polytope $\cone(\Phi)\cap(0,1)^n$, up to a shift of 1. 
+that is, $\ncM_\Phi({\bf 1}^k)$ is the Ehrhart polynomial of the open polytope $(\cone(\Phi)\cap(0,1)^n)$, up to a shift of 1. 
 
 
 
@@ -775,7 +779,7 @@ It follows that
   &=& \ncM_{\Phi}({\bf 1}^k) \\  
 &=& \sum_{i=1}^n f_i\binom{k}{i}
 \end{eqnarray*}
-where $f_i$ is the number of ordered set partitions $\Phi$ with $i$ non-empty parts. Note that the binomial coefficients $\binom{k}{i}$ for $i=0,\ldots,n$ form a basis of the space of polynomials of degree at most $n$, so the coefficients $f_i$ are determined by the polynomial $\poly_S(k)$. 
+where $f_i$ is the number of ordered set partitions $\Phi$ with $i$ non-empty parts that satisfy $S$. Note that the binomial coefficients $\binom{k}{i}$ for $i=0,\ldots,n$ form a basis of the space of polynomials of degree at most $n$, so the coefficients $f_i$ are determined by the polynomial $\poly_S(k)$. 
 %To see that the above generating function definition of the coefficients $f_i$ is equivalent, note that 
 %\[
 %  \frac{1}{(1-z)^{d+1}} = \sum_{k\geq 0} \binom{k+d}{d} z^k
@@ -789,7 +793,7 @@ From this counting interpretation of the coefficients $f_i$ it follows immediate
 
 
 \begin{example}
-In our running example of two jobs in which job $1$ may start before job $2$ or both jobs can start simultaneouly but job $2$ can not start before job $1$, the nc-quasisymmetric scheduling funciton was $\ncM_{1|2} + \ncM_{12}$.  Thus the scheduling polynomial is
+In our running example of two jobs in which job $1$ may start before job $2$ or both jobs can start simultaneouly but job $2$ can not start before job $1$, the nc-quasisymmetric scheduling function was $\ncM_{1|2} + \ncM_{12}$.  Thus the scheduling polynomial is
 $$\poly_S(k) = \SSS_S({\bf 1}^k) = \binom{k}{2} + \binom{k}{1}.$$
 \end{example}
 
@@ -828,13 +832,13 @@ the braid arrangement, consisting of all hyperplanes
 \[
   H_{i,j} = \mset{a\in\RR^n}{a_i = a_j}
 \]
-for $1\leq i,j\leq n$, induces subdivisions $\TRn$, $\TP$, $\TC$, and $\TS$ of the space $\RR^n$, the positive orthand $\RR^n_{> 0}$, the open unit cube $(0,1)^n$ and the $n-2$ dimensional sphere
+for $1\leq i,j\leq n$, induces subdivisions $\TRn$, $\TP$, $\TC$, and $\TS$ of, respectively, the space $\RR^n$, the positive orthand $\RR^n_{> 0}$, the open unit cube $(0,1)^n$ and the $n-2$ dimensional sphere
 \[
 S^{n-2}=\mset{x\in\RR^n}{||x||_2 = 1, \sum_{i=1}^n = 0}.
 \]
  The faces of these subdivisions are the regions of the respective ground set where the function $\Delta$, mapping points $a\in\RR^n$ to ordered set partitions $\Phi$, is constant. The faces of $\TRn$ are relatively open polyhedral cones, each containing the lineality space $\mset{a\in\RR^n}{a_i=a_j \; \forall i,j}$. The faces of $\TP$ are pointed, relatively open simplicial cones. The faces of $\TC$ are relatively open unimodular simplices. The faces of $\TS$ are sections of the $n-2$ sphere. Combinatorially $\TS$ is equivalent to the simplicial complex known as the Coxeter complex of type $A_{n-1}$.
 
-All of these complexes are closely related. In fact, $\TRn$, $\TP$, and $\TC$ are all combinatorially equivalent, as the function $\Delta$ defines a bijection between their sets of faces that preserves incidences. In particular, the faces of these three complexes are in one-to-one correspondence with the ordered set partions $\Phi$ of $[n]$ into non-empty parts. The only difference with $\TS$ is that there is no face of $\TS$ corresponding to the partition with only one part. Combinatorially, the other complexes are the cone over $\TS$. As these geometric objects are so closely related, we will frequently draw no clear distinction between them and refer loosely to the triangulation $\Tn$. It will be clear from context which of these objects we are referring to in each case.
+All of these complexes are closely related. In fact, $\TRn$, $\TP$, and $\TC$ are all combinatorially equivalent, as the function $\Delta$ defines a bijection between their sets of faces that preserves incidences. In particular, the faces of these three complexes are in one-to-one correspondence with the ordered set partions $\Phi$ of $[n]$ into non-empty parts. In turn, $\TS$ can be obtained by intersecting $\TRn$ with the sphere $S^{n-2}$. The main difference is that in $\TS$ there is no face corresponding to the partition with only one part. Combinatorially, the other complexes are the cone over $\TS$. As these geometric objects are so closely related, we will frequently draw no clear distinction between them and refer loosely to the triangulation $\Tn$. It will be clear from context which of these objects we are referring to in each case.
 
 We write $\sigma\in\Tn$ to denote that $\sigma$ is a face of the triangulation $\Tn$. We use $\sigma_\Phi$ to mean the face of $\Tn$ corresponding to the ordered set partition $\Phi$.  Recall that for a scheduling problem $S$, $S(\Phi)$ denotes the truth value of whether $S(a)$ holds for any (or, equivalently, all) $a\in\RR^n$ with $\Delta(a)=\Phi$. We define the \emph{allowed configuration} $\allow(S)$ of the triangulation $\Tn$ to be the set of faces 
 \[
@@ -847,9 +851,9 @@ Correspondingly, define the \emph{forbidden configuration} $\forb(S)$ to be the 
 
 
 
-\begin{example} As remarked above, a particularly familiar scheduling polynomial is the chromatic polynomial of a graph.  In this case, the scheduling problem simply specifies which variables can not be equal to each other, $x_i \neq x_j$ for $\{i,j\}$ an edge of the graph.   Steingrimmson's coloring complex~\cite{Ein} can be described as
+\begin{example} As remarked above, a particularly familiar scheduling polynomial is the chromatic polynomial of a graph $G$.  In this case, the graphical scheduling problem $S_G$ simply specifies which variables can not be equal to each other, $x_i \neq x_j$ for $\{i,j\}$ an edge of the graph, which simply means that no two jobs that are connected by an edge are allowed to run simultaneously.   Steingr\'{i}mmson's coloring complex~\cite{Ein} can be described as
 the collection of ordered set partitions with at least one edge in at least one block, namely 
-the forbidden configuration of the chromatic scheduling problem.  
+the forbidden configuration of the chromatic scheduling problem. In our framework, Steingr\'{i}mmson's coloring complex is the forbidden complex of the graphical scheduling problem $\forbS(S_G)$ taken as a subcomplex of the sphere $S^{n-2}$.
 Much work has been done to understand the coloring complex in particular to better understand the chromatic polynomial.  This avenue is possible because of the Hilbert series connection as shown in~\cite{Ein}.  As we will see below this connection holds more generally for all scheduling problems.
 \end{example}
 
@@ -876,7 +880,9 @@ The result on $\SSS_S$ is immediate from the above observations. For the result 
 \]
 \end{proof}
 
-We have seen in the preliminaries that the Ehrhart polynomial of a $d$-dimensional unimodular simplex $\Delta^d_i$ with $i$ open faces is
+We have seen in the proof of Theorem~\ref{fbasis}, the scheduling polynomial $\chi_S(k)$ equals a shifted Ehrhart polynomial. In particular, the coefficients $f_i$ in the expansion (\ref{eqn:fbasis}) count the number of faces of the allowable configuration $\allow(S)$. Similarly, coefficients of $\chi_S$ in related binomial bases give rise to the $h$-vector of the partial simplicial complex $\allow(S)$ and its Ehrhart $h^*$-vector, as we will see in the next theorem.
+
+As explained in the preliminaries that the Ehrhart polynomial of a $d$-dimensional unimodular simplex $\Delta^d_i$ with $i$ open faces is
 \[
   \ehr_{\Delta^d_i}(k) = \binom{k+d-i}{d}.
 \]
@@ -884,30 +890,27 @@ A $d$-dimensional simplex can have between 0 and $d+1$ open faces, and the polyn
 \[
   p(k) = \sum_{i=0}^{d+1} h_i \binom{k+d-i}{d}.
 \] 
-However, these coefficients $h_i$ are not uniquely determined as there is one degree of freedom too many. There are two different conventions for normalization, which determine the coefficient vector uniquely. The first convention is to fix $h_0=1$, which gives rise to the $h$-vector as commonly used in the study of simplicial complexes. This choice is motivated by the notion of a shelling, which induces a partition of a triangulation into half-open simplices in which exactly one is closed. The second convention is to fix $h_{d+1}=0$, which gives rise to the $h^*$-vector (or Ehrhart $\delta$-vector) used in Ehrhart theory. 
+However, these coefficients $h_i$ are not uniquely determined as there is one degree of freedom too many. There are two different conventions for normalization, which determine the coefficient vector uniquely. The first convention is to fix $h_0=1$, which gives rise to the $h$-vector as commonly used in the study of simplicial complexes. This choice is motivated by the notion of a shelling, which induces a partition of a simplicies into half-open simplices in which exactly one is closed \cite{Ziegler1995}. The second convention is to fix $h_{d+1}=0$, which gives rise to the $h^*$-vector (or Ehrhart $\delta$-vector) used in Ehrhart theory \cite{Beck2007}.
 
 Formally, given numbers $f_0,\ldots,f_d$, the \emph{$h$-vector} $h_0,\ldots,h_{d+1}$ and the \emph{$h^*$-vector} $h^*_0,\ldots,h^*_{d}$ are defined, respectively, via $h_0=1$ and
 \begin{eqnarray*}
   \sum_{i=0}^{d} f_i \binom{k-1}{i} & = &
-  \binom{k+d}{d} + \sum_{i=1}^{d+1} h_i \binom{k+d-i}{d} 
-  \\ 
-  & = & \sum_{i=0}^{d} h^*_i \binom{k+d-i}{d}. 
+%  \binom{k+d}{d} + 
+  \sum_{i=0}^{d+1} h_i \binom{k+d-i}{d} 
+  %\\ & = & 
+  = \sum_{i=0}^{d} h^*_i \binom{k+d-i}{d}. 
 \end{eqnarray*}
 
 %% Generally, the vector $(f_0,\ldots,f_d)$ is going to be the $f$-vector $f(X)$ of a partial simplicial complex $X$, which means that $f_i$ denotes the number of $i$-dimensional faces of $X$. Correspondingly, the $h$- and $h^*$-vectors of $X$ are defined via the above relations, and are denoted by $h(X)$ and $h^*(X)$, respectively. All of these definitions work for partial complexes as well.
 
 %% Alternatively, instead of defining the $h$- and $h^*$-vectors of $X$ in terms of $f(X)$, it is possible to define them in terms of the Ehrhart polynomial $\ehr_X$ via $\ehr_X(k) = \sum_{i=0}^{d} f_i \binom{k-1}{i}$. Note that if $X$ is a $d$-dimensional partial unimodular integral simplicial complex these two definitions yield the same result. As all simplicial complexes considered in this article are unimodular, we will use both definitions interchangeably. In general, we are going to use $f(p)$, $h(p)$, and $h^*(p)$ to denote the $f$-, $h$- and $h^*$-vectors of a polynomial $p$ determined via $p(k)=\sum_{i=0}^{d} f_i \binom{k-1}{i}$.
 
-On the level of generating functions, the above definitions can be expressed as follows. Let $p(k)=\sum_{i=0}^{d} f_i \binom{k-1}{i}$. Then the $h$- and $h^*$-vectors can be defined, equivalently, by 
+Typically, the numbers $f_0,\ldots,f_d$ are either the $f$-vector of a (partial) simplicial complex\footnote{That is, $f_i$ counts the number of $i$-dimensional faces of the complex.} or the coefficients of a polynomial $p(k)$ given in the binomial basis $p(k)=\sum_{i=0}^{d} f_i \binom{k-1}{i}$. Given $p(k)$ in this form, the $h$- and $h^*$-vectors can be defined, equivalently, by 
 \begin{eqnarray*}
 1 + \sum_{k=1}^\infty p(k) t^k & = &  \frac{\sum_{i=0}^{d+1}h_i t^i}{(1-t)^{d+1}} \;\;\; \text{ and } \\
 \sum_{k=0}^\infty p(k) t^k & = &  \frac{\sum_{i=0}^{d}h^*_i t^i}{(1-t)^{d+1}}. \\
 \end{eqnarray*}
- Note that 
-\[ 
-h^*_0=\sum_{i=0}^d (-1)^i f_i
-\]
-from which it follows that the $h$- and $h^*$-vectors of a complex $X$ coincide if and only if the Euler characteristic of $X$ is one.
+ Note that $h^*_0=\sum_{i=0}^d (-1)^i f_i$ from which it follows that the $h$- and $h^*$-vectors of a complex $X$ coincide if and only if the Euler characteristic of $X$ is one.
 
 
 
@@ -935,9 +938,9 @@ where $h_{\Delta}(t)$ is the $h$-polynomial of ${\Delta}, \sum_{i} h_i(\Delta) t
 \begin{proof}
 Let $S$ be a scheduling problem, then
 \[
-  \poly_S(k) = \ehr_{\allow(S)}(k+1) \;\;\; \text{ and } \;\;\; (k-1)^n - \poly_{S}(k) = \ehr_{\forb(S)}(k+1),
+  \poly_S(k) = \ehr_{\allow(S)}(k+1) \;\;\; \text{ and } \;\;\; (k-1)^n - \poly_{S}(k) = \ehr_{\forb(S)}(k+1).
 \]
-where the allowed and forbidden partial subcomplexes are of the open cube $(0,1)^n$. The partial complexes $\allow(S)$ and $\forb(S)$ are partial subcomplexes of $\TC$ which is an integral unimodular triangulation of the open unit cube $(0,1)^n$. Therefore, the $h$-vector of these complexes coincide with the $h$-vectors of their respective Ehrhart polynomials,
+Here, the allowed and forbidden configurations $\allow(S)$ and $\forb(S)$ are partial subcomplexes of $\TC$ which is an integral unimodular triangulation of the open unit cube $(0,1)^n$.  In particular, as we know from Theorem~\ref{fbasis}, the coefficients $f_i$ in (\ref{eqn:fbasis}) count the number of $i$-dimensional simplices in the respective complexes. Therefore, the $h$-vector of these complexes coincide with the $h$-vectors of their Ehrhart polynomials,
 \[
  1 + t\sum_{k = 0}^\infty \poly_S(k) t^k =  1 + \sum_{k = 1}^\infty \ehr_{\allow(S)}(k) t^k = \frac{\sum_{i=0}^{d+1} h_i(\allow(S)) t^i}{(1-t)^{d+1}}
 \]
