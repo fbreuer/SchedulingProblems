@@ -1,1 +1,116 @@
-\usepackage{fourier}
+
+%\usepackage{fourier}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{epstopdf}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+%\usepackage{xypic}
+\usepackage{enumerate}
+%\usepackage{sidenotes}
+\usepackage{listings}
+
+
+ \newcommand{\lo}{\preceq}
+\newcommand{\rar}{\rightarrow}
+\newcommand{\rAr}{\Rightarrow}
+\newcommand{\lrAr}{\Leftrightarrow}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\AAA}{\mathcal{A}}
+\newcommand{\FFF}{\mathcal{F}}
+\newcommand{\HHH}{\mathcal{H}}
+\newcommand{\NNN}{\mathcal{N}}
+\newcommand{\SSS}{\mathcal{S}}
+\newcommand{\K}{\mathbf{K}}
+\renewcommand{\L}{\mathbf{L}}
+\newcommand{\U}{\mathbf{U}}
+\newcommand{\V}{\mathbf{V}}
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\Rat}{\operatorname{Rat}}
+\newcommand{\cox}{\operatorname{Cox}}
+\newcommand{\ehr}{\operatorname{ehr}}
+\newcommand{\dist}{\mathsf{dist}}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\sprod}[2]{\langle #1, #2 \rangle}
+\newcommand{\mspan}{\operatorname{span}}
+\renewcommand{\dim}{\mathsf{dim}\ }
+\newcommand{\inter}{\mathsf{int}\ }
+\newcommand{\median}{\mathrm{median}\ }
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand{\defn}[1]{\emph{#1}}
+\newcommand{\norm}[1]{|| #1 ||}
+
+\newcommand{\Glat}{G^{\operatorname{lat}}}
+\newcommand{\Gdep}{G^{\operatorname{dep}}}
+\newcommand{\Gfine}{G^{\operatorname{fine}}}
+\newcommand{\Gfinem}{G^{\operatorname{fine*}}}
+
+\newcommand{\FD}{\mathcal{F}}
+
+\newcommand{\path}{\operatorname{path}}
+\newcommand{\reldep}[2]{{#1} \longrightarrow {#2}}
+\newcommand{\reldepi}[3]{{#1} \overset{#2}{\longrightarrow} {#3}}
+\newcommand{\shift}[2]{\rightarrow(#1,{#2})}
+\newcommand{\shiftw}[3]{\overset{#1 \cdot #2}{\longrightarrow} {#3}}
+
+\newcommand{\conv}{\operatorname{conv}}
+\newcommand{\cone}{\operatorname{cone}}
+\newcommand{\lev}{\operatorname{lev}}
+\newcommand{\Lev}{\operatorname{Lev}}
+\renewcommand{\deg}{\operatorname{deg}}
+\renewcommand{\dim}{\operatorname{dim}}
+\renewcommand{\min}{\operatorname{min}}
+\renewcommand{\max}{\operatorname{max}}
+\newcommand{\fract}{\operatorname{frac}}
+\newcommand{\integ}{\operatorname{int}}
+\newcommand{\relint}{\operatorname{relint}}
+\newcommand{\type}{\operatorname{type}}
+
+\newcommand{\twin}{\mathsf{twin}}
+\newcommand{\hull}{\mathsf{hull}}
+\newcommand{\diam}{\mathsf{diam}}
+\newcommand{\choice}[1]{\left\{ \begin{array}{ll} #1 \end{array} \right.}
+\newcommand{\floor}[1]{\lfloor {#1} \rfloor}
+\newcommand{\ceil}[1]{\lceil {#1} \rceil}
+\newcommand{\mset}[2]{ \left\{ #1 \; \middle| \; #2 \right\}}
+\newcommand{\lk}{\mathsf{lk}}
+\newcommand{\sd}{\mathsf{sd}}
+\newcommand{\Pa}{\mathrm{P}}
+\newcommand{\dotcup}{\ensuremath{\mathaccent\cdot\cup}}
+\newcommand{\Hom}{\mathrm{ Hom}}
+\newcommand{\om}{\omega}
+
+%% IMPORTANT OBJECTS FOR THIS ARTICLE
+
+\newcommand{\ncS}{\mathcal{S}}
+\newcommand{\ncM}{\mathcal{M}}
+\newcommand{\ncL}{\mathcal{L}}
+\newcommand{\ncN}{\mathcal{N}}
+% we are working with (at least) four different "braid triangulations"
+\newcommand{\T}{T} % generic symbol for the triangulation
+\newcommand{\Tn}{T_n} % generic symbol for the triangulation with dimension
+\newcommand{\TRn}{\T_{\RR^n}} % the braid triangulation of space
+\newcommand{\TS}{\T_{S^{n-2}}} % the braid triangulation of the sphere (i.e. the Coxeter complex)
+\newcommand{\TP}{\T_{\RR^n_{> 0}}} % the braid triangulation of the positive orthand
+\newcommand{\TC}{\T_{(0,1)^n}} % the braid triangulation of the cube
+
+\newcommand{\allow}{\Lambda} %{\operatorname{Allow}} % the allowed subcomplex
+\newcommand{\poly}{\chi} % scheduling polynomial
+\newcommand{\forb}{\Gamma} %{\operatorname{Forb}} % the forbidden subcomplex
+% variants of allowed and forbidden subcomplexes for different triangulations
+\newcommand{\allowRn}{\allow_{\RR^n}} % the braid triangulation of space
+\newcommand{\allowS}{\allow_{S^{n-2}}} % the braid triangulation of the sphere (i.e. the Coxeter complex)
+\newcommand{\allowP}{\allow_{\RR^n_{> 0}}} % the braid triangulation of the positive orthand
+\newcommand{\allowC}{\allow_{(0,1)^n}} % the braid triangulation of the cube
+\newcommand{\forbRn}{\forb_{\RR^n}} % the braid triangulation of space
+\newcommand{\forbS}{\forb_{S^{n-2}}} % the braid triangulation of the sphere (i.e. the Coxeter complex)
+\newcommand{\forbP}{\forb_{\RR^n_{> 0}}} % the braid triangulation of the positive orthand
+\newcommand{\forbC}{\forb_{(0,1)^n}} % the braid triangulation of the cube
+
