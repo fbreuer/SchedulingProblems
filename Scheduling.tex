@@ -991,7 +991,7 @@ An important class of results in the literature on quasisymmetric
 functions, simplicial complexes and Ehrhart theory are theorems
 asserting the non-negativity of coefficient vectors in various bases.
 Here we consider the expansions of the scheduling nc-quasisymmetric,
-symmetric and polynomial functions in various bases and the relations
+symmetric and polynomial functions in several bases and the relations
 of these expansions to the geometry of the allowable and forbidden configuration.  
 
 These results fall into two broad categories. In Section~\ref{sec:partitionability}, we study non-negativity in the fundamental basis of (nc-)quasisymmetric functions, which is closely related to non-negativity of the $h^*$-vector of the Ehrhart polynomial. A geometric condition that guarantees non-negativity of this type is partitionability. In Section~\ref{sec:cofundamental}, we consider non-negativity in the co-fundamental basis of quasisymmetric functions, which, geometrically, is guaranteed if the allowed configuration is a subcomplex, i.e., closed under taking faces.
@@ -1002,14 +1002,14 @@ These results fall into two broad categories. In Section~\ref{sec:partitionabili
 A partial simplicial complex is partitionable if it can be written as a disjoint union of half-open simplices, see Figure~\ref{fig:partitionability}. As we have seen in the preliminaries on Ehrhart theory (Section~\ref{Ehrhart}), unimodular half-open simplices have certain binomial coefficients as their Ehrhart polynomials. This ties the coefficients of Ehrhart polynomials in the corresponding binomial basis to the number of half-open simplices in a partition, and shows non-negativity of the $h^*$-vector if such a partition exists. On the level of nc-quasisymmetric functions, a partition corresponds to a decomposition into half-open simplicial cones which can be identified with elements of the fundamental basis.
 
 \begin{figure}[h]
-\includegraphics[angle=270,width=4.5in]{partitions}
+\includegraphics[angle=270,width=3.5in]{partitions}
 \caption{a) A partial simplicial complex and a partition of it. Dashed edges are open, solid lines are closed. White vertices are not contained in the complex, but black vertices are. b) A triangle with one closed edge and one vertex is not partitionable. c) A non-partitionable partial simplicial complex. This complex has 0 vertices, 6 edges and 4 triangles. Thus, in a partition, one simplex would need to have at least two closed edges. But then it would also have to contain a vertex, which is impossible.}
 \label{fig:partitionability}
 \end{figure}
 
 In this section we develop these connections. First, we introduce decision trees as a natural class of scheduling problems that give rise to partitionable allowable configurations. Then, we draw the connection between partitionability and non-negativity of coefficients on the level of polynomials and (nc-)quasisymmetric functions. Finally we discuss important special cases, including generalized permutahedra and $P$-partitions.
 
-Let $\Delta$ be a simplicial complex and assume that $\Delta$ is pure, i.e., that all maximal simplices have the same dimension $k$. A \emph{partition} of $\Delta$ is a map from maximal simplices $\sigma\in\Delta$ to half-open simplices $\hat{\sigma}$ such that $\relint(\sigma)=\relint(\hat{\sigma})$, any two half-open simplicies $\hat{\sigma}_1$, $\hat{\sigma}_2$ are disjoint, and the union of all half-open simplices $\hat{\sigma}$ equals $\Delta$. A partial simplicial complex $\Delta$ is \emph{partitionable} if there exists a partition of $\Delta$. This generalizes the standard notion of partitionability to partial complexes.\footnote{For simplicial complexes, partitionability is often defined in terms of the face poset, which is equivalent to the above definition in terms of half-open simplicies. The face-poset-definition can also be carried over to partial simplicial complexes as follows. Let $\bar{\Delta}$ be the closure of $\Delta$ as defined in Section~\ref{Ehrhart}. Let $\bar{P}$ be the face poset of $\bar{\Delta}$ and let $P$ be the subposet consisting of those faces of $\bar{\Delta}$ whose relative interior is contained in $\Delta$. Then $\Delta$ is partitionable if $P$ can be written as the disjoint union of boolean lattices whose top elements are all at the same height, with respect to $\bar{\Delta}$.} Examples of partitionable and non-partitionable complexes are given in Figure~\ref{fig:partitionability}.
+Let $\Delta$ be a simplicial complex and assume that $\Delta$ is pure, i.e., that all maximal simplices have the same dimension $k$. A \emph{partition} of $\Delta$ is a map from maximal simplices $\sigma\in\Delta$ to half-open simplices $\hat{\sigma}$ such that $\relint(\sigma)=\relint(\hat{\sigma})$, any two half-open simplicies $\hat{\sigma}_1$, $\hat{\sigma}_2$ are disjoint, and the union of all half-open simplices $\hat{\sigma}$ equals $\Delta$. A partial simplicial complex $\Delta$ is \emph{partitionable} if there exists a partition of $\Delta$. This generalizes the standard notion of partitionability to partial complexes.\footnote{For simplicial complexes, partitionability is often defined in terms of the face poset \cite{Lee2004,Ziegler1995}, which is equivalent to the above definition in terms of half-open simplicies. The face-poset-definition can also be carried over to partial simplicial complexes as follows. Let $\bar{\Delta}$ be the closure of $\Delta$ as defined in Section~\ref{Ehrhart}. Let $\bar{P}$ be the face poset of $\bar{\Delta}$ and let $P$ be the subposet consisting of those faces of $\bar{\Delta}$ whose relative interior is contained in $\Delta$. Then $\Delta$ is partitionable if $P$ can be written as the disjoint union of boolean lattices whose top elements are all at the same height, with respect to $\bar{\Delta}$.} Examples of partitionable and non-partitionable complexes are given in Figure~\ref{fig:partitionability}.
 
 \subsubsection{Decision Trees} Decision trees are a very commonly used form of boolean expression. Intuitively, they are simply nested if-then-else statements. We will work with decision trees where the conditions in the if-clauses are inequalities of the form $x_i \leq x_j$ and the conditions in the leaves of the tree are conjunctions of such inequalities (either strict or weak).
 
@@ -1019,7 +1019,7 @@ Figure~\ref{fig:tree} shows the example of a decision tree with only one if-then
 \caption{The allowable configuration associated to the decision tree ``If $x_1<x_2$ then $x_3<x_2$ else $x_3<x_1$,'' shaded in gray, shown as a subconfiguration of the Coxeter complex of type A. Note that the edges of the outer triangle correspond to the inequalities $x_1>0$, $x_2>0$ and $x_3>0$, which are not shown in the boolean formula.}
 \label{fig:tree}
 \end{figure}
-The collection of points $x \in \mathbb{R}^n$ that satisfy the conditions of a tree form a union of faces of the cell decomposition induced by the braid arrangement or equivalently a collection of faces of the Coxeter complex $\cox_A$.  In general, this union of faces can be non-convex (as seen in the Figure) or non star-convex.  Below we show that if a scheduling problem can be expressed as the union of decision trees which satisfy a certain property, then the allowable configuration $\allow(S)$ is partitionable which in turn implies positivity of coefficients for the scheduling functions. 
+The collection of points $x \in \mathbb{R}^n$ that satisfy the conditions of a tree form a union of faces of the cell decomposition induced by the braid arrangement or equivalently a collection of faces of the Coxeter complex $\cox_A$.  In general, this union of faces can be non-convex (as seen in the Figure) and even non star-convex.  Below we show that if a scheduling problem can be expressed as the union of decision trees which satisfy a certain property, then the allowable configuration $\allow(S)$ is partitionable, which in turn implies non-negativity of coefficients for the scheduling functions. 
 
 More formally, decision trees of boolean expressions are defined recursively as follows.
 
@@ -1027,7 +1027,7 @@ More formally, decision trees of boolean expressions are defined recursively as 
 \[
   \text{if $\varphi$ then $\psi_t$ else $\psi_f$}
 \]
-where $\varphi$ is an inequality of the form $x_i \leq x_j$ and $\psi_t,\psi_f$ are decision trees.
+where $\varphi$ is an inequality of the form $x_i \leq x_j$ or $x_i < x_j$ and $\psi_t,\psi_f$ are decision trees.
 \end{definition}
 
 As decision trees are binary trees, it will be convenient to distinguish notationally between a node $v$ of a tree $S$ and the boolean expression $S_v$ at that node.
@@ -1067,11 +1067,11 @@ C_5 &=& (x_2 < x_1) \wedge (x_3 < x_1) \wedge (x_1 < x_4) \wedge (x_2 < x_3).
 
 In the following, we are going to apply some geometric terminology to boolean formulas. A disjunction $\bigvee_i C_i(x)$ is called \emph{disjoint}, if the solution sets are disjoint, i.e., if for every $x$ at most one of the $C_i(x)$ is true. Moreover, the \emph{dimension} of a conjunction $C$ of inequalities is the dimension of the polyhedron of all solutions, i.e, it is the number of variables minus the maximal number of linearly independent equations implied by $C$.
 
-We call a formula $C$ \emph{almost open}, if it is equivalent to a conjunction $\bigwedge_j I_{j}$ of inequalities $I_j$ such that at most one of the $I_j$ is weak and all of the $I_j$ are facet-defining. Note that the $I_j$ are facet-defining if the closure $\bar{C}$ of (the polytope defined by) $C$ has a non-redundant description $\bar{C} = \bigwedge_j \bar{I}_j$, where $\bar{I}_j$ denotes the weak inequality defined by $I_j$. Geometrically, this means that the polytope $C$ is open except for at most one face which may be closed.
+We call a formula $C$ \emph{almost open}, if it is equivalent to a conjunction $\bigwedge_j I_{j}$ of inequalities $I_j$ such that at most one of the $I_j$ is weak and all of the $I_j$ are facet-defining. Note that the $I_j$ are facet-defining if the closure $\bar{C}$ of (the polytope defined by) $C$ has a non-redundant description $\bar{C} = \bigwedge_j \bar{I}_j$, where $\bar{I}_j$ denotes the weak inequality defined by $I_j$. Geometrically, almost open means that the polytope $C$ is open except for at most one face which may be closed.
 
 In the above example, all cells of the decision tree $S$ are almost open. Note that in $C_2$, the weak inequality $x_1 \leq x_2$ is redundant, whence $C_2$ can equivalently be written as $C_2 = (x_1 < x_4) \wedge (x_3 \leq x_2) \wedge (x_4 < x_2) \wedge (x_1 < x_3)$. Similarly, $C_3$ can be rewritten using only one weak inequality (and two strict inequalities). Note that in Figure~\ref{fig:decision-tree-with-cells} all cells have at most one closed face.
 
-We say a partial polytopal complex is partitionable, if it can be written as the disjoint union of half-open simplicies of full dimension $n$. (In our case, we are of course restricted to use simplicies given by the braid triangulation.)
+As defined at the beginning of this section, a partial polytopal complex is partitionable, if it can be written as the disjoint union of half-open simplicies of full dimension $n$. In our case, we are of course restricted to use simplicies given by the braid triangulation.
 
 \begin{theorem}
 If a scheduling problem $S$ is equivalent to a formula of the form
@@ -1334,7 +1334,7 @@ as desired. The non-negativity of the coefficients of the scheduling quasisymmet
 Let $S$ be a scheduling problem expressable as a union of decision trees with all cells almost open, then the scheduling quasisymmetric function is $L$-positive and the scheduling polynomial is $h^*$ positive. 
 \end{corollary}
 \begin{proof}
-This is an immediate consequence of Theorems~\ref{thm:part-pos} and~\ref{thm:tree-part}.
+This is an immediate consequence of Theorems~\ref{thm:part-pos} and~\ref{thm:decision}.
 \end{proof}
 Note that, conversely, the existence of a representation of $\SSS_S$ with 0-1 coefficients in terms of the fundamental generating system implies that $\allow(S)$ is partitionable. However, the same is not true of the coefficients of the scheduling polynomial or quasisymmetric function.  There are scheduling problems where $h^*(\poly_S)$ is non-negative but $\allow(S)$ is not partitionable. 
 
@@ -1355,7 +1355,7 @@ Furthermore,  for any  $\Phi \in \allow(S)$ there exists a $\Phi_f$ of length $n
 
 Note that the condition that $\allow(S)$ is closed under the directed
 refiement relation is equivalent to the requirement that the forbidden
-configuration $\forb(S)$ be a valid subcomplex of the Coxeter complex; i.e. a
+configuration $\forb(S)$ be a valid subcomplex of the Coxeter complex; i.e., a
 collection of faces closed under taking subsets.
 
 
@@ -1537,7 +1537,6 @@ On the other hand, many scheduling problems satisfy the conditions of Theorem~\r
 
 \begin{example} 
 Consider the scheduling nc-quasisymmetric function,
-
 \begin{align*}
 \SSS_S & = \ncL_{24|13} + \ncL_{4|2|13} + \ncL_{24|3|1} + \ncL_{2|14|3} + \ncL_{2|1|34} + \ncL_{4|2|3|1}\\
 & = \ncM_{24|13} + \ncM_{2|4|13} + \ncM_{24|1|3} + \ncM_{2|4|1|3} + \ncM_{4|2|13} + \ncM_{4|2|1|3} + \ncM_{24|3|1}\\
@@ -1585,7 +1584,7 @@ $\poly(S)$.
 $\forb(S)$ being a valid subcomplex of the Coxeter complex (as
 opposed to simply a collection of faces). This was the case for example for the chromatic scheduling problem and more generally the generalized permutahedron scheduling problem. 
  Here we consider scheduling problems such that $\allow(S)$ is a valid
- subcomplex of $\cox_A$, i.e. the ordered set partitions satisfying
+ subcomplex of $\cox_A$, i.e., the ordered set partitions satisfying
  $S$ are closed under coarsening.  In this case, expansion in the
  fundamental basis is not a natural choice.  Expansion in the
  co-fundamental basis, however, is natural and does yield good
@@ -1608,7 +1607,7 @@ The co-fundamental basis given by the $N_{\alpha}$ also results from allowing th
 
   Recall that for an integer point $a\ \in \mathbb{N}^n$,
   $\Delta(a)$ is the ordered set partition recording the relative
-  ordering of components of a; i.e. $a$ is constant on each $\Delta_i$
+  ordering of components of a; i.e., $a$ is constant on each $\Delta_i$
   and satisfies $a|_{\Delta_i} < a|_{\Delta_{i+1}}$ for all $i$.
 Given an integer point $a$ or an ordered set partition $\Delta(a)$ we now associate a flag:
 $$\mathscr{F}_{a} = \mathscr{F}_{\Delta(a)} := F_0 \subset F_1 \subset \ldots \subset F_k := [n]$$
@@ -1727,7 +1726,7 @@ nc-quasisymmetric function are closed under {\em coarsening} and moreover form t
 %% \begin{enumerate}
 %% \item
 $$[N_{\alpha}] = (-1)^{|\alpha|} \sum_{\alpha \, \textrm{flags}} \prod_i \mu(f_i,f_{i+1}),$$
-where an $\alpha$-flag is a flag of flats such that $|f_{i+1}| - |f_i| = \alpha_i$ and $\mu$ is the M\"{o}bius function of the lattice of flats of $M$.  The lattice of flats of a matroid is a well studied object and allows us to further understand these coefficents.  For example, the sign of $[N_{\alpha}]$ alternates with the length of $\alpha$,  $\sum_{\alpha} [N_{\alpha}] = 1$, and up to sign, $ [N_{|E|}]$ is equal to the Mobius function of the lattice
+where an $\alpha$-flag is a flag of flats such that $|f_{i+1}| - |f_i| = \alpha_i$ and $\mu$ is the M\"{o}bius function of the lattice of flats of $M$.  The lattice of flats of a matroid is a well studied object and allows us to further understand these coefficients.  For example, the sign of $[N_{\alpha}]$ alternates with the length of $\alpha$,  $\sum_{\alpha} [N_{\alpha}] = 1$, and up to sign, $ [N_{|E|}]$ is equal to the M\"{o}bius function of the lattice
 of flats $\mu(0,1)$ or equivalently the reduced Euler characteristic of the order complex of the
 proper part of the lattice of flats.
 
@@ -1912,7 +1911,7 @@ scheduling polynomial naturally associated to a graph or matroid.
 Given a simple graph $G$, the arboricity of $G$ is defined to be the
 minimum number of forests needed to decompose (cover) the edges of
 $G$.  The parameter was introduced by Nash-Williams and Tutte~\cite{Nash, Tutte}.
-This definition is easily extend to an arbitrary matroid $M$ where the
+This definition is easily extended to an arbitrary matroid $M$ where the
 arboricity of $M$ is then the minimum number of independent sets needed to
 cover the ground set of $M$.  The constructive version of partitioning
 a matroid into as few independent subsets as possible is known as the
@@ -1955,7 +1954,7 @@ As a scheduling problem, given a matroid $M$ on a finite ground set
 $E$, an independent cover is an ordered set partition of $E$ such
 that no block contains a circuit of $M$. Let $\mathcal{C}$ denote the set of circuits of $M$, then the scheduling boolean function is
 $$S_M = \wedge_{C \in \mathcal{C}} (x_{i_1} \neq x_{i_2} \neq \cdots \neq x_{i_m}),$$
-where the conjuction runs over all circuits $mathcal{C}$ and $\{i_1, i_2, \ldots, i_m\} = C$.
+where the conjuction runs over all circuits $C \in \ mathcal{C}$ and $\{i_1, i_2, \ldots, i_m\} = C$.
 The forbidden configuration consists of all ordered set partitions such that at least one block contains a circuit and the scheduling polynomial counts the number of covers with at most $k$ parts.   In terms of scheduling, the collection of jobs which may start at a fixed time can not be dependent.  
 
 \begin{example}
@@ -1981,11 +1980,9 @@ $${\bf{{\mathcal A}}}(C_3) = \ncM_{(1|23)} + \ncM_{(2|13)} + \ncM_{(3|12)} + \nc
 + \ncM_{(2|1|3)} + \ncM_{(2|3|1)} + \ncM_{(3|1|2)} + \ncM_{(3|2|1)}. $$
 
 \noindent Specializing under the type map gives the quasisymmetric function:
-
 $${ A}(C_3) = 3 M_{(1,2)} + 3 M_{(2,1)} + 6 M_{(1,1,1)}. $$
 
 \noindent Evaluating at ${\bf 1}^k $ gives the arboricity polynomial:
-
 $$ \chi_{A(C_3)} = 3 { k \choose 2} + 3 { k \choose 2} + 6 { k \choose 3} = k^3 - k. $$
 
 In general,
