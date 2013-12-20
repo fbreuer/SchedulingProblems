@@ -1203,8 +1203,8 @@ We call this the \emph{fundamental generating system} of the nc-quasisymmetric f
 Given an ordered set partition, define
  $$\ncL_\Phi:=\ncL_{(\Phi;\hat{\Phi})}.$$ As $\Phi$ ranges over all ordered set partitions, the functions $\ncL_\Phi$ form a basis for the space of nc-quasisymmetric functions, which we call the \emph{nc-fundamental basis}.
 
-Alternatively, this fundamental basis for nc-quasisymmetric functions can be defined in terms of a \emph{directed refinement relation} $\preceq$ on ordered set partitions given by $\Phi \gtrdot (\Phi_i, \ldots,\Phi_{i-1}, \Phi_i \cup \Phi_{i+1}, \Phi_{i+2}, \ldots \Phi_k)$ where every element of the $i$th block is less than every element of the $i+1$th block.  Then, the nc-fundamental basis for NCQSym can be defined by
-$$\mathcal{L}_{\Phi} := \sum_{\Psi:\Psi \preceq \Phi} \ncM_{\Phi},$$
+Alternatively, this fundamental basis for nc-quasisymmetric functions can be defined in terms of a \emph{directed refinement relation} $\preceq$ on ordered set partitions given by $(\Phi_i, \ldots,\Phi_{i-1}, \Phi_i \cup \Phi_{i+1}, \Phi_{i+2}, \ldots \Phi_k) \lessdot \Phi$ where every element of the $i$th block is less than every element of the $i+1$th block.  Then, the nc-fundamental basis for NCQSym can be defined by
+$$\mathcal{L}_{\Phi} := \sum_{\Psi:\Phi \preceq \Psi} \ncM_{\Psi},$$
 where $\Phi$ ranges over all ordered set partitions. 
 We note that this order is opposite to the order $\leq_*$ used to define the basis ${\bf Q_{\Phi}}$ in~\cite{Zab}. 
 Our choice of ordering is particularly motivated by its connection the the fundamental basis $L$ of QSym; the $\ncL$ basis of NCQSym restricts to the $L$ basis of QSym when the variables are allowed to commute.  
@@ -1321,7 +1321,12 @@ Let $S$ be a scheduling problem such that $\allow(S)$ is partitionable. Then the
 \]
 with non-negative coefficients $\mu_{(\Phi_\text{c};\Phi_\text{f})}\in \{0,1\}$. In particular, 
 the scheduling quasisymmetric function is $L$-positive and the scheduling polynomial is $h^*$-positive.
+
+Conversely, the existence of a representation of $\SSS_S$ with 0-1 coefficients in terms of the fundamental generating system implies that $\allow(S)$ is partitionable. 
 \end{theorem}
+
+Note that partitionability is not implied when the coefficients of the scheduling polynomial or quasisymmetric function are non-negative. There are scheduling problems where $h^*(\poly_S)$ is non-negative but $\allow(S)$ is not partitionable.
+
 \begin{proof}
 As $\allowC(S)$ is partitionable, there exists a collection $C$ of half-open $n$-dimensional simplices $\sigma\in\TC$ such that $\allowC(S)=\bigcup_{\sigma\in C}\sigma$ and this union is disjoint. Each element $\sigma\in C$ corresponds to a distinct pair $(\Phi_\text{c};\Phi_\text{f})$ of ordered set partitions, where $\Phi_\text{f}$ refines $\Phi_\text{c}$ and $\Phi_\text{f}$ has length $n$. Let $P$ denote the collection of all pairs corresponding to half-open simplices in $C$. Then
 \[
@@ -1336,7 +1341,6 @@ Let $S$ be a scheduling problem expressable as a union of decision trees with al
 \begin{proof}
 This is an immediate consequence of Theorems~\ref{thm:part-pos} and~\ref{thm:decision}.
 \end{proof}
-Note that, conversely, the existence of a representation of $\SSS_S$ with 0-1 coefficients in terms of the fundamental generating system implies that $\allow(S)$ is partitionable. However, the same is not true of the coefficients of the scheduling polynomial or quasisymmetric function.  There are scheduling problems where $h^*(\poly_S)$ is non-negative but $\allow(S)$ is not partitionable. 
 
 The next theorem guarentees positivity of the nc-quasisymmetric scheduling function $\SSS$ in terms of the directed refinement relation. It is illustrated in Figure~\ref{fig:poset} below.
 
@@ -1698,7 +1702,7 @@ Therefore, the Bergman scheduling problem is the scheduling problem with allowab
 
 Let $U_{2,4}$ be the uniform matroid of rank $2$ on a ground set of
 size $4$.  
-$$\textrm{Bergman QSym}(U_{2,4})  = {\ncM}_{1234} + {\ncM}_{1|234} + {\ncM}_{2|134} + {\ncM}_{3|124} + {\ncM}_{4|123}. $$
+$$\textrm{Bergman NCQSym}(U_{2,4})  = {\ncM}_{1234} + {\ncM}_{1|234} + {\ncM}_{2|134} + {\ncM}_{3|124} + {\ncM}_{4|123}. $$
 
 The presence of the term ${\ncM}_{1|234}$, for example, reflects that any $\omega$ such that $\omega_{i_1} < \omega_{i_2} =
 \omega_{i_3} = \omega_{i_4}$ yields the minimum weight bases:
@@ -1953,13 +1957,13 @@ most $k$ colors.
 As a scheduling problem, given a matroid $M$ on a finite ground set
 $E$, an independent cover is an ordered set partition of $E$ such
 that no block contains a circuit of $M$. Let $\mathcal{C}$ denote the set of circuits of $M$, then the scheduling boolean function is
-$$S_M = \wedge_{C \in \mathcal{C}} (x_{i_1} \neq x_{i_2} \neq \cdots \neq x_{i_m}),$$
-where the conjuction runs over all circuits $C \in \ mathcal{C}$ and $\{i_1, i_2, \ldots, i_m\} = C$.
+$$S_M = \wedge_{C \in \mathcal{C}} \neg(x_{i_1} = x_{i_2} = \cdots = x_{i_m}),$$
+where the conjuction runs over all circuits $C \in \mathcal{C}$ and $\{i_1, i_2, \ldots, i_m\} = C$.
 The forbidden configuration consists of all ordered set partitions such that at least one block contains a circuit and the scheduling polynomial counts the number of covers with at most $k$ parts.   In terms of scheduling, the collection of jobs which may start at a fixed time can not be dependent.  
 
 \begin{example}
 
-Let $M$ be the free matroid on a ground set of size $n$; i.e. all subsets of the ground set are independent.  Then $chi_{A_M}(k) = k^n$.  
+Let $M$ be the free matroid on a ground set of size $n$; i.e. all subsets of the ground set are independent.  Then $\chi_{A_M}(k) = k^n$.  
 
 \end{example}
 
