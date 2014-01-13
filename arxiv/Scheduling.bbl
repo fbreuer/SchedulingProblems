@@ -1,0 +1,129 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{10}
+
+\bibitem{ABK}
+Marcelo Aguiar, Louis Billera, and Caroline Klivans, \emph{A quasisymmetric
+  function for generalized permutahedron}, preprint.
+
+\bibitem{AK}
+Federico Ardila and Caroline~J. Klivans, \emph{The {B}ergman complex of a
+  matroid and phylogenetic trees}, J. Combin. Theory Ser. B \textbf{96} (2006),
+  no.~1, 38--49. \MR{2185977 (2006i:05034)}
+
+\bibitem{Beck2007}
+Matthias Beck and Sinai Robins, \emph{{Computing the Continuous Discretely:
+  Integer-Point Enumeration in Polyhedra}}, Springer, 2007.
+
+\bibitem{Zab}
+Nantel Bergeron and Mike Zabrocki, \emph{The {H}opf algebras of symmetric
+  functions and quasi-symmetric functions in non-commutative variables are free
+  and co-free}, J. Algebra Appl. \textbf{8} (2009), no.~4, 581--600.
+  \MR{2555523 (2011a:05372)}
+
+\bibitem{BJR}
+Louis~J. Billera, Ning Jia, and Victor Reiner, \emph{A quasisymmetric function
+  for matroids}, European J. Combin. \textbf{30} (2009), no.~8, 1727--1757.
+  \MR{2552658 (2010m:05058)}
+
+\bibitem{fstar}
+Felix Breuer, \emph{Ehrhart $f^*$-coefficients of polytopal complexes are
+  non-negative integers}, Electronic Journal of Combinatorics \textbf{19}
+  (2012), no.~4, P16.
+
+\bibitem{Breuer2011}
+Felix Breuer and Aaron Dall, \emph{{Bounds on the Coefficients of Tension and
+  Flow Polynomials}}, Journal of Algebraic Combinatorics \textbf{33} (2011),
+  no.~3, 465--482.
+
+\bibitem{Bruggesser1971}
+Heinz Bruggesser and Peter Mani, \emph{{Shellable Decompositions of Cells and
+  Spheres.}}, Mathematica Scandinavica \textbf{29} (1971), 197--205.
+
+\bibitem{DeLoera2010}
+Jes\'{u}s~A. {De Loera}, J\"{o}rg Rambau, and Francisco Santos,
+  \emph{{Triangulations: Structures for Algorithms and Applicationss}},
+  Springer, 2010.
+
+\bibitem{Edmonds}
+Jack Edmonds, \emph{Minimum partition of a matroid into independent subsets},
+  J. Res. Nat. Bur. Standards Sect. B \textbf{69B} (1965), 67--72. \MR{0190025
+  (32 \#7441)}
+
+\bibitem{Ehrenborg}
+Richard Ehrenborg, \emph{On posets and {H}opf algebras}, Adv. Math.
+  \textbf{119} (1996), no.~1, 1--25. \MR{1383883 (97e:16079)}
+
+\bibitem{GS}
+David~D. Gebhard and Bruce~E. Sagan, \emph{A chromatic symmetric function in
+  noncommuting variables}, J. Algebraic Combin. \textbf{13} (2001), no.~3,
+  227--255. \MR{1836903 (2002d:05124)}
+
+\bibitem{Gessel}
+Ira~M. Gessel, \emph{Multipartite {$P$}-partitions and inner products of skew
+  {S}chur functions}, Combinatorics and algebra ({B}oulder, {C}olo., 1983),
+  Contemp. Math., vol.~34, Amer. Math. Soc., Providence, RI, 1984,
+  pp.~289--317. \MR{777705 (86k:05007)}
+
+\bibitem{HS}
+Patricia Hersh and Ed~Swartz, \emph{Coloring complexes and arrangements}, J.
+  Algebraic Combin. \textbf{27} (2008), no.~2, 205--214. \MR{2375492
+  (2008m:05109)}
+
+\bibitem{Lee2004}
+Carl~W. Lee, \emph{{Subdivisons and Triangulations of Polytopes}}, Handbook of
+  Discrete and Computational Geometry (Jacob~E. Goodman and Joseph O'Rourke,
+  eds.), Chapman \& Hall/CRC, second ed., 2004, pp.~383--406.
+
+\bibitem{MPSSW}
+Jason Morton, Lior Pachter, Anne Shiu, Bernd Sturmfels, and Oliver Wienand,
+  \emph{Convex rank tests and semigraphoids}, SIAM J. Discrete Math.
+  \textbf{23} (2009), no.~3, 1117--1134. \MR{2538642 (2011b:62126)}
+
+\bibitem{Nash}
+C.~St. J.~A. Nash-Williams, \emph{Decomposition of finite graphs into forests},
+  J. London Math. Soc. \textbf{39} (1964), 12. \MR{0161333 (28 \#4541)}
+
+\bibitem{PRW}
+Alex Postnikov, Victor Reiner, and Lauren Williams, \emph{Faces of generalized
+  permutohedra}, Doc. Math. \textbf{13} (2008), 207--273. \MR{2520477
+  (2010j:05425)}
+
+\bibitem{StanP}
+Richard~P. Stanley, \emph{Ordered structures and partitions}, American
+  Mathematical Society, Providence, R.I., 1972, Memoirs of the American
+  Mathematical Society, No. 119. \MR{0332509 (48 \#10836)}
+
+\bibitem{StanleyDecomp}
+\bysame, \emph{Decompositions of rational convex polytopes}, Ann. Discrete
+  Math. \textbf{6} (1980), 333--342.
+
+\bibitem{StanleyOrderPolytopes}
+\bysame, \emph{Two poset polytopes}, Discrete Comput Geom \textbf{1} (1986),
+  no.~1, 9--23.
+
+\bibitem{stan-chromatic}
+\bysame, \emph{A symmetric function generalization of the chromatic polynomial
+  of a graph}, Adv. Math. \textbf{111} (1995), no.~1, 166--194. \MR{1317387
+  (96b:05174)}
+
+\bibitem{Ein}
+Einar Steingr{\'{\i}}msson, \emph{The coloring ideal and coloring complex of a
+  graph}, J. Algebraic Combin. \textbf{14} (2001), no.~1, 73--84. \MR{1856230
+  (2002h:13032)}
+
+\bibitem{Tutte}
+W.~T. Tutte, \emph{On the problem of decomposing a graph into {$n$} connected
+  factors}, J. London Math. Soc. \textbf{36} (1961), 221--230. \MR{0140438 (25
+  \#3858)}
+
+\bibitem{Ziegler1995}
+G\"{u}nter~M. Ziegler, \emph{{Lectures on Polytopes}}, Graduate Texts in
+  Mathematics, Springer, 1995.
+
+\end{thebibliography}
