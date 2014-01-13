@@ -271,19 +271,6 @@ scheduling problems can naturally be viewed.
 
 The authors thank Louis Billera, Matthias Beck and Peter McNamara for many helpful discussions.
 
-% The arboricity polynomial provides a natural example where deletion contraction does not hold. 
-
-
-%% \begin{figure}[h]
-%% \includegraphics[width=13cm]{graph-matroid}
-%% \caption{Difference between graph construction and graphical matroid construction.}
-%% \end{figure}
-
-
-%%
-%% ** In Figure 2, we should replace implies with AND to keep everything a Boolean formula over pairwise comparisons. 
-
-
 
 
 \begin{figure}[h]
@@ -349,15 +336,7 @@ Now, returning to the example $S''$, the set $X$ of feasible points $x\in\RR^3$ 
 However, we note that the triangle $\tau$ that is the relative interior of the convex hull of $(0,0,0)$, $(0,0,1)$ and $(1,1,1)$ is not contained in $X$, even though $\tau$ is a face of $\sigma$ and $\lambda$ is a face of $\tau$. This idea of taking the relative interiors of just some of the faces of a polytopal complex gives rise to the notion of a partial polytopal complex, which was introduced in \cite{fstar}. A \emph{partial polytopal complex} is a subset of the faces of a polytopal complex; in particular, a partial polytopal complex is not closed under taking faces. The \emph{support} $|K|$ of a partial polytopal complex $K$ is the union of the relative interiors of all faces contained in $K$. By abuse of terminology, we will often refer to both $K$ and $|K|$ as the polytopal complex $K$ and let it be clear from context whether we are referring to the subset of Euclidean space or the set of polytopes ordered by the face relation.
 
 Note that in the above example it is still convenient to speak of $(0,0,0)$, $(0,0,1)$, etc.\ as vertices of $\sigma$ and, consequently, as vertices of $X$, even though they are neither contained in $X$ nor in the relative interior of $\sigma$. It will generally be clear from context, whether we are referring to vertices that are actually contained in $X$, or merely to vertices of the closure of some face of the partial complex. However, when we need to carefully distinguish between these two cases, we adopt the following terminology: We call the relative interior of a polytope $P$ an \emph{open polytope}. The \emph{faces of an open polytope} are the faces of its closure. By extension, we define the \emph{closure} of any set of open polytopes as the set of all faces of these polytopes. A \emph{partial polytopal complex} $K$ is now any set of open polytopes whose closure $\bar{K}$ is a polytopal complex. This allows us to distinguish between the faces of a partial polytopal complex $K$ and the faces of its closure $\bar{K}$. Note that indeed $\overline{|K|}=|\bar{K}|$, i.e., the closure of the support is the support of the closure.
-%% We will at certain points need to distinguish between the faces of $K$ and the faces of $\bar{K}$. For example, let $K$ be the interior of a triangle together with one of its vertices. In this case, $K$ will have just two faces: the open triangle and the vertex. However, we will have recourse to refer to the other faces of the (closed) triangle as well. These make up the faces of $\bar{K}$.
 
-%The Ehrhart function of a partial polytopal complex is the Ehrhart function of its support. If the complex is integral it is straightforward to show that the Ehrhart function is again a polynomial. In the example of the half-open simplex with the extra point, we can thus observe that its Ehrhart function is $\binom{k+1}{2} + 1$.
-
-%This motivates the following observation: If $K$ is a partial simplicial complex in which all vertices are integral and all simplices are unimodular. Then, the Ehrhart function $\ehr_K$ satisfies
-%\[
-%  \ehr_K(k) = \sum_{i=0}^d f_i^* \binom{k-1}{i}
-%\]
-%where $d$ is the dimension of $K$ and $f_i^*$ denotes the number of $i$-dimensional faces in $K$.  The polynomials $\binom{k+d-i}{d}$ form a basis of the space of polynomials of degree at most $d$. Thus every Ehrhart polynomial can be written in the above form and the $f_i^*$ are the coefficients of the polynomial with respect to this binomial basis. Intuitively, the coefficients $f_i^*$ count how many unimodular simplices of dimension $i$ the complex contains. This will be made precise in Section~\ref{sec:scheduling-problems}.
 
 \section{Preliminaries: Coxeter Complexes, QSym and NCQSym}
 \label{ncqsym}
@@ -413,8 +392,6 @@ can be obtained by (1) starting with the cube $[0,1]^d$, (2) triangulating
 this with the braid arrangement, and (3) removing the two vertices consisting of 
 only zeros and only ones, and all incident faces. 
 
-%** fb: Also, should we mention here that the Coxeter complex is the dual of the face lattice of the permutahedron? **
-
 The faces of $\cox_A$ are naturally  labeled by ordered
 set partitions.  Each face of the Coxeter complex is simply a
 normalization of a face of the cell decomposition induced by
@@ -428,7 +405,7 @@ corresponds to a partition into blocks of size one (i.e. a full
 permutation).  Moreover, a face $F$ is contained in a face $G$ if and only if
 the ordered set partition corresponding to $F$ coarsens the ordered set partition
 corresponding to $G$; the face lattice is dual to the face lattice of the permutahedron.
-%  Hence a collection of ordered set partitions closed under coarsening gives a subcomplex of the Coxeter complex.
+
 
 \begin{figure}[h]
 \includegraphics[angle=270,width=5.5in]{coxeter.pdf}
@@ -441,16 +418,10 @@ corresponding to $G$; the face lattice is dual to the face lattice of the permut
 Let $\{x_1, x_2, \ldots \}$ be a collection of non-commuting
 variables.  Given $a \in \mathbb{N}^n$, let $\Delta(a)$
 be the ordered set partition $(\Delta_1 | \Delta_2 | \ldots | \Delta_k)$ such that 
-%flag of subsets $\empty = F_0 \subset F_1 \subset \ldots
-%\F_{k+1} =[n]$ such that 
 $a$ is constant on each set $\Delta_i$
-%\backslash F_{i-1}$ 
 and satisfies $a|_{\Delta_i} < a|_{\Delta_{i+1}}$ for all $1 \leq i \leq k$. 
-%We call $\mathcal{F}(\omega)$ the flag of $\omega$ and
 Define the \emph{order class} of $a$ to be the set of vectors $b$
 such that $\Delta(b) = \Delta(a)$.  
-%The order class of $a$ consists of all 
-%points such that the relative size of their components is the same.  If $a$ is contained in the relative interior of the face $F$ of the Coxeter complex, then the order class of $a$ consists of all integer points in the relative interior of $F$.
 
 \begin{example}
 For $a = (3,2,2,3,1) \in \mathbb{N}^5$, $\Delta(a) =
@@ -542,9 +513,6 @@ nc-quasisymmetric function $\ncM_{1|2} + \ncM_{12}$.
 Given a scheduling problem $S$ on $k$ items, the scheduling quasisymmetric function in noncommuting variables is the sum of monomial quasisymmetric functions in non-commuting variables $\ncM_{\Phi}$ over all ordered set partitions ${\Phi}$ such that $S$ is satisfied by any (and hence all) integer points $a \in \mathbb{N}^k$ with relative ordering given by $\Phi$,
 
 $$ \ncS_S := \sum_{a\in\NN^k: S(a)} \bf{x}_a = \sum_{\substack{\Phi \text{ such that } \\ \exists a\in\NN^k: (\Delta(a) =\Phi) \wedge S(a)}} \ncM_{\Phi}.  $$
-
-%\text{ with } \\ \Delta(a) =\Phi \\ a \, {\operatorname{satisfies}} \,S}} \ncM_{\Phi}. $$
-
 \end{definition_lemma}
 
 
@@ -579,8 +547,6 @@ Thus elements of QSym are naturally indexed by
 compositions and elements of NCQSym are naturally indexed by ordered
 set partitions.  
 The \emph{type map} maps elements of NCQSym to QSym by sending ordered set partitions to compositions.
- %We can use the type map from partitions to
-%compositions to specialize an element of NCQSym to an element of QSym.
 The type map of an ordered set partition simply records the size of each block:
 $$\type(\Phi_1|\Phi_2|\cdots|\Phi_n) = (|\Phi_1|, |\Phi_2|, \cdots, |\Phi_n|).$$
 If $\mathcal{S} \in$ NCQSym is written as a sum of monomial terms,
@@ -603,16 +569,6 @@ defined by setting the first $k$ variables $x_1, x_2, \ldots, x_k$ equal to $1$.
 $$\ncM_{\Phi} ({\bf 1}^k) = { k \choose \ell(\Phi) },$$
 where $\ell(\Phi)$ is equal to the length, i.e. the number of blocks, of the partition. 
 
-%%  For a scheduling problem, this polynomial counts the number of $k$-schedules.
-%% In general, the schedule counting polynomial $\poly_S(k)$ is defined as
-%% \[
-%%   \poly_S(k) = \# \text{$k$-schedules $\omega$ such that $\phi(\omega)$ is true}.
-%% \]
-%%  As we will solidify in the next section,  for a scheduling problem $S$, 
-%% \[
-%%   \SSS_S({\bf 1}^k) = \poly_S(k).
-%% \]
-
 \begin{example}
  Continuing the example above gives
 $$\mathcal{F} = \ncM_{1|23} + \ncM_{3|21} + \ncM_{2|1|3}$$
@@ -620,19 +576,6 @@ $$ \mathcal{F}({\bf 1}^k) = 2 {k \choose 2} + {k \choose 3}.$$
 \end{example}
 
 Just as in the study of Ehrhart polynomials of unimodular simplices, binomial coefficients make an appearance here and, as we will see in the next section, this is not an accident.
-
-%% In summary, we have the following lemma.
-
-%% \begin{lemma}
-%% If $S$ is a scheduling problem on $n$ items, then $\SSS_S$ is an nc-quasisymmetric function and $\poly_S$ is a polynomial of degree at most $n$. Moreover, $\SSS_S$ specializes to $\poly_S(k)$ when we substitute $1$ for $k$ different variables in $\SSS_S$ and $0$ for all others, i.e.,
-%% \[
-%%   \SSS_S({\bf 1}^k) = \poly_S(k).
-%% \]
-%% Note that the result of this specialization is independent of which variables are set to 1.
-%% \end{lemma}
-
-%% \comment{fb: We should add a statement about quasisymmetric functions to this lemma.}
-
 
 
 \section{Scheduling Problems}
@@ -678,15 +621,6 @@ The function $N$ maps $\cone(\Phi)$ to the monomial nc-quasisymmetric functions 
   N(\cone(\Phi)\cap\ZZ^n) = \ncM_\Phi.
 \]
 Conversely, we can think of any nc-quasisymmetric function $\mathcal{F}$ with non-negative coefficients in the monomial basis as a multiset of cones in the positive orthant, where the multiplicity of lattice points in $\cone(\Phi)$ is given by the coefficient of $\ncM_\Phi$ in $\mathcal{F}$.
-%\comment{Refer back to an example or make an example}
-% In the case of scheduling nc-quasisymmetric functions we can conclude that for any scheduling problem $S$, the nc-quasisymmetric function $\SSS_S$ has coefficients $0$ or $1$ in the monomial basis.
-
-
-
-%As we will see below, $\cone(\Phi)\cap(0,1)^n$ is a relatively open unimodular simplex of dimension $m$, hence
-%\[
- % \poly_\Phi(k) = \binom{k}{m}.
-%\]
 
 
 
@@ -694,19 +628,9 @@ Let $S$ be a scheduling problem on $n$ items. For any vector $a\in\RR^n_{> 0}$ w
 
 These observations lead to the following theorem about scheduling counting functions. 
 
-%coefficients of the generating functions $\SSS_S$ in the monomial basis and the coefficients of the scheduling function $\poly_S$ in the binomial basis.
-
-
 \begin{theorem}
 \label{fbasis}
 Let $S$ be a scheduling problem on $n$ items.
-%%  and $\SSS_S$ the nc-quasisymmetric function of the form
-%% \[
-%%   \SSS_S = \sum_{\Phi:S(\Phi)} \ncM_\Phi
-%% \]
-%% where the sum ranges over all ordered set partition $\Phi$ that satisfy $S$. 
-%% %In particular, the coefficients of $\SSS_S$ in the monomial basis are either 0 or 1.
-% $\poly_S$,
 The scheduling counting function,
  $$\poly_S(k) = \textrm{ the number of $k$-schedules satisfying $S$}, $$ is a polynomial in $k$.
   Its degree is at most $n$ and the coefficients $f_1,\ldots,f_n$ of $\poly_S$, given by
@@ -714,23 +638,7 @@ The scheduling counting function,
 \label{eqn:fbasis}
   \poly_S(k) = \sum_{i=1}^n f_i\binom{k}{i}
 \end{equation}
-%or, equivalently,
-%\[
-%  z^{-1}\sum_{k\geq 1} \ehr_S(k)z^k = z^{-1}(\frac{f_0z^1}{(1-z)^1} + \cdots + \frac{f_dz^{d+1}}{(1-z)^{d+1}})
-%  z^{-1}\sum_{k\geq 0} \ehr_S(k+1)z^{k+1} = ...
-%  \sum_{k\geq 0} \ehr_S(k+1)z^k = ...
-%\]
-%\[
-%  \sum_{k\geq 0} \poly_S(k)z^k = \frac{f_1z^1}{(1-z)^2} + \cdots + \frac{f_nz^{n}}{(1-z)^{n+1}},
-%\]
 are non-negative integers, counting the number of ordered set partitions $\Phi$ with $i$ non-empty parts such that $S(\Phi)$ holds. In particular, the $f_i$ are bounded above by $i!\cdot S(n,i)$, where the $S(n,i)$ are the Stirling numbers of the second kind.
-
-%% satisfy the following properties:
-%% \begin{enumerate}
-%% \item $f_i\in\ZZ$,
-%% \item $0\leq f_i \leq ,
-%% \item $f_i$ counts the number of ordered set partitions $\Phi$ of $[n]$ into $i$ non-empty parts such that $S(\Phi)$ holds.
-%% \end{enumerate}
 \end{theorem}
 
 As we have seen in Definition and Lemma~\ref{scheduling-ncqsym}, the coefficients of the scheduling nc-quasisymmetric function $\S_S$ in terms of the monomial basis $\ncM_\Phi$ are 0 or 1 depending on whether or not $S(\Phi)$ holds. Theorem~\ref{fbasis} can be viewed as a specialization of this results, obtained by collecting terms according to the number of parts of $\Phi$ or, equivalently, the dimension of the corresponding simplex. As we will see in the proof, Theorem~\ref{fbasis} can be obtained both from the perspective of nc-quasisymmetric functions and the perspective of Ehrhart theory.
@@ -789,15 +697,8 @@ It follows that
 &=& \sum_{i=1}^n f_i\binom{k}{i}
 \end{eqnarray*}
 where $f_i$ is the number of ordered set partitions $\Phi$ with $i$ non-empty parts that satisfy $S$. Note that the binomial coefficients $\binom{k}{i}$ for $i=0,\ldots,n$ form a basis of the space of polynomials of degree at most $n$, so the coefficients $f_i$ are determined by the polynomial $\poly_S(k)$. The vector $(0,f_1,\ldots,f_n)$ is the $f^*$-vector of the Ehrhart polynomial $\ehr_{A\cap(0,1)^n}(k)$ as defined in \cite{fstar}.
-%To see that the above generating function definition of the coefficients $f_i$ is equivalent, note that 
-%\[
-%  \frac{1}{(1-z)^{d+1}} = \sum_{k\geq 0} \binom{k+d}{d} z^k
-%\]
-%from which we get the desired identity by algebraic manipulation.
 
 From this counting interpretation of the coefficients $f_i$ it follows immediately that the $f_i$ are non-negative integers. Moreover there are at most $i!\cdot S(n,i)$ ordered set partitions of $[n]$ with $i$ non-empty parts, which proves the upper bound on the $f_i$. 
-
-%Finally, the fact that $\SSS_S$ specializes to $\poly_S(k)$ follows immediately from the specialization (\ref{eqn:spec ncM}).
 \end{proof}
 
 
@@ -829,8 +730,6 @@ chromatic counting function is usually established to be a polynomial
 using a contraction deletion argument on the edges of a graph.  Our
 method instead establishes this function as a polynomial via a
 specialization of a symmetric function and as an Ehrhart polynomial.  We will recover much of the well-known structure of these functions by considering the geometry of the scheduling solutions, as seen in the next section.
-
-%% Chromatic - discuss Chromatic as Scheduling problem, ncsym, sym, polynomial. Establishes polynomiality without contraction deletion.  $\poly_S$ is the chromatic polynomial.  The quasisymmetric function obtained by taking the type map on $\SSS_S$ is Stanley's chromatic symmetric function (the quasisymmetric function happens to be fully symmetric in this case).  Gebhard and Sagan studied (essentially) $\SSS_S$ as a symmetric function in non-commuting variables.
 \end{example}
 
 
@@ -880,8 +779,6 @@ Let $S$ be a scheduling problem on $n$ items. Let $\neg S$ denote the scheduling
 \end{eqnarray*}
 \end{lemma}
 
-%% Note that passing from $\SSS_S$ to $\SSS_{\neg S}$ swaps coefficients 0 and 1 in the monomial basis. Also passing from $\poly_S$ to $\poly_{\neq S}$ replaces the coefficient $f_i$ with $i!\cdot S(n,i) - f_i$, thus interchanging the roles of the upper and lower bound on the $f_i$ in the theorem.
-
 \begin{proof}
 The result on $\SSS_S$ is immediate from the above observations. For the result on $\poly_S$, note that 
 \[
@@ -910,10 +807,6 @@ Formally, given numbers $f_0,\ldots,f_d$, the \emph{$h$-vector} $h_0,\ldots,h_{d
   = \sum_{i=0}^{d} h^*_i \binom{k+d-i}{d}. 
 \end{eqnarray*}
 
-%% Generally, the vector $(f_0,\ldots,f_d)$ is going to be the $f$-vector $f(X)$ of a partial simplicial complex $X$, which means that $f_i$ denotes the number of $i$-dimensional faces of $X$. Correspondingly, the $h$- and $h^*$-vectors of $X$ are defined via the above relations, and are denoted by $h(X)$ and $h^*(X)$, respectively. All of these definitions work for partial complexes as well.
-
-%% Alternatively, instead of defining the $h$- and $h^*$-vectors of $X$ in terms of $f(X)$, it is possible to define them in terms of the Ehrhart polynomial $\ehr_X$ via $\ehr_X(k) = \sum_{i=0}^{d} f_i \binom{k-1}{i}$. Note that if $X$ is a $d$-dimensional partial unimodular integral simplicial complex these two definitions yield the same result. As all simplicial complexes considered in this article are unimodular, we will use both definitions interchangeably. In general, we are going to use $f(p)$, $h(p)$, and $h^*(p)$ to denote the $f$-, $h$- and $h^*$-vectors of a polynomial $p$ determined via $p(k)=\sum_{i=0}^{d} f_i \binom{k-1}{i}$.
-
 Typically, the numbers $f_0,\ldots,f_d$ are either the $f$-vector of a (partial) simplicial complex\footnote{That is, $f_i$ counts the number of $i$-dimensional faces of the complex.} or the coefficients of a polynomial $p(k)$ given in the binomial basis $p(k)=\sum_{i=0}^{d} f_i \binom{k-1}{i}$. Given $p(k)$ in this form, the $h$- and $h^*$-vectors can be defined, equivalently, by 
 \begin{eqnarray*}
 1 + \sum_{k=1}^\infty p(k) t^k & = &  \frac{\sum_{i=0}^{d+1}h_i t^i}{(1-t)^{d+1}} \;\;\; \text{ and } \\
@@ -937,11 +830,6 @@ or equivalently,
 \end{eqnarray*}
 where $h_{\Delta}(t)$ is the $h$-polynomial of ${\Delta}, \sum_{i} h_i(\Delta) t^i$.
 \end{theorem}
-
-
-
- %% 1 + t\sum_{k \geq 0} \poly_S(k) t^k &=& \frac{\sum_{i=0}^{d+1} h_i(\allow(S)) t^i}{(1-t)^{d+1}}, \text{ and} \\
- %% 1 + t\sum_{k \geq 0} \left( (k-1)^n - \poly_S(k) \right) t^k &=& \frac{\sum_{i=0}^{d+1} h_i(\forb(S)) t^i}{(1-t)^{d+1}}.
 
 
 \begin{proof}
@@ -1140,54 +1028,15 @@ A decision tree is the disjoint union of all its cells. By Lemma~\ref{lem:almost
 
 Note that a cell can be in the "strict inequality" branch of many of its ancestors and still be almost open. The reason is that, in practice, many of these strict ancestral inequalities will be redundant.
 
-%Note that all theorems stated here hold for $\allowC(S)$ as well as for $\allowP(S)$, with analogous proofs.
 
 \begin{remark}
 In general, a partial complex of dimension $k$ is partitionable if it can be written as a disjoint union of half-open simplices of dimension $k$. In the above, we have defined partitionable with respect to the ambient dimension $n$, as this will be convenient when working with the fundamental bases of NCQSym and QSym below. However, this restriction is not essential. If $\allow(S)$ can be written as a disjoint union of almost open cells of a fixed dimension $k<d$, then the same proofs show partitionability of $\allow(S)$.
 \end{remark}
 
-%% \begin{example}
-%% Returning to the chromatic scheduling problem, Theorem~\ref{hilbert}
-%% was shown by Steingrimmson in [cite], that $\Sigma(S)$ had a convex
-%% ear decomposition by Hersch and Swartz [cite], and L-positivity of the
-%% chromatic symmetric function by [cite].  The chromatic scheduling
-%% problem can also be seen to satisfy the conditions of
-%% Theorem~\ref{posets} and hence Theorem~\ref{unique}.  This was shown
-%% in [cite GP] by considering a larger class of scheduling problems
-%% defined for generalized permutahedron.  
-
-%% The scheduling problem of [GP] is defined by taking, for each vertex
-%% $v$ of a generalized permutahedron $P$, the conjugation of all
-%% hyperplanes defining $v$.  Hence the valid $\omega$ schedules
-%% correspond to all integer points in the interior of the normal fan or
-%% equivalently the forbidden configuration is the entire co-dimension
-%% one skeleton $P$.  The normal fans of generalized permutahedron are
-%% refined by the braid arrangement and the $C_{i,j}$ of
-%% Theorem~\ref{posets} correspond to all interiors of the maximal cones.
-%% In cite[GP], the conditions of Theorem~\ref{unique} are established in
-%% the Hopf monoid setting of directed faces.  The chromatic scheduling
-%% problem is the special instance of the generalized permutahedron
-%% scheduling problem for graphical zonotopes.  As another special
-%% instance, the quasisymmetric function $QS$ for matroid polytopes is
-%% the Biller-Jia-Reiner quasisymmetric function for matroids.
-%% \end{example}
-
 
 
 \subsubsection{Fundamental Bases for NCQSym and QSym}
 
-%% The scheduling function $\SSS_S$ is a quasisymmetric function in
-%% non-commuting variables and $\poly_S(k)$ is a polynomial.  The structure
-%% of $\Sigma(S)$ also yields information on the the intermediate
-%% quasisymmetric function $QS_S$.
-
-%%   If $\SSS_S$ is given in the monomial
-%% bases indexed by ordered set partitions, $QS_S$ is defined as the
-%% quasisymmetric function formed by applying the type map to each
-%% monomial term.  We will be interested in the expansion of $QS_S$ in
-%% bases other than the monomial, in particular the fundamental basis.
-%% To this end we review analogous bases in NCQSym which allow us to also
-%% specialize via the type map.
 
 Above we established that if a scheduling problem can be written as a
  decision tree such that all cells are almost open then the allowable
@@ -1250,14 +1099,6 @@ The corresponding quasisymmetric function; i.e. the quasisymmetric function obta
 \end{example}
 
 
-
-
-%% \subsection{[mostly subsumed, see what needs to be distributed]}
-
-
-%% For $i=1,\ldots,d+1$, a half-open $d$-dimensional simplex $\Delta$ has precisely $i$ open faces if and only if the minimal dimension of a face of $\Delta$ is $i-1$.\footnote{Here we view $\Delta$ as a partial simplicial complex.} For example, the half-open tetrahedron $\Delta^3_1$ with one open face, can be written as the disjoint union of one open 3-simplex, three relatively open 2-simplices, three relatively open 1-simplices and one (relatively open) vertex. The minimal dimension of a face of $\Delta^3_1$ is therefore $1=3-1-1$. \comment{Todo: Add picture.} Moreover, this minimal face is uniquely determined: it is the unique minimum of the face poset of the partial simplicial complex induced by a half-open simplex. In fact, for $i=0,\ldots,d+1$ the face poset of $\Delta^d_i$ is a boolean lattice of dimension $d+1-i$ with the relatively open $d$-simplex as its maximum and the minimal $(i-1)$-simplex as its minimum. This also works for $i=0$ if we take as the empty face as a minimum, which is of dimension $-1$.
-
-%% In the case of $\TC$, these boolean lattices arise correspond precisely to the boolean lattices we encountered in the definition of $\ncL$ basis for nc-quasisymmetric functions.
 Let $\Delta$ be an $n$-dimensional half-open simplex with $i$ open faces, that, as a partial simplicial complex, is a subcomplex of $\TC$. As we have seen above, its faces are in one-to-one correspondence with ordered set partitions. Its minimal $i-1$-dimensional face corresponds to an ordered set partition $\Phi_\text{c}$ of length $i-1$. Its maximal $n$-dimensional face corresponds to an ordered set partition $\Phi_\text{f}$ of length $n$, i.e., a permutation of $n$. The interval of ordered set partitions between $\Phi_\text{f}$ and $\Phi_\text{c}$ corresponds precisely to the face poset of $\Delta$. Therefore, we now immediately have
 \[
   \ncL_{(\Phi_\text{c};\Phi_\text{f})}(\mathbf{1}^k) = \ehr_\Delta(k+1) = \binom{k+n-i+1}{n}.
@@ -1308,19 +1149,6 @@ Non-negativity of the $\mu_\Phi$ or the $\mu_{(\Phi_\text{c};\Phi_\text{f})}$ im
 
 We now return to the geometry of the allowed and forbidden configurations and see that partitionability implies positivity expansions for the fundamental bases and the $h^*$ coefficients. 
 
-%In particular, the theorem holds if $\mathcal{F}=\SSS_S$ is a scheduling nc-quasisymmetric function and $p(k)=\poly_S(k)$ is the corresponding scheduling polynomial.
-
-%% \begin{proof}
-%% We have $\mathcal{F}(\mathbf{1}^k)=F(\mathbf{1}^k)=p(k)$. Moreover, we have seen that 
-%% \[
-%%   \ncL_{(\Phi_\text{c};\Phi_\text{f})}(\mathbf{1}^k) = L_\alpha(\mathbf{1}^k)=\binom{k+n-i}{n}
-%% \]
-%% where $i$ denotes the length of $\Phi_\text{c}$ and $\alpha$, respectively. The length of an ordered set partition of $[n]$ or, respectively, an ordered partition of $n$ can range from $1$ to $n$. By collecting terms in each case, we obtain the theorem. Note that the coefficients in the fundamental basis are integral because the coefficients in the monomial basis are integral for any scheduling problem.
-%% \end{proof}
-
-%%  \comment{Todo: Add examples/citations.} One class of theorems of this type are phrased in terms of partitionability, which we can generalize for our purposes.
-
-%% A pure partial simplicial complex $K$ is \emph{partitionable} if $K$ can be written as a disjoint union of half-open full-dimensional simplices. This corresponds to decomposing the face poset of $K$ into boolean lattices whose minimal and maximal elements correspond to the pairs $(\Phi_{\text{c}};\Phi_{\text{f}})$ we discussed above.
 
 \begin{theorem}
 \label{thm:part-pos}
@@ -1360,8 +1188,6 @@ Let $S$ be a scheduling problem such that $\allow(S)$ is closed under the direct
 
 \begin{proof}
 For any  ordered set partition $\Phi_f \in \allow(S)$ of length $n$, there exists by assumption a unique coarsest allowed ordered set partition $\Phi_c$ with $\Phi_c\preceq\Phi_f$. Let $P$ be the collection of all such pairs.  Since $\allow(S)$ is closed under the directed refinement relation, the intervals  $[\Phi_c, \Phi_f]$ are boolean lattices.
-% Thus, the interval between $\Phi_c$ and $\Phi_f$ under the directed refinement relation coincides with the interval between $\Phi_c$ and $\Phi_f$ under the ordinary refinement relation. Because of
-% The uniqueness assumption guarantees these intervals are disjoint. Finally, again because of the assumption that the allowed poset is closed under directed refinement and has unique coarsest elements, we have that 
 Furthermore,  for any  $\Phi \in \allow(S)$ there exists a $\Phi_f$ of length $n$ that is a directed refinement of $\Phi$, hence $\Phi$ is contained in the interval with $\Phi_f$ as its maximal element. Therefore, $P$ forms a partition of $\allow(S)$  which completes the proof of the theorem.
 \end{proof}
 
@@ -1489,42 +1315,6 @@ matroid polytope  (and more generally to any generalized permutahedron).  The co
 polynomial restriction of the Billera-Jia-Reiner quasisymmetric
 function for matroids~\cite{BJR}.
 
-%Talk about previous results on quasisymmetric function positivity.
-
-%% \begin{theorem} \label{unique} Let $S$ be a scheduling problem on $d$ items.  If the forbidden configuration $\Sigma(S)$ is a subcomplex of the Coxeter complex and if for each total ordering of $[d]$ there is a unique coarsest schedule satisfying $S$, then $\SSS_S$ is $\ncL$-positive and therefore $QS$ is $L$-positive. 
-%% \end{theorem}
-
-%% Let $S$ be a scheduling problem such that the regions of $[0,1]^n\setminus\Sigma(S)$ are the interiors of convex polytopes of dimension $n$. Equivalently, we assume $S$ can be written as a disjunction of conjunctions of strict inequalities, i.e.,
-%% \[
-%%   S = \bigvee_i C_i \text{ where } C_i = \bigwedge_j I_{i,j}
-%% \] \label{posets}
-%% such that the $I_{i,j}$ are strict inequalities of the form $x_a < x_b$ for some $a$ and $b$, and the conjunctions $C_i$ are satisfiable for all $i$.
-%% \begin{example}
-%% Returning to the chromatic scheduling problem, Theorem~\ref{hilbert}
-%% was shown by Steingrimmson in [cite], that $\Sigma(S)$ had a convex
-%% ear decomposition by Hersch and Swartz [cite], and L-positivity of the
-%% chromatic symmetric function by [cite].  The chromatic scheduling
-%% problem can also be seen to satisfy the conditions of
-%% Theorem~\ref{posets} and hence Theorem~\ref{unique}.  This was shown
-%% in [cite GP] by considering a larger class of scheduling problems
-%% defined for generalized permutahedron.  
-
-%% The scheduling problem of [GP] is defined by taking, for each vertex
-%% $v$ of a generalized permutahedron $P$, the conjugation of all
-%% hyperplanes defining $v$.  Hence the valid $\omega$ schedules
-%% correspond to all integer points in the interior of the normal fan or
-%% equivalently the forbidden configuration is the entire co-dimension
-%% one skeleton $P$.  The normal fans of generalized permutahedron are
-%% refined by the braid arrangement and the $C_{i,j}$ of
-%% Theorem~\ref{posets} correspond to all interiors of the maximal cones.
-%% In cite[GP], the conditions of Theorem~\ref{unique} are established in
-%% the Hopf monoid setting of directed faces.  The chromatic scheduling
-%% problem is the special instance of the generalized permutahedron
-%% scheduling problem for graphical zonotopes.  As another special
-%% instance, the quasisymmetric function $QS$ for matroid polytopes is
-%% the Biller-Jia-Reiner quasisymmetric function for matroids.
-%% \end{example}
-
 
 \subsubsection{P-partitions} 
 
@@ -1557,31 +1347,8 @@ Consider the scheduling nc-quasisymmetric function,
 \end{align*}
 
 The corresponding scheduling problem $S$ does satisfy the conditions of Theorem~\ref{unique}, i.e for every allowable ordered set partition $\Phi$ there is a unique coarsest ordered set partition $\Phi_c$ below $\Phi$ in the directed refinement ordering.  On the other hand, $S$ can not be written as the conjunction of disjunctions of strict inequalities. Geometrically, the allowable configuration is contractible but not convex. It can be realized by a decision tree in which all cells are almost open.
-
-
 \end{example}
 
-
-
-
-%% \subsubsection{Convex ear decompositions and strong bounds on the coefficients}
-
-%% \comment{Perhaps this subsection will not explicitly define all the necessary material but will be written in the form of ``for the knowledgeable'' reader, the following ideas work....}
-
-%% \comment{Under construction}
-
-%% \begin{proposition}
-%% Let $S$ be a scheduling problem such that $\Sigma(S)$ is of codimension 1 and has a convex ear decomposition. Then 
-%% \[
-%%   \sum_{n \geq 0} ((n+1)^d - \poly_S(n+1)) t^n = \frac{h_{\Sigma(S)}(t)}{(1-t)^d},
-%% \]
-%% as above, and moreover the coefficients $h_i$ satisfy
-%% \begin{enumerate}
-%% \item $h_0 \leq h_1 \leq \ldots \leq h_{\floor{d/2}}$,
-%% \item $h_i\leq h_{d-i}$ for $i\leq d/2$,
-%% \item $(h_0,h_1-h_0,h_2-h_1,\ldots,h_{\ceil{d/2}}-h_{\ceil{d/2}-1})$ is an $M$-vector.
-%% \end{enumerate}
-%% \end{proposition}
 
 
 \subsection{Subcomplexes and the Co-fundamental basis}
@@ -1609,14 +1376,6 @@ $$N_{\alpha} := \sum_{\beta : \beta \, \textrm{coarsens} \, \alpha} M_{\beta}.$$
 The co-fundamental basis given by the $N_{\alpha}$ also results from allowing the variables to commute in an NCQSym basis defined analogously to the $\mathcal{L}$ basis above.  In this case a directed coarsening relation is used.  This basis was first defined in~\cite{Zab}, denoted  ${\bf {Q}_{\Phi}}$.
 
 
-
-
- %%   We will use the notation $\ncN_{\Phi}$ for the basis which sums
- %%   over all ordered set partitions that \emph{coarsen} a fixed
- %%   partition with respect to a fixed direction and refer to it as the
- %%   co-nc-fundamental basis.  This basis was introduced in~\cite{Zab} and denoted *.  It is precisely opposite the directed refinement relation defined for the fundamental basis.   Namely,
- %% $$\ncN_{\Phi} := \sum_{\Psi:\Phi \preceq \Psi} \ncM_{\Phi}.$$
- %% Again, after applying the type map to the indexing ordered set partitions, we arrive at a quasisymmetric expansion in terms of all compositions that coarsen a fixed composition. 
 
 
   Recall that for an integer point $a\ \in \mathbb{N}^n$,
@@ -1686,27 +1445,11 @@ weight functions with the same relative ordering.  Hence, we can
 define the Bergman scheduling problem to be the scheduling problem
 whose allowable configuration is given by the integer points of the
 Bergman fan.
-%%  Furthermore define $M_{\omega}$ to be the induced matroid of all
-%% $\omega$-minimal bases. 
-%% % Three different perspectives on this induced
-%% %matroid and that fact that it is indeed a matroid are discussed in~\cite{AK, Section 2}.
-%% The function $\omega$ is called $M$-loopless if the matroid
-%%   $M_{\omega}$ has no loops, i.e.  every element of the ground set is
-%%   contained in some minimal weight basis.  In~\cite{AK}, such $\omega$ are
-%%   called valid and precisely constitute the integral points of the
-%%   Bergman fan of $M$.
   Considering $\omega$ simply as an integer
   point, we associate a flag $\mathscr{F}_{\omega}$ as above.
 In ~\cite{AK} it is shown that a weight function $\omega$ is  in the Bergman fan
 if and only if $\mathscr{F}(\om)$ is a flag of flats of $M$.
-%% $M_{\omega}$ is completely determined by the relative ordering of the
-%%   components of $\omega$ and not their exact value, hence we make the
-%%   following definitions.
 Therefore, the Bergman scheduling problem is the scheduling problem with allowable configuration $\allow(S)$ equal to all $\Delta(\om)$ such that $\mathcal{F}_{\omega}$ is a flag of flats of $M$. 
-
-%% $\om$ is $M$-loopless.  The Bergman nc-quasisymmetric function is the generating function,
-%% $$NCQB(M,{\bf x}) := \sum_{M\textrm{-loopless} \, \omega} {\bf x}_{\omega},$$
-%% where ${\bf x}_{\omega} = \prod_{e \in E} x_{\omega(e)}$.
 
 \begin{example}
 
@@ -1724,50 +1467,17 @@ Ehrenborg's quasisymmetric function would instead record the rank jumps of this 
 
 \end{example}
 
-%% \begin{theorem}\label{thm:Bergman}[Theorem 1 ref]
-%% A weight function $\omega$ is $M$-loopless if and only if $\mathcal{F}(\om)$ is a flag of flats of $M$.
-%% \end{theorem}
-
-
-%% Applying the type map to NCQBergman gives the quasisymmetric
-%% function QBergman, 
-%% $$QB(U_{2,4}) = M_4 + 4M_{1,3}.$$
-
 
 The collection of ordered set partitions which index the Bergman
 nc-quasisymmetric function are closed under {\em coarsening} and moreover form the collection of flags of the lattice of flats of the matroid. Therefore Proposition~\ref{prop:flags} implies that the coefficients of the Bergman quasisymmetric function in the co-fundamental basis are given by
-%% \begin{proposition} For the Bergman scheduling problem $S$, the coefficients of the quasisymmetric function QSym(S) in the cofundamental basis satisfy:
-%% \begin{enumerate}
-%% \item
 $$[N_{\alpha}] = (-1)^{|\alpha|} \sum_{\alpha \, \textrm{flags}} \prod_i \mu(f_i,f_{i+1}),$$
 where an $\alpha$-flag is a flag of flats such that $|f_{i+1}| - |f_i| = \alpha_i$ and $\mu$ is the M\"{o}bius function of the lattice of flats of $M$.  The lattice of flats of a matroid is a well studied object and allows us to further understand these coefficients.  For example, the sign of $[N_{\alpha}]$ alternates with the length of $\alpha$,  $\sum_{\alpha} [N_{\alpha}] = 1$, and up to sign, $ [N_{|E|}]$ is equal to the M\"{o}bius function of the lattice
 of flats $\mu(0,1)$ or equivalently the reduced Euler characteristic of the order complex of the
 proper part of the lattice of flats.
 
 
-%% \begin{proof}
-%% \begin{enumerate}
-%% \item This is an immediate corollary of Proposition~\ref{prop:flags}.
-%% \item  In any composition of $n$, the parity of the number of odd parts is the same.
-%% \item  Alternating sum over subsets
-%% \item (It is the alternating sum of the f-vector just broken up by the refinement).
-%% \end{enumerate}
-%% \end{proof}
-
 \begin{example}
 
-
-%% The Bergman quasisymmetric functions of the uniform matroids of rank $2$ and $3$ on a ground set of size $3$ and $4$:
-
-%% \begin{align*}
-%% QB(U_{2,4}) & = M_4 + 4M_{1,3}\\
-%% & = 4N_{1,3} - 3N_4
-%% \end{align*}
-
-%% \begin{align*}
-%% QB(U_{3,4}) & =  M_4 + 6M_{2,2} + 4M_{1,3} + 12M_{1,1,2}\\
-%%             & =  12 N_{1,1,2} - 8 N_{1,3} - 6N_{2,2} + 3N_4
-%% \end{align*}
 The Schubert matroid $M_{(135)}$ is the matroid consisting of 
 all bases componentwise less than or equal to $(1,3,5)$.  The Bergman quasisymmetric function is given by $ \textrm{Bergman QSym}(M_{(135)})$ 
 \begin{align*}
@@ -1776,27 +1486,6 @@ all bases componentwise less than or equal to $(1,3,5)$.  The Bergman quasisymme
 \end{align*}
 
 \end{example}
-
-
-%%  If we were working over rank instead of size, we would have the
-%%  Ehrenborg quasi-symmetric function which runs over flags of flats
-%%  indexed by rank (as in the lattice).
-
-%%  The $\eta$s are a colored refinement of a ``co-h'' vector of the
-%% order complex.  The ``co-h'' is computed via Stanley's trick with the
-%% $f$-vector written backwards from the top down the right hand side and
-%% $f_n$ down the left hand side.
-
-%% The coefficients $(f_{\beta_1}f_{\beta_2} \dots f_{\beta_n})$ are
-%% a colored refinement of the $f$-vector of the order complex of the
-%% lattice of flats. Flats of the same size (NOT RANK) are given the same
-%% color.
-
-
-%\comment{See Richard's result on chromatic in the power sum basis, alternates in sign by length of partition.}
-
-%It might be hard to recognize, but see proposition 5.1 which is really the same as the proposition above interpreted via the antipode formula for a Hopf algebra. 
-
 
 
 The Bergman polynomial obtained
@@ -1827,98 +1516,9 @@ The flats of this matroid are all singletons and the entire set [4].  In terms o
 
 
 
-%% \subsection{Reciprocity theorems}
-
-%% \begin{theorem}\label{posets}
-%% Let $S$ be a scheduling problem such that the regions of $[0,1]^n\setminus\Sigma(S)$ are the interiors of convex polytopes of dimension $n$. Equivalently, we assume $S$ can be written as a disjunction of conjunctions of strict inequalities, i.e.,
-%% \[
-%%   S = \bigvee_i C_i \text{ where } C_i = \bigwedge_j I_{i,j}
-%% \] 
-%% such that the $I_{i,j}$ are strict inequalities of the form $x_a < x_b$ for some $a$ and $b$, and the conjunctions $C_i$ are satisfiable for all $i$. Then both $\SSS_S$ and $\poly_S$ satisfy a reciprocity theorem:
-%% \begin{enumerate}
-%% \item $\poly_S(-k) = (-1)^n\cdot \#\mset{(i,x)}{S(x) \text{ and } C_i(x)}$
-%% \item TODO: reciprocity for $\SSS_S$.
-%% \end{enumerate}
-%% \end{theorem}
-
-%% %** fb: I'd like to extend the above to include non-convex regions. **
-
-%% %% A couple of additional points:
-%% %% \begin{enumerate} 
-%% %% \item This case still includes chromatic polynomials and the matroid polynomials.
-%% %% \item Do the convex ear decompositions also tell us something about coefficients on the quasisymmetric function level?
-%% %% \item Which schedules come from matroids? 
-%% %% \item Give a simpler sufficient criterion for when there is a convex ear decomposition. For example: There is a convex ear decomposition, if there is a shelling of the Coxeter complex (equiv. the braid triangulation of the cube) such that the regions of $[0,1]^n\setminus\Delta(S)$ appear consecutively in the shelling.
-%% %% \item Section 6 from Tricia and Ed's paper.  They have the wrong polynomial.  Otherwise, all of their results would apply.
-%% %% %\item Other families of polynomials besides Arboricity?  Even known ones that we can simply put into our framework?
-%% %% \end{enumerate}
-
-
-
-%% \comment{
-%% There are a couple of other things we could add here:
-%% \begin{enumerate}
-%% \item Add the quasisymmetric function in commuting variables as an intermediate step.
-%% \item $\poly_S$ includes the chromatic polynomial of a graph and the "unknown" matroid polynomial as special cases.
-%% \item $\poly_S$ includes Ehrhart polynomials of order polytopes as a special case.
-%% \item The values of $\poly_S(-k)$ at negative integers can be written as a difference of two counting functions. (This gives "one half" of a reciprocity theorem.) This should also be true on the quasisymmetric function level.
-%% \end{enumerate}
-%% }
-
-%% Scheduling polynomials include for example, the chromatic polynomial
-%% of graphs and the Ehrhart polynomials of order polytopes.  In Sections
-%% 6 and 7 below, we will see that they also include the zeta-polynomials
-%% of posets and the newly defined arboricity polynomial of a matroid,
-%% which counts the number of covers of a matroid by independent sets.
-
-
-
-
-
-%% The Bergman quasisymmetric functions of the uniform matroids of rank $2$ and $3$ on a ground set of size $3$ and $4$:
-
-%% \begin{align*}
-%% QB(U_{2,4}) & = M_4 + 4M_{1,3}\\
-%% & = 4N_{1,3} - 3N_4
-%% \end{align*}
-
-%% \begin{align*}
-%% QB(U_{3,4}) & =  M_4 + 6M_{2,2} + 4M_{1,3} + 12M_{1,1,2}\\
-%%             & =  12 N_{1,1,2} - 8 N_{1,3} - 6N_{2,2} + 3N_4
-%% \end{align*}
-
-%% The Bergman quasisymmetric function of the Schubert matroid consisting of all bases componentwise less than or equal to $(135)$:
-%% \begin{align*}
-%% QB(M_{<135>}) & =  M_5 + 3M_{2,3} + M_{3,2} + M_{4,1} + 3M_{1,4} \\ & + 4M_{1,1,3} + M_{1,2,2} + M_{2,1,2} + M_{2,2,1} + 2M_{1,3,1}\\
-%% &  =  2N_{1,3,1} + N_{2,2,1} + N_{2,1,2} + N_{1,2,2} + 4N_{1,1,3} \\ & - 4 N_{1,4} - 2N_{4,1} - N_{3,2} - 3N_{2,3} + 2N_5
-%% \end{align*}
-
-%% \end{example}
-
-
-%% %%  If we were working over rank instead of size, we would have the
-%% %%  Ehrenborg quasi-symmetric function which runs over flags of flats
-%% %%  indexed by rank (as in the lattice).
-
-%% %%  The $\eta$s are a colored refinement of a ``co-h'' vector of the
-%% %% order complex.  The ``co-h'' is computed via Stanley's trick with the
-%% %% $f$-vector written backwards from the top down the right hand side and
-%% %% $f_n$ down the left hand side.
-
-%% %% The coefficients $(f_{\beta_1}f_{\beta_2} \dots f_{\beta_n})$ are
-%% %% a colored refinement of the $f$-vector of the order complex of the
-%% %% lattice of flats. Flats of the same size (NOT RANK) are given the same
-%% %% color.
-
-
-
 
 \section{Arboricity}
 \label{arboricty}
-
-%***cjk: Little intro here that we have seen some known examples of
-%polynomials that fit into our framework.  Here we demonstrate a new polynomial 
-%that falls naturally out of our framework. ***
 
 In the last section we introduce the arboricity polynomial, a
 scheduling polynomial naturally associated to a graph or matroid.
@@ -1944,10 +1544,6 @@ $k$.  Again, an appropriate analogy to keep in mind is the chromatic
 polynomial of a graph.  The chromatic polynomial is the enumerate
 function which counts the number of proper coloring of a graph with at
 most $k$ colors.  
-%% After defining the enumerative function, the first
-%% result one proves is that it is in fact a polynomial function in $k$.
-%% The standard proof follows by induction after establishing a deletion
-%% / contraction recurrence for the number of colorings. 
  An important distinction for counting independent set coverings is
  that they do not satisfy a deletion contraction recursion hence the
  standard inductive proof technique for polynomiality does not apply in
@@ -2016,79 +1612,6 @@ not satisfy a contraction deletion recursion analogous to the chromatic polynomi
 \chi_{A(C_3)-e}(2) &= 3 \\
 \chi_{A(C_3) / e }(2)  &= 2.
 \end{align*}
-
-%% \begin{example}
-%% Let $M$ be the graphical matroid of the graph $G$ with $5$ edges as
-%% shown in Figure [].  The entire ground set is not independent so there
-%% are no independent covers of size $1$.  We can achieve independent
-%% partitions of size $2$.  Written as ordered set partitions, they are:
-%% $$ 34e|12, 12e|34, 124|3e, 134|2e, 234|1e, 123|4e, 13e|24, 13|24e, $$
-%% and all those with the order of the blocks reversed, $A_M(2) = 16$.  
-
-%% Again, in each of the partitions above, within each block of the
-%% partition, the edges form a forest.  These are the partitions of
-%% minimal size, clearly any refinement of these partitions will also
-%% yield independent partitions.
-
-
-
-%% We can utilize this example to show explicitly that $A_M(k)$ does not
-%% satisfy deletion/contraction.  Consider the deletion and contraction
-%% of the edge $e$, $M-e$ and $M/e$.  The independent covers of size $2$
-%% of $M-e$ are
-%% $$ 123|4, 124|3, 134|2, 234|1, 12|34, 13|24, 14|23, $$ and all those
-%% with the order of the blocks reversed. (We could also note that $M-e$
-%% corresponds to a cycle graph and $2^4 - 2 = 14$.)  The independent
-%% covers of $M/e$ are $$12|34, 13|24,$$ and those with the order of the
-%% blocks reversed.  Therefore $A_M(2) \neq A_{M-e}(2) + A_{M/e}(2)$.
-
-
-
-
-%% \begin{figure}[h]
-%% \includegraphics[width=10cm]{arboricity.pdf}
-%% \caption{The arboricity polynomial does not satisfy a deletion contraction recursion.}
-%% \end{figure}
-
-
-%% \end{example}
-
-
-%\subsection{Quasisymmetric Functions}
-
-%I am assuming that we'll have this general theory set up earlier so I can just work through it in an example. 
-
-
-%% ****cjk: I just wrote out examples but here we should explicitly describe arboricity in terms of the Ehrhart and Quasisymmetric picture.  I want to wait to do this until the other sections are written so we can point out specific results that apply.  Also, I actually don't like how all the examples are italized.****
-
-
-%% \begin{example}
-
-%% Consider the matroid of the $3$-cycle $M(C_3)$.  The only circuit is the entire ground set $\{1,2,3\}$.  All other ordered set partitions correspond to independent coverings of $C_3$: 
-%% $$1|23, 2|13, 3|12, 1|2|3,$$
-%% and all those with the order of the blocks permuted. 
-
-%% Consider the braid arrangement in $R^3$, the ground set space of the
-%% matroid, or edge set space of the graph.  These ordered set partitions
-%% correspond to the collection of integer points which lie off of the
-%% intersection: $x_1 = x_2 = x_3$.
-
-
-%%  Hence the corresponding element of NCQSym is 
-
-%% $${\bf{{\mathcal A}}}(M) = M_{(1|23)} + M_{(2|13)} + M_{(3|12)} + M_{(23|1)} + M_{(13|2)} +  M_{(12|3)} + $$ $$ M_{(1|2|3)} + M_{(1|3|2)}
-%% + M_{(2|1|3)} + M_{(2|3|1)} + M_{(3|1|2)} + M_{(3|2|1)}. $$
-
-%% \noindent Specializing under the type map we have an element of QSym:
-
-%% $${\mathcal A}(M) = 3 M_{(1,2)} + 3 M_{(2,1)} + 6 M_{(1,1,1)}. $$
-
-%% \noindent Evaluating at ${\bf 1}^k $ we have the arboricity polynomial:
-
-%% $$ A(M) = 3 { k \choose 2} + 3 { k \choose 2} + 6 { k \choose 3} = k^3 - k $$
-
-%% \end{example}
-
 
 
  \bibliographystyle{amsplain}
